@@ -1,0 +1,481 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{770F6D41-B085-4E51-935E-11C09E28F156}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon>Resources\Icons\App.ico</ApplicationIcon>
+    <AssemblyKeyContainerName>
+    </AssemblyKeyContainerName>
+    <AssemblyName>Ascgen dotNET</AssemblyName>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>AscGenDotNet</RootNamespace>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <StartupObject>
+    </StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>AscGenDotNet.xml</DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile>AscGenDotNet.xml</DocumentationFile>
+    <DebugSymbols>false</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>none</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Name>System.Drawing</Name>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Name>System.Windows.Forms</Name>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Icons\App.ico" />
+    <EmbeddedResource Include="Resources\Localization\Localization.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\Controls\FileListbox.resx">
+      <DependentUpon>FileListbox.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\Controls\JMBrightnessContrast.resx">
+      <DependentUpon>JMBrightnessContrast.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\Controls\JMDithering.resx">
+      <DependentUpon>JMDithering.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\Controls\Levels\JMLevels.resx">
+      <DependentUpon>JMLevels.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\Controls\JMPictureBox.resx">
+      <DependentUpon>JMPictureBox.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\Controls\JMSelectablePictureBox.resx">
+      <DependentUpon>JMSelectablePictureBox.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\Forms\AboutDialog.resx">
+      <DependentUpon>AboutDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\Forms\CharacterSizeDialog.resx">
+      <DependentUpon>CharacterSizeDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\Forms\FormColourPreview.resx">
+      <DependentUpon>FormColourPreview.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\Forms\FormConvertImage.resx">
+      <DependentUpon>FormConvertImage.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\Forms\FormEditSettings.resx">
+      <DependentUpon>FormEditSettings.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\Forms\FormSaveAs.resx">
+      <DependentUpon>FormSaveAs.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\Forms\TextImageMagnificationDialog.resx">
+      <DependentUpon>TextImageMagnificationDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\Forms\ValidRampCharsDialog.resx">
+      <DependentUpon>ValidRampCharsDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\Widgets\BaseWidget.resx">
+      <DependentUpon>BaseWidget.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\Widgets\WidgetBrightnessContrast.resx">
+      <DependentUpon>WidgetBrightnessContrast.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\Widgets\WidgetPreview.resx">
+      <DependentUpon>WidgetPreview.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\Widgets\WidgetTextSettings.resx">
+      <DependentUpon>WidgetTextSettings.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="Resources\disk.png" />
+    <None Include="Resources\door_open.png" />
+    <None Include="Resources\contrast_high.png" />
+    <None Include="Resources\help.png" />
+    <None Include="Resources\folder.png" />
+    <None Include="Resources\cancel.png" />
+    <None Include="Resources\font.png" />
+    <None Include="Resources\database_save.png" />
+    <None Include="Resources\text_align_justify.png" />
+    <None Include="Resources\image.png" />
+    <None Include="Resources\page_paste.png" />
+    <None Include="Resources\monitor.png" />
+    <None Include="Resources\money.png" />
+    <None Include="Resources\picture_save.png" />
+    <None Include="Resources\images.png" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Source\AsciiConversion\CharacterValue.cs" />
+    <Compile Include="Source\AsciiConversion\DimensionsCalculator.cs" />
+    <Compile Include="Source\AsciiConversion\Filters\AscgenMatrixFilter.cs" />
+    <Compile Include="Source\AsciiConversion\Filters\Blur.cs" />
+    <Compile Include="Source\AsciiConversion\Filters\Dither.cs" />
+    <Compile Include="Source\AsciiConversion\Filters\Sharpen.cs" />
+    <Compile Include="Source\AsciiConversion\Filters\UnsharpMask.cs" />
+    <Compile Include="Source\Interfaces\IBrightnessContrast.cs" />
+    <Compile Include="Source\Interfaces\IDither.cs" />
+    <Compile Include="Source\Interfaces\ILevels.cs" />
+    <Compile Include="Source\AsciiConversion\ImageToColors.cs" />
+    <Compile Include="Source\AsciiConversion\ImageToValues.cs" />
+    <Compile Include="Source\Interfaces\IZoomLevel.cs" />
+    <Compile Include="Source\Interfaces\ITextViewer.cs" />
+    <Compile Include="Source\AsciiConversion\OutputCreator.cs" />
+    <Compile Include="Source\AsciiConversion\Filters\BrightnessContrast.cs" />
+    <Compile Include="Source\AsciiConversion\Filters\Flip.cs" />
+    <Compile Include="Source\AsciiConversion\Filters\Levels.cs" />
+    <Compile Include="Source\AsciiConversion\Filters\Stretch.cs" />
+    <Compile Include="Source\AsciiConversion\ValuesToFixedWidthTextConverter.cs" />
+    <Compile Include="Source\AsciiConversion\ValuesToVariableWidthTextConverter.cs" />
+    <Compile Include="Source\AsciiConversion\VariableWidthCharacterValue.cs" />
+    <Compile Include="Source\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Source\Controls\FileListbox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Source\Controls\JMBrightnessContrast.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Source\Controls\JMBrightnessContrast.designer.cs">
+      <DependentUpon>JMBrightnessContrast.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Source\Controls\JMDithering.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Source\Controls\JMDithering.Designer.cs">
+      <DependentUpon>JMDithering.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Source\Controls\Levels\JMLevels.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Source\Controls\JMPictureBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Source\Controls\JMSelectablePictureBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Source\Controls\Levels\JMLevelsDisplay.cs" />
+    <Compile Include="Source\Controls\Levels\JMLevelsGraph.cs" />
+    <Compile Include="Source\Controls\Levels\JMLevelsGraphArea.cs" />
+    <Compile Include="Source\Controls\Levels\JMLevelsSlider.cs" />
+    <Compile Include="Source\Controls\Levels\JMLevelsSliderContainer.cs" />
+    <Compile Include="Source\Controls\TextViewerRichTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Source\Forms\AboutDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Source\Forms\AboutDialog.Designer.cs">
+      <DependentUpon>AboutDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Source\Forms\CharacterSizeDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Source\Forms\CharacterSizeDialog.Designer.cs">
+      <DependentUpon>CharacterSizeDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Source\Forms\FormColourPreview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Source\Forms\FormColourPreview.Designer.cs">
+      <DependentUpon>FormColourPreview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Source\Forms\FormConvertImage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Source\Forms\FormConvertImage.Designer.cs">
+      <DependentUpon>FormConvertImage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Source\Forms\FormEditSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Source\Forms\FormEditSettings.Designer.cs">
+      <DependentUpon>FormEditSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Source\Forms\FormSaveAs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Source\Forms\FormSaveAs.designer.cs">
+      <DependentUpon>FormSaveAs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Source\Forms\TextImageMagnificationDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Source\Forms\TextImageMagnificationDialog.Designer.cs">
+      <DependentUpon>TextImageMagnificationDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Source\Forms\ValidRampCharsDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Source\AsciiConversion\AscgenConverter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Source\AsciiConversion\Filters\IAscgenFilter.cs" />
+    <Compile Include="Source\AsciiConversion\AsciiRampCreator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Source\Forms\ValidRampCharsDialog.Designer.cs">
+      <DependentUpon>ValidRampCharsDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Source\Functions\VersionChecker.cs" />
+    <Compile Include="Source\Functions\ConvolutionMatrix.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Source\Functions\ImageFunctions.cs" />
+    <Compile Include="Source\Functions\Matrices.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Source\Functions\Resource.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Source\AsciiConversion\TextProcessingSettings.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Source\AsciiConversion\ValuesToTextConverter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Source\Main.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Source\Functions\XmlProcessor.cs" />
+    <Compile Include="Source\Variables.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Source\Widgets\BaseWidget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Source\Widgets\BaseWidget.Designer.cs">
+      <DependentUpon>BaseWidget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Source\Widgets\WidgetBrightnessContrast.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Source\Widgets\WidgetBrightnessContrast.Designer.cs">
+      <DependentUpon>WidgetBrightnessContrast.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Source\Widgets\WidgetPreview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Source\Widgets\WidgetPreview.Designer.cs">
+      <DependentUpon>WidgetPreview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Source\Widgets\WidgetTextSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Source\Widgets\WidgetTextSettings.designer.cs">
+      <DependentUpon>WidgetTextSettings.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\chart_curve.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lightbulb.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\textfield.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\text_uppercase.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shape_flip_horizontal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shape_flip_vertical.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\color_swatch.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bug.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\color_wheel_file.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user_comment.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_white_copy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\printer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_white_wrench.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_white_magnify.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\book.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\printercolor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_magnify-color.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Resources\picture_save_rainbow.png" />
+    <None Include="Resources\connect.png" />
+    <None Include="Resources\arrow_rotate_clockwise.png" />
+    <None Include="Resources\arrow_rotate_anticlockwise.png" />
+    <None Include="Resources\magnifier_zoom_in.png" />
+    <None Include="Resources\magifier_zoom_out.png" />
+    <None Include="Resources\application_split.png" />
+    <None Include="Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>JMSoftware.AsciiGeneratorDotNet</CustomToolNamespace>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Source\dll\JMSoftware.TextHelper\JMSoftware.TextHelper.csproj">
+      <Project>{11F3DCBE-CC36-4761-AF00-B8FC87AFB443}</Project>
+      <Name>JMSoftware.TextHelper</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="translation.xml">
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>
