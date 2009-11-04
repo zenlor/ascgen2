@@ -1,0 +1,25 @@
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AscGenDotNet", "AscGenDotNet.csproj", "{770F6D41-B085-4E51-935E-11C09E28F156}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JMSoftware.TextHelper", "Source\dll\JMSoftware.TextHelper\JMSoftware.TextHelper.csproj", "{11F3DCBE-CC36-4761-AF00-B8FC87AFB443}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{770F6D41-B085-4E51-935E-11C09E28F156}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{770F6D41-B085-4E51-935E-11C09E28F156}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{770F6D41-B085-4E51-935E-11C09E28F156}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{770F6D41-B085-4E51-935E-11C09E28F156}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11F3DCBE-CC36-4761-AF00-B8FC87AFB443}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11F3DCBE-CC36-4761-AF00-B8FC87AFB443}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11F3DCBE-CC36-4761-AF00-B8FC87AFB443}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11F3DCBE-CC36-4761-AF00-B8FC87AFB443}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
