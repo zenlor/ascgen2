@@ -26,7 +26,6 @@
 namespace JMSoftware.AsciiGeneratorDotNet
 {
     using System;
-    using System.IO;
     using System.Net;
     using System.Text;
     using System.Threading;
@@ -96,48 +95,16 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// </summary>
         private void CheckForNewVersion()
         {
-            byte[] buffer = new byte[8192];
+            XmlDocument doc = new XmlDocument();
 
-            StringBuilder stringbuffer = new StringBuilder();
+            string html = this.ReadHtml("http://ascgen2.sourceforge.net/version.xml");
 
-            try
-            {
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://ascgen2.sourceforge.net/version.xml");
-
-                request.CachePolicy = new System.Net.Cache.RequestCachePolicy(System.Net.Cache.RequestCacheLevel.NoCacheNoStore);
-
-                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
-                {
-                    using (Stream receiveStream = response.GetResponseStream())
-                    {
-                        int numberOfBytes = 0;
-
-                        do
-                        {
-                            numberOfBytes = receiveStream.Read(buffer, 0, buffer.Length);
-
-                            if (numberOfBytes != 0)
-                            {
-                                stringbuffer.Append(Encoding.ASCII.GetString(buffer, 0, numberOfBytes));
-                            }
-                        }
-                        while (numberOfBytes > 0);
-                    }
-                }
-            }
-            catch (System.Net.WebException)
-            {
-                stringbuffer = new StringBuilder();
-            }
-
-            if (stringbuffer.Length == 0)
+            if (html == null)
             {
                 return;
             }
 
-            XmlDocument doc = new XmlDocument();
-
-            doc.LoadXml(stringbuffer.ToString());
+            doc.LoadXml(html);
 
             int major;
             int minor;
@@ -217,6 +184,36 @@ namespace JMSoftware.AsciiGeneratorDotNet
             {
                 System.Diagnostics.Process.Start(url);
             }
+        }
+
+        /// <summary>
+        /// Reads from the passed url as a string.
+        /// </summary>
+        /// <param name="url">The URL to be read.</param>
+        /// <returns>A string containing the reponse from the server</returns>
+        private string ReadHtml(string url)
+        {
+            WebClient webClient = new WebClient();
+
+            byte[] buffer;
+
+            try
+            {
+                buffer = webClient.DownloadData(url);
+            }
+            catch (System.Net.WebException)
+            {
+                buffer = null;
+            }
+
+            if (buffer == null)
+            {
+                return null;
+            }
+
+            UTF8Encoding utf8 = new UTF8Encoding();
+
+            return utf8.GetString(buffer);
         }
 
         #endregion Private methods
