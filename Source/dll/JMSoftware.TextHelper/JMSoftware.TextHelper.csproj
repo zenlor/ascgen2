@@ -38,11 +38,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FontFunctions.cs" />
-    <Compile Include="NativeMethods.cs" />
+    <Compile Include="Source\FontFunctions.cs" />
+    <Compile Include="Source\NativeMethods.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TextToColorImage.cs" />
-    <Compile Include="TextToImage.cs" />
+    <Compile Include="Source\TextToColorImage.cs" />
+    <Compile Include="Source\TextToImage.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
