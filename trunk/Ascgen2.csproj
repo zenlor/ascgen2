@@ -207,7 +207,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Settings.Designer.cs">
+    <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -425,7 +425,6 @@
     <None Include="Resources\page_magnify-color.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="Resources\picture_save_rainbow.png" />
     <None Include="Resources\connect.png" />
     <None Include="Resources\arrow_rotate_clockwise.png" />
@@ -433,7 +432,7 @@
     <None Include="Resources\magnifier_zoom_in.png" />
     <None Include="Resources\magifier_zoom_out.png" />
     <None Include="Resources\application_split.png" />
-    <None Include="Settings.settings">
+    <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
       <CustomToolNamespace>JMSoftware.AsciiGeneratorDotNet</CustomToolNamespace>
@@ -468,8 +467,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="translation.xml">
-    </Content>
+    <Content Include="Translation\translation.bg-BG.xml" />
+    <Content Include="Translation\translation.en-us.xml" />
+    <Content Include="Translation\translation.ru-RU.xml" />
+    <Content Include="Translation\translation.uk-UA.xml" />
+    <Content Include="Translation\translation.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
