@@ -1,8 +1,8 @@
 Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ascgen2", "Ascgen2.csproj", "{770F6D41-B085-4E51-935E-11C09E28F156}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ascgen2", "Ascgen2\Ascgen2.csproj", "{770F6D41-B085-4E51-935E-11C09E28F156}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JMSoftware.TextHelper", "Source\dll\JMSoftware.TextHelper\JMSoftware.TextHelper.csproj", "{11F3DCBE-CC36-4761-AF00-B8FC87AFB443}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JMSoftware.TextHelper", "JMSoftware.TextHelper\JMSoftware.TextHelper.csproj", "{11F3DCBE-CC36-4761-AF00-B8FC87AFB443}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

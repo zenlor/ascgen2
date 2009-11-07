@@ -461,7 +461,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Source\dll\JMSoftware.TextHelper\JMSoftware.TextHelper.csproj">
+    <ProjectReference Include="..\JMSoftware.TextHelper\JMSoftware.TextHelper.csproj">
       <Project>{11F3DCBE-CC36-4761-AF00-B8FC87AFB443}</Project>
       <Name>JMSoftware.TextHelper</Name>
     </ProjectReference>
