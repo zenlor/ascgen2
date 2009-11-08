@@ -104,12 +104,12 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.tbxLicence.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbxLicence.Location = new System.Drawing.Point(16, 96);
+            this.tbxLicence.Location = new System.Drawing.Point(12, 85);
             this.tbxLicence.Multiline = true;
             this.tbxLicence.Name = "tbxLicence";
             this.tbxLicence.ReadOnly = true;
             this.tbxLicence.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbxLicence.Size = new System.Drawing.Size(344, 78);
+            this.tbxLicence.Size = new System.Drawing.Size(368, 88);
             this.tbxLicence.TabIndex = 0;
             this.tbxLicence.TabStop = false;
             this.tbxLicence.Text = resources.GetString("tbxLicence.Text");
@@ -120,9 +120,9 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.lblTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTitle.Font = new System.Drawing.Font("Impact", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.Location = new System.Drawing.Point(88, 24);
+            this.lblTitle.Location = new System.Drawing.Point(88, 12);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(280, 24);
+            this.lblTitle.Size = new System.Drawing.Size(292, 45);
             this.lblTitle.TabIndex = 1;
             this.lblTitle.Text = "lblTitle";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -132,7 +132,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.btnOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnOk.BackColor = System.Drawing.SystemColors.Control;
             this.btnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnOk.Location = new System.Drawing.Point(256, 190);
+            this.btnOk.Location = new System.Drawing.Point(279, 181);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(101, 32);
             this.btnOk.TabIndex = 1;
@@ -143,7 +143,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             // 
             this.pbxIcon.BackColor = System.Drawing.Color.White;
             this.pbxIcon.Image = ((System.Drawing.Image)(resources.GetObject("pbxIcon.Image")));
-            this.pbxIcon.Location = new System.Drawing.Point(16, 16);
+            this.pbxIcon.Location = new System.Drawing.Point(12, 12);
             this.pbxIcon.Name = "pbxIcon";
             this.pbxIcon.Size = new System.Drawing.Size(64, 64);
             this.pbxIcon.TabIndex = 3;
@@ -151,7 +151,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             // 
             // lblJMSoftwareLink
             // 
-            this.lblJMSoftwareLink.Location = new System.Drawing.Point(96, 56);
+            this.lblJMSoftwareLink.Location = new System.Drawing.Point(91, 60);
             this.lblJMSoftwareLink.Name = "lblJMSoftwareLink";
             this.lblJMSoftwareLink.Size = new System.Drawing.Size(120, 16);
             this.lblJMSoftwareLink.TabIndex = 4;
@@ -163,7 +163,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             // lblSourceForgeLink
             // 
             this.lblSourceForgeLink.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblSourceForgeLink.Location = new System.Drawing.Point(224, 56);
+            this.lblSourceForgeLink.Location = new System.Drawing.Point(250, 60);
             this.lblSourceForgeLink.Name = "lblSourceForgeLink";
             this.lblSourceForgeLink.Size = new System.Drawing.Size(130, 16);
             this.lblSourceForgeLink.TabIndex = 5;
@@ -174,12 +174,10 @@ namespace JMSoftware.AsciiGeneratorDotNet
             // 
             // lblVersion
             // 
-            this.lblVersion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblVersion.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVersion.Location = new System.Drawing.Point(18, 187);
+            this.lblVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblVersion.Location = new System.Drawing.Point(28, 179);
             this.lblVersion.Name = "lblVersion";
-            this.lblVersion.Size = new System.Drawing.Size(220, 36);
+            this.lblVersion.Size = new System.Drawing.Size(245, 36);
             this.lblVersion.TabIndex = 6;
             this.lblVersion.Text = "lblVersion";
             this.lblVersion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -190,12 +188,12 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
             this.BackColor = System.Drawing.Color.White;
             this.CancelButton = this.btnOk;
-            this.ClientSize = new System.Drawing.Size(376, 238);
+            this.ClientSize = new System.Drawing.Size(392, 224);
+            this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.lblVersion);
             this.Controls.Add(this.lblJMSoftwareLink);
             this.Controls.Add(this.pbxIcon);
             this.Controls.Add(this.btnOk);
-            this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.tbxLicence);
             this.Controls.Add(this.lblSourceForgeLink);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
