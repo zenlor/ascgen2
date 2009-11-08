@@ -19,7 +19,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>AscGenDotNet</RootNamespace>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
-    <StartupObject>JMSoftware.AsciiGeneratorDotNet.AsciiGenDotNet</StartupObject>
+    <StartupObject>JMSoftware.AsciiGeneratorDotNet.Ascgen2</StartupObject>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <UpgradeBackupLocation>
