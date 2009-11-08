@@ -53,6 +53,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
         [STAThread]
         public static void Main(string[] arguments)
         {
+            Application.SetCompatibleTextRenderingDefault(false);
             Application.EnableVisualStyles();
             Application.DoEvents();
             Application.Run(new FormConvertImage(arguments));
