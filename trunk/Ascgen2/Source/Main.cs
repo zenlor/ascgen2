@@ -31,14 +31,14 @@ namespace JMSoftware.AsciiGeneratorDotNet
     /// <summary>
     /// Main application class
     /// </summary>
-    public sealed class AsciiGenDotNet
+    public sealed class Ascgen2
     {
         #region Constructors
 
         /// <summary>
-        /// Prevents a default instance of the <see cref="AsciiGenDotNet"/> class from being created.
+        /// Prevents a default instance of the <see cref="Ascgen2"/> class from being created.
         /// </summary>
-        private AsciiGenDotNet()
+        private Ascgen2()
         {
         }
 
