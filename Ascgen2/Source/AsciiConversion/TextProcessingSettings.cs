@@ -168,6 +168,8 @@ namespace JMSoftware.AsciiConversion
                 this.validCharacters = Settings.Default.CurrentCharacters;
             }
 
+            this.Size = size;
+
             this.Font = font;
 
             // TODO: Move these to ResetVariables and set widgets from events
