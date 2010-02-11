@@ -128,14 +128,14 @@ namespace JMSoftware.Controls
         [DefaultValue("Dithering Amount:")]
         public string DitheringLabel
         {
-            set
-            {
-                this.lblDitheringAmount.Text = value;
-            }
-
             get
             {
                 return this.lblDitheringAmount.Text;
+            }
+
+            set
+            {
+                this.lblDitheringAmount.Text = value;
             }
         }
 
@@ -176,14 +176,14 @@ namespace JMSoftware.Controls
         [DefaultValue("Random:")]
         public string RandomLabel
         {
-            set
-            {
-                this.lblRandom.Text = value;
-            }
-
             get
             {
                 return this.lblRandom.Text;
+            }
+
+            set
+            {
+                this.lblRandom.Text = value;
             }
         }
 
