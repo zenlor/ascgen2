@@ -87,7 +87,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             this.UpdateImage();
 
-            this.tbxMagnification.Text = ((int)Value).ToString(Settings.Default.Culture);
+            this.tbxMagnification.Text = ((int)this.Value).ToString(Settings.Default.Culture);
         }
 
         #endregion Constructors
@@ -251,7 +251,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             this.UpdateImage();
 
-            this.tbxMagnification.Text = ((int)Value).ToString(Settings.Default.Culture);
+            this.tbxMagnification.Text = ((int)this.Value).ToString(Settings.Default.Culture);
 
             this.UpdateOutputSize();
         }

@@ -1703,9 +1703,9 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void ContextMenuText_Popup(object sender, System.EventArgs e)
         {
-            this.cmenuTextFont.Enabled = this.cmenuTextSelectAll.Enabled = (!this.textViewer.IsEmpty);
+            this.cmenuTextFont.Enabled = this.cmenuTextSelectAll.Enabled = !this.textViewer.IsEmpty;
 
-            this.cmenuTextCopy.Enabled = this.cmenuTextSelectNone.Enabled = (this.textViewer.SelectionLength > 0);
+            this.cmenuTextCopy.Enabled = this.cmenuTextSelectNone.Enabled = this.textViewer.SelectionLength > 0;
 
             this.cmenuTextStretch.Checked = this.Stretch;
 
@@ -3471,7 +3471,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
                 this.menuViewColourPreview.Enabled =
                 this.menuFilePrintColour.Enabled =
                 this.menuFilePrintPreviewColour.Enabled =
-                    (this.IsFixedWidth && this.ImageIsLoaded);
+                    this.IsFixedWidth && this.ImageIsLoaded;
         }
 
         /// <summary>
