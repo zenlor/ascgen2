@@ -61,6 +61,11 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// <summary>The full filename of the input image</summary>
         private string filename;
 
+        /// <summary>
+        /// The batch conversion form
+        /// </summary>
+        private FormBatchConversion formBatchConversion;
+
         /// <summary>The Save As form</summary>
         private FormSaveAs formSaveAs;
 
@@ -139,6 +144,8 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.textViewer = this.rtbxConvertedText;
 
             this.formSaveAs = new FormSaveAs();
+
+            this.formBatchConversion = new FormBatchConversion();
 
             this.dimensionsCalculator = new DimensionsCalculator(this.CurrentImageSection.Size, this.CharacterSize, Settings.Default.DefaultWidth, Settings.Default.DefaultHeight);
 
@@ -2263,6 +2270,16 @@ namespace JMSoftware.AsciiGeneratorDotNet
         }
 
         /// <summary>
+        /// Handles the Click event of the menuFileBatchConversion control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void MenuFileBatchConversion_Click(object sender, EventArgs e)
+        {
+            this.formBatchConversion.ShowDialog();
+        }
+
+        /// <summary>
         /// Handles the Click event of the menuFileClose control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
@@ -3164,6 +3181,13 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.toolStripContainer1.TopToolStripPanel.Join(this.tstripCharacters, 1);
             this.toolStripContainer1.TopToolStripPanel.Join(this.tstripRamp, 1);
             this.toolStripContainer1.TopToolStripPanel.Join(this.tstripOutputSize, 1);
+
+            foreach (ToolStrip strip in this.toolStripContainer1.TopToolStripPanel.Controls)
+            {
+                strip.BackColor = this.toolStripContainer1.TopToolStripPanel.BackColor;
+                strip.GripMargin = new Padding(0);
+                strip.GripStyle = ToolStripGripStyle.Hidden;
+            }
         }
 
         /// <summary>

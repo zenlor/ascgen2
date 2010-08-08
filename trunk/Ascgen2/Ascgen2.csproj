@@ -146,6 +146,10 @@
       <DependentUpon>CharacterSizeDialog.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Source\Forms\FormBatchConversion.resx">
+      <DependentUpon>FormBatchConversion.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Source\Forms\FormColourPreview.resx">
       <DependentUpon>FormColourPreview.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -219,6 +223,15 @@
     <Compile Include="Source\AsciiConversion\Filters\Dither.cs" />
     <Compile Include="Source\AsciiConversion\Filters\Sharpen.cs" />
     <Compile Include="Source\AsciiConversion\Filters\UnsharpMask.cs" />
+    <Compile Include="Source\AsciiConversion\Settings\BatchTextProcessingSettings.cs" />
+    <Compile Include="Source\AsciiConversion\Settings\LevelsSettings.cs" />
+    <Compile Include="Source\AsciiConversion\Settings\LevelsSettingsConverter.cs" />
+    <Compile Include="Source\Forms\FormBatchConversion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Source\Forms\FormBatchConversion.designer.cs">
+      <DependentUpon>FormBatchConversion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Source\Interfaces\IBrightnessContrast.cs" />
     <Compile Include="Source\Interfaces\IDither.cs" />
     <Compile Include="Source\Interfaces\ILevels.cs" />
@@ -335,7 +348,7 @@
     <Compile Include="Source\Functions\Resource.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Source\AsciiConversion\TextProcessingSettings.cs">
+    <Compile Include="Source\AsciiConversion\Settings\TextProcessingSettings.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Source\AsciiConversion\ValuesToTextConverter.cs">
@@ -467,8 +480,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\folder_add.png" />
+    <None Include="Resources\image_add.png" />
+    <None Include="Resources\image_delete.png" />
+    <None Include="Resources\control_stop_blue.png" />
     <Content Include="Translation\translation.bg-BG.xml" />
     <Content Include="Translation\translation.en-us.xml" />
+    <Content Include="Translation\translation.fr-FR.xml" />
     <Content Include="Translation\translation.ru-RU.xml" />
     <Content Include="Translation\translation.uk-UA.xml" />
     <Content Include="Translation\translation.xml" />
