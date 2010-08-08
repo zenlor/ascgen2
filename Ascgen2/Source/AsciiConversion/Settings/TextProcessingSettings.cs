@@ -25,10 +25,11 @@
 //---------------------------------------------------------------------------------------
 namespace JMSoftware.AsciiConversion
 {
-    using System;
     using System.Collections;
+    using System.ComponentModel;
     using System.Drawing;
     using JMSoftware.AsciiConversion.Filters;
+    using JMSoftware.AsciiConversion.TextSettings;
     using JMSoftware.AsciiGeneratorDotNet;
 
     /// <summary>
@@ -77,14 +78,8 @@ namespace JMSoftware.AsciiConversion
         /// <summary>Is this font fixed-width</summary>
         private bool isFixedWidth;
 
-        /// <summary>Value for the maximum level</summary>
-        private int maximumLevel;
-
-        /// <summary>Value for the median level</summary>
-        private float medianLevel;
-
-        /// <summary>Value for the minimum level</summary>
-        private int minimumLevel;
+        /// <summary>The levels adjustment values</summary>
+        private LevelsSettings levels;
 
         /// <summary>Character ramp for the conversions</summary>
         private string ramp;
@@ -182,9 +177,7 @@ namespace JMSoftware.AsciiConversion
             this.flipHorizontally = Variables.FlipHorizontally;
             this.flipVertically = Variables.FlipVertically;
 
-            this.maximumLevel = Settings.Default.DefaultMaxLevel;
-            this.medianLevel = Settings.Default.DefaultMedianLevel;
-            this.minimumLevel = Settings.Default.DefaultMinLevel;
+            this.levels = new LevelsSettings(Settings.Default.DefaultMinLevel, Settings.Default.DefaultMedianLevel, Settings.Default.DefaultMaxLevel);
         }
 
         #endregion Constructors
@@ -195,6 +188,7 @@ namespace JMSoftware.AsciiConversion
         /// Gets or sets the Brightness of the text image.
         /// </summary>
         /// <value>The brightness.</value>
+        [CategoryAttribute("Adjustment"), DefaultValueAttribute(0), DescriptionAttribute("Brightness of the output image (-200 to 200)")]
         public int Brightness
         {
             get
@@ -204,12 +198,22 @@ namespace JMSoftware.AsciiConversion
 
             set
             {
+                if (value > 200)
+                {
+                    value = 200;
+                }
+                else if (value < -200)
+                {
+                    value = -200;
+                }
+
                 if (this.brightness == value)
                 {
                     return;
                 }
 
                 this.brightness = value;
+
                 this.filterChanged = true;
             }
         }
@@ -220,6 +224,7 @@ namespace JMSoftware.AsciiConversion
         /// <value>
         ///     <c>true</c> if calculating the character size; otherwise, <c>false</c>.
         /// </value>
+        [DisplayName("Calculate Character Size?"), CategoryAttribute("Output"), DefaultValueAttribute(true), DescriptionAttribute("Let the program calculate the size of a character in this font?")]
         public bool CalculateCharacterSize
         {
             get
@@ -247,6 +252,7 @@ namespace JMSoftware.AsciiConversion
         /// Gets or sets the size of one character in the font.
         /// </summary>
         /// <value>The size of the character.</value>
+        [DisplayName("Character Size"), CategoryAttribute("Output"), DescriptionAttribute("The size of one character in this font")]
         public Size CharacterSize
         {
             get
@@ -256,7 +262,35 @@ namespace JMSoftware.AsciiConversion
 
             set
             {
-                this.characterSize = value;
+                int width = value.Width;
+                int height = value.Height;
+
+                if (width < 1)
+                {
+                    width = 1;
+                }
+                else if (width > 100)
+                {
+                    width = 100;
+                }
+
+                if (height < 1)
+                {
+                    height = 1;
+                }
+                else if (height > 100)
+                {
+                    height = 100;
+                }
+
+                Size size = new Size(width, height);
+
+                if (this.characterSize == size)
+                {
+                    return;
+                }
+
+                this.characterSize = size;
                 this.CalculateCharacterSize = false;
             }
         }
@@ -265,6 +299,7 @@ namespace JMSoftware.AsciiConversion
         /// Gets or sets the contrast of the text image.
         /// </summary>
         /// <value>The contrast.</value>
+        [CategoryAttribute("Adjustment"), DefaultValueAttribute(0), DescriptionAttribute("The contrast of the output image (-100 to 100)")]
         public int Contrast
         {
             get
@@ -274,6 +309,15 @@ namespace JMSoftware.AsciiConversion
 
             set
             {
+                if (value > 100)
+                {
+                    value = 100;
+                }
+                else if (value < -100)
+                {
+                    value = -100;
+                }
+
                 if (this.contrast == value)
                 {
                     return;
@@ -288,6 +332,7 @@ namespace JMSoftware.AsciiConversion
         /// Gets or sets the level of dithering.
         /// </summary>
         /// <value>The dithering.</value>
+        [DisplayName("Amount"), CategoryAttribute("Dithering"), DefaultValueAttribute(4), DescriptionAttribute("Amount of dithering to apply to the output (0 to 25)")]
         public int Dithering
         {
             get
@@ -297,6 +342,15 @@ namespace JMSoftware.AsciiConversion
 
             set
             {
+                if (value > 25)
+                {
+                    value = 25;
+                }
+                else if (value < 0)
+                {
+                    value = 0;
+                }
+
                 if (this.dithering == value)
                 {
                     return;
@@ -311,6 +365,7 @@ namespace JMSoftware.AsciiConversion
         /// Gets or sets the level of randomness for the dithering.
         /// </summary>
         /// <value>The dithering random.</value>
+        [DisplayName("Random"), CategoryAttribute("Dithering"), DefaultValueAttribute(3), DescriptionAttribute("Randomness of the dithering (0 to 20)")]
         public int DitheringRandom
         {
             get
@@ -320,6 +375,15 @@ namespace JMSoftware.AsciiConversion
 
             set
             {
+                if (value > 20)
+                {
+                    value = 20;
+                }
+                else if (value < 0)
+                {
+                    value = 0;
+                }
+
                 if (this.ditheringRandom == value)
                 {
                     return;
@@ -334,6 +398,7 @@ namespace JMSoftware.AsciiConversion
         /// Gets the filter list.
         /// </summary>
         /// <value>The filter list.</value>
+        [Browsable(false)]
         public ArrayList FilterList
         {
             get
@@ -393,6 +458,7 @@ namespace JMSoftware.AsciiConversion
         /// Gets or sets a value indicating whether to flip the image horizontally.
         /// </summary>
         /// <value><c>true</c> if flipping horizontally; otherwise, <c>false</c>.</value>
+        [DisplayName("Flip Horizontally"), CategoryAttribute("Effects"), DefaultValueAttribute(false), DescriptionAttribute("Flip the output horizontally?")]
         public bool FlipHorizontally
         {
             get
@@ -416,6 +482,7 @@ namespace JMSoftware.AsciiConversion
         /// Gets or sets a value indicating whether to flip the image vertically.
         /// </summary>
         /// <value><c>true</c> if flipping vertically; otherwise, <c>false</c>.</value>
+        [DisplayName("Flip Vertically"), CategoryAttribute("Effects"), DefaultValueAttribute(false), DescriptionAttribute("Flip the image vertically?")]
         public bool FlipVertically
         {
             get
@@ -439,6 +506,7 @@ namespace JMSoftware.AsciiConversion
         /// Gets or sets the font.
         /// </summary>
         /// <value>The current font.</value>
+        [Browsable(false)]
         public Font Font
         {
             get
@@ -463,9 +531,11 @@ namespace JMSoftware.AsciiConversion
         /// Gets or sets the height of the output image.
         /// </summary>
         /// <value>The current height.</value>
+        [Browsable(false)]
         public int Height
         {
-            get; set;
+            get;
+            set;
         }
 
         /// <summary>
@@ -474,6 +544,7 @@ namespace JMSoftware.AsciiConversion
         /// <value>
         /// <c>true</c> if black text on white; otherwise, <c>false</c>.
         /// </value>
+        [DisplayName("Black Text on White?"), CategoryAttribute("Output"), DefaultValueAttribute(true), DescriptionAttribute("Output is black text on a white background?")]
         public bool IsBlackTextOnWhite
         {
             get
@@ -508,6 +579,7 @@ namespace JMSoftware.AsciiConversion
         /// <value>
         /// <c>true</c> if the font is fixed width; otherwise, <c>false</c>.
         /// </value>
+        [Browsable(false)]
         public bool IsFixedWidth
         {
             get
@@ -541,28 +613,47 @@ namespace JMSoftware.AsciiConversion
         /// <value>
         /// <c>true</c> if a generated ramp; otherwise, <c>false</c>.
         /// </value>
+        [DisplayName("Generated Ramp?"), CategoryAttribute("Ramp"), DefaultValueAttribute(true), DescriptionAttribute("Automatically generate an ASCII ramp for this font?")]
         public bool IsGeneratedRamp { get; set; }
+
+        /// <summary>
+        /// Gets or sets the levels.
+        /// </summary>
+        /// <value>The levels.</value>
+        [CategoryAttribute("Adjustment"), DescriptionAttribute("Minimum, median and maximum levels for the output image")]
+        public LevelsSettings Levels
+        {
+            get
+            {
+                return this.levels;
+            }
+
+            set
+            {
+                if (this.levels == value)
+                {
+                    return;
+                }
+
+                this.levels = value;
+            }
+        }
 
         /// <summary>
         /// Gets or sets the maximum level.
         /// </summary>
         /// <value>The maximum level.</value>
+        [Browsable(false)]
         public int MaximumLevel
         {
             get
             {
-                return this.maximumLevel;
+                return this.Levels.Maximum;
             }
 
             set
             {
-                if (this.maximumLevel == value)
-                {
-                    return;
-                }
-
-                this.maximumLevel = value;
-                this.filterChanged = true;
+                this.Levels.Maximum = value;
             }
         }
 
@@ -570,22 +661,17 @@ namespace JMSoftware.AsciiConversion
         /// Gets or sets the median level.
         /// </summary>
         /// <value>The median level.</value>
+        [Browsable(false)]
         public float MedianLevel
         {
             get
             {
-                return this.medianLevel;
+                return this.Levels.Median;
             }
 
             set
             {
-                if (this.medianLevel == value)
-                {
-                    return;
-                }
-
-                this.medianLevel = value;
-                this.filterChanged = true;
+                this.Levels.Median = value;
             }
         }
 
@@ -593,22 +679,17 @@ namespace JMSoftware.AsciiConversion
         /// Gets or sets the minimum level.
         /// </summary>
         /// <value>The minimum level.</value>
+        [Browsable(false)]
         public int MinimumLevel
         {
             get
             {
-                return this.minimumLevel;
+                return this.Levels.Minimum;
             }
 
             set
             {
-                if (this.minimumLevel == value)
-                {
-                    return;
-                }
-
-                this.minimumLevel = value;
-                this.filterChanged = true;
+                this.Levels.Minimum = value;
             }
         }
 
@@ -616,6 +697,7 @@ namespace JMSoftware.AsciiConversion
         /// Gets or sets the ASCII ramp used for the image (black->white).
         /// </summary>
         /// <value>The current ramp.</value>
+        [CategoryAttribute("Ramp"), DefaultValueAttribute("MMMMMMM@@@@@@@WWWWWWWWWBBBBBBBB000000008888888ZZZZZZZZZaZaaaaaa2222222SSSSSSSXXXXXXXXXXX7777777rrrrrrr;;;;;;;;iiiiiiiii:::::::,:,,,,,,.........       "), DescriptionAttribute("Custom ASCII ramp to use (black to white)")]
         public string Ramp
         {
             get
@@ -625,7 +707,7 @@ namespace JMSoftware.AsciiConversion
 
             set
             {
-                if (value == null || value.Length == 0)
+                if (value == null || value.Length < 2)
                 {
                     return;
                 }
@@ -644,6 +726,7 @@ namespace JMSoftware.AsciiConversion
         /// Gets or sets a value indicating whether to sharpen the image.
         /// </summary>
         /// <value><c>true</c> if sharpening; otherwise, <c>false</c>.</value>
+        [CategoryAttribute("Effects"), DefaultValueAttribute(false), DescriptionAttribute("Sharpen the output image?")]
         public bool Sharpen
         {
             get
@@ -660,6 +743,11 @@ namespace JMSoftware.AsciiConversion
 
                 this.sharpen = value;
                 this.filterChanged = true;
+
+                if (this.sharpen)
+                {
+                    this.Unsharp = false;
+                }
             }
         }
 
@@ -667,6 +755,7 @@ namespace JMSoftware.AsciiConversion
         /// Gets or sets the size of the output image.
         /// </summary>
         /// <value>The current size.</value>
+        [Browsable(false)]
         public Size Size
         {
             get
@@ -685,6 +774,7 @@ namespace JMSoftware.AsciiConversion
         /// Gets or sets a value indicating whether to stretch the output image.
         /// </summary>
         /// <value><c>true</c> if stretching; otherwise, <c>false</c>.</value>
+        [CategoryAttribute("Effects"), DefaultValueAttribute(true), DescriptionAttribute("Stretch the output image?")]
         public bool Stretch
         {
             get
@@ -708,6 +798,7 @@ namespace JMSoftware.AsciiConversion
         /// Gets or sets a value indicating whether to use an unsharp mask.
         /// </summary>
         /// <value><c>true</c> if using an unsharp mask; otherwise, <c>false</c>.</value>
+        [DisplayName("Unsharp Mask"), CategoryAttribute("Effects"), DefaultValueAttribute(true), DescriptionAttribute("Apply an unsharp mask to the output image?")]
         public bool Unsharp
         {
             get
@@ -724,6 +815,11 @@ namespace JMSoftware.AsciiConversion
 
                 this.unsharp = value;
                 this.filterChanged = true;
+
+                if (this.unsharp)
+                {
+                    this.Sharpen = false;
+                }
             }
         }
 
@@ -731,6 +827,7 @@ namespace JMSoftware.AsciiConversion
         /// Gets or sets the characters to use for generating the ramp.
         /// </summary>
         /// <value>The valid characters.</value>
+        [DisplayName("Valid Characters"), CategoryAttribute("Ramp"), DefaultValueAttribute(" #,.0123456789:;@ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz$"), DescriptionAttribute("Characters used when generating an ASCII ramp")]
         public string ValidCharacters
         {
             get
@@ -740,6 +837,11 @@ namespace JMSoftware.AsciiConversion
 
             set
             {
+                if (value == null || value.Length < 2)
+                {
+                    return;
+                }
+
                 this.validCharacters = value;
 
                 if (this.ValuesToText.GetType() == typeof(ValuesToVariableWidthTextConverter))
@@ -760,15 +862,18 @@ namespace JMSoftware.AsciiConversion
         /// Gets or sets the values to text conversion class.
         /// </summary>
         /// <value>The values to text.</value>
+        [Browsable(false)]
         public ValuesToTextConverter ValuesToText { get; set; }
 
         /// <summary>
         /// Gets or sets the width of the output image.
         /// </summary>
         /// <value>The width.</value>
+        [Browsable(false)]
         public int Width
         {
-            get; set;
+            get;
+            set;
         }
 
         #endregion Properties

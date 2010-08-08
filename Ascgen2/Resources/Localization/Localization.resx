@@ -312,14 +312,14 @@
   <data name="Batch Conversion" xml:space="preserve">
     <value>Batch Conversion</value>
   </data>
-  <data name="&amp;Add File" xml:space="preserve">
-    <value>&amp;Add File</value>
+  <data name="Add File" xml:space="preserve">
+    <value>Add File</value>
   </data>
-  <data name="&amp;Remove" xml:space="preserve">
-    <value>&amp;Remove</value>
+  <data name="Remove" xml:space="preserve">
+    <value>Remove</value>
   </data>
-  <data name="Add &amp;Directory" xml:space="preserve">
-    <value>Add &amp;Directory</value>
+  <data name="Add Directory" xml:space="preserve">
+    <value>Add Directory</value>
   </data>
   <data name="Output Size" xml:space="preserve">
     <value>Output Size</value>
@@ -464,9 +464,6 @@
   </data>
   <data name="Selection Area Border Colour" xml:space="preserve">
     <value>Selection Area Border Colour</value>
-  </data>
-  <data name="Warning" xml:space="preserve">
-    <value>Warning</value>
   </data>
   <data name="Save the output before closing" xml:space="preserve">
     <value>Save the output before closing</value>
@@ -707,5 +704,14 @@
   </data>
   <data name="Input Image Position" xml:space="preserve">
     <value>Input Image Position</value>
+  </data>
+  <data name="Show Log" xml:space="preserve">
+    <value>Show Log</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>Warning</value>
+  </data>
+  <data name="Advanced" xml:space="preserve">
+    <value>Advanced</value>
   </data>
 </root>

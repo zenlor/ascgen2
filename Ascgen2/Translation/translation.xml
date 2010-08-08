@@ -3,8 +3,8 @@
 	<data name="&amp;About">
 		<value>&amp;About</value>
 	</data>
-	<data name="&amp;Add File">
-		<value>&amp;Add File</value>
+	<data name="Add File">
+		<value>Add File</value>
 	</data>
 	<data name="&amp;Cancel">
 		<value>&amp;Cancel</value>
@@ -12,8 +12,8 @@
 	<data name="&amp;Close">
 		<value>&amp;Close</value>
 	</data>
-	<data name="&amp;Convert">
-		<value>&amp;Convert</value>
+	<data name="Convert">
+		<value>Convert</value>
 	</data>
 	<data name="&amp;Default">
 		<value>&amp;Default</value>
@@ -36,8 +36,8 @@
 	<data name="&amp;Ok">
 		<value>&amp;Ok</value>
 	</data>
-	<data name="&amp;Remove">
-		<value>&amp;Remove</value>
+	<data name="Remove">
+		<value>Remove</value>
 	</data>
 	<data name="&amp;Save">
 		<value>&amp;Save</value>
@@ -54,13 +54,16 @@
 	<data name="{0} file(s) converted, {1} error(s)">
 		<value>{0} file(s) converted, {1} error(s)</value>
 	</data>
-	<data name="Add &amp;Directory">
-		<value>Add &amp;Directory</value>
+	<data name="Add Directory">
+		<value>Add Directory</value>
 	</data>
 	<data name="Adjust Levels">
 		<value>Adjust Levels</value>
 	</data>
-	<data name="All Files">
+  <data name="Advanced">
+    <value>Advanced</value>
+  </data>
+  <data name="All Files">
 		<value>All Files</value>
 	</data>
 	<data name="already exists">
@@ -507,7 +510,10 @@
 	<data name="Show Full Path">
 		<value>Show Full Path</value>
 	</data>
-	<data name="shrunk to {0}%">
+  <data name="Show Log">
+    <value>Show Log</value>
+  </data>
+  <data name="shrunk to {0}%">
 		<value>shrunk to {0}%</value>
 	</data>
 	<data name="Size">

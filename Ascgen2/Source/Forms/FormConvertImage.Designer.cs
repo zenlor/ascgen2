@@ -421,9 +421,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.pnlMain = new System.Windows.Forms.Panel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tableLayoutPanelText = new System.Windows.Forms.TableLayoutPanel();
-            this.rtbxConvertedText = new JMSoftware.CustomControl.TextViewerRichTextBox();
             this.buttonToggleImage = new System.Windows.Forms.Button();
-            this.pbxMain = new JMSoftware.CustomControl.JMSelectablePictureBox();
             this.tstripOutputSize = new System.Windows.Forms.ToolStrip();
             this.lblOutputSize = new System.Windows.Forms.ToolStripLabel();
             this.tbxWidth = new System.Windows.Forms.ToolStripTextBox();
@@ -441,18 +439,20 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.tsbFont = new System.Windows.Forms.ToolStripButton();
             this.tsbBlackOnWhite = new System.Windows.Forms.ToolStripButton();
             this.tsbFullScreen = new System.Windows.Forms.ToolStripButton();
+            this.tstripCharacters = new System.Windows.Forms.ToolStrip();
+            this.lblCharacters = new System.Windows.Forms.ToolStripLabel();
+            this.cmbCharacters = new System.Windows.Forms.ToolStripComboBox();
             this.tstripRamp = new System.Windows.Forms.ToolStrip();
             this.lblRamp = new System.Windows.Forms.ToolStripLabel();
             this.cmbRamp = new System.Windows.Forms.ToolStripComboBox();
             this.chkGenerate = new System.Windows.Forms.ToolStripButton();
-            this.tstripCharacters = new System.Windows.Forms.ToolStrip();
-            this.lblCharacters = new System.Windows.Forms.ToolStripLabel();
-            this.cmbCharacters = new System.Windows.Forms.ToolStripComboBox();
             this.dialogSaveColour = new System.Windows.Forms.SaveFileDialog();
             this.pageSetupDialog = new System.Windows.Forms.PageSetupDialog();
             this.printDocument = new System.Drawing.Printing.PrintDocument();
             this.printDialog = new System.Windows.Forms.PrintDialog();
             this.printPreviewDialog = new System.Windows.Forms.PrintPreviewDialog();
+            this.rtbxConvertedText = new JMSoftware.CustomControl.TextViewerRichTextBox();
+            this.pbxMain = new JMSoftware.CustomControl.JMSelectablePictureBox();
             this.contextMenuImage.SuspendLayout();
             this.contextMenuText.SuspendLayout();
             this.mainMenu1.SuspendLayout();
@@ -467,8 +467,8 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.toolStripContainer1.SuspendLayout();
             this.tstripAlterInputImage.SuspendLayout();
             this.tstripButtons.SuspendLayout();
-            this.tstripRamp.SuspendLayout();
             this.tstripCharacters.SuspendLayout();
+            this.tstripRamp.SuspendLayout();
             this.SuspendLayout();
             // 
             // contextMenuImage
@@ -492,7 +492,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.cmenuImageSeperator5,
             this.cmenuImageUpdateWhileSelecting});
             this.contextMenuImage.Name = "contextMenuImage";
-            this.contextMenuImage.Size = new System.Drawing.Size(240, 298);
+            this.contextMenuImage.Size = new System.Drawing.Size(261, 298);
             this.contextMenuImage.Opened += new System.EventHandler(this.ContextMenuImage_Popup);
             // 
             // cmenuImageLoad
@@ -501,7 +501,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.cmenuImageLoad.MergeIndex = 0;
             this.cmenuImageLoad.Name = "cmenuImageLoad";
             this.cmenuImageLoad.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L)));
-            this.cmenuImageLoad.Size = new System.Drawing.Size(239, 22);
+            this.cmenuImageLoad.Size = new System.Drawing.Size(260, 22);
             this.cmenuImageLoad.Text = "cmenuImageLoad";
             this.cmenuImageLoad.Click += new System.EventHandler(this.CmenuLoad_Click);
             // 
@@ -509,26 +509,26 @@ namespace JMSoftware.AsciiGeneratorDotNet
             // 
             this.cmenuImageSeperator1.MergeIndex = 1;
             this.cmenuImageSeperator1.Name = "cmenuImageSeperator1";
-            this.cmenuImageSeperator1.Size = new System.Drawing.Size(236, 6);
+            this.cmenuImageSeperator1.Size = new System.Drawing.Size(257, 6);
             // 
             // cmenuImageRotate90
             // 
             this.cmenuImageRotate90.Name = "cmenuImageRotate90";
-            this.cmenuImageRotate90.Size = new System.Drawing.Size(239, 22);
+            this.cmenuImageRotate90.Size = new System.Drawing.Size(260, 22);
             this.cmenuImageRotate90.Text = "cmenuImageRotate90";
             this.cmenuImageRotate90.Click += new System.EventHandler(this.CmenuImageRotate90_Click);
             // 
             // cmenuImageRotate180
             // 
             this.cmenuImageRotate180.Name = "cmenuImageRotate180";
-            this.cmenuImageRotate180.Size = new System.Drawing.Size(239, 22);
+            this.cmenuImageRotate180.Size = new System.Drawing.Size(260, 22);
             this.cmenuImageRotate180.Text = "cmenuImageRotate180";
             this.cmenuImageRotate180.Click += new System.EventHandler(this.CmenuImageRotate180_Click);
             // 
             // cmenuImageRotate270
             // 
             this.cmenuImageRotate270.Name = "cmenuImageRotate270";
-            this.cmenuImageRotate270.Size = new System.Drawing.Size(239, 22);
+            this.cmenuImageRotate270.Size = new System.Drawing.Size(260, 22);
             this.cmenuImageRotate270.Text = "cmenuImageRotate270";
             this.cmenuImageRotate270.Click += new System.EventHandler(this.CmenuImageRotate270_Click);
             // 
@@ -536,13 +536,13 @@ namespace JMSoftware.AsciiGeneratorDotNet
             // 
             this.cmenuImageSeperator2.MergeIndex = 5;
             this.cmenuImageSeperator2.Name = "cmenuImageSeperator2";
-            this.cmenuImageSeperator2.Size = new System.Drawing.Size(236, 6);
+            this.cmenuImageSeperator2.Size = new System.Drawing.Size(257, 6);
             // 
             // cmenuImageFlipHorizontal
             // 
             this.cmenuImageFlipHorizontal.Image = global::AscGenDotNet.Properties.Resources.shape_flip_horizontal;
             this.cmenuImageFlipHorizontal.Name = "cmenuImageFlipHorizontal";
-            this.cmenuImageFlipHorizontal.Size = new System.Drawing.Size(239, 22);
+            this.cmenuImageFlipHorizontal.Size = new System.Drawing.Size(260, 22);
             this.cmenuImageFlipHorizontal.Text = "cmenuImageFlipHorizontal";
             this.cmenuImageFlipHorizontal.Click += new System.EventHandler(this.CmenuImageFlipHorizontal_Click);
             // 
@@ -550,20 +550,20 @@ namespace JMSoftware.AsciiGeneratorDotNet
             // 
             this.cmenuImageFlipVertical.Image = global::AscGenDotNet.Properties.Resources.shape_flip_vertical;
             this.cmenuImageFlipVertical.Name = "cmenuImageFlipVertical";
-            this.cmenuImageFlipVertical.Size = new System.Drawing.Size(239, 22);
+            this.cmenuImageFlipVertical.Size = new System.Drawing.Size(260, 22);
             this.cmenuImageFlipVertical.Text = "cmenuImageFlipVertical";
             this.cmenuImageFlipVertical.Click += new System.EventHandler(this.CmenuImageFlipVertical_Click);
             // 
             // cmenuImageSeperator3
             // 
             this.cmenuImageSeperator3.Name = "cmenuImageSeperator3";
-            this.cmenuImageSeperator3.Size = new System.Drawing.Size(236, 6);
+            this.cmenuImageSeperator3.Size = new System.Drawing.Size(257, 6);
             // 
             // cmenuImageSelectNone
             // 
             this.cmenuImageSelectNone.MergeIndex = 2;
             this.cmenuImageSelectNone.Name = "cmenuImageSelectNone";
-            this.cmenuImageSelectNone.Size = new System.Drawing.Size(239, 22);
+            this.cmenuImageSelectNone.Size = new System.Drawing.Size(260, 22);
             this.cmenuImageSelectNone.Text = "cmenuImageSelectNone";
             this.cmenuImageSelectNone.Click += new System.EventHandler(this.CmenuImageSelectNone_Click);
             // 
@@ -571,7 +571,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             // 
             this.cmenuImageSelectionLocked.MergeIndex = 3;
             this.cmenuImageSelectionLocked.Name = "cmenuImageSelectionLocked";
-            this.cmenuImageSelectionLocked.Size = new System.Drawing.Size(239, 22);
+            this.cmenuImageSelectionLocked.Size = new System.Drawing.Size(260, 22);
             this.cmenuImageSelectionLocked.Text = "cmenuImageSelectionLocked";
             this.cmenuImageSelectionLocked.Click += new System.EventHandler(this.CmenuImageSelectionLocked_Click);
             // 
@@ -579,21 +579,21 @@ namespace JMSoftware.AsciiGeneratorDotNet
             // 
             this.cmenuImageSelectionShow.MergeIndex = 4;
             this.cmenuImageSelectionShow.Name = "cmenuImageSelectionShow";
-            this.cmenuImageSelectionShow.Size = new System.Drawing.Size(239, 22);
+            this.cmenuImageSelectionShow.Size = new System.Drawing.Size(260, 22);
             this.cmenuImageSelectionShow.Text = "cmenuImageSelectionShow";
             this.cmenuImageSelectionShow.Click += new System.EventHandler(this.CmenuImageSelectionShow_Click);
             // 
             // cmenuImageSeperator4
             // 
             this.cmenuImageSeperator4.Name = "cmenuImageSeperator4";
-            this.cmenuImageSeperator4.Size = new System.Drawing.Size(236, 6);
+            this.cmenuImageSeperator4.Size = new System.Drawing.Size(257, 6);
             // 
             // cmenuImageSelectionFillColor
             // 
             this.cmenuImageSelectionFillColor.Image = global::AscGenDotNet.Properties.Resources.color_swatch;
             this.cmenuImageSelectionFillColor.MergeIndex = 6;
             this.cmenuImageSelectionFillColor.Name = "cmenuImageSelectionFillColor";
-            this.cmenuImageSelectionFillColor.Size = new System.Drawing.Size(239, 22);
+            this.cmenuImageSelectionFillColor.Size = new System.Drawing.Size(260, 22);
             this.cmenuImageSelectionFillColor.Text = "cmenuImageSelectionFillColor";
             this.cmenuImageSelectionFillColor.Click += new System.EventHandler(this.CmenuImageSelectionFillColor_Click);
             // 
@@ -602,19 +602,19 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.cmenuImageSelectionBorderColor.Image = global::AscGenDotNet.Properties.Resources.color_swatch;
             this.cmenuImageSelectionBorderColor.MergeIndex = 7;
             this.cmenuImageSelectionBorderColor.Name = "cmenuImageSelectionBorderColor";
-            this.cmenuImageSelectionBorderColor.Size = new System.Drawing.Size(239, 22);
+            this.cmenuImageSelectionBorderColor.Size = new System.Drawing.Size(260, 22);
             this.cmenuImageSelectionBorderColor.Text = "cmenuImageSelectionBorderColor";
             this.cmenuImageSelectionBorderColor.Click += new System.EventHandler(this.CmenuImageSelectionBorderColor_Click);
             // 
             // cmenuImageSeperator5
             // 
             this.cmenuImageSeperator5.Name = "cmenuImageSeperator5";
-            this.cmenuImageSeperator5.Size = new System.Drawing.Size(236, 6);
+            this.cmenuImageSeperator5.Size = new System.Drawing.Size(257, 6);
             // 
             // cmenuImageUpdateWhileSelecting
             // 
             this.cmenuImageUpdateWhileSelecting.Name = "cmenuImageUpdateWhileSelecting";
-            this.cmenuImageUpdateWhileSelecting.Size = new System.Drawing.Size(239, 22);
+            this.cmenuImageUpdateWhileSelecting.Size = new System.Drawing.Size(260, 22);
             this.cmenuImageUpdateWhileSelecting.Text = "cmenuImageUpdateWhileSelecting";
             this.cmenuImageUpdateWhileSelecting.Click += new System.EventHandler(this.CmenuImageUpdateWhileSelecting_Click);
             // 
@@ -635,7 +635,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.cmenuTextHorizontal,
             this.cmenuTextVertical});
             this.contextMenuText.Name = "contextMenuText";
-            this.contextMenuText.Size = new System.Drawing.Size(221, 210);
+            this.contextMenuText.Size = new System.Drawing.Size(236, 210);
             this.contextMenuText.Opened += new System.EventHandler(this.ContextMenuText_Popup);
             // 
             // cmenuTextCopy
@@ -643,7 +643,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.cmenuTextCopy.MergeIndex = 0;
             this.cmenuTextCopy.Name = "cmenuTextCopy";
             this.cmenuTextCopy.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-            this.cmenuTextCopy.Size = new System.Drawing.Size(220, 22);
+            this.cmenuTextCopy.Size = new System.Drawing.Size(235, 22);
             this.cmenuTextCopy.Text = "cmenuTextCopy";
             this.cmenuTextCopy.Click += new System.EventHandler(this.CmenuCopy_Click);
             // 
@@ -651,14 +651,14 @@ namespace JMSoftware.AsciiGeneratorDotNet
             // 
             this.cmenuTextSeperator1.MergeIndex = 1;
             this.cmenuTextSeperator1.Name = "cmenuTextSeperator1";
-            this.cmenuTextSeperator1.Size = new System.Drawing.Size(217, 6);
+            this.cmenuTextSeperator1.Size = new System.Drawing.Size(232, 6);
             // 
             // cmenuTextSelectAll
             // 
             this.cmenuTextSelectAll.MergeIndex = 2;
             this.cmenuTextSelectAll.Name = "cmenuTextSelectAll";
             this.cmenuTextSelectAll.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
-            this.cmenuTextSelectAll.Size = new System.Drawing.Size(220, 22);
+            this.cmenuTextSelectAll.Size = new System.Drawing.Size(235, 22);
             this.cmenuTextSelectAll.Text = "cmenuTextSelectAll";
             this.cmenuTextSelectAll.Click += new System.EventHandler(this.CmenuSelectAll_Click);
             // 
@@ -667,7 +667,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.cmenuTextSelectNone.MergeIndex = 3;
             this.cmenuTextSelectNone.Name = "cmenuTextSelectNone";
             this.cmenuTextSelectNone.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
-            this.cmenuTextSelectNone.Size = new System.Drawing.Size(220, 22);
+            this.cmenuTextSelectNone.Size = new System.Drawing.Size(235, 22);
             this.cmenuTextSelectNone.Text = "cmenuTextSelectNone";
             this.cmenuTextSelectNone.Click += new System.EventHandler(this.CmenuSelectNone_Click);
             // 
@@ -675,13 +675,13 @@ namespace JMSoftware.AsciiGeneratorDotNet
             // 
             this.cmenuTextSeperator2.MergeIndex = 4;
             this.cmenuTextSeperator2.Name = "cmenuTextSeperator2";
-            this.cmenuTextSeperator2.Size = new System.Drawing.Size(217, 6);
+            this.cmenuTextSeperator2.Size = new System.Drawing.Size(232, 6);
             // 
             // cmenuTextStretch
             // 
             this.cmenuTextStretch.MergeIndex = 5;
             this.cmenuTextStretch.Name = "cmenuTextStretch";
-            this.cmenuTextStretch.Size = new System.Drawing.Size(220, 22);
+            this.cmenuTextStretch.Size = new System.Drawing.Size(235, 22);
             this.cmenuTextStretch.Text = "cmenuTextStretch";
             this.cmenuTextStretch.Click += new System.EventHandler(this.CmenuTextStretch_Click);
             // 
@@ -689,7 +689,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             // 
             this.cmenuTextSeperator3.MergeIndex = 6;
             this.cmenuTextSeperator3.Name = "cmenuTextSeperator3";
-            this.cmenuTextSeperator3.Size = new System.Drawing.Size(217, 6);
+            this.cmenuTextSeperator3.Size = new System.Drawing.Size(232, 6);
             // 
             // cmenuTextSharpening
             // 
@@ -699,14 +699,14 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.cmenuTextSharpeningUnsharp});
             this.cmenuTextSharpening.MergeIndex = 7;
             this.cmenuTextSharpening.Name = "cmenuTextSharpening";
-            this.cmenuTextSharpening.Size = new System.Drawing.Size(220, 22);
+            this.cmenuTextSharpening.Size = new System.Drawing.Size(235, 22);
             this.cmenuTextSharpening.Text = "cmenuTextSharpening";
             // 
             // cmenuTextSharpeningNone
             // 
             this.cmenuTextSharpeningNone.MergeIndex = 0;
             this.cmenuTextSharpeningNone.Name = "cmenuTextSharpeningNone";
-            this.cmenuTextSharpeningNone.Size = new System.Drawing.Size(221, 22);
+            this.cmenuTextSharpeningNone.Size = new System.Drawing.Size(237, 22);
             this.cmenuTextSharpeningNone.Text = "cmenuTextSharpeningNone";
             this.cmenuTextSharpeningNone.Click += new System.EventHandler(this.CmenuTextSharpeningNone_Click);
             // 
@@ -714,7 +714,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             // 
             this.cmenuTextSharpeningSharpen.MergeIndex = 1;
             this.cmenuTextSharpeningSharpen.Name = "cmenuTextSharpeningSharpen";
-            this.cmenuTextSharpeningSharpen.Size = new System.Drawing.Size(221, 22);
+            this.cmenuTextSharpeningSharpen.Size = new System.Drawing.Size(237, 22);
             this.cmenuTextSharpeningSharpen.Text = "cmenuTextSharpeningSharpen";
             this.cmenuTextSharpeningSharpen.Click += new System.EventHandler(this.CmenuTextSharpeningSharpen_Click);
             // 
@@ -722,7 +722,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             // 
             this.cmenuTextSharpeningUnsharp.MergeIndex = 2;
             this.cmenuTextSharpeningUnsharp.Name = "cmenuTextSharpeningUnsharp";
-            this.cmenuTextSharpeningUnsharp.Size = new System.Drawing.Size(221, 22);
+            this.cmenuTextSharpeningUnsharp.Size = new System.Drawing.Size(237, 22);
             this.cmenuTextSharpeningUnsharp.Text = "cmenuTextSharpeningUnsharp";
             this.cmenuTextSharpeningUnsharp.Click += new System.EventHandler(this.CmenuTextSharpeningUnsharp_Click);
             // 
@@ -730,14 +730,14 @@ namespace JMSoftware.AsciiGeneratorDotNet
             // 
             this.cmenuTextSeperator4.MergeIndex = 8;
             this.cmenuTextSeperator4.Name = "cmenuTextSeperator4";
-            this.cmenuTextSeperator4.Size = new System.Drawing.Size(217, 6);
+            this.cmenuTextSeperator4.Size = new System.Drawing.Size(232, 6);
             // 
             // cmenuTextFont
             // 
             this.cmenuTextFont.Image = global::AscGenDotNet.Properties.Resources.font;
             this.cmenuTextFont.MergeIndex = 9;
             this.cmenuTextFont.Name = "cmenuTextFont";
-            this.cmenuTextFont.Size = new System.Drawing.Size(220, 22);
+            this.cmenuTextFont.Size = new System.Drawing.Size(235, 22);
             this.cmenuTextFont.Text = "cmenuTextFont";
             this.cmenuTextFont.Click += new System.EventHandler(this.CmenuTextFont_Click);
             // 
@@ -745,14 +745,14 @@ namespace JMSoftware.AsciiGeneratorDotNet
             // 
             this.cmenuTextSeperator5.MergeIndex = 10;
             this.cmenuTextSeperator5.Name = "cmenuTextSeperator5";
-            this.cmenuTextSeperator5.Size = new System.Drawing.Size(217, 6);
+            this.cmenuTextSeperator5.Size = new System.Drawing.Size(232, 6);
             // 
             // cmenuTextHorizontal
             // 
             this.cmenuTextHorizontal.Image = global::AscGenDotNet.Properties.Resources.shape_flip_horizontal;
             this.cmenuTextHorizontal.MergeIndex = 11;
             this.cmenuTextHorizontal.Name = "cmenuTextHorizontal";
-            this.cmenuTextHorizontal.Size = new System.Drawing.Size(220, 22);
+            this.cmenuTextHorizontal.Size = new System.Drawing.Size(235, 22);
             this.cmenuTextHorizontal.Text = "cmenuTextHorizontal";
             this.cmenuTextHorizontal.Click += new System.EventHandler(this.CmenuTextHorizontal_Click);
             // 
@@ -761,7 +761,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.cmenuTextVertical.Image = global::AscGenDotNet.Properties.Resources.shape_flip_vertical;
             this.cmenuTextVertical.MergeIndex = 12;
             this.cmenuTextVertical.Name = "cmenuTextVertical";
-            this.cmenuTextVertical.Size = new System.Drawing.Size(220, 22);
+            this.cmenuTextVertical.Size = new System.Drawing.Size(235, 22);
             this.cmenuTextVertical.Text = "cmenuTextVertical";
             this.cmenuTextVertical.Click += new System.EventHandler(this.CmenuTextVertical_Click);
             // 
@@ -772,16 +772,16 @@ namespace JMSoftware.AsciiGeneratorDotNet
             // mainMenu1
             // 
             this.mainMenu1.Dock = System.Windows.Forms.DockStyle.None;
+            this.mainMenu1.GripMargin = new System.Windows.Forms.Padding(2);
             this.mainMenu1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Visible;
             this.mainMenu1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuFile,
             this.menuEdit,
             this.menuView,
             this.menuHelp});
-            this.mainMenu1.Location = new System.Drawing.Point(3, 0);
+            this.mainMenu1.Location = new System.Drawing.Point(0, 0);
             this.mainMenu1.Name = "mainMenu1";
-            this.mainMenu1.Size = new System.Drawing.Size(269, 24);
-            this.mainMenu1.Stretch = false;
+            this.mainMenu1.Size = new System.Drawing.Size(742, 24);
             this.mainMenu1.TabIndex = 0;
             // 
             // menuFile
@@ -804,7 +804,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.menuFileExit});
             this.menuFile.MergeIndex = 0;
             this.menuFile.Name = "menuFile";
-            this.menuFile.Size = new System.Drawing.Size(61, 20);
+            this.menuFile.Size = new System.Drawing.Size(68, 20);
             this.menuFile.Text = "menuFile";
             this.menuFile.DropDownOpening += new System.EventHandler(this.MenuFile_Popup);
             // 
@@ -814,7 +814,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.menuFileLoad.MergeIndex = 0;
             this.menuFileLoad.Name = "menuFileLoad";
             this.menuFileLoad.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L)));
-            this.menuFileLoad.Size = new System.Drawing.Size(235, 22);
+            this.menuFileLoad.Size = new System.Drawing.Size(254, 22);
             this.menuFileLoad.Text = "menuFileLoad";
             this.menuFileLoad.Click += new System.EventHandler(this.MenuFileLoad_Click);
             // 
@@ -824,7 +824,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.menuFileImportClipboard.ImageTransparentColor = System.Drawing.Color.White;
             this.menuFileImportClipboard.MergeIndex = 1;
             this.menuFileImportClipboard.Name = "menuFileImportClipboard";
-            this.menuFileImportClipboard.Size = new System.Drawing.Size(235, 22);
+            this.menuFileImportClipboard.Size = new System.Drawing.Size(254, 22);
             this.menuFileImportClipboard.Text = "menuFileImportClipboard";
             this.menuFileImportClipboard.Click += new System.EventHandler(this.MenuFileImportClipboard_Click);
             // 
@@ -833,37 +833,37 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.menuFileClose.Image = global::AscGenDotNet.Properties.Resources.cancel;
             this.menuFileClose.MergeIndex = 2;
             this.menuFileClose.Name = "menuFileClose";
-            this.menuFileClose.Size = new System.Drawing.Size(235, 22);
+            this.menuFileClose.Size = new System.Drawing.Size(254, 22);
             this.menuFileClose.Text = "menuFileClose";
             this.menuFileClose.Click += new System.EventHandler(this.MenuFileClose_Click);
             // 
             // menuFileSep1
             // 
             this.menuFileSep1.Name = "menuFileSep1";
-            this.menuFileSep1.Size = new System.Drawing.Size(232, 6);
+            this.menuFileSep1.Size = new System.Drawing.Size(251, 6);
             // 
             // menuFileBatchConversion
             // 
-            this.menuFileBatchConversion.Enabled = false;
             this.menuFileBatchConversion.Image = global::AscGenDotNet.Properties.Resources.images;
             this.menuFileBatchConversion.ImageTransparentColor = System.Drawing.Color.White;
             this.menuFileBatchConversion.MergeIndex = 4;
             this.menuFileBatchConversion.Name = "menuFileBatchConversion";
             this.menuFileBatchConversion.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.B)));
-            this.menuFileBatchConversion.Size = new System.Drawing.Size(235, 22);
+            this.menuFileBatchConversion.Size = new System.Drawing.Size(254, 22);
             this.menuFileBatchConversion.Text = "menuFileBatchConversion";
+            this.menuFileBatchConversion.Click += new System.EventHandler(this.MenuFileBatchConversion_Click);
             // 
             // menuFileSep2
             // 
             this.menuFileSep2.Name = "menuFileSep2";
-            this.menuFileSep2.Size = new System.Drawing.Size(232, 6);
+            this.menuFileSep2.Size = new System.Drawing.Size(251, 6);
             // 
             // menuFilePrint
             // 
             this.menuFilePrint.Image = global::AscGenDotNet.Properties.Resources.printer;
             this.menuFilePrint.Name = "menuFilePrint";
             this.menuFilePrint.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
-            this.menuFilePrint.Size = new System.Drawing.Size(235, 22);
+            this.menuFilePrint.Size = new System.Drawing.Size(254, 22);
             this.menuFilePrint.Text = "menuFilePrint";
             this.menuFilePrint.Click += new System.EventHandler(this.MenuFilePrint_Click);
             // 
@@ -871,7 +871,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             // 
             this.menuFilePrintPreview.Image = global::AscGenDotNet.Properties.Resources.page_white_magnify;
             this.menuFilePrintPreview.Name = "menuFilePrintPreview";
-            this.menuFilePrintPreview.Size = new System.Drawing.Size(235, 22);
+            this.menuFilePrintPreview.Size = new System.Drawing.Size(254, 22);
             this.menuFilePrintPreview.Text = "menuFilePrintPreview";
             this.menuFilePrintPreview.Click += new System.EventHandler(this.MenuFilePrintPreview_Click);
             // 
@@ -879,7 +879,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             // 
             this.menuFilePrintColour.Image = global::AscGenDotNet.Properties.Resources.printercolor;
             this.menuFilePrintColour.Name = "menuFilePrintColour";
-            this.menuFilePrintColour.Size = new System.Drawing.Size(235, 22);
+            this.menuFilePrintColour.Size = new System.Drawing.Size(254, 22);
             this.menuFilePrintColour.Text = "menuFilePrintColour";
             this.menuFilePrintColour.Click += new System.EventHandler(this.MenuFilePrintColour_Click);
             // 
@@ -887,7 +887,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             // 
             this.menuFilePrintPreviewColour.Image = global::AscGenDotNet.Properties.Resources.page_magnify_color;
             this.menuFilePrintPreviewColour.Name = "menuFilePrintPreviewColour";
-            this.menuFilePrintPreviewColour.Size = new System.Drawing.Size(235, 22);
+            this.menuFilePrintPreviewColour.Size = new System.Drawing.Size(254, 22);
             this.menuFilePrintPreviewColour.Text = "menuFilePrintPreviewColour";
             this.menuFilePrintPreviewColour.Click += new System.EventHandler(this.MenuFilePrintPreviewColour_Click);
             // 
@@ -895,14 +895,14 @@ namespace JMSoftware.AsciiGeneratorDotNet
             // 
             this.menuFilePageSetup.Image = global::AscGenDotNet.Properties.Resources.page_white_wrench;
             this.menuFilePageSetup.Name = "menuFilePageSetup";
-            this.menuFilePageSetup.Size = new System.Drawing.Size(235, 22);
+            this.menuFilePageSetup.Size = new System.Drawing.Size(254, 22);
             this.menuFilePageSetup.Text = "menuFilePageSetup";
             this.menuFilePageSetup.Click += new System.EventHandler(this.MenuFilePageSetup_Click);
             // 
             // menuFileSep3
             // 
             this.menuFileSep3.Name = "menuFileSep3";
-            this.menuFileSep3.Size = new System.Drawing.Size(232, 6);
+            this.menuFileSep3.Size = new System.Drawing.Size(251, 6);
             // 
             // menuFileSaveAs
             // 
@@ -911,14 +911,14 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.menuFileSaveAs.MergeIndex = 6;
             this.menuFileSaveAs.Name = "menuFileSaveAs";
             this.menuFileSaveAs.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.menuFileSaveAs.Size = new System.Drawing.Size(235, 22);
+            this.menuFileSaveAs.Size = new System.Drawing.Size(254, 22);
             this.menuFileSaveAs.Text = "menuFileSaveAs";
             this.menuFileSaveAs.Click += new System.EventHandler(this.MenuFileSave_Click);
             // 
             // menuFileSep5
             // 
             this.menuFileSep5.Name = "menuFileSep5";
-            this.menuFileSep5.Size = new System.Drawing.Size(232, 6);
+            this.menuFileSep5.Size = new System.Drawing.Size(251, 6);
             // 
             // menuFileExit
             // 
@@ -926,7 +926,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.menuFileExit.MergeIndex = 9;
             this.menuFileExit.Name = "menuFileExit";
             this.menuFileExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
-            this.menuFileExit.Size = new System.Drawing.Size(235, 22);
+            this.menuFileExit.Size = new System.Drawing.Size(254, 22);
             this.menuFileExit.Text = "menuFileExit";
             this.menuFileExit.Click += new System.EventHandler(this.MenuFileExit_Click);
             // 
@@ -942,7 +942,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.menuEditSaveSettings});
             this.menuEdit.MergeIndex = 1;
             this.menuEdit.Name = "menuEdit";
-            this.menuEdit.Size = new System.Drawing.Size(63, 20);
+            this.menuEdit.Size = new System.Drawing.Size(70, 20);
             this.menuEdit.Text = "menuEdit";
             this.menuEdit.DropDownOpening += new System.EventHandler(this.MenuEdit_Popup);
             // 
@@ -952,14 +952,14 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.menuEditFontsFont,
             this.menuEditFontsSpecifyCharSize});
             this.menuEditFonts.Name = "menuEditFonts";
-            this.menuEditFonts.Size = new System.Drawing.Size(181, 22);
+            this.menuEditFonts.Size = new System.Drawing.Size(191, 22);
             this.menuEditFonts.Text = "menuEditFonts";
             // 
             // menuEditFontsFont
             // 
             this.menuEditFontsFont.Image = global::AscGenDotNet.Properties.Resources.font;
             this.menuEditFontsFont.Name = "menuEditFontsFont";
-            this.menuEditFontsFont.Size = new System.Drawing.Size(222, 22);
+            this.menuEditFontsFont.Size = new System.Drawing.Size(237, 22);
             this.menuEditFontsFont.Text = "menuEditFontsFont";
             this.menuEditFontsFont.Click += new System.EventHandler(this.MenuEditFont_Click);
             // 
@@ -968,7 +968,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.menuEditFontsSpecifyCharSize.Image = global::AscGenDotNet.Properties.Resources.text_uppercase;
             this.menuEditFontsSpecifyCharSize.MergeIndex = 1;
             this.menuEditFontsSpecifyCharSize.Name = "menuEditFontsSpecifyCharSize";
-            this.menuEditFontsSpecifyCharSize.Size = new System.Drawing.Size(222, 22);
+            this.menuEditFontsSpecifyCharSize.Size = new System.Drawing.Size(237, 22);
             this.menuEditFontsSpecifyCharSize.Text = "menuEditFontsSpecifyCharSize";
             this.menuEditFontsSpecifyCharSize.Click += new System.EventHandler(this.MenuEditSpecifyCharSize_Click);
             // 
@@ -978,7 +978,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.menuEditRampsValidChars,
             this.menuEditRampsCopyRamp});
             this.menuEditRamps.Name = "menuEditRamps";
-            this.menuEditRamps.Size = new System.Drawing.Size(181, 22);
+            this.menuEditRamps.Size = new System.Drawing.Size(191, 22);
             this.menuEditRamps.Text = "menuEditRamps";
             this.menuEditRamps.DropDownOpening += new System.EventHandler(this.MenuEditRamps_DropDownOpening);
             // 
@@ -987,7 +987,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.menuEditRampsValidChars.Image = global::AscGenDotNet.Properties.Resources.textfield;
             this.menuEditRampsValidChars.MergeIndex = 0;
             this.menuEditRampsValidChars.Name = "menuEditRampsValidChars";
-            this.menuEditRampsValidChars.Size = new System.Drawing.Size(202, 22);
+            this.menuEditRampsValidChars.Size = new System.Drawing.Size(220, 22);
             this.menuEditRampsValidChars.Text = "menuEditRampsValidChars";
             this.menuEditRampsValidChars.Click += new System.EventHandler(this.MenuEditValidChars_Click);
             // 
@@ -995,7 +995,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             // 
             this.menuEditRampsCopyRamp.Image = global::AscGenDotNet.Properties.Resources.page_white_copy;
             this.menuEditRampsCopyRamp.Name = "menuEditRampsCopyRamp";
-            this.menuEditRampsCopyRamp.Size = new System.Drawing.Size(202, 22);
+            this.menuEditRampsCopyRamp.Size = new System.Drawing.Size(220, 22);
             this.menuEditRampsCopyRamp.Text = "menuEditRampsCopyRamp";
             this.menuEditRampsCopyRamp.Click += new System.EventHandler(this.MenuEditRampCopyRamp_Click);
             // 
@@ -1009,41 +1009,41 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.menuEditInputFlipHorizontal,
             this.menuEditInputFlipVertical});
             this.menuEditInput.Name = "menuEditInput";
-            this.menuEditInput.Size = new System.Drawing.Size(181, 22);
+            this.menuEditInput.Size = new System.Drawing.Size(191, 22);
             this.menuEditInput.Text = "menuEditInput";
             this.menuEditInput.DropDownOpening += new System.EventHandler(this.MenuEditInput_DropDownOpening);
             // 
             // menuEditInputRotate90
             // 
             this.menuEditInputRotate90.Name = "menuEditInputRotate90";
-            this.menuEditInputRotate90.Size = new System.Drawing.Size(208, 22);
+            this.menuEditInputRotate90.Size = new System.Drawing.Size(227, 22);
             this.menuEditInputRotate90.Text = "menuEditInputRotate90";
             this.menuEditInputRotate90.Click += new System.EventHandler(this.CmenuImageRotate90_Click);
             // 
             // menuEditInputRotate180
             // 
             this.menuEditInputRotate180.Name = "menuEditInputRotate180";
-            this.menuEditInputRotate180.Size = new System.Drawing.Size(208, 22);
+            this.menuEditInputRotate180.Size = new System.Drawing.Size(227, 22);
             this.menuEditInputRotate180.Text = "menuEditInputRotate180";
             this.menuEditInputRotate180.Click += new System.EventHandler(this.CmenuImageRotate180_Click);
             // 
             // menuEditInputRotate270
             // 
             this.menuEditInputRotate270.Name = "menuEditInputRotate270";
-            this.menuEditInputRotate270.Size = new System.Drawing.Size(208, 22);
+            this.menuEditInputRotate270.Size = new System.Drawing.Size(227, 22);
             this.menuEditInputRotate270.Text = "menuEditInputRotate270";
             this.menuEditInputRotate270.Click += new System.EventHandler(this.CmenuImageRotate270_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(205, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(224, 6);
             // 
             // menuEditInputFlipHorizontal
             // 
             this.menuEditInputFlipHorizontal.Image = global::AscGenDotNet.Properties.Resources.shape_flip_horizontal;
             this.menuEditInputFlipHorizontal.Name = "menuEditInputFlipHorizontal";
-            this.menuEditInputFlipHorizontal.Size = new System.Drawing.Size(208, 22);
+            this.menuEditInputFlipHorizontal.Size = new System.Drawing.Size(227, 22);
             this.menuEditInputFlipHorizontal.Text = "menuEditInputFlipHorizontal";
             this.menuEditInputFlipHorizontal.Click += new System.EventHandler(this.CmenuImageFlipHorizontal_Click);
             // 
@@ -1051,7 +1051,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             // 
             this.menuEditInputFlipVertical.Image = global::AscGenDotNet.Properties.Resources.shape_flip_vertical;
             this.menuEditInputFlipVertical.Name = "menuEditInputFlipVertical";
-            this.menuEditInputFlipVertical.Size = new System.Drawing.Size(208, 22);
+            this.menuEditInputFlipVertical.Size = new System.Drawing.Size(227, 22);
             this.menuEditInputFlipVertical.Text = "menuEditInputFlipVertical";
             this.menuEditInputFlipVertical.Click += new System.EventHandler(this.CmenuImageFlipVertical_Click);
             // 
@@ -1066,7 +1066,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.menuEditFlipVertical});
             this.menuEditOutput.MergeIndex = 3;
             this.menuEditOutput.Name = "menuEditOutput";
-            this.menuEditOutput.Size = new System.Drawing.Size(181, 22);
+            this.menuEditOutput.Size = new System.Drawing.Size(191, 22);
             this.menuEditOutput.Text = "menuEditOutput";
             this.menuEditOutput.DropDownOpening += new System.EventHandler(this.MenuEditOutput_Popup);
             // 
@@ -1074,14 +1074,14 @@ namespace JMSoftware.AsciiGeneratorDotNet
             // 
             this.menuEditStretch.MergeIndex = 0;
             this.menuEditStretch.Name = "menuEditStretch";
-            this.menuEditStretch.Size = new System.Drawing.Size(208, 22);
+            this.menuEditStretch.Size = new System.Drawing.Size(227, 22);
             this.menuEditStretch.Text = "menuEditStretch";
             this.menuEditStretch.Click += new System.EventHandler(this.CmenuTextStretch_Click);
             // 
             // menuEditOutputSep1
             // 
             this.menuEditOutputSep1.Name = "menuEditOutputSep1";
-            this.menuEditOutputSep1.Size = new System.Drawing.Size(205, 6);
+            this.menuEditOutputSep1.Size = new System.Drawing.Size(224, 6);
             // 
             // menuEditSharpeningMethod
             // 
@@ -1091,7 +1091,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.menuEditSharpeningMethodUnsharp});
             this.menuEditSharpeningMethod.MergeIndex = 2;
             this.menuEditSharpeningMethod.Name = "menuEditSharpeningMethod";
-            this.menuEditSharpeningMethod.Size = new System.Drawing.Size(208, 22);
+            this.menuEditSharpeningMethod.Size = new System.Drawing.Size(227, 22);
             this.menuEditSharpeningMethod.Text = "menuEditSharpeningMethod";
             this.menuEditSharpeningMethod.DropDownOpening += new System.EventHandler(this.MenuEditSharpeningMethod_Popup);
             // 
@@ -1099,7 +1099,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             // 
             this.menuEditSharpeningMethodNone.MergeIndex = 0;
             this.menuEditSharpeningMethodNone.Name = "menuEditSharpeningMethodNone";
-            this.menuEditSharpeningMethodNone.Size = new System.Drawing.Size(248, 22);
+            this.menuEditSharpeningMethodNone.Size = new System.Drawing.Size(271, 22);
             this.menuEditSharpeningMethodNone.Text = "menuEditSharpeningMethodNone";
             this.menuEditSharpeningMethodNone.Click += new System.EventHandler(this.CmenuTextSharpeningNone_Click);
             // 
@@ -1107,7 +1107,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             // 
             this.menuEditSharpeningMethodSharpen.MergeIndex = 1;
             this.menuEditSharpeningMethodSharpen.Name = "menuEditSharpeningMethodSharpen";
-            this.menuEditSharpeningMethodSharpen.Size = new System.Drawing.Size(248, 22);
+            this.menuEditSharpeningMethodSharpen.Size = new System.Drawing.Size(271, 22);
             this.menuEditSharpeningMethodSharpen.Text = "menuEditSharpeningMethodSharpen";
             this.menuEditSharpeningMethodSharpen.Click += new System.EventHandler(this.CmenuTextSharpeningSharpen_Click);
             // 
@@ -1115,21 +1115,21 @@ namespace JMSoftware.AsciiGeneratorDotNet
             // 
             this.menuEditSharpeningMethodUnsharp.MergeIndex = 2;
             this.menuEditSharpeningMethodUnsharp.Name = "menuEditSharpeningMethodUnsharp";
-            this.menuEditSharpeningMethodUnsharp.Size = new System.Drawing.Size(248, 22);
+            this.menuEditSharpeningMethodUnsharp.Size = new System.Drawing.Size(271, 22);
             this.menuEditSharpeningMethodUnsharp.Text = "menuEditSharpeningMethodUnsharp";
             this.menuEditSharpeningMethodUnsharp.Click += new System.EventHandler(this.CmenuTextSharpeningUnsharp_Click);
             // 
             // menuEditOutputSep2
             // 
             this.menuEditOutputSep2.Name = "menuEditOutputSep2";
-            this.menuEditOutputSep2.Size = new System.Drawing.Size(205, 6);
+            this.menuEditOutputSep2.Size = new System.Drawing.Size(224, 6);
             // 
             // menuEditFlipHorizontal
             // 
             this.menuEditFlipHorizontal.Image = global::AscGenDotNet.Properties.Resources.shape_flip_horizontal;
             this.menuEditFlipHorizontal.MergeIndex = 4;
             this.menuEditFlipHorizontal.Name = "menuEditFlipHorizontal";
-            this.menuEditFlipHorizontal.Size = new System.Drawing.Size(208, 22);
+            this.menuEditFlipHorizontal.Size = new System.Drawing.Size(227, 22);
             this.menuEditFlipHorizontal.Text = "menuEditFlipHorizontal";
             this.menuEditFlipHorizontal.Click += new System.EventHandler(this.CmenuTextHorizontal_Click);
             // 
@@ -1138,19 +1138,19 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.menuEditFlipVertical.Image = global::AscGenDotNet.Properties.Resources.shape_flip_vertical;
             this.menuEditFlipVertical.MergeIndex = 5;
             this.menuEditFlipVertical.Name = "menuEditFlipVertical";
-            this.menuEditFlipVertical.Size = new System.Drawing.Size(208, 22);
+            this.menuEditFlipVertical.Size = new System.Drawing.Size(227, 22);
             this.menuEditFlipVertical.Text = "menuEditFlipVertical";
             this.menuEditFlipVertical.Click += new System.EventHandler(this.CmenuTextVertical_Click);
             // 
             // menuEditSep2
             // 
             this.menuEditSep2.Name = "menuEditSep2";
-            this.menuEditSep2.Size = new System.Drawing.Size(178, 6);
+            this.menuEditSep2.Size = new System.Drawing.Size(188, 6);
             // 
             // menuEditEditSettings
             // 
             this.menuEditEditSettings.Name = "menuEditEditSettings";
-            this.menuEditEditSettings.Size = new System.Drawing.Size(181, 22);
+            this.menuEditEditSettings.Size = new System.Drawing.Size(191, 22);
             this.menuEditEditSettings.Text = "menuEditEditSettings";
             this.menuEditEditSettings.Click += new System.EventHandler(this.MenuEditEditSettings_Click);
             // 
@@ -1159,7 +1159,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.menuEditSaveSettings.Image = global::AscGenDotNet.Properties.Resources.database_save;
             this.menuEditSaveSettings.MergeIndex = 5;
             this.menuEditSaveSettings.Name = "menuEditSaveSettings";
-            this.menuEditSaveSettings.Size = new System.Drawing.Size(181, 22);
+            this.menuEditSaveSettings.Size = new System.Drawing.Size(191, 22);
             this.menuEditSaveSettings.Text = "menuEditSaveSettings";
             this.menuEditSaveSettings.Click += new System.EventHandler(this.MenuEditSaveSettings_Click);
             // 
@@ -1176,7 +1176,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.menuViewImagePosition});
             this.menuView.MergeIndex = 2;
             this.menuView.Name = "menuView";
-            this.menuView.Size = new System.Drawing.Size(67, 20);
+            this.menuView.Size = new System.Drawing.Size(75, 20);
             this.menuView.Text = "menuView";
             this.menuView.DropDownOpening += new System.EventHandler(this.MenuView_Popup);
             // 
@@ -1184,21 +1184,21 @@ namespace JMSoftware.AsciiGeneratorDotNet
             // 
             this.menuViewColourPreview.Image = global::AscGenDotNet.Properties.Resources.page_magnify_color;
             this.menuViewColourPreview.Name = "menuViewColourPreview";
-            this.menuViewColourPreview.Size = new System.Drawing.Size(214, 22);
+            this.menuViewColourPreview.Size = new System.Drawing.Size(231, 22);
             this.menuViewColourPreview.Text = "menuViewColourPreview";
             this.menuViewColourPreview.Click += new System.EventHandler(this.MenuViewColourPreview_Click);
             // 
             // menuViewSep1
             // 
             this.menuViewSep1.Name = "menuViewSep1";
-            this.menuViewSep1.Size = new System.Drawing.Size(211, 6);
+            this.menuViewSep1.Size = new System.Drawing.Size(228, 6);
             // 
             // menuViewICBC
             // 
             this.menuViewICBC.Image = global::AscGenDotNet.Properties.Resources.lightbulb;
             this.menuViewICBC.MergeIndex = 3;
             this.menuViewICBC.Name = "menuViewICBC";
-            this.menuViewICBC.Size = new System.Drawing.Size(214, 22);
+            this.menuViewICBC.Size = new System.Drawing.Size(231, 22);
             this.menuViewICBC.Text = "menuViewICBC";
             this.menuViewICBC.Click += new System.EventHandler(this.MenuViewICBC_Click);
             // 
@@ -1207,14 +1207,14 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.menuViewText.Image = global::AscGenDotNet.Properties.Resources.text_align_justify;
             this.menuViewText.MergeIndex = 4;
             this.menuViewText.Name = "menuViewText";
-            this.menuViewText.Size = new System.Drawing.Size(214, 22);
+            this.menuViewText.Size = new System.Drawing.Size(231, 22);
             this.menuViewText.Text = "menuViewText";
             this.menuViewText.Click += new System.EventHandler(this.MenuViewText_Click);
             // 
             // menuViewSep2
             // 
             this.menuViewSep2.Name = "menuViewSep2";
-            this.menuViewSep2.Size = new System.Drawing.Size(211, 6);
+            this.menuViewSep2.Size = new System.Drawing.Size(228, 6);
             // 
             // menuViewFullScreen
             // 
@@ -1222,7 +1222,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.menuViewFullScreen.MergeIndex = 7;
             this.menuViewFullScreen.Name = "menuViewFullScreen";
             this.menuViewFullScreen.ShortcutKeys = System.Windows.Forms.Keys.F11;
-            this.menuViewFullScreen.Size = new System.Drawing.Size(214, 22);
+            this.menuViewFullScreen.Size = new System.Drawing.Size(231, 22);
             this.menuViewFullScreen.Text = "menuViewFullScreen";
             this.menuViewFullScreen.Click += new System.EventHandler(this.MenuViewFullScreen_Click);
             // 
@@ -1231,7 +1231,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.menuViewImage.Image = global::AscGenDotNet.Properties.Resources.image;
             this.menuViewImage.Name = "menuViewImage";
             this.menuViewImage.ShortcutKeys = System.Windows.Forms.Keys.F12;
-            this.menuViewImage.Size = new System.Drawing.Size(214, 22);
+            this.menuViewImage.Size = new System.Drawing.Size(231, 22);
             this.menuViewImage.Text = "menuViewImage";
             this.menuViewImage.Click += new System.EventHandler(this.MenuViewImage_Click);
             // 
@@ -1240,7 +1240,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.menuViewImagePosition.Image = global::AscGenDotNet.Properties.Resources.application_split;
             this.menuViewImagePosition.Name = "menuViewImagePosition";
             this.menuViewImagePosition.ShortcutKeys = System.Windows.Forms.Keys.F10;
-            this.menuViewImagePosition.Size = new System.Drawing.Size(214, 22);
+            this.menuViewImagePosition.Size = new System.Drawing.Size(231, 22);
             this.menuViewImagePosition.Text = "menuViewImagePosition";
             this.menuViewImagePosition.Click += new System.EventHandler(this.MenuViewImagePosition_Click);
             // 
@@ -1258,27 +1258,27 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.menuHelpAbout});
             this.menuHelp.MergeIndex = 3;
             this.menuHelp.Name = "menuHelp";
-            this.menuHelp.Size = new System.Drawing.Size(66, 20);
+            this.menuHelp.Size = new System.Drawing.Size(75, 20);
             this.menuHelp.Text = "menuHelp";
             // 
             // menuHelpTutorials
             // 
             this.menuHelpTutorials.Image = global::AscGenDotNet.Properties.Resources.book;
             this.menuHelpTutorials.Name = "menuHelpTutorials";
-            this.menuHelpTutorials.Size = new System.Drawing.Size(222, 22);
+            this.menuHelpTutorials.Size = new System.Drawing.Size(243, 22);
             this.menuHelpTutorials.Text = "menuHelpTutorials";
             this.menuHelpTutorials.Click += new System.EventHandler(this.MenuHelpTutorials_Click);
             // 
             // cmenuHelpSep1
             // 
             this.cmenuHelpSep1.Name = "cmenuHelpSep1";
-            this.cmenuHelpSep1.Size = new System.Drawing.Size(219, 6);
+            this.cmenuHelpSep1.Size = new System.Drawing.Size(240, 6);
             // 
             // menuHelpRequestFeature
             // 
             this.menuHelpRequestFeature.Image = global::AscGenDotNet.Properties.Resources.user_comment;
             this.menuHelpRequestFeature.Name = "menuHelpRequestFeature";
-            this.menuHelpRequestFeature.Size = new System.Drawing.Size(222, 22);
+            this.menuHelpRequestFeature.Size = new System.Drawing.Size(243, 22);
             this.menuHelpRequestFeature.Text = "menuHelpRequestFeature";
             this.menuHelpRequestFeature.Click += new System.EventHandler(this.MenuHelpRequestFeature_Click);
             // 
@@ -1286,33 +1286,33 @@ namespace JMSoftware.AsciiGeneratorDotNet
             // 
             this.menuHelpReportBug.Image = global::AscGenDotNet.Properties.Resources.bug;
             this.menuHelpReportBug.Name = "menuHelpReportBug";
-            this.menuHelpReportBug.Size = new System.Drawing.Size(222, 22);
+            this.menuHelpReportBug.Size = new System.Drawing.Size(243, 22);
             this.menuHelpReportBug.Text = "menuHelpReportBug";
             this.menuHelpReportBug.Click += new System.EventHandler(this.MenuHelpReportBug_Click);
             // 
             // cmenuHelpSep2
             // 
             this.cmenuHelpSep2.Name = "cmenuHelpSep2";
-            this.cmenuHelpSep2.Size = new System.Drawing.Size(219, 6);
+            this.cmenuHelpSep2.Size = new System.Drawing.Size(240, 6);
             // 
             // menuHelpDonate
             // 
             this.menuHelpDonate.Image = global::AscGenDotNet.Properties.Resources.money;
             this.menuHelpDonate.Name = "menuHelpDonate";
-            this.menuHelpDonate.Size = new System.Drawing.Size(222, 22);
+            this.menuHelpDonate.Size = new System.Drawing.Size(243, 22);
             this.menuHelpDonate.Text = "menuHelpDonate";
             this.menuHelpDonate.Click += new System.EventHandler(this.MenuHelpDonate_Click);
             // 
             // cmenuHelpSep3
             // 
             this.cmenuHelpSep3.Name = "cmenuHelpSep3";
-            this.cmenuHelpSep3.Size = new System.Drawing.Size(219, 6);
+            this.cmenuHelpSep3.Size = new System.Drawing.Size(240, 6);
             // 
             // menuHelpCheckForNewVersionToolStrip
             // 
             this.menuHelpCheckForNewVersionToolStrip.Image = global::AscGenDotNet.Properties.Resources.connect;
             this.menuHelpCheckForNewVersionToolStrip.Name = "menuHelpCheckForNewVersionToolStrip";
-            this.menuHelpCheckForNewVersionToolStrip.Size = new System.Drawing.Size(222, 22);
+            this.menuHelpCheckForNewVersionToolStrip.Size = new System.Drawing.Size(243, 22);
             this.menuHelpCheckForNewVersionToolStrip.Text = "menuHelpCheckForNewVersion";
             this.menuHelpCheckForNewVersionToolStrip.Click += new System.EventHandler(this.MenuHelpCheckForNewVersionToolStrip_Click);
             // 
@@ -1321,7 +1321,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.menuHelpAbout.Image = global::AscGenDotNet.Properties.Resources.help;
             this.menuHelpAbout.MergeIndex = 0;
             this.menuHelpAbout.Name = "menuHelpAbout";
-            this.menuHelpAbout.Size = new System.Drawing.Size(222, 22);
+            this.menuHelpAbout.Size = new System.Drawing.Size(243, 22);
             this.menuHelpAbout.Text = "menuHelpAbout";
             this.menuHelpAbout.Click += new System.EventHandler(this.MenuHelpAbout_Click);
             // 
@@ -1337,7 +1337,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlMain.Location = new System.Drawing.Point(0, 0);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(742, 465);
+            this.pnlMain.Size = new System.Drawing.Size(742, 490);
             this.pnlMain.TabIndex = 1;
             this.pnlMain.Resize += new System.EventHandler(this.PnlMain_Resize);
             // 
@@ -1359,7 +1359,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.splitContainer1.Panel2.AutoScroll = true;
             this.splitContainer1.Panel2.Controls.Add(this.pbxMain);
             this.splitContainer1.Panel2MinSize = 100;
-            this.splitContainer1.Size = new System.Drawing.Size(742, 465);
+            this.splitContainer1.Size = new System.Drawing.Size(742, 490);
             this.splitContainer1.SplitterDistance = 515;
             this.splitContainer1.TabIndex = 1;
             // 
@@ -1377,71 +1377,24 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.tableLayoutPanelText.RowCount = 2;
             this.tableLayoutPanelText.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanelText.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanelText.Size = new System.Drawing.Size(515, 465);
+            this.tableLayoutPanelText.Size = new System.Drawing.Size(515, 490);
             this.tableLayoutPanelText.TabIndex = 1;
-            // 
-            // rtbxConvertedText
-            // 
-            this.rtbxConvertedText.BackColor = System.Drawing.Color.White;
-            this.rtbxConvertedText.BackgroundColor = System.Drawing.Color.White;
-            this.rtbxConvertedText.ContextMenuStrip = this.contextMenuText;
-            this.rtbxConvertedText.DetectUrls = false;
-            this.rtbxConvertedText.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rtbxConvertedText.EnableAutoDragDrop = true;
-            this.rtbxConvertedText.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.rtbxConvertedText.Location = new System.Drawing.Point(0, 0);
-            this.rtbxConvertedText.Margin = new System.Windows.Forms.Padding(0);
-            this.rtbxConvertedText.Name = "rtbxConvertedText";
-            this.rtbxConvertedText.ReadOnly = true;
-            this.rtbxConvertedText.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth;
-            this.rtbxConvertedText.ShowSelectionMargin = true;
-            this.rtbxConvertedText.Size = new System.Drawing.Size(497, 465);
-            this.rtbxConvertedText.TabIndex = 0;
-            this.rtbxConvertedText.Text = "";
-            this.rtbxConvertedText.TextColor = System.Drawing.SystemColors.WindowText;
-            this.rtbxConvertedText.WordWrap = false;
             // 
             // buttonToggleImage
             // 
-            this.buttonToggleImage.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.buttonToggleImage.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.buttonToggleImage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonToggleImage.FlatAppearance.BorderSize = 0;
             this.buttonToggleImage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonToggleImage.Location = new System.Drawing.Point(497, 0);
             this.buttonToggleImage.Margin = new System.Windows.Forms.Padding(0);
             this.buttonToggleImage.Name = "buttonToggleImage";
-            this.buttonToggleImage.Size = new System.Drawing.Size(18, 465);
+            this.buttonToggleImage.Size = new System.Drawing.Size(18, 490);
             this.buttonToggleImage.TabIndex = 1;
             this.buttonToggleImage.TabStop = false;
             this.buttonToggleImage.Text = ">";
             this.buttonToggleImage.UseVisualStyleBackColor = false;
             this.buttonToggleImage.Click += new System.EventHandler(this.ButtonToggleImage_Click);
-            // 
-            // pbxMain
-            // 
-            this.pbxMain.AllowDrop = true;
-            this.pbxMain.BackColor = System.Drawing.SystemColors.Control;
-            this.pbxMain.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pbxMain.ContextMenuStrip = this.contextMenuImage;
-            this.pbxMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pbxMain.DrawingImage = true;
-            this.pbxMain.FillSelectionRectangle = true;
-            this.pbxMain.ImageLocation = new System.Drawing.Rectangle(0, 0, 0, 0);
-            this.pbxMain.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
-            this.pbxMain.Location = new System.Drawing.Point(0, 0);
-            this.pbxMain.Name = "pbxMain";
-            this.pbxMain.SelectedArea = new System.Drawing.Rectangle(0, 0, 0, 0);
-            this.pbxMain.SelectionBorderColor = System.Drawing.Color.DarkBlue;
-            this.pbxMain.SelectionFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(173)))), ((int)(((byte)(216)))), ((int)(((byte)(230)))));
-            this.pbxMain.SelectionLocked = false;
-            this.pbxMain.Size = new System.Drawing.Size(223, 465);
-            this.pbxMain.SizeMode = JMSoftware.CustomControl.JMPictureBox.JMPictureBoxSizeMode.FitCenter;
-            this.pbxMain.TabIndex = 0;
-            this.pbxMain.DoubleClick += new System.EventHandler(this.PbxMain_DoubleClick);
-            this.pbxMain.SelectionChanged += new System.EventHandler(this.PbxMain_SelectionChanged);
-            this.pbxMain.DragOver += new System.Windows.Forms.DragEventHandler(this.PbxMain_DragOver);
-            this.pbxMain.DragDrop += new System.Windows.Forms.DragEventHandler(this.PbxMain_DragDrop);
-            this.pbxMain.SelectionChanging += new System.EventHandler(this.PbxMain_SelectionChanging);
             // 
             // tstripOutputSize
             // 
@@ -1453,14 +1406,14 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.tbxHeight});
             this.tstripOutputSize.Location = new System.Drawing.Point(3, 24);
             this.tstripOutputSize.Name = "tstripOutputSize";
-            this.tstripOutputSize.Size = new System.Drawing.Size(159, 25);
+            this.tstripOutputSize.Size = new System.Drawing.Size(198, 25);
             this.tstripOutputSize.TabIndex = 1;
             this.tstripOutputSize.Text = "toolStrip1";
             // 
             // lblOutputSize
             // 
             this.lblOutputSize.Name = "lblOutputSize";
-            this.lblOutputSize.Size = new System.Drawing.Size(70, 22);
+            this.lblOutputSize.Size = new System.Drawing.Size(78, 22);
             this.lblOutputSize.Text = "lblOutputSize";
             // 
             // tbxWidth
@@ -1504,7 +1457,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             // 
             this.toolStripContainer1.ContentPanel.AutoScroll = true;
             this.toolStripContainer1.ContentPanel.Controls.Add(this.pnlMain);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(742, 465);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(742, 490);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer1.LeftToolStripPanelVisible = false;
             this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
@@ -1516,6 +1469,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             // 
             // toolStripContainer1.TopToolStripPanel
             // 
+            this.toolStripContainer1.TopToolStripPanel.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.mainMenu1);
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.tstripOutputSize);
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.tstripAlterInputImage);
@@ -1634,6 +1588,30 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.tsbFullScreen.ToolTipText = "tsbFullScreen";
             this.tsbFullScreen.Click += new System.EventHandler(this.TsbFullScreen_Click);
             // 
+            // tstripCharacters
+            // 
+            this.tstripCharacters.Dock = System.Windows.Forms.DockStyle.None;
+            this.tstripCharacters.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lblCharacters,
+            this.cmbCharacters});
+            this.tstripCharacters.Location = new System.Drawing.Point(266, 99);
+            this.tstripCharacters.Name = "tstripCharacters";
+            this.tstripCharacters.Size = new System.Drawing.Size(211, 25);
+            this.tstripCharacters.TabIndex = 3;
+            // 
+            // lblCharacters
+            // 
+            this.lblCharacters.Name = "lblCharacters";
+            this.lblCharacters.Size = new System.Drawing.Size(76, 22);
+            this.lblCharacters.Text = "lblCharacters";
+            // 
+            // cmbCharacters
+            // 
+            this.cmbCharacters.Name = "cmbCharacters";
+            this.cmbCharacters.Size = new System.Drawing.Size(121, 25);
+            this.cmbCharacters.DropDown += new System.EventHandler(this.CmbCharacters_DropDown);
+            this.cmbCharacters.TextChanged += new System.EventHandler(this.CmbCharacters_TextChanged);
+            // 
             // tstripRamp
             // 
             this.tstripRamp.Dock = System.Windows.Forms.DockStyle.None;
@@ -1643,13 +1621,13 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.chkGenerate});
             this.tstripRamp.Location = new System.Drawing.Point(3, 99);
             this.tstripRamp.Name = "tstripRamp";
-            this.tstripRamp.Size = new System.Drawing.Size(251, 25);
+            this.tstripRamp.Size = new System.Drawing.Size(263, 25);
             this.tstripRamp.TabIndex = 2;
             // 
             // lblRamp
             // 
             this.lblRamp.Name = "lblRamp";
-            this.lblRamp.Size = new System.Drawing.Size(44, 22);
+            this.lblRamp.Size = new System.Drawing.Size(51, 22);
             this.lblRamp.Text = "lblRamp";
             // 
             // cmbRamp
@@ -1667,34 +1645,10 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.chkGenerate.Image = ((System.Drawing.Image)(resources.GetObject("chkGenerate.Image")));
             this.chkGenerate.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.chkGenerate.Name = "chkGenerate";
-            this.chkGenerate.Size = new System.Drawing.Size(72, 22);
+            this.chkGenerate.Size = new System.Drawing.Size(77, 22);
             this.chkGenerate.Text = "chkGenerate";
             this.chkGenerate.ToolTipText = "Automatically Generate a Ramp";
             this.chkGenerate.CheckedChanged += new System.EventHandler(this.ChkGenerate_CheckedChanged);
-            // 
-            // tstripCharacters
-            // 
-            this.tstripCharacters.Dock = System.Windows.Forms.DockStyle.None;
-            this.tstripCharacters.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.lblCharacters,
-            this.cmbCharacters});
-            this.tstripCharacters.Location = new System.Drawing.Point(3, 124);
-            this.tstripCharacters.Name = "tstripCharacters";
-            this.tstripCharacters.Size = new System.Drawing.Size(205, 25);
-            this.tstripCharacters.TabIndex = 3;
-            // 
-            // lblCharacters
-            // 
-            this.lblCharacters.Name = "lblCharacters";
-            this.lblCharacters.Size = new System.Drawing.Size(70, 22);
-            this.lblCharacters.Text = "lblCharacters";
-            // 
-            // cmbCharacters
-            // 
-            this.cmbCharacters.Name = "cmbCharacters";
-            this.cmbCharacters.Size = new System.Drawing.Size(121, 25);
-            this.cmbCharacters.DropDown += new System.EventHandler(this.CmbCharacters_DropDown);
-            this.cmbCharacters.TextChanged += new System.EventHandler(this.CmbCharacters_TextChanged);
             // 
             // pageSetupDialog
             // 
@@ -1720,6 +1674,53 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.printPreviewDialog.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog.Icon")));
             this.printPreviewDialog.Name = "printPreviewDialog";
             this.printPreviewDialog.Visible = false;
+            // 
+            // rtbxConvertedText
+            // 
+            this.rtbxConvertedText.BackColor = System.Drawing.Color.White;
+            this.rtbxConvertedText.BackgroundColor = System.Drawing.Color.White;
+            this.rtbxConvertedText.ContextMenuStrip = this.contextMenuText;
+            this.rtbxConvertedText.DetectUrls = false;
+            this.rtbxConvertedText.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rtbxConvertedText.EnableAutoDragDrop = true;
+            this.rtbxConvertedText.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.rtbxConvertedText.Location = new System.Drawing.Point(0, 0);
+            this.rtbxConvertedText.Margin = new System.Windows.Forms.Padding(0);
+            this.rtbxConvertedText.Name = "rtbxConvertedText";
+            this.rtbxConvertedText.ReadOnly = true;
+            this.rtbxConvertedText.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth;
+            this.rtbxConvertedText.ShowSelectionMargin = true;
+            this.rtbxConvertedText.Size = new System.Drawing.Size(497, 490);
+            this.rtbxConvertedText.TabIndex = 0;
+            this.rtbxConvertedText.Text = "";
+            this.rtbxConvertedText.TextColor = System.Drawing.SystemColors.WindowText;
+            this.rtbxConvertedText.WordWrap = false;
+            // 
+            // pbxMain
+            // 
+            this.pbxMain.AllowDrop = true;
+            this.pbxMain.BackColor = System.Drawing.SystemColors.Control;
+            this.pbxMain.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pbxMain.ContextMenuStrip = this.contextMenuImage;
+            this.pbxMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pbxMain.DrawingImage = true;
+            this.pbxMain.FillSelectionRectangle = true;
+            this.pbxMain.ImageLocation = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.pbxMain.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
+            this.pbxMain.Location = new System.Drawing.Point(0, 0);
+            this.pbxMain.Name = "pbxMain";
+            this.pbxMain.SelectedArea = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.pbxMain.SelectionBorderColor = System.Drawing.Color.DarkBlue;
+            this.pbxMain.SelectionFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(173)))), ((int)(((byte)(216)))), ((int)(((byte)(230)))));
+            this.pbxMain.SelectionLocked = false;
+            this.pbxMain.Size = new System.Drawing.Size(223, 490);
+            this.pbxMain.SizeMode = JMSoftware.CustomControl.JMPictureBox.JMPictureBoxSizeMode.FitCenter;
+            this.pbxMain.TabIndex = 0;
+            this.pbxMain.DoubleClick += new System.EventHandler(this.PbxMain_DoubleClick);
+            this.pbxMain.SelectionChanged += new System.EventHandler(this.PbxMain_SelectionChanged);
+            this.pbxMain.DragOver += new System.Windows.Forms.DragEventHandler(this.PbxMain_DragOver);
+            this.pbxMain.DragDrop += new System.Windows.Forms.DragEventHandler(this.PbxMain_DragDrop);
+            this.pbxMain.SelectionChanging += new System.EventHandler(this.PbxMain_SelectionChanging);
             // 
             // FormConvertImage
             // 
@@ -1754,10 +1755,10 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.tstripAlterInputImage.PerformLayout();
             this.tstripButtons.ResumeLayout(false);
             this.tstripButtons.PerformLayout();
-            this.tstripRamp.ResumeLayout(false);
-            this.tstripRamp.PerformLayout();
             this.tstripCharacters.ResumeLayout(false);
             this.tstripCharacters.PerformLayout();
+            this.tstripRamp.ResumeLayout(false);
+            this.tstripRamp.PerformLayout();
             this.ResumeLayout(false);
 
         }
