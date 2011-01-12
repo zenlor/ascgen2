@@ -636,6 +636,7 @@ namespace JMSoftware.AsciiConversion
                 }
 
                 this.levels = value;
+                this.filterChanged = true;
             }
         }
 
@@ -654,6 +655,7 @@ namespace JMSoftware.AsciiConversion
             set
             {
                 this.Levels.Maximum = value;
+                this.filterChanged = true;
             }
         }
 
@@ -672,6 +674,7 @@ namespace JMSoftware.AsciiConversion
             set
             {
                 this.Levels.Median = value;
+                this.filterChanged = true;
             }
         }
 
@@ -690,6 +693,7 @@ namespace JMSoftware.AsciiConversion
             set
             {
                 this.Levels.Minimum = value;
+                this.filterChanged = true;
             }
         }
 
