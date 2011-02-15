@@ -1337,7 +1337,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlMain.Location = new System.Drawing.Point(0, 0);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(742, 465);
+            this.pnlMain.Size = new System.Drawing.Size(742, 490);
             this.pnlMain.TabIndex = 1;
             this.pnlMain.Resize += new System.EventHandler(this.PnlMain_Resize);
             // 
@@ -1359,7 +1359,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.splitContainer1.Panel2.AutoScroll = true;
             this.splitContainer1.Panel2.Controls.Add(this.pbxMain);
             this.splitContainer1.Panel2MinSize = 100;
-            this.splitContainer1.Size = new System.Drawing.Size(742, 465);
+            this.splitContainer1.Size = new System.Drawing.Size(742, 490);
             this.splitContainer1.SplitterDistance = 515;
             this.splitContainer1.TabIndex = 1;
             // 
@@ -1377,7 +1377,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.tableLayoutPanelText.RowCount = 2;
             this.tableLayoutPanelText.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanelText.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanelText.Size = new System.Drawing.Size(515, 465);
+            this.tableLayoutPanelText.Size = new System.Drawing.Size(515, 490);
             this.tableLayoutPanelText.TabIndex = 1;
             // 
             // rtbxConvertedText
@@ -1395,7 +1395,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.rtbxConvertedText.ReadOnly = true;
             this.rtbxConvertedText.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth;
             this.rtbxConvertedText.ShowSelectionMargin = true;
-            this.rtbxConvertedText.Size = new System.Drawing.Size(497, 465);
+            this.rtbxConvertedText.Size = new System.Drawing.Size(497, 490);
             this.rtbxConvertedText.TabIndex = 0;
             this.rtbxConvertedText.Text = "";
             this.rtbxConvertedText.TextColor = System.Drawing.SystemColors.WindowText;
@@ -1403,14 +1403,14 @@ namespace JMSoftware.AsciiGeneratorDotNet
             // 
             // buttonToggleImage
             // 
-            this.buttonToggleImage.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.buttonToggleImage.BackColor = System.Drawing.SystemColors.Control;
             this.buttonToggleImage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonToggleImage.FlatAppearance.BorderSize = 0;
             this.buttonToggleImage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonToggleImage.Location = new System.Drawing.Point(497, 0);
             this.buttonToggleImage.Margin = new System.Windows.Forms.Padding(0);
             this.buttonToggleImage.Name = "buttonToggleImage";
-            this.buttonToggleImage.Size = new System.Drawing.Size(18, 465);
+            this.buttonToggleImage.Size = new System.Drawing.Size(18, 490);
             this.buttonToggleImage.TabIndex = 1;
             this.buttonToggleImage.TabStop = false;
             this.buttonToggleImage.Text = ">";
@@ -1434,7 +1434,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.pbxMain.SelectionBorderColor = System.Drawing.Color.DarkBlue;
             this.pbxMain.SelectionFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(173)))), ((int)(((byte)(216)))), ((int)(((byte)(230)))));
             this.pbxMain.SelectionLocked = false;
-            this.pbxMain.Size = new System.Drawing.Size(223, 465);
+            this.pbxMain.Size = new System.Drawing.Size(223, 490);
             this.pbxMain.SizeMode = JMSoftware.CustomControl.JMPictureBox.JMPictureBoxSizeMode.FitCenter;
             this.pbxMain.TabIndex = 0;
             this.pbxMain.SelectionChanged += new System.EventHandler(this.PbxMain_SelectionChanged);
@@ -1504,7 +1504,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             // 
             this.toolStripContainer1.ContentPanel.AutoScroll = true;
             this.toolStripContainer1.ContentPanel.Controls.Add(this.pnlMain);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(742, 465);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(742, 490);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer1.LeftToolStripPanelVisible = false;
             this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
@@ -1516,7 +1516,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
             // 
             // toolStripContainer1.TopToolStripPanel
             // 
-            this.toolStripContainer1.TopToolStripPanel.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.mainMenu1);
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.tstripOutputSize);
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.tstripAlterInputImage);
@@ -1642,7 +1641,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.lblRamp,
             this.cmbRamp,
             this.chkGenerate});
-            this.tstripRamp.Location = new System.Drawing.Point(3, 99);
+            this.tstripRamp.Location = new System.Drawing.Point(214, 99);
             this.tstripRamp.Name = "tstripRamp";
             this.tstripRamp.Size = new System.Drawing.Size(263, 25);
             this.tstripRamp.TabIndex = 2;
@@ -1679,7 +1678,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.tstripCharacters.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lblCharacters,
             this.cmbCharacters});
-            this.tstripCharacters.Location = new System.Drawing.Point(3, 124);
+            this.tstripCharacters.Location = new System.Drawing.Point(3, 99);
             this.tstripCharacters.Name = "tstripCharacters";
             this.tstripCharacters.Size = new System.Drawing.Size(211, 25);
             this.tstripCharacters.TabIndex = 3;
