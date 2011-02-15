@@ -3586,7 +3586,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             this.lblOutputSize.Text = Resource.GetString("Size") + ":";
             this.lblRamp.Text = Resource.GetString("Ramp") + ":";
-            this.tsbFont.Text = Resource.GetString("Font") + "...";
+            this.tsbFont.Text = Resource.GetString("Font");
             this.chkGenerate.Text = Resource.GetString("Auto");
 
             this.lblCharacters.Text = Resource.GetString("Characters") + ":";
