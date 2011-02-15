@@ -49,6 +49,11 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// <summary>Used for storing the size of the form</summary>
         private Size clientSize;
 
+        /// <summary>
+        /// Dialog used to get the level of image scaling
+        /// </summary>
+        private TextImageMagnificationDialog dialogChooseTextZoom;
+
         /// <summary>Object used to calculate the output dimensions</summary>
         private DimensionsCalculator dimensionsCalculator;
 
@@ -152,6 +157,8 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.dimensionsCalculator.OnOutputSizeChanged += new EventHandler(this.DimensionsCalculator_OnOutputSizeChanged);
 
             this.Font = Settings.Default.DefaultFont;
+
+            this.dialogChooseTextZoom = new TextImageMagnificationDialog(this.Font);
 
             this.SetupWidgets();
 
@@ -2721,93 +2728,93 @@ namespace JMSoftware.AsciiGeneratorDotNet
                 return false;
             }
 
-            using (TextImageMagnificationDialog dialogChooseTextZoom = new TextImageMagnificationDialog(this.Font))
+            this.dialogChooseTextZoom.TextFont = this.Font;
+
+            this.dialogChooseTextZoom.TextColor = this.TextColor;
+
+            this.dialogChooseTextZoom.BackgroundColor = this.BackgroundColor;
+
+            this.dialogChooseTextZoom.InputSize =
+                FontFunctions.MeasureText(this.textViewer.Text, this.Font);
+
+            if (this.dialogChooseTextZoom.ShowDialog() != DialogResult.OK)
             {
-                dialogChooseTextZoom.TextColor = this.TextColor;
+                return false;
+            }
 
-                dialogChooseTextZoom.BackgroundColor = this.BackgroundColor;
+            this.dialogSaveImage.FileName = file;
 
-                dialogChooseTextZoom.InputSize =
-                    FontFunctions.MeasureText(this.textViewer.Text, this.Font);
+            if (this.dialogSaveImage.ShowDialog() != DialogResult.OK)
+            {
+                return false;
+            }
 
-                if (dialogChooseTextZoom.ShowDialog() != DialogResult.OK)
-                {
-                    return false;
-                }
+            string filename = this.dialogSaveImage.FileName;
 
-                this.dialogSaveImage.FileName = file;
+            string extension = Path.GetExtension(filename).ToLower(Settings.Default.Culture);
 
-                if (this.dialogSaveImage.ShowDialog() != DialogResult.OK)
-                {
-                    return false;
-                }
-
-                string filename = this.dialogSaveImage.FileName;
-                string extension = Path.GetExtension(filename).ToLower(Settings.Default.Culture);
-
-                switch (this.dialogSaveImage.FilterIndex)
-                {
-                    case 1:
-                        if (extension != ".bmp" && extension != ".rle" && extension != ".dib")
-                        {
-                            filename += ".bmp";
-                        }
-
-                        break;
-
-                    case 2:
-                        if (extension != ".gif")
-                        {
-                            filename += ".gif";
-                        }
-
-                        break;
-
-                    case 3:
-                        if (extension != ".jpg" && extension != ".jpeg" && extension != ".jpe")
-                        {
-                            filename += ".jpg";
-                        }
-
-                        break;
-
-                    case 4:
-                        if (extension != ".png")
-                        {
-                            filename += ".png";
-                        }
-
-                        break;
-
-                    case 5:
-                        if (extension != ".tif")
-                        {
-                            filename += ".tif";
-                        }
-
-                        break;
-                }
-
-                if (useColour)
-                {
-                    using (Image image = this.CreateColourImage(dialogChooseTextZoom.Value))
+            switch (this.dialogSaveImage.FilterIndex)
+            {
+                case 1:
+                    if (extension != ".bmp" && extension != ".rle" && extension != ".dib")
                     {
-                        image.Save(filename, ImageFunctions.GetImageFormat(extension));
+                        filename += ".bmp";
                     }
 
-                    this.imageSaved = true;
-                }
-                else
+                    break;
+
+                case 2:
+                    if (extension != ".gif")
+                    {
+                        filename += ".gif";
+                    }
+
+                    break;
+
+                case 3:
+                    if (extension != ".jpg" && extension != ".jpeg" && extension != ".jpe")
+                    {
+                        filename += ".jpg";
+                    }
+
+                    break;
+
+                case 4:
+                    if (extension != ".png")
+                    {
+                        filename += ".png";
+                    }
+
+                    break;
+
+                case 5:
+                    if (extension != ".tif")
+                    {
+                        filename += ".tif";
+                    }
+
+                    break;
+            }
+
+            if (useColour)
+            {
+                using (Image image = this.CreateColourImage(this.dialogChooseTextZoom.Value))
                 {
-                    this.imageSaved = TextToImage.Save(
-                                        this.textViewer.Text,
-                                        filename,
-                                        this.Font,
-                                        dialogChooseTextZoom.TextColor,
-                                        dialogChooseTextZoom.BackgroundColor,
-                                        dialogChooseTextZoom.Value,
-                                        true);
+                    image.Save(filename, ImageFunctions.GetImageFormat(extension));
                 }
+
+                this.imageSaved = true;
+            }
+            else
+            {
+                this.imageSaved = TextToImage.Save(
+                                    this.textViewer.Text,
+                                    filename,
+                                    this.Font,
+                                    this.dialogChooseTextZoom.TextColor,
+                                    this.dialogChooseTextZoom.BackgroundColor,
+                                    this.dialogChooseTextZoom.Value,
+                                    true);
             }
 
             if (!this.imageSaved)
