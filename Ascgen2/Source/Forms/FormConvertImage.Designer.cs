@@ -421,9 +421,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.pnlMain = new System.Windows.Forms.Panel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tableLayoutPanelText = new System.Windows.Forms.TableLayoutPanel();
-            this.rtbxConvertedText = new JMSoftware.CustomControl.TextViewerRichTextBox();
             this.buttonToggleImage = new System.Windows.Forms.Button();
-            this.pbxMain = new JMSoftware.CustomControl.JMSelectablePictureBox();
             this.tstripOutputSize = new System.Windows.Forms.ToolStrip();
             this.lblOutputSize = new System.Windows.Forms.ToolStripLabel();
             this.tbxWidth = new System.Windows.Forms.ToolStripTextBox();
@@ -453,6 +451,8 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.printDocument = new System.Drawing.Printing.PrintDocument();
             this.printDialog = new System.Windows.Forms.PrintDialog();
             this.printPreviewDialog = new System.Windows.Forms.PrintPreviewDialog();
+            this.rtbxConvertedText = new JMSoftware.CustomControl.TextViewerRichTextBox();
+            this.pbxMain = new JMSoftware.CustomControl.JMSelectablePictureBox();
             this.contextMenuImage.SuspendLayout();
             this.contextMenuText.SuspendLayout();
             this.mainMenu1.SuspendLayout();
@@ -1337,7 +1337,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlMain.Location = new System.Drawing.Point(0, 0);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(742, 490);
+            this.pnlMain.Size = new System.Drawing.Size(742, 465);
             this.pnlMain.TabIndex = 1;
             this.pnlMain.Resize += new System.EventHandler(this.PnlMain_Resize);
             // 
@@ -1359,7 +1359,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.splitContainer1.Panel2.AutoScroll = true;
             this.splitContainer1.Panel2.Controls.Add(this.pbxMain);
             this.splitContainer1.Panel2MinSize = 100;
-            this.splitContainer1.Size = new System.Drawing.Size(742, 490);
+            this.splitContainer1.Size = new System.Drawing.Size(742, 465);
             this.splitContainer1.SplitterDistance = 515;
             this.splitContainer1.TabIndex = 1;
             // 
@@ -1377,29 +1377,8 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.tableLayoutPanelText.RowCount = 2;
             this.tableLayoutPanelText.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanelText.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanelText.Size = new System.Drawing.Size(515, 490);
+            this.tableLayoutPanelText.Size = new System.Drawing.Size(515, 465);
             this.tableLayoutPanelText.TabIndex = 1;
-            // 
-            // rtbxConvertedText
-            // 
-            this.rtbxConvertedText.BackColor = System.Drawing.Color.White;
-            this.rtbxConvertedText.BackgroundColor = System.Drawing.Color.White;
-            this.rtbxConvertedText.ContextMenuStrip = this.contextMenuText;
-            this.rtbxConvertedText.DetectUrls = false;
-            this.rtbxConvertedText.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rtbxConvertedText.EnableAutoDragDrop = true;
-            this.rtbxConvertedText.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.rtbxConvertedText.Location = new System.Drawing.Point(0, 0);
-            this.rtbxConvertedText.Margin = new System.Windows.Forms.Padding(0);
-            this.rtbxConvertedText.Name = "rtbxConvertedText";
-            this.rtbxConvertedText.ReadOnly = true;
-            this.rtbxConvertedText.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth;
-            this.rtbxConvertedText.ShowSelectionMargin = true;
-            this.rtbxConvertedText.Size = new System.Drawing.Size(497, 490);
-            this.rtbxConvertedText.TabIndex = 0;
-            this.rtbxConvertedText.Text = "";
-            this.rtbxConvertedText.TextColor = System.Drawing.SystemColors.WindowText;
-            this.rtbxConvertedText.WordWrap = false;
             // 
             // buttonToggleImage
             // 
@@ -1410,38 +1389,12 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.buttonToggleImage.Location = new System.Drawing.Point(497, 0);
             this.buttonToggleImage.Margin = new System.Windows.Forms.Padding(0);
             this.buttonToggleImage.Name = "buttonToggleImage";
-            this.buttonToggleImage.Size = new System.Drawing.Size(18, 490);
+            this.buttonToggleImage.Size = new System.Drawing.Size(18, 465);
             this.buttonToggleImage.TabIndex = 1;
             this.buttonToggleImage.TabStop = false;
             this.buttonToggleImage.Text = ">";
             this.buttonToggleImage.UseVisualStyleBackColor = false;
             this.buttonToggleImage.Click += new System.EventHandler(this.ButtonToggleImage_Click);
-            // 
-            // pbxMain
-            // 
-            this.pbxMain.AllowDrop = true;
-            this.pbxMain.BackColor = System.Drawing.SystemColors.Control;
-            this.pbxMain.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pbxMain.ContextMenuStrip = this.contextMenuImage;
-            this.pbxMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pbxMain.DrawingImage = true;
-            this.pbxMain.FillSelectionRectangle = true;
-            this.pbxMain.ImageLocation = new System.Drawing.Rectangle(0, 0, 0, 0);
-            this.pbxMain.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
-            this.pbxMain.Location = new System.Drawing.Point(0, 0);
-            this.pbxMain.Name = "pbxMain";
-            this.pbxMain.SelectedArea = new System.Drawing.Rectangle(0, 0, 0, 0);
-            this.pbxMain.SelectionBorderColor = System.Drawing.Color.DarkBlue;
-            this.pbxMain.SelectionFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(173)))), ((int)(((byte)(216)))), ((int)(((byte)(230)))));
-            this.pbxMain.SelectionLocked = false;
-            this.pbxMain.Size = new System.Drawing.Size(223, 490);
-            this.pbxMain.SizeMode = JMSoftware.CustomControl.JMPictureBox.JMPictureBoxSizeMode.FitCenter;
-            this.pbxMain.TabIndex = 0;
-            this.pbxMain.SelectionChanged += new System.EventHandler(this.PbxMain_SelectionChanged);
-            this.pbxMain.SelectionChanging += new System.EventHandler(this.PbxMain_SelectionChanging);
-            this.pbxMain.DragDrop += new System.Windows.Forms.DragEventHandler(this.PbxMain_DragDrop);
-            this.pbxMain.DragOver += new System.Windows.Forms.DragEventHandler(this.PbxMain_DragOver);
-            this.pbxMain.DoubleClick += new System.EventHandler(this.PbxMain_DoubleClick);
             // 
             // tstripOutputSize
             // 
@@ -1504,7 +1457,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             // 
             this.toolStripContainer1.ContentPanel.AutoScroll = true;
             this.toolStripContainer1.ContentPanel.Controls.Add(this.pnlMain);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(742, 490);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(742, 465);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer1.LeftToolStripPanelVisible = false;
             this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
@@ -1520,8 +1473,8 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.tstripOutputSize);
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.tstripAlterInputImage);
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.tstripButtons);
-            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.tstripRamp);
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.tstripCharacters);
+            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.tstripRamp);
             // 
             // tstripAlterInputImage
             // 
@@ -1580,10 +1533,10 @@ namespace JMSoftware.AsciiGeneratorDotNet
             // 
             this.tstripButtons.Dock = System.Windows.Forms.DockStyle.None;
             this.tstripButtons.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsbColourPreview,
             this.tsbFont,
             this.tsbBlackOnWhite,
-            this.tsbFullScreen});
+            this.tsbFullScreen,
+            this.tsbColourPreview});
             this.tstripButtons.Location = new System.Drawing.Point(3, 74);
             this.tstripButtons.Name = "tstripButtons";
             this.tstripButtons.Size = new System.Drawing.Size(108, 25);
@@ -1601,8 +1554,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             // 
             // tsbFont
             // 
-            this.tsbFont.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbFont.Image = global::AscGenDotNet.Properties.Resources.font;
+            this.tsbFont.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.tsbFont.Margin = new System.Windows.Forms.Padding(0, 1, 2, 2);
             this.tsbFont.Name = "tsbFont";
             this.tsbFont.Size = new System.Drawing.Size(23, 22);
@@ -1641,7 +1593,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.lblRamp,
             this.cmbRamp,
             this.chkGenerate});
-            this.tstripRamp.Location = new System.Drawing.Point(214, 99);
+            this.tstripRamp.Location = new System.Drawing.Point(3, 124);
             this.tstripRamp.Name = "tstripRamp";
             this.tstripRamp.Size = new System.Drawing.Size(263, 25);
             this.tstripRamp.TabIndex = 2;
@@ -1720,6 +1672,53 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.printPreviewDialog.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog.Icon")));
             this.printPreviewDialog.Name = "printPreviewDialog";
             this.printPreviewDialog.Visible = false;
+            // 
+            // rtbxConvertedText
+            // 
+            this.rtbxConvertedText.BackColor = System.Drawing.Color.White;
+            this.rtbxConvertedText.BackgroundColor = System.Drawing.Color.White;
+            this.rtbxConvertedText.ContextMenuStrip = this.contextMenuText;
+            this.rtbxConvertedText.DetectUrls = false;
+            this.rtbxConvertedText.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rtbxConvertedText.EnableAutoDragDrop = true;
+            this.rtbxConvertedText.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.rtbxConvertedText.Location = new System.Drawing.Point(0, 0);
+            this.rtbxConvertedText.Margin = new System.Windows.Forms.Padding(0);
+            this.rtbxConvertedText.Name = "rtbxConvertedText";
+            this.rtbxConvertedText.ReadOnly = true;
+            this.rtbxConvertedText.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth;
+            this.rtbxConvertedText.ShowSelectionMargin = true;
+            this.rtbxConvertedText.Size = new System.Drawing.Size(497, 465);
+            this.rtbxConvertedText.TabIndex = 0;
+            this.rtbxConvertedText.Text = "";
+            this.rtbxConvertedText.TextColor = System.Drawing.SystemColors.WindowText;
+            this.rtbxConvertedText.WordWrap = false;
+            // 
+            // pbxMain
+            // 
+            this.pbxMain.AllowDrop = true;
+            this.pbxMain.BackColor = System.Drawing.SystemColors.Control;
+            this.pbxMain.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pbxMain.ContextMenuStrip = this.contextMenuImage;
+            this.pbxMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pbxMain.DrawingImage = true;
+            this.pbxMain.FillSelectionRectangle = true;
+            this.pbxMain.ImageLocation = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.pbxMain.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
+            this.pbxMain.Location = new System.Drawing.Point(0, 0);
+            this.pbxMain.Name = "pbxMain";
+            this.pbxMain.SelectedArea = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.pbxMain.SelectionBorderColor = System.Drawing.Color.DarkBlue;
+            this.pbxMain.SelectionFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(173)))), ((int)(((byte)(216)))), ((int)(((byte)(230)))));
+            this.pbxMain.SelectionLocked = false;
+            this.pbxMain.Size = new System.Drawing.Size(223, 465);
+            this.pbxMain.SizeMode = JMSoftware.CustomControl.JMPictureBox.JMPictureBoxSizeMode.FitCenter;
+            this.pbxMain.TabIndex = 0;
+            this.pbxMain.SelectionChanged += new System.EventHandler(this.PbxMain_SelectionChanged);
+            this.pbxMain.SelectionChanging += new System.EventHandler(this.PbxMain_SelectionChanging);
+            this.pbxMain.DragDrop += new System.Windows.Forms.DragEventHandler(this.PbxMain_DragDrop);
+            this.pbxMain.DragOver += new System.Windows.Forms.DragEventHandler(this.PbxMain_DragOver);
+            this.pbxMain.DoubleClick += new System.EventHandler(this.PbxMain_DoubleClick);
             // 
             // FormConvertImage
             // 
