@@ -191,7 +191,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
             // 
             this.AcceptButton = this.btnOk;
             this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
-            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.CancelButton = this.btnOk;
             this.ClientSize = new System.Drawing.Size(384, 222);
             this.Controls.Add(this.lblTitle);
