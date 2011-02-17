@@ -28,6 +28,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
     using System;
     using System.Windows.Forms;
     using JMSoftware.CustomControl;
+    using JMSoftware.Controls;
 
     /// <summary>
     /// Main form for the program
@@ -451,8 +452,8 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.printDocument = new System.Drawing.Printing.PrintDocument();
             this.printDialog = new System.Windows.Forms.PrintDialog();
             this.printPreviewDialog = new System.Windows.Forms.PrintPreviewDialog();
-            this.rtbxConvertedText = new JMSoftware.CustomControl.TextViewerRichTextBox();
-            this.pbxMain = new JMSoftware.CustomControl.JMSelectablePictureBox();
+            this.rtbxConvertedText = new JMSoftware.Controls.TextViewerRichTextBox();
+            this.pbxMain = new JMSoftware.Controls.JMSelectablePictureBox();
             this.contextMenuImage.SuspendLayout();
             this.contextMenuText.SuspendLayout();
             this.mainMenu1.SuspendLayout();
@@ -1712,7 +1713,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.pbxMain.SelectionFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(173)))), ((int)(((byte)(216)))), ((int)(((byte)(230)))));
             this.pbxMain.SelectionLocked = false;
             this.pbxMain.Size = new System.Drawing.Size(223, 465);
-            this.pbxMain.SizeMode = JMSoftware.CustomControl.JMPictureBox.JMPictureBoxSizeMode.FitCenter;
+            this.pbxMain.SizeMode = JMSoftware.Controls.JMPictureBox.JMPictureBoxSizeMode.FitCenter;
             this.pbxMain.TabIndex = 0;
             this.pbxMain.SelectionChanged += new System.EventHandler(this.PbxMain_SelectionChanged);
             this.pbxMain.SelectionChanging += new System.EventHandler(this.PbxMain_SelectionChanging);

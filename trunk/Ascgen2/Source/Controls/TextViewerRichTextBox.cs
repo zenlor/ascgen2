@@ -23,7 +23,7 @@
 //    along with this program.  If not, see http://www.gnu.org/licenses/.
 // </license>
 //---------------------------------------------------------------------------------------
-namespace JMSoftware.CustomControl
+namespace JMSoftware.Controls
 {
     using System.Drawing;
     using System.Windows.Forms;
