@@ -117,10 +117,6 @@
     <EmbeddedResource Include="Resources\Localization\Localization.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Source\Controls\FileListbox.resx">
-      <DependentUpon>FileListbox.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="Source\Controls\JMBrightnessContrast.resx">
       <DependentUpon>JMBrightnessContrast.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -131,14 +127,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Source\Controls\Levels\JMLevels.resx">
       <DependentUpon>JMLevels.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Source\Controls\JMPictureBox.resx">
-      <DependentUpon>JMPictureBox.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Source\Controls\JMSelectablePictureBox.resx">
-      <DependentUpon>JMSelectablePictureBox.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Source\Forms\AboutDialog.resx">
@@ -229,6 +217,9 @@
     <Compile Include="Source\AsciiConversion\Settings\BatchTextProcessingSettings.cs" />
     <Compile Include="Source\AsciiConversion\Settings\LevelsSettings.cs" />
     <Compile Include="Source\AsciiConversion\Settings\LevelsSettingsConverter.cs" />
+    <Compile Include="Source\Controls\TextViewerRichTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Source\Forms\FormBatchConversion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -253,9 +244,6 @@
     <Compile Include="Source\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Source\Controls\FileListbox.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Source\Controls\JMBrightnessContrast.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -271,20 +259,11 @@
     <Compile Include="Source\Controls\Levels\JMLevels.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Source\Controls\JMPictureBox.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Source\Controls\JMSelectablePictureBox.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Include="Source\Controls\Levels\JMLevelsDisplay.cs" />
     <Compile Include="Source\Controls\Levels\JMLevelsGraph.cs" />
     <Compile Include="Source\Controls\Levels\JMLevelsGraphArea.cs" />
     <Compile Include="Source\Controls\Levels\JMLevelsSlider.cs" />
     <Compile Include="Source\Controls\Levels\JMLevelsSliderContainer.cs" />
-    <Compile Include="Source\Controls\TextViewerRichTextBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Source\Forms\AboutDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -345,9 +324,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Source\Functions\ImageFunctions.cs" />
-    <Compile Include="Source\Functions\Matrices.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Source\Functions\Resource.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -487,6 +463,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\JMSoftware.Controls\JMSoftware.Controls.csproj">
+      <Project>{69E1D695-5C48-47A4-B8A7-01C43FE4BB40}</Project>
+      <Name>JMSoftware.Controls</Name>
+    </ProjectReference>
     <ProjectReference Include="..\JMSoftware.TextHelper\JMSoftware.TextHelper.csproj">
       <Project>{11F3DCBE-CC36-4761-AF00-B8FC87AFB443}</Project>
       <Name>JMSoftware.TextHelper</Name>

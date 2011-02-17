@@ -1,8 +1,13 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ascgen2", "Ascgen2\Ascgen2.csproj", "{770F6D41-B085-4E51-935E-11C09E28F156}"
+	ProjectSection(ProjectDependencies) = postProject
+		{69E1D695-5C48-47A4-B8A7-01C43FE4BB40} = {69E1D695-5C48-47A4-B8A7-01C43FE4BB40}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JMSoftware.TextHelper", "JMSoftware.TextHelper\JMSoftware.TextHelper.csproj", "{11F3DCBE-CC36-4761-AF00-B8FC87AFB443}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JMSoftware.Controls", "JMSoftware.Controls\JMSoftware.Controls.csproj", "{69E1D695-5C48-47A4-B8A7-01C43FE4BB40}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,6 +23,10 @@ Global
 		{11F3DCBE-CC36-4761-AF00-B8FC87AFB443}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{11F3DCBE-CC36-4761-AF00-B8FC87AFB443}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{11F3DCBE-CC36-4761-AF00-B8FC87AFB443}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69E1D695-5C48-47A4-B8A7-01C43FE4BB40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69E1D695-5C48-47A4-B8A7-01C43FE4BB40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69E1D695-5C48-47A4-B8A7-01C43FE4BB40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69E1D695-5C48-47A4-B8A7-01C43FE4BB40}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -37,7 +37,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        private JMSoftware.CustomControl.JMPictureBox jmPictureBox1;
+        private JMSoftware.Controls.JMPictureBox jmPictureBox1;
 
         private System.Windows.Forms.Panel pnlImage;
 
@@ -70,7 +70,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
         private void InitializeComponent()
         {
             this.pnlImage = new System.Windows.Forms.Panel();
-            this.jmPictureBox1 = new JMSoftware.CustomControl.JMPictureBox();
+            this.jmPictureBox1 = new JMSoftware.Controls.JMPictureBox();
             this.pnlImage.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -95,7 +95,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.jmPictureBox1.MinimumSize = new System.Drawing.Size(50, 50);
             this.jmPictureBox1.Name = "jmPictureBox1";
             this.jmPictureBox1.Size = new System.Drawing.Size(313, 241);
-            this.jmPictureBox1.SizeMode = JMSoftware.CustomControl.JMPictureBox.JMPictureBoxSizeMode.Stretch;
+            this.jmPictureBox1.SizeMode = JMSoftware.Controls.JMPictureBox.JMPictureBoxSizeMode.Stretch;
             this.jmPictureBox1.TabIndex = 0;
             // 
             // FormColourPreview
