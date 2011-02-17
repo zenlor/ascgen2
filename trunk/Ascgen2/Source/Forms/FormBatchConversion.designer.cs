@@ -41,7 +41,7 @@
             this.buttonRemoveImage = new System.Windows.Forms.Button();
             this.buttonAddImage = new System.Windows.Forms.Button();
             this.buttonAddFolder = new System.Windows.Forms.Button();
-            this.fileListbox1 = new JMSoftware.Controls.FileListbox();
+            this.fileListbox1 = new JMSoftware.Controls.FileListBox();
             this.contextMenuStripFileList = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.addFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addDirectoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -616,7 +616,7 @@
         private System.Windows.Forms.Button buttonAddImage;
         private System.Windows.Forms.Button buttonAddFolder;
         private System.Windows.Forms.Button buttonRemoveImage;
-        private JMSoftware.Controls.FileListbox fileListbox1;
+        private JMSoftware.Controls.FileListBox fileListbox1;
         private System.Windows.Forms.OpenFileDialog openFileDialogInput;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialogInput;
         private System.Windows.Forms.ToolTip toolTip1;

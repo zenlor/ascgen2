@@ -1,5 +1,5 @@
 //---------------------------------------------------------------------------------------
-// <copyright file="FileListbox.cs" company="Jonathan Mathews Software">
+// <copyright file="FileListBox.cs" company="Jonathan Mathews Software">
 //     ASCII Generator dotNET - Image to ASCII Art Conversion Program
 //     Copyright (C) 2009 Jonathan Mathews Software. All rights reserved.
 // </copyright>
@@ -34,7 +34,7 @@ namespace JMSoftware.Controls
     /// <summary>
     /// Listbox specialized for displaying filenames
     /// </summary>
-    public class FileListbox : ListBox
+    public class FileListBox : ListBox
     {
         #region Fields
 
@@ -53,9 +53,9 @@ namespace JMSoftware.Controls
         #region Constructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FileListbox"/> class.
+        /// Initializes a new instance of the <see cref="FileListBox"/> class.
         /// </summary>
-        public FileListbox()
+        public FileListBox()
         {
             this.DrawMode = DrawMode.OwnerDrawFixed;
         }
