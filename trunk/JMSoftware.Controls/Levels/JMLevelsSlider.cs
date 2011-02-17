@@ -338,7 +338,11 @@ namespace JMSoftware.Controls.Levels
                             new Point(rect.X + (rect.Width / 2), rect.Y)
                         };
 
-            e.Graphics.FillPolygon(new SolidBrush(Color), points);
+            using (SolidBrush brush = new SolidBrush(Color))
+            {
+                e.Graphics.FillPolygon(brush, points);
+            }
+
             e.Graphics.DrawLines(this.Enabled ? SystemPens.ControlText : SystemPens.GrayText, points);
         }
 

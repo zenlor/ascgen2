@@ -130,16 +130,17 @@ namespace JMSoftware.Controls.Levels
                 return;
             }
 
-            Pen pen = new Pen(this.GraphColor);
-
-            for (int x = 0; x < this.Array.Length; x++)
+            using (Pen pen = new Pen(this.GraphColor))
             {
-                e.Graphics.DrawLine(
-                                pen,
-                                x + this.Location.X,
-                                this.Location.Y + this.Size.Height,
-                                x + this.Location.X,
-                                this.Location.Y + this.Size.Height - this.Array[x]);
+                for (int x = 0; x < this.Array.Length; x++)
+                {
+                    e.Graphics.DrawLine(
+                                    pen,
+                                    x + this.Location.X,
+                                    this.Location.Y + this.Size.Height,
+                                    x + this.Location.X,
+                                    this.Location.Y + this.Size.Height - this.Array[x]);
+                }
             }
         }
 

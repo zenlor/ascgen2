@@ -381,12 +381,12 @@ namespace JMSoftware.Controls
         /// <param name="type">The type of rotation/flip.</param>
         public virtual void RotateImage(RotateFlipType type)
         {
-            // create a new image
-            Image newImage = new Bitmap(Image);
+            using (Image newImage = new Bitmap(Image))
+            {
+                newImage.RotateFlip(type);
 
-            newImage.RotateFlip(type);
-
-            this.Image = newImage;
+                this.Image = new Bitmap(newImage);
+            }
         }
 
         #endregion Public methods
@@ -412,7 +412,10 @@ namespace JMSoftware.Controls
         {
             if (!this.ImageLocation.Contains(e.ClipRectangle))
             {
-                e.Graphics.FillRectangle(new SolidBrush(this.BackColor), e.ClipRectangle);
+                using (SolidBrush brush = new SolidBrush(this.BackColor))
+                {
+                    e.Graphics.FillRectangle(brush, e.ClipRectangle);
+                }
             }
 
             if (!this.ImageIsLoaded)

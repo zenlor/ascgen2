@@ -491,34 +491,38 @@ namespace JMSoftware.Controls
 
             if (this.fillSelectionRectangle)
             {
-                e.Graphics.FillRectangle(new SolidBrush(this.selectionFillColor), rectangle);
+                using (SolidBrush brush = new SolidBrush(this.selectionFillColor))
+                {
+                    e.Graphics.FillRectangle(brush, rectangle);
+                }
             }
 
-            e.Graphics.DrawRectangle(new Pen(this.selectionBorderColor, 1), rectangle);
-
-            Pen borderPen = new Pen(this.selectionBorderColor, 1);
-
-            if (this.movingRectangle)
+            using (Pen borderPen = new Pen(this.selectionBorderColor, 1))
             {
-                // Draw the "+" in the center of the selected area
-                int left = (rectangle.Width / 2) + rectangle.Left;
-                int top = (rectangle.Height / 2) + rectangle.Top;
+                e.Graphics.DrawRectangle(borderPen, rectangle);
 
-                e.Graphics.DrawLine(borderPen, left - 2 - (this.ImageIsUpscaled ? 1 : 0), top, left + 2, top);
-                e.Graphics.DrawLine(borderPen, left, top - 2 - (this.ImageIsUpscaled ? 1 : 0), left, top + 2);
+                if (this.movingRectangle)
+                {
+                    // Draw the "+" in the center of the selected area
+                    int left = (rectangle.Width / 2) + rectangle.Left;
+                    int top = (rectangle.Height / 2) + rectangle.Top;
 
-                return;
-            }
+                    e.Graphics.DrawLine(borderPen, left - 2 - (this.ImageIsUpscaled ? 1 : 0), top, left + 2, top);
+                    e.Graphics.DrawLine(borderPen, left, top - 2 - (this.ImageIsUpscaled ? 1 : 0), left, top + 2);
 
-            if (this.SelectionLocked)
-            {
-                rectangle.Inflate(-1, -1);
-                e.Graphics.DrawRectangle(new Pen(Color.White, 1), rectangle);
-            }
-            else
-            {
-                e.Graphics.FillRectangles(Brushes.White, this.modifiers);
-                e.Graphics.DrawRectangles(borderPen, this.modifiers);
+                    return;
+                }
+
+                if (this.SelectionLocked)
+                {
+                    rectangle.Inflate(-1, -1);
+                    e.Graphics.DrawRectangle(Pens.White, rectangle);
+                }
+                else
+                {
+                    e.Graphics.FillRectangles(Brushes.White, this.modifiers);
+                    e.Graphics.DrawRectangles(borderPen, this.modifiers);
+                }
             }
         }
 
