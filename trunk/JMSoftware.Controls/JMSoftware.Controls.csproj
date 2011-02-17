@@ -47,6 +47,14 @@
     <Compile Include="JMSelectablePictureBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Levels\JMLevels.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Levels\JMLevelsDisplay.cs" />
+    <Compile Include="Levels\JMLevelsGraph.cs" />
+    <Compile Include="Levels\JMLevelsGraphArea.cs" />
+    <Compile Include="Levels\JMLevelsSlider.cs" />
+    <Compile Include="Levels\JMLevelsSliderContainer.cs" />
     <Compile Include="Matrices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -61,6 +69,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="JMSelectablePictureBox.resx">
       <DependentUpon>JMSelectablePictureBox.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Levels\JMLevels.resx">
+      <DependentUpon>JMLevels.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>

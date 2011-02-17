@@ -23,7 +23,7 @@
 //    along with this program.  If not, see http://www.gnu.org/licenses/.
 // </license>
 //---------------------------------------------------------------------------------------
-namespace JMSoftware.CustomControl.Levels
+namespace JMSoftware.Controls.Levels
 {
     using System.Drawing;
     using System.Windows.Forms;
