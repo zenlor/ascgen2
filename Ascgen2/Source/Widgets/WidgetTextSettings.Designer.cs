@@ -60,7 +60,7 @@ namespace JMSoftware.Widgets
 
         private JMSoftware.Controls.JMDithering jmDithering1;
 
-        private JMSoftware.CustomControl.Levels.JMLevels jmLevels1;
+        private JMSoftware.Controls.Levels.JMLevels jmLevels1;
 
         private OpenFileDialog openFileDialog1;
 
@@ -83,7 +83,7 @@ namespace JMSoftware.Widgets
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.jmLevels1 = new JMSoftware.CustomControl.Levels.JMLevels();
+            this.jmLevels1 = new JMSoftware.Controls.Levels.JMLevels();
             this.cmenuLevels = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.cmenuLevelsReset = new System.Windows.Forms.ToolStripMenuItem();
             this.cmenuSep1 = new System.Windows.Forms.ToolStripSeparator();
@@ -126,7 +126,7 @@ namespace JMSoftware.Widgets
             this.jmLevels1.Suspended = false;
             this.jmLevels1.TabIndex = 0;
             this.jmLevels1.TopMargin = 5;
-            this.jmLevels1.ValueChanged += new JMSoftware.CustomControl.Levels.ValueChangedEventHandler(this.JmLevels1_ValueChanged);
+            this.jmLevels1.ValueChanged += new JMSoftware.Controls.Levels.ValueChangedEventHandler(this.JmLevels1_ValueChanged);
             // 
             // cmenuLevels
             // 

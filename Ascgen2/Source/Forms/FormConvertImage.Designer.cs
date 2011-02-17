@@ -27,7 +27,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
 {
     using System;
     using System.Windows.Forms;
-    using JMSoftware.CustomControl;
     using JMSoftware.Controls;
 
     /// <summary>
