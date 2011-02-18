@@ -37,17 +37,22 @@ namespace JMSoftware.AsciiConversion.Filters
         /// </summary>
         /// <param name="values">Input values</param>
         /// <returns>Output values</returns>
-        public byte[,] Apply(byte[,] values)
+        public byte[][] Apply(byte[][] values)
         {
             if (values == null)
             {
                 return null;
             }
 
-            int arrayWidth = values.GetLength(0);
-            int arrayHeight = values.GetLength(1);
+            int arrayWidth = values[0].Length;
+            int arrayHeight = values.Length;
 
-            byte[,] result = new byte[arrayWidth, arrayHeight];
+            byte[][] result = new byte[arrayHeight][];
+
+            for (int i = 0; i < arrayHeight; i++)
+            {
+                result[i] = new byte[arrayWidth];
+            }
 
             int minimum = 255, maximum = 0;
 
@@ -55,14 +60,14 @@ namespace JMSoftware.AsciiConversion.Filters
             {
                 for (int x = 0; x < arrayWidth; x++)
                 {
-                    if ((int)values[x, y] < minimum)
+                    if ((int)values[y][x] < minimum)
                     {
-                        minimum = (int)values[x, y];
+                        minimum = (int)values[y][x];
                     }
 
-                    if ((int)values[x, y] > maximum)
+                    if ((int)values[y][x] > maximum)
                     {
-                        maximum = (int)values[x, y];
+                        maximum = (int)values[y][x];
                     }
                 }
             }
@@ -85,7 +90,7 @@ namespace JMSoftware.AsciiConversion.Filters
             {
                 for (int x = 0; x < arrayWidth; x++)
                 {
-                    result[x, y] = valueLookup[values[x, y]];
+                    result[y][x] = valueLookup[values[y][x]];
                 }
             }
 

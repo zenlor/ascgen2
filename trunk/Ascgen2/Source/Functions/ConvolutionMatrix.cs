@@ -89,17 +89,22 @@ namespace JMSoftware
         /// </summary>
         /// <param name="values">Values to be processed</param>
         /// <returns>Array containing the altered values</returns>
-        public byte[,] Apply(byte[,] values)
+        public byte[][] Apply(byte[][] values)
         {
             if (values == null)
             {
                 return null;
             }
 
-            int arrayWidth = values.GetLength(0);
-            int arrayHeight = values.GetLength(1);
+            int arrayWidth = values[0].Length;
+            int arrayHeight = values.Length;
 
-            byte[,] result = new byte[arrayWidth, arrayHeight];
+            byte[][] result = new byte[arrayHeight][];
+
+            for (int i = 0; i < arrayHeight; i++)
+            {
+                result[i] = new byte[arrayWidth];
+            }
 
             int pixel;
 
@@ -121,7 +126,7 @@ namespace JMSoftware
                         for (col = -1; col < 2; col++)
                         {
                             // multiple the matrix value by the corresponding pixel centered around x,y
-                            pixel += this.matrix[pos++] * values[x + col, y + row];
+                            pixel += this.matrix[pos++] * values[y + row][x + col];
                         }
                     }
 
@@ -130,15 +135,15 @@ namespace JMSoftware
                     // if pixel is between 0 to 255
                     if ((pixel & 0xff) == pixel)
                     {
-                        result[x, y] = (byte)pixel;
+                        result[y][x] = (byte)pixel;
                     }
                     else if (pixel > 255)
                     {
-                        result[x, y] = 255;
+                        result[y][x] = 255;
                     }
                     else
                     {
-                        result[x, y] = 0;
+                        result[y][x] = 0;
                     }
                 }
             }
@@ -168,8 +173,8 @@ namespace JMSoftware
                             {
                                 // limit x, y to be between 0 and max
                                 pixel += this.matrix[pos++] *
-                                    values[x + col > maximumWidth ? maximumWidth : (x + col < 0 ? 0 : x + col),
-                                            y + row > maximumHeight ? maximumHeight : (y + row < 0 ? 0 : y + row)];
+                                    values[y + row > maximumHeight ? maximumHeight : (y + row < 0 ? 0 : y + row)]
+                                          [x + col > maximumWidth ? maximumWidth : (x + col < 0 ? 0 : x + col)];
                             }
                         }
 
@@ -178,15 +183,15 @@ namespace JMSoftware
                         // if pixel is between 0 to 255
                         if ((pixel & 0xff) == pixel)
                         {
-                            result[x, y] = (byte)pixel;
+                            result[y][x] = (byte)pixel;
                         }
                         else if (pixel > 255)
                         {
-                            result[x, y] = 255;
+                            result[y][x] = 255;
                         }
                         else
                         {
-                            result[x, y] = 0;
+                            result[y][x] = 0;
                         }
                     }
                 }

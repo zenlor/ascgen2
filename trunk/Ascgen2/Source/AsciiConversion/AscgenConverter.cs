@@ -88,7 +88,7 @@ namespace JMSoftware.AsciiConversion
         /// <param name="values">array of values to use</param>
         /// <param name="settings">the text settings to use for the output image</param>
         /// <returns>the converted text image</returns>
-        public static string[] Convert(byte[,] values, TextProcessingSettings settings)
+        public static string[] Convert(byte[][] values, TextProcessingSettings settings)
         {
             ArrayList filters = settings.FilterList;
 

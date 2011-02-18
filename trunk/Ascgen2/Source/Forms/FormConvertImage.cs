@@ -108,7 +108,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
         private ITextViewer textViewer;
 
         /// <summary>The original image converted into an array of bytes</summary>
-        private byte[,] values;
+        private byte[][] values;
 
         /// <summary>Handles checking for a new version</summary>
         private VersionChecker versionChecker;
@@ -3457,7 +3457,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
                 return;
             }
 
-            byte[,] values = this.values;
+            byte[][] values = this.values;
 
             if (this.Brightness != 0 || this.Contrast != 0)
             {
@@ -3481,7 +3481,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             {
                 for (int x = 0; x < this.OutputWidth; x++)
                 {
-                    levels[(int)values[x, y]]++;
+                    levels[(int)values[y][x]]++;
                 }
             }
 

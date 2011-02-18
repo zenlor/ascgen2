@@ -67,7 +67,7 @@ namespace JMSoftware.AsciiConversion.Filters
         /// </summary>
         /// <param name="values">Input values</param>
         /// <returns>Output values</returns>
-        public byte[,] Apply(byte[,] values)
+        public byte[][] Apply(byte[][] values)
         {
             if (values == null)
             {

@@ -37,7 +37,7 @@ namespace JMSoftware.AsciiConversion
         /// </summary>
         /// <param name="values">2d array of values that represent the image</param>
         /// <returns>Array of strings containing the text image</returns>
-        public abstract string[] Apply(byte[,] values);
+        public abstract string[] Apply(byte[][] values);
 
         #endregion Public methods
     }

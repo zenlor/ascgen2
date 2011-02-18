@@ -75,17 +75,22 @@ namespace JMSoftware.AsciiConversion.Filters
         /// </summary>
         /// <param name="values">Input values</param>
         /// <returns>Output values</returns>
-        public byte[,] Apply(byte[,] values)
+        public byte[][] Apply(byte[][] values)
         {
             if (values == null)
             {
                 return null;
             }
 
-            int arrayWidth = values.GetLength(0);
-            int arrayHeight = values.GetLength(1);
+            int arrayWidth = values[0].Length;
+            int arrayHeight = values.Length;
 
-            byte[,] result = new byte[arrayWidth, arrayHeight];
+            byte[][] result = new byte[arrayHeight][];
+            
+            for (int i = 0; i < arrayHeight; i++)
+			{
+                result[i] = new byte[arrayWidth];
+			}
 
             Random rand = new Random();
 
@@ -95,21 +100,21 @@ namespace JMSoftware.AsciiConversion.Filters
                 {
                     int randomValue = rand.Next(-this.DitherRandom, this.DitherRandom);
 
-                    int newValue = values[x, y] +
+                    int newValue = values[y][x] +
                         ((x + y) % 2 == 1 ? this.DitherAmount + randomValue : -this.DitherAmount - randomValue);
 
                     // limit the new value to between 0 and 255
                     if ((newValue & 255) == newValue)
                     {
-                        result[x, y] = (byte)newValue;
+                        result[y][x] = (byte)newValue;
                     }
                     else if (newValue > 255)
                     {
-                        result[x, y] = 255;
+                        result[y][x] = 255;
                     }
                     else
                     {
-                        result[x, y] = 0;
+                        result[y][x] = 0;
                     }
                 }
             }

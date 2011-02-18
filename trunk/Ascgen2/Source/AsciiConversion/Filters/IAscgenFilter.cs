@@ -37,7 +37,7 @@ namespace JMSoftware.AsciiConversion.Filters
         /// </summary>
         /// <param name="values">Input values</param>
         /// <returns>Output values</returns>
-        byte[,] Apply(byte[,] values);
+        byte[][] Apply(byte[][] values);
 
         #endregion Methods
     }

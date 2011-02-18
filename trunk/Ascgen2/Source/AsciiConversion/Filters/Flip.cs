@@ -92,7 +92,7 @@ namespace JMSoftware.AsciiConversion.Filters
         /// </summary>
         /// <param name="values">Input values</param>
         /// <returns>Output values</returns>
-        public byte[,] Apply(byte[,] values)
+        public byte[][] Apply(byte[][] values)
         {
             if (values == null)
             {
@@ -104,16 +104,21 @@ namespace JMSoftware.AsciiConversion.Filters
                 return values;
             }
 
-            int arrayWidth = values.GetLength(0);
-            int arrayHeight = values.GetLength(1);
+            int arrayWidth = values[0].Length;
+            int arrayHeight = values.Length;
 
-            byte[,] result = new byte[arrayWidth, arrayHeight];
+            byte[][] result = new byte[arrayHeight][];
+
+            for (int i = 0; i < arrayHeight; i++)
+            {
+                result[i] = new byte[arrayWidth];
+            }
 
             for (int y = 0, ypos = this.Vertical ? arrayHeight - 1 : 0; y < arrayHeight; y++, ypos += this.Vertical ? -1 : 1)
             {
                 for (int x = 0, xpos = this.Horizontal ? arrayWidth - 1 : 0; x < arrayWidth; x++, xpos += this.Horizontal ? -1 : 1)
                 {
-                    result[x, y] = values[xpos, ypos];
+                    result[y][x] = values[ypos][xpos];
                 }
             }
 

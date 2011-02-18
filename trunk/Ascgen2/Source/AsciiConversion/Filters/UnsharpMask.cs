@@ -74,42 +74,42 @@ namespace JMSoftware.AsciiConversion.Filters
         /// </summary>
         /// <param name="values">Input values</param>
         /// <returns>Output values</returns>
-        public byte[,] Apply(byte[,] values)
+        public byte[][] Apply(byte[][] values)
         {
             if (values == null)
             {
                 return null;
             }
 
-            byte[,] result = (byte[,])values.Clone();
+            byte[][] result = (byte[][])values.Clone();
 
             for (int i = 0; i < this.NumberOfBlurs; i++)
             {
                 result = this.blur.Apply(result);
             }
 
-            int arrayWidth = values.GetLength(0);
-            int arrayHeight = values.GetLength(1);
+            int arrayWidth = values[0].Length;
+            int arrayHeight = values.Length;
 
             for (int y = 0; y < arrayHeight; y++)
             {
                 for (int x = 0; x < arrayWidth; x++)
                 {
                     // subtract the blurred value from the current value * 2
-                    int newValue = values[x, y] + values[x, y] - result[x, y];
+                    int newValue = values[y][x] + values[y][x] - result[y][x];
 
                     // make sure value is between 0 and 255
                     if ((newValue & 0xff) == newValue)
                     {
-                        result[x, y] = (byte)newValue;
+                        result[y][x] = (byte)newValue;
                     }
                     else if (newValue > 255)
                     {
-                        result[x, y] = 255;
+                        result[y][x] = 255;
                     }
                     else
                     {
-                        result[x, y] = 0;
+                        result[y][x] = 0;
                     }
                 }
             }
