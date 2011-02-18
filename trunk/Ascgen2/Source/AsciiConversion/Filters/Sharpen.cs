@@ -38,13 +38,13 @@ namespace JMSoftware.AsciiConversion.Filters
         public Sharpen()
         {
             this.Matrix = new ConvolutionMatrix(
-                                            new int[3, 3]
+                                                new int[][]
                                                 {
-                                                    { 0, -2, 0 },
-                                                    { -2, 11, -2 },
-                                                    { 0, -2, 0 }
+                                                    new int[] { 0, -2, 0 },
+                                                    new int[] { -2, 11, -2 },
+                                                    new int[] { 0, -2, 0 }
                                                 },
-                                            3);
+                                                3);
         }
 
         #endregion Constructors
