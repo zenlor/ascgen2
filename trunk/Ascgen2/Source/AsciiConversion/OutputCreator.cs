@@ -66,13 +66,17 @@ namespace JMSoftware
             //--
             // Create the unique color array, and the array of int pointers
             //--
-            int[,] characterToColor = null;
+            int[][] characterToColor = new int[colors.Length][];
 
             ArrayList uniqueColors = new ArrayList();
 
             if (useColor)
             {
-                characterToColor = new int[colors[0].Length, colors.Length];
+                for (int i = 0; i < colors.Length; i++)
+                {
+                    characterToColor[i] = new int[colors[0].Length];
+                }
+
                 int colorId;
                 int previousColorId = -1;
 
@@ -86,17 +90,17 @@ namespace JMSoftware
                         {
                             if (colorId == previousColorId)
                             {
-                                characterToColor[x, y] = -1;
+                                characterToColor[y][x] = -1;
                             }
                             else
                             {
-                                previousColorId = characterToColor[x, y] = colorId;
+                                previousColorId = characterToColor[y][x] = colorId;
                             }
                         }
                         else
                         {
                             // New Color
-                            previousColorId = characterToColor[x, y] = uniqueColors.Add(colors[y][x]);
+                            previousColorId = characterToColor[y][x] = uniqueColors.Add(colors[y][x]);
                         }
                     }
                 }
@@ -206,7 +210,7 @@ namespace JMSoftware
                 {
                     for (int x = 0; x < textSettings.Width; x++)
                     {
-                        if (useColor && characterToColor[x, y] != -1)
+                        if (useColor && characterToColor[y][x] != -1)
                         {
                             if (spanIsOpen)
                             {
@@ -215,7 +219,7 @@ namespace JMSoftware
                             }
 
                             builder.Append("<span class=\"c");
-                            builder.Append(characterToColor[x, y]);
+                            builder.Append(characterToColor[y][x]);
                             builder.Append("\">");
                             spanIsOpen = true;
                         }
