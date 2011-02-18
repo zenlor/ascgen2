@@ -25,6 +25,7 @@
 //---------------------------------------------------------------------------------------
 namespace JMSoftware.Controls.Levels
 {
+    using System;
     using System.Drawing;
     using System.Windows.Forms;
 
@@ -399,7 +400,7 @@ namespace JMSoftware.Controls.Levels
 
             if (this.OnValueChanged != null)
             {
-                this.OnValueChanged();
+                this.OnValueChanged(this, new EventArgs());
             }
         }
 
@@ -418,7 +419,7 @@ namespace JMSoftware.Controls.Levels
 
             if (this.OnValueChanged != null)
             {
-                this.OnValueChanged();
+                this.OnValueChanged(this, new EventArgs());
             }
         }
 
@@ -440,7 +441,7 @@ namespace JMSoftware.Controls.Levels
 
             if (this.OnValueChanged != null)
             {
-                this.OnValueChanged();
+                this.OnValueChanged(this, new EventArgs());
             }
         }
 

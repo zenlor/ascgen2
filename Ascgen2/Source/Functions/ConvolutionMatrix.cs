@@ -56,6 +56,11 @@ namespace JMSoftware
         /// <param name="factor">Initial matrix factor</param>
         public ConvolutionMatrix(int[][] values, int factor)
         {
+            if (values == null)
+            {
+                values = new int[][] { new int[] { 0, 0, 0 }, new int[] { 0, 1, 0 }, new int[] { 0, 0, 0 } };
+            }
+
             this.matrix = new int[9];
             int pos = 0;
 

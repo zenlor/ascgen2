@@ -452,12 +452,16 @@ namespace JMSoftware.Widgets
         /// <summary>
         /// Occurs when the levels have changed
         /// </summary>
-        private void JmLevels1_ValueChanged()
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void JmLevels1_ValueChanged(object sender, EventArgs e)
         {
-            if (this.LevelsChanged != null)
+            if (this.LevelsChanged == null)
             {
-                this.LevelsChanged(this, new EventArgs());
+                return;
             }
+
+            this.LevelsChanged(sender, e);
         }
 
         /// <summary>

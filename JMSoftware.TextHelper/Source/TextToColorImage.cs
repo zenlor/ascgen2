@@ -57,7 +57,7 @@ namespace JMSoftware.AsciiConversion
         /// <returns>Image containing the coloured text</returns>
         public static Image Convert(string[] text, Font font, Color[][] textColors, Color backgroundColor, float scale)
         {
-            if (!FontFunctions.IsFixedWidth(font))
+            if (!FontFunctions.IsFixedWidth(font) || text == null)
             {
                 return null;
             }
@@ -90,12 +90,15 @@ namespace JMSoftware.AsciiConversion
 
                         Point offset = new Point(x * characterSize.Width, y * characterSize.Height);
 
-                        g.DrawString(
-                                    line[x].ToString(),
-                                    font,
-                                    new SolidBrush(textColors[y][x]),
-                                    offset,
-                                    StringFormat.GenericTypographic);
+                        using (SolidBrush brush = new SolidBrush(textColors[y][x]))
+                        {
+                            g.DrawString(
+                                        line[x].ToString(),
+                                        font,
+                                        brush,
+                                        offset,
+                                        StringFormat.GenericTypographic);
+                        }
                     }
                 }
             }

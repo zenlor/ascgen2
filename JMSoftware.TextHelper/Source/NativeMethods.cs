@@ -63,6 +63,11 @@ namespace JMSoftware
         /// <returns>true if the font has a fixed width</returns>
         public static bool IsFixedPitch(Font font)
         {
+            if (font == null)
+            {
+                return true;
+            }
+
             bool result;
 
             IntPtr fnt = font.ToHfont();
