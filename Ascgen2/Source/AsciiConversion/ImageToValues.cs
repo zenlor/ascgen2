@@ -54,7 +54,7 @@ namespace JMSoftware.AsciiConversion
         /// <param name="image">Image to convert</param>
         /// <param name="outputSize">Size of the array to be returned</param>
         /// <returns>2d array of bytes of size [OutputSize.Width, OutputSize.Height]</returns>
-        public static byte[,] Convert(Image image, Size outputSize)
+        public static byte[][] Convert(Image image, Size outputSize)
         {
             if (image == null)
             {
@@ -71,7 +71,7 @@ namespace JMSoftware.AsciiConversion
         /// <param name="outputSize">Size of the array to be returned</param>
         /// <param name="matrix">ColorMatrix to be applied to the image</param>
         /// <returns>2d array of bytes of size [OutputSize.Width, OutputSize.Height]</returns>
-        public static byte[,] Convert(Image image, Size outputSize, ColorMatrix matrix)
+        public static byte[][] Convert(Image image, Size outputSize, ColorMatrix matrix)
         {
             if (image == null || matrix == null)
             {
@@ -89,18 +89,23 @@ namespace JMSoftware.AsciiConversion
         /// <param name="matrix">ColorMatrix to be applied to the image</param>
         /// <param name="section">The part of the image to be used</param>
         /// <returns>2d array of bytes of size [OutputSize.Width, OutputSize.Height]</returns>
-        public static byte[,] Convert(Image image, Size outputSize, ColorMatrix matrix, Rectangle section)
+        public static byte[][] Convert(Image image, Size outputSize, ColorMatrix matrix, Rectangle section)
         {
             if (image == null || matrix == null)
             {
                 return null;
             }
 
-            byte[,] result;
+            byte[][] result;
 
             try
             {
-                result = new byte[outputSize.Width, outputSize.Height];
+                result = new byte[outputSize.Height][];
+
+                for (int i = 0; i < outputSize.Height; i++)
+                {
+                    result[i] = new byte[outputSize.Width];
+                }
             }
             catch (OutOfMemoryException)
             {
@@ -162,7 +167,7 @@ namespace JMSoftware.AsciiConversion
                         {
                             for (int x = 0; x < outputSize.Width; x++)
                             {
-                                result[x, y] = pointer[2];
+                                result[y][x] = pointer[2];
                                 
                                 pointer += 3;
                             }

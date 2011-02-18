@@ -165,16 +165,15 @@ namespace JMSoftware.AsciiConversion
         /// </summary>
         /// <param name="values">2d array of values that represent the image</param>
         /// <returns>Array of strings containing the text image</returns>
-        public override string[] Apply(byte[,] values)
+        public override string[] Apply(byte[][] values)
         {
             if (values == null)
             {
                 return null;
             }
 
-            int numberOfColumns = values.GetLength(0);
-
-            int numberOfRows = values.GetLength(1);
+            int numberOfColumns = values[0].Length;
+            int numberOfRows = values.Length;
 
             if (numberOfColumns < 1 || numberOfRows < 1)
             {
@@ -214,7 +213,7 @@ namespace JMSoftware.AsciiConversion
                 {
                     for (int width = 1, total = 0; width < characterWidthArraySize; width++)
                     {
-                        total += values[pixelToCharacterPosition[position + width], row];
+                        total += values[row][pixelToCharacterPosition[position + width]];
 
                         if (!this.widthHasBeenUsed[width])
                         {
