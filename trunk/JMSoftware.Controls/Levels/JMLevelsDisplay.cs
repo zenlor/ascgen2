@@ -25,6 +25,7 @@
 //---------------------------------------------------------------------------------------
 namespace JMSoftware.Controls.Levels
 {
+    using System;
     using System.Drawing;
     using System.Windows.Forms;
 
@@ -265,14 +266,16 @@ namespace JMSoftware.Controls.Levels
         /// <summary>
         /// Occurs when the sliders value has changed.
         /// </summary>
-        private void SlidersValueChanged()
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void SlidersValueChanged(object sender, EventArgs e)
         {
             if (this.OnValueChanged == null)
             {
                 return;
             }
 
-            this.OnValueChanged();
+            this.OnValueChanged(sender, e);
         }
 
         #endregion Private methods

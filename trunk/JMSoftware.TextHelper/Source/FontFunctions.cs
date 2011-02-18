@@ -113,6 +113,11 @@ namespace JMSoftware
         /// <returns>The converted array</returns>
         public static string StringArrayToString(string[] array)
         {
+            if (array == null)
+            {
+                return String.Empty;
+            }
+
             StringBuilder result = new StringBuilder();
 
             int arraySize = array.GetLength(0);

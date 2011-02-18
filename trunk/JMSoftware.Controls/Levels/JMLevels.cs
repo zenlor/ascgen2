@@ -31,7 +31,9 @@ namespace JMSoftware.Controls.Levels
     using System.Windows.Forms;
 
     /// <summary>Delegate used for ValueChanged events</summary>
-    public delegate void ValueChangedEventHandler();
+    /// <param name="sender">The sender.</param>
+    /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+    public delegate void ValueChangedEventHandler(object sender, EventArgs e);
 
     /// <summary>Delegate used for OnRefresh events</summary>
     internal delegate void RefreshEventHandler();
@@ -394,14 +396,16 @@ namespace JMSoftware.Controls.Levels
         /// <summary>
         /// Occurs when the display value has changed
         /// </summary>
-        private void DisplayValueChanged()
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void DisplayValueChanged(object sender, EventArgs e)
         {
             if (this.ValueChanged == null)
             {
                 return;
             }
 
-            this.ValueChanged();
+            this.ValueChanged(sender, e);
         }
 
         /// <summary>
