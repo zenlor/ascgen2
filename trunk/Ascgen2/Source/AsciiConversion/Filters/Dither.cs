@@ -86,11 +86,11 @@ namespace JMSoftware.AsciiConversion.Filters
             int arrayHeight = values.Length;
 
             byte[][] result = new byte[arrayHeight][];
-            
+
             for (int i = 0; i < arrayHeight; i++)
-			{
+            {
                 result[i] = new byte[arrayWidth];
-			}
+            }
 
             Random rand = new Random();
 
