@@ -55,7 +55,7 @@ namespace JMSoftware.AsciiConversion
         /// <param name="outputSize">Size of the output array</param>
         /// <param name="reduceColors">Reduce the number of colors to no more then 256?</param>
         /// <returns>An outputSize array of Colors</returns>
-        public static Color[,] Convert(Image image, Size outputSize, bool reduceColors)
+        public static Color[][] Convert(Image image, Size outputSize, bool reduceColors)
         {
             return Convert(
                         image,
@@ -72,9 +72,9 @@ namespace JMSoftware.AsciiConversion
         /// <param name="section">Section of the image to use</param>
         /// <param name="reducingColors">Reduce the number of colors to no more then 256?</param>
         /// <returns>An outputSize array of Colors</returns>
-        public static Color[,] Convert(Image image, Size outputSize, Rectangle section, bool reducingColors)
+        public static Color[][] Convert(Image image, Size outputSize, Rectangle section, bool reducingColors)
         {
-            Color[,] outputArray;
+            Color[][] outputArray;
 
             // create the resized and cropped image
             using (Bitmap resizedImage = new Bitmap(outputSize.Width, outputSize.Height))
@@ -136,13 +136,18 @@ namespace JMSoftware.AsciiConversion
         /// <param name="outputSize">Size of the output.</param>
         /// <param name="resizedImage">The resized image.</param>
         /// <returns>The new array of colors</returns>
-        private static Color[,] BuildOutputArray(Size outputSize, Bitmap resizedImage)
+        private static Color[][] BuildOutputArray(Size outputSize, Bitmap resizedImage)
         {
-            Color[,] result;
+            Color[][] result;
 
             try
             {
-                result = new Color[outputSize.Width, outputSize.Height];
+                result = new Color[outputSize.Height][];
+
+                for (int i = 0; i < outputSize.Height; i++)
+                {
+                    result[i] = new Color[outputSize.Width];
+                }
             }
             catch (System.OutOfMemoryException)
             {
@@ -160,7 +165,7 @@ namespace JMSoftware.AsciiConversion
                 {
                     for (int x = 0; x < outputSize.Width; x++)
                     {
-                        result[x, y] = Color.FromArgb(pointer[2], pointer[1], pointer[0]);
+                        result[y][x] = Color.FromArgb(pointer[2], pointer[1], pointer[0]);
 
                         pointer += 3;
                     }

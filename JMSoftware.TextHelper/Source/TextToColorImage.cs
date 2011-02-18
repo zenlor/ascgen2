@@ -55,7 +55,7 @@ namespace JMSoftware.AsciiConversion
         /// <param name="backgroundColor">Color to use behind the text</param>
         /// <param name="scale">Percentage scale of the image, 1.0-100.0</param>
         /// <returns>Image containing the coloured text</returns>
-        public static Image Convert(string[] text, Font font, Color[,] textColors, Color backgroundColor, float scale)
+        public static Image Convert(string[] text, Font font, Color[][] textColors, Color backgroundColor, float scale)
         {
             if (!FontFunctions.IsFixedWidth(font))
             {
@@ -74,8 +74,8 @@ namespace JMSoftware.AsciiConversion
             {
                 g.Clear(backgroundColor);
 
-                int width = textColors.GetLength(0);
-                int height = textColors.GetLength(1);
+                int width = textColors[0].Length;
+                int height = textColors.Length;
 
                 for (int y = 0; y < height; y++)
                 {
@@ -83,7 +83,7 @@ namespace JMSoftware.AsciiConversion
 
                     for (int x = 0; x < width; x++)
                     {
-                        if (textColors[x, y] == backgroundColor)
+                        if (textColors[y][x] == backgroundColor)
                         {
                             continue;
                         }
@@ -93,7 +93,7 @@ namespace JMSoftware.AsciiConversion
                         g.DrawString(
                                     line[x].ToString(),
                                     font,
-                                    new SolidBrush(textColors[x, y]),
+                                    new SolidBrush(textColors[y][x]),
                                     offset,
                                     StringFormat.GenericTypographic);
                     }
