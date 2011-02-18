@@ -59,7 +59,7 @@ namespace JMSoftware
         /// <param name="textSettings">The text settings.</param>
         /// <param name="title">The title.</param>
         /// <returns>The formatted html</returns>
-        public static string CreateHTML(string[] strings, Color[,] colors, Color backgroundColor, TextProcessingSettings textSettings, string title)
+        public static string CreateHTML(string[] strings, Color[][] colors, Color backgroundColor, TextProcessingSettings textSettings, string title)
         {
             bool useColor = (colors != null) && textSettings.IsFixedWidth;
 
@@ -72,15 +72,15 @@ namespace JMSoftware
 
             if (useColor)
             {
-                characterToColor = new int[colors.GetLength(0), colors.GetLength(1)];
+                characterToColor = new int[colors[0].Length, colors.Length];
                 int colorId;
                 int previousColorId = -1;
 
-                for (int y = 0; y < colors.GetLength(1); y++)
+                for (int y = 0; y < colors.Length; y++)
                 {
-                    for (int x = 0; x < colors.GetLength(0); x++)
+                    for (int x = 0; x < colors[0].Length; x++)
                     {
-                        colorId = uniqueColors.IndexOf(colors[x, y]);
+                        colorId = uniqueColors.IndexOf(colors[y][x]);
 
                         if (colorId > -1)
                         {
@@ -96,7 +96,7 @@ namespace JMSoftware
                         else
                         {
                             // New Color
-                            previousColorId = characterToColor[x, y] = uniqueColors.Add(colors[x, y]);
+                            previousColorId = characterToColor[x, y] = uniqueColors.Add(colors[y][x]);
                         }
                     }
                 }
@@ -261,7 +261,7 @@ namespace JMSoftware
         /// <param name="colors">The colors.</param>
         /// <param name="textSettings">The text settings.</param>
         /// <returns>The formatted rtf text</returns>
-        public static string CreateRTF(string[] strings, Color[,] colors, TextProcessingSettings textSettings)
+        public static string CreateRTF(string[] strings, Color[][] colors, TextProcessingSettings textSettings)
         {
             if (!textSettings.IsFixedWidth)
             {
@@ -271,33 +271,38 @@ namespace JMSoftware
             //--
             // Create the unique color array, and the array of int pointers
             //--
-            int[,] characterToColor = new int[colors.GetLength(0), colors.GetLength(1)];
+            int[][] characterToColor = new int[colors.Length][];
+
+            for (int i = 0; i < colors.Length; i++)
+            {
+                characterToColor[i] = new int[colors[0].Length];
+            }
 
             ArrayList uniqueColors = new ArrayList();
             int colorId;
             int previousColorId = -1;
 
-            for (int y = 0; y < colors.GetLength(1); y++)
+            for (int y = 0; y < colors.Length; y++)
             {
-                for (int x = 0; x < colors.GetLength(0); x++)
+                for (int x = 0; x < colors[0].Length; x++)
                 {
-                    colorId = uniqueColors.IndexOf(colors[x, y]);
+                    colorId = uniqueColors.IndexOf(colors[y][x]);
 
                     if (colorId > -1)
                     {
                         if (colorId == previousColorId)
                         {
-                            characterToColor[x, y] = -1;
+                            characterToColor[y][x] = -1;
                         }
                         else
                         {
-                            previousColorId = characterToColor[x, y] = colorId;
+                            previousColorId = characterToColor[y][x] = colorId;
                         }
                     }
                     else
                     {
                         // New Color
-                        previousColorId = characterToColor[x, y] = uniqueColors.Add(colors[x, y]);
+                        previousColorId = characterToColor[y][x] = uniqueColors.Add(colors[y][x]);
                     }
                 }
             }
@@ -362,10 +367,10 @@ namespace JMSoftware
             {
                 for (int x = 0; x < textSettings.Width; x++)
                 {
-                    if (characterToColor[x, y] != -1)
+                    if (characterToColor[y][x] != -1)
                     {
                         builder.Append(@"\cf");
-                        builder.Append(characterToColor[x, y] + 1);
+                        builder.Append(characterToColor[y][x] + 1);
                         builder.Append(" ");
                     }
 

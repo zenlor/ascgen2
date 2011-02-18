@@ -705,7 +705,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
         {
             string[] convertedText = null;
 
-            Color[,] colors = null;
+            Color[][] colors = null;
 
             try
             {
@@ -1047,7 +1047,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// <param name="colors">The colors (null if black and white).</param>
         /// <param name="outputFilename">The output filename.</param>
         /// <returns>Was the image saved?</returns>
-        private bool SaveAsImage(string[] convertedText, Color[,] colors, string outputFilename)
+        private bool SaveAsImage(string[] convertedText, Color[][] colors, string outputFilename)
         {
             float imageScale = (float)this.numericUpDownImageScale.Value;
 
@@ -1099,7 +1099,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// <param name="colors">The colors (null if black and white).</param>
         /// <param name="outputFilename">The output filename.</param>
         /// <returns>Was the image saved?</returns>
-        private bool SaveAsText(string[] convertedText, Color[,] colors, string outputFilename)
+        private bool SaveAsText(string[] convertedText, Color[][] colors, string outputFilename)
         {
             if (!this.OutputIsText)
             {
@@ -1165,7 +1165,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// <param name="colors">The array of colors to use (null if black and white).</param>
         /// <param name="outputFilename">The filename for the output.</param>
         /// <returns>Was the file successfully saved?</returns>
-        private bool SaveOutputImage(string[] convertedText, Color[,] colors, string outputFilename)
+        private bool SaveOutputImage(string[] convertedText, Color[][] colors, string outputFilename)
         {
             if (convertedText == null)
             {

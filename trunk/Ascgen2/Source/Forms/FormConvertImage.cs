@@ -1746,7 +1746,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// <returns>The new colour image</returns>
         private Image CreateColourImage(float zoom)
         {
-            Color[,] colors = ImageToColors.Convert(
+            Color[][] colors = ImageToColors.Convert(
                                     (Bitmap)this.pbxMain.BCImage,
                                     new Size(this.OutputWidth, this.OutputHeight),
                                     this.CurrentImageSection,
@@ -1874,7 +1874,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             if (this.printColour)
             {
-                Color[,] colors = ImageToColors.Convert(
+                Color[][] colors = ImageToColors.Convert(
                                     (Bitmap)this.pbxMain.BCImage,
                                     new Size(this.OutputWidth, this.OutputHeight),
                                     this.CurrentImageSection,
@@ -2852,7 +2852,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             }
 
             // create the array of Colors
-            Color[,] colors = ImageToColors.Convert(
+            Color[][] colors = ImageToColors.Convert(
                                 (Bitmap)this.pbxMain.BCImage,
                                 new Size(this.OutputWidth, this.OutputHeight),
                                 this.CurrentImageSection,
