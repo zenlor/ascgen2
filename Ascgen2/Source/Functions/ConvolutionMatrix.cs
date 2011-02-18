@@ -45,7 +45,7 @@ namespace JMSoftware
         /// Initializes a new instance of the <see cref="ConvolutionMatrix"/> class.
         /// </summary>
         public ConvolutionMatrix()
-            : this(new int[,] { { 0, 0, 0 }, { 0, 1, 0 }, { 0, 0, 0 } }, 1)
+            : this(new int[][] { new int[] { 0, 0, 0 }, new int[] { 0, 1, 0 }, new int[] { 0, 0, 0 } }, 1)
         {
         }
 
@@ -54,7 +54,7 @@ namespace JMSoftware
         /// </summary>
         /// <param name="values">3x3 array of values for the matrix</param>
         /// <param name="factor">Initial matrix factor</param>
-        public ConvolutionMatrix(int[,] values, int factor)
+        public ConvolutionMatrix(int[][] values, int factor)
         {
             this.matrix = new int[9];
             int pos = 0;
@@ -63,7 +63,7 @@ namespace JMSoftware
             {
                 for (int col = 0; col < 3; col++)
                 {
-                    this.matrix[pos++] = values[col, row];
+                    this.matrix[pos++] = values[row][col];
                 }
             }
 

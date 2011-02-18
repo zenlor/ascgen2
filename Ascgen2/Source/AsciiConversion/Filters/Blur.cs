@@ -38,13 +38,13 @@ namespace JMSoftware.AsciiConversion.Filters
         public Blur()
         {
             this.Matrix = new ConvolutionMatrix(
-                                            new int[3, 3]
+                                                new int[][]
                                                 {
-                                                    { 1, 2, 1 },
-                                                    { 2, 4, 2 },
-                                                    { 1, 2, 1 }
+                                                    new int[] { 1, 2, 1 },
+                                                    new int[] { 2, 4, 2 },
+                                                    new int[] { 1, 2, 1 }
                                                 },
-                                            16);
+                                                16);
         }
 
         #endregion Constructors
