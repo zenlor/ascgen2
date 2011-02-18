@@ -173,8 +173,7 @@ namespace JMSoftware
                             {
                                 // limit x, y to be between 0 and max
                                 pixel += this.matrix[pos++] *
-                                    values[y + row > maximumHeight ? maximumHeight : (y + row < 0 ? 0 : y + row)]
-                                          [x + col > maximumWidth ? maximumWidth : (x + col < 0 ? 0 : x + col)];
+                                    values[y + row > maximumHeight ? maximumHeight : (y + row < 0 ? 0 : y + row)][x + col > maximumWidth ? maximumWidth : (x + col < 0 ? 0 : x + col)];
                             }
                         }
 
