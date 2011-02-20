@@ -26,6 +26,7 @@
 namespace JMSoftware.AsciiGeneratorDotNet
 {
     using System.Drawing;
+    using JMSoftware.TextHelper;
 
     /// <summary>
     /// Form to display and change the ramp

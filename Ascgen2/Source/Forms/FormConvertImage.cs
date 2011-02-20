@@ -35,6 +35,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
     using JMSoftware.AsciiConversion.Filters;
     using JMSoftware.ImageHelper;
     using JMSoftware.Interfaces;
+    using JMSoftware.TextHelper;
     using JMSoftware.Widgets;
 
     /// <summary>

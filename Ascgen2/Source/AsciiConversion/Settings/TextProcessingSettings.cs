@@ -31,6 +31,7 @@ namespace JMSoftware.AsciiConversion
     using JMSoftware.AsciiConversion.Filters;
     using JMSoftware.AsciiConversion.TextSettings;
     using JMSoftware.AsciiGeneratorDotNet;
+    using JMSoftware.TextHelper;
 
     /// <summary>
     /// Settings used for the conversions.

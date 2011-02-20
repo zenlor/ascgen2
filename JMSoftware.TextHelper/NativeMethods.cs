@@ -23,7 +23,7 @@
 //    along with this program.  If not, see http://www.gnu.org/licenses/.
 // </license>
 //---------------------------------------------------------------------------------------
-namespace JMSoftware
+namespace JMSoftware.TextHelper
 {
     using System;
     using System.Drawing;
