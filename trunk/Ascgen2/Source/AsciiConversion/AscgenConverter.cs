@@ -28,6 +28,7 @@ namespace JMSoftware.AsciiConversion
     using System.Collections;
     using System.Drawing;
     using JMSoftware.AsciiConversion.Filters;
+    using JMSoftware.ImageHelper;
 
     /// <summary>
     /// Static class with methods for Image to Text conversion

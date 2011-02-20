@@ -23,7 +23,7 @@
 //    along with this program.  If not, see http://www.gnu.org/licenses/.
 // </license>
 //---------------------------------------------------------------------------------------
-namespace JMSoftware.AsciiConversion
+namespace JMSoftware.ImageHelper
 {
     using System.Drawing;
     using System.Drawing.Drawing2D;

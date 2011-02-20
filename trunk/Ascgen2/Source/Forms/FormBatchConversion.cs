@@ -33,6 +33,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
     using System.Threading;
     using System.Windows.Forms;
     using JMSoftware.AsciiConversion;
+    using JMSoftware.ImageHelper;
 
     /// <summary>
     /// Form to handle batch conversions
