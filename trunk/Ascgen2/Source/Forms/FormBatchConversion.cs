@@ -34,6 +34,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
     using System.Windows.Forms;
     using JMSoftware.AsciiConversion;
     using JMSoftware.ImageHelper;
+    using JMSoftware.TextHelper;
 
     /// <summary>
     /// Form to handle batch conversions

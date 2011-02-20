@@ -24,7 +24,7 @@
 // </license>
 //---------------------------------------------------------------------------------------
 [assembly: System.CLSCompliant(true)]
-namespace JMSoftware
+namespace JMSoftware.TextHelper
 {
     using System;
     using System.Drawing;

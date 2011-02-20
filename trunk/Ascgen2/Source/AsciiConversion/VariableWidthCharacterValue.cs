@@ -27,6 +27,7 @@ namespace JMSoftware.AsciiConversion
 {
     using System.Drawing;
     using System.Drawing.Imaging;
+    using JMSoftware.TextHelper;
 
     /// <summary>Class used to store variables width characters and their values</summary>
     public class VariableWidthCharacterValue
