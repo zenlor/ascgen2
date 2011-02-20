@@ -59,11 +59,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Source\FontFunctions.cs" />
-    <Compile Include="Source\NativeMethods.cs" />
+    <Compile Include="FontFunctions.cs" />
+    <Compile Include="NativeMethods.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Source\TextToColorImage.cs" />
-    <Compile Include="Source\TextToImage.cs" />
+    <Compile Include="TextToColorImage.cs" />
+    <Compile Include="TextToImage.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
