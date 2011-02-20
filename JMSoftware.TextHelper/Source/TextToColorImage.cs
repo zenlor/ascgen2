@@ -57,7 +57,7 @@ namespace JMSoftware.AsciiConversion
         /// <returns>Image containing the coloured text</returns>
         public static Image Convert(string[] text, Font font, Color[][] textColors, Color backgroundColor, float scale)
         {
-            if (!FontFunctions.IsFixedWidth(font) || text == null)
+            if (!FontFunctions.IsFixedWidth(font) || text == null || textColors == null)
             {
                 return null;
             }

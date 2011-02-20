@@ -176,7 +176,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             }
 
             // load a filename if one was passed
-            if (arguments.Length == 1)
+            if (arguments != null && arguments.Length == 1)
             {
                 this.LoadImage(arguments[0]);
             }
@@ -1129,7 +1129,9 @@ namespace JMSoftware.AsciiGeneratorDotNet
                             Resource.GetString("Unable to select this font"),
                             Resource.GetString("Error"),
                             MessageBoxButtons.OK,
-                            MessageBoxIcon.Error);
+                            MessageBoxIcon.Error,
+                            MessageBoxDefaultButton.Button1,
+                            MessageBoxOptions.ServiceNotification);
             }
         }
 
@@ -1284,7 +1286,9 @@ namespace JMSoftware.AsciiGeneratorDotNet
                                 Resource.GetString("Invalid Output Size"),
                                 Resource.GetString("Error"),
                                 MessageBoxButtons.OK,
-                                MessageBoxIcon.Error);
+                                MessageBoxIcon.Error,
+                                MessageBoxDefaultButton.Button1,
+                                MessageBoxOptions.ServiceNotification);
                 }
 
                 return false;
@@ -1297,7 +1301,9 @@ namespace JMSoftware.AsciiGeneratorDotNet
                             Resource.GetString("Invalid ASCII Ramp"),
                             Resource.GetString("Error"),
                             MessageBoxButtons.OK,
-                            MessageBoxIcon.Error);
+                            MessageBoxIcon.Error,
+                            MessageBoxDefaultButton.Button1,
+                            MessageBoxOptions.ServiceNotification);
 
                 this.cmbRamp.Focus();
 
@@ -1924,6 +1930,8 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             // Draw a border
             e.Graphics.DrawRectangle(Pens.Black, targetLocation);
+
+            ia.Dispose();
         }
 
         /// <summary>
