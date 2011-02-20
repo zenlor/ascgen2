@@ -225,8 +225,6 @@
     <Compile Include="Source\Interfaces\IBrightnessContrast.cs" />
     <Compile Include="Source\Interfaces\IDither.cs" />
     <Compile Include="Source\Interfaces\ILevels.cs" />
-    <Compile Include="Source\AsciiConversion\ImageToColors.cs" />
-    <Compile Include="Source\AsciiConversion\ImageToValues.cs" />
     <Compile Include="Source\Interfaces\IZoomLevel.cs" />
     <Compile Include="Source\Interfaces\ITextViewer.cs" />
     <Compile Include="Source\AsciiConversion\OutputCreator.cs" />
@@ -311,7 +309,6 @@
     <Compile Include="Source\Functions\ConvolutionMatrix.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Source\Functions\ImageFunctions.cs" />
     <Compile Include="Source\Functions\Resource.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -454,6 +451,10 @@
     <ProjectReference Include="..\JMSoftware.Controls\JMSoftware.Controls.csproj">
       <Project>{69E1D695-5C48-47A4-B8A7-01C43FE4BB40}</Project>
       <Name>JMSoftware.Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JMSoftware.ImageHelper\JMSoftware.ImageHelper.csproj">
+      <Project>{052DA6A8-6309-4589-922A-28407F8A0DD0}</Project>
+      <Name>JMSoftware.ImageHelper</Name>
     </ProjectReference>
     <ProjectReference Include="..\JMSoftware.TextHelper\JMSoftware.TextHelper.csproj">
       <Project>{11F3DCBE-CC36-4761-AF00-B8FC87AFB443}</Project>
