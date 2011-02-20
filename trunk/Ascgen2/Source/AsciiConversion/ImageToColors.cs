@@ -33,19 +33,8 @@ namespace JMSoftware.AsciiConversion
     /// <summary>
     /// Class to handle converting an image into an array of Colors
     /// </summary>
-    public class ImageToColors
+    public static class ImageToColors
     {
-        #region Constructors
-
-        /// <summary>
-        /// Prevents a default instance of the <see cref="ImageToColors"/> class from being created.
-        /// </summary>
-        private ImageToColors()
-        {
-        }
-
-        #endregion Constructors
-
         #region Public methods
 
         /// <summary>
@@ -57,6 +46,11 @@ namespace JMSoftware.AsciiConversion
         /// <returns>An outputSize array of Colors</returns>
         public static Color[][] Convert(Image image, Size outputSize, bool reduceColors)
         {
+            if (image == null || outputSize == null)
+            {
+                return null;
+            }
+
             return Convert(
                         image,
                         outputSize,

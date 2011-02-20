@@ -127,7 +127,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             this.OutputSize = new Size(150, 150);
 
-            this.textBoxWidth.Text = this.textBoxHeight.Text = "150";
+            this.textBoxWidth.Text = this.textBoxHeight.Text = this.OutputSize.Width.ToString();
 
             this.textBoxOtherDimension = this.textBoxHeight;
 
@@ -770,7 +770,15 @@ namespace JMSoftware.AsciiGeneratorDotNet
             if (!Directory.Exists(this.textBoxOutputDirectory.Text))
             {
                 this.tabControlMain.SelectedTab = this.tabPageConversions;
-                MessageBox.Show(Resource.GetString("Invalid Output Directory"), Resource.GetString("Error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                MessageBox.Show(
+                        Resource.GetString("Invalid Output Directory"),
+                        Resource.GetString("Error"),
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error,
+                        MessageBoxDefaultButton.Button1,
+                        MessageBoxOptions.ServiceNotification);
+
                 this.textBoxOutputDirectory.Focus();
 
                 return;
@@ -1106,34 +1114,35 @@ namespace JMSoftware.AsciiGeneratorDotNet
                 return false;
             }
 
-            StreamWriter writer = new StreamWriter(outputFilename);
-
-            if (this.OutputIsHtml)
+            using (StreamWriter writer = new StreamWriter(outputFilename))
             {
-                string output = OutputCreator.CreateHTML(
+                if (this.OutputIsHtml)
+                {
+                    string output = OutputCreator.CreateHTML(
                                                 convertedText,
                                                 colors,
                                                 this.textProcessingSettings.IsBlackTextOnWhite ? Color.White : Color.Black,
                                                 this.textProcessingSettings,
                                                 Path.GetFileNameWithoutExtension(outputFilename));
 
-                writer.Write(output);
-            }
-            else
-            {
-                if (colors != null)
+                    writer.Write(output);
+                }
+                else
                 {
-                    return false;
+                    if (colors != null)
+                    {
+                        return false;
+                    }
+
+                    // TODO: rtf
+                    foreach (string line in convertedText)
+                    {
+                        writer.WriteLine(line);
+                    }
                 }
 
-                // TODO: rtf
-                foreach (string line in convertedText)
-                {
-                    writer.WriteLine(line);
-                }
+                writer.Close();
             }
-
-            writer.Close();
 
             return true;
         }

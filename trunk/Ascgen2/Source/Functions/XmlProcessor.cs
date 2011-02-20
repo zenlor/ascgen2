@@ -97,11 +97,11 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// </summary>
         /// <param name="node">Node to read</param>
         /// <param name="current">Value to use if node is invalid</param>
-        /// <param name="allowempty">Should we return an empty string if it is empty?</param>
+        /// <param name="allowEmptyString">Should we return an empty string if it is empty?</param>
         /// <returns>A string for the node</returns>
-        public static string ReadNode(XmlNode node, string current, bool allowempty)
+        public static string ReadNode(XmlNode node, string current, bool allowEmptyString)
         {
-            if (node == null || (!allowempty && node.InnerText.Length == 0))
+            if (node == null || (!allowEmptyString && node.InnerText.Length == 0))
             {
                 return current;
             }

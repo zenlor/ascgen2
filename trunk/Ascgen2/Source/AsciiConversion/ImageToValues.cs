@@ -33,19 +33,8 @@ namespace JMSoftware.AsciiConversion
     /// <summary>
     /// Class to handle converting the image into an array of values
     /// </summary>
-    public class ImageToValues
+    public static class ImageToValues
     {
-        #region Constructors
-
-        /// <summary>
-        /// Prevents a default instance of the <see cref="ImageToValues"/> class from being created.
-        /// </summary>
-        private ImageToValues()
-        {
-        }
-
-        #endregion Constructors
-
         #region Public methods
 
         /// <summary>

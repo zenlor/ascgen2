@@ -74,7 +74,7 @@ namespace JMSoftware.AsciiConversion
         /// <returns>the converted text image</returns>
         public static string[] Convert(Image image, TextProcessingSettings settings)
         {
-            if (image == null || settings.Width < 1 || settings.Height < 1)
+            if (image == null || settings == null || settings.Width < 1 || settings.Height < 1)
             {
                 return null;
             }
@@ -90,6 +90,11 @@ namespace JMSoftware.AsciiConversion
         /// <returns>the converted text image</returns>
         public static string[] Convert(byte[][] values, TextProcessingSettings settings)
         {
+            if (settings == null)
+            {
+                return null;
+            }
+
             ArrayList filters = settings.FilterList;
 
             foreach (IAscgenFilter filter in filters)
