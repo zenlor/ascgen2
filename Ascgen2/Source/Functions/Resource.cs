@@ -39,21 +39,23 @@ namespace JMSoftware.AsciiGeneratorDotNet
         #region Fields
 
         /// <summary>
-        /// The root location of the localization resources
-        /// </summary>
-        private static string location = "AscGenDotNet.Resources.Localization.Localization";
-
-        /// <summary>
-        /// Have we attempted to load the translation file?
-        /// </summary>
-        private static bool translationFileChecked = false;
-
-        /// <summary>
         /// The translations
         /// </summary>
         private static Dictionary<string, string> translations = null;
 
         #endregion Fields
+
+        #region Constructors
+
+        /// <summary>
+        /// Initializes static members of the <see cref="Resource"/> class.
+        /// </summary>
+        static Resource()
+        {
+            Location = "AscGenDotNet.Resources.Localization.Localization";
+        }
+
+        #endregion Constructors
 
         #region Properties
 
@@ -62,15 +64,8 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// </summary>
         public static string Location
         {
-            get
-            {
-                return location;
-            }
-
-            set
-            {
-                location = value;
-            }
+            get;
+            set;
         }
 
         /// <summary>
@@ -81,15 +76,8 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// </value>
         public static bool TranslationFileChecked
         {
-            get
-            {
-                return translationFileChecked;
-            }
-
-            set
-            {
-                translationFileChecked = value;
-            }
+            get;
+            set;
         }
 
         /// <summary>Gets the translated strings</summary>
