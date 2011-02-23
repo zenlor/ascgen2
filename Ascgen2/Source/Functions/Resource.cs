@@ -53,6 +53,8 @@ namespace JMSoftware.AsciiGeneratorDotNet
         static Resource()
         {
             Location = "AscGenDotNet.Resources.Localization.Localization";
+
+            TranslationFile = Settings.Default.TranslationFile;
         }
 
         #endregion Constructors
@@ -63,6 +65,16 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// Gets or sets the root location of the localization resources
         /// </summary>
         public static string Location
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Gets or sets the translation file.
+        /// </summary>
+        /// <value>The translation file.</value>
+        public static string TranslationFile
         {
             get;
             set;
@@ -101,7 +113,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
                 try
                 {
-                    doc.Load(Settings.Default.TranslationFile);
+                    doc.Load(TranslationFile);
 
                     foreach (XmlNode node in doc.DocumentElement.ChildNodes)
                     {
@@ -110,15 +122,15 @@ namespace JMSoftware.AsciiGeneratorDotNet
                 }
                 catch (XmlException ex)
                 {
-                    MessageBox.Show(ex.Message, string.Format(GetString("Error with settings file '{0}'"), Settings.Default.TranslationFile), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(ex.Message, string.Format(GetString("Error with settings file '{0}'"), TranslationFile), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 catch (System.IO.FileNotFoundException)
                 {
-                    if (Settings.Default.TranslationFile != "translation.xml")
+                    if (TranslationFile != "translation.xml")
                     {
                         MessageBox.Show(
                                     string.Format(
-                                            GetString("Could not load translation file '{0}'"), Settings.Default.TranslationFile),
+                                            GetString("Could not load translation file '{0}'"), TranslationFile),
                                             GetString("Error"),
                                             MessageBoxButtons.OK,
                                             MessageBoxIcon.Error);
