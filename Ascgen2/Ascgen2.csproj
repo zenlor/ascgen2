@@ -305,7 +305,6 @@
     <Compile Include="Source\Forms\ValidRampCharsDialog.Designer.cs">
       <DependentUpon>ValidRampCharsDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="Source\Functions\VersionChecker.cs" />
     <Compile Include="Source\Functions\ConvolutionMatrix.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -321,7 +320,6 @@
     <Compile Include="Source\Main.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Source\Functions\XmlProcessor.cs" />
     <Compile Include="Source\Variables.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -459,6 +457,10 @@
     <ProjectReference Include="..\JMSoftware.TextHelper\JMSoftware.TextHelper.csproj">
       <Project>{11F3DCBE-CC36-4761-AF00-B8FC87AFB443}</Project>
       <Name>JMSoftware.TextHelper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JMSoftware.VersionChecker\JMSoftware.VersionChecker.csproj">
+      <Project>{4A100A8B-4510-42AF-901E-A72D840D2A91}</Project>
+      <Name>JMSoftware.VersionChecker</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

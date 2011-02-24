@@ -172,7 +172,14 @@ namespace JMSoftware.AsciiGeneratorDotNet
             {
                 CheckForIllegalCrossThreadCalls = false;
 
-                this.versionChecker = new VersionChecker(this);
+                this.versionChecker = new VersionChecker(
+                                            this,
+                                            "http://ascgen2.sourceforge.net/version.xml",
+                                            Variables.Version.Major,
+                                            Variables.Version.Minor,
+                                            Variables.Version.Patch,
+                                            Variables.Version.SuffixNumber,
+                                            "http://sourceforge.net/project/showfiles.php?group_id=133786");
 
                 this.versionChecker.Check();
             }
