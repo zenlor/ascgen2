@@ -178,8 +178,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
                                             Variables.Version.Major,
                                             Variables.Version.Minor,
                                             Variables.Version.Patch,
-                                            Variables.Version.SuffixNumber,
-                                            "http://sourceforge.net/project/showfiles.php?group_id=133786");
+                                            Variables.Version.SuffixNumber);
 
                 this.versionChecker.Check();
             }
