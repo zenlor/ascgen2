@@ -1,7 +1,7 @@
 //---------------------------------------------------------------------------------------
 // <copyright file="XmlProcessor.cs" company="Jonathan Mathews Software">
 //     ASCII Generator dotNET - Image to ASCII Art Conversion Program
-//     Copyright (C) 2009 Jonathan Mathews Software. All rights reserved.
+//     Copyright (C) 2011 Jonathan Mathews Software. All rights reserved.
 // </copyright>
 // <author>Jonathan Mathews</author>
 // <email>info@jmsoftware.co.uk</email>
@@ -31,19 +31,8 @@ namespace JMSoftware.AsciiGeneratorDotNet
     /// <summary>
     /// Class to process xml nodes
     /// </summary>
-    public abstract class XmlProcessor
+    public static class XmlProcessor
     {
-        #region Constructors
-
-        /// <summary>
-        /// Prevents a default instance of the <see cref="XmlProcessor"/> class from being created.
-        /// </summary>
-        private XmlProcessor()
-        {
-        }
-
-        #endregion Constructors
-
         #region Public methods
 
         /// <summary>
@@ -61,7 +50,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             try
             {
-                return XmlConvert.ToBoolean(node.InnerText.ToLower(Settings.Default.Culture));
+                return XmlConvert.ToBoolean(node.InnerText.ToLower());
             }
             catch (System.FormatException)
             {
