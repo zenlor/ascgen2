@@ -40,11 +40,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
         #region Fields
 
         /// <summary>
-        /// The URL to open for the download.
-        /// </summary>
-        private string downloadUrl;
-
-        /// <summary>
         /// The current major version.
         /// </summary>
         private int majorVersion;
@@ -97,8 +92,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// <param name="currentMinor">The current minor version.</param>
         /// <param name="currentPatch">The current patch version.</param>
         /// <param name="currentSuffix">The current suffix version.</param>
-        /// <param name="downloadUrl">The URL to open for the download.</param>
-        public VersionChecker(IWin32Window owner, string url, int currentMajor, int currentMinor, int currentPatch, int currentSuffix, string downloadUrl)
+        public VersionChecker(IWin32Window owner, string url, int currentMajor, int currentMinor, int currentPatch, int currentSuffix)
         {
             this.owner = owner;
 
@@ -111,8 +105,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.patchVersion = currentPatch;
 
             this.suffixVersion = currentSuffix;
-
-            this.downloadUrl = downloadUrl;
         }
 
         #endregion Constructors
@@ -196,6 +188,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             int latestPatch;
             int latestSuffix;
             string suffixString;
+            string downloadUrl;
 
             try
             {
@@ -204,6 +197,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
                 latestPatch = XmlProcessor.ReadNode(doc.SelectSingleNode("version/patch"), 0, 100, 0);
                 latestSuffix = XmlProcessor.ReadNode(doc.SelectSingleNode("version/suffixnum"), 0, 100, 0);
                 suffixString = XmlProcessor.ReadNode(doc.SelectSingleNode("version/suffix"), String.Empty, true);
+                downloadUrl = XmlProcessor.ReadNode(doc.SelectSingleNode("version/url"), String.Empty, true);
             }
             catch (System.Xml.XmlException)
             {
@@ -235,9 +229,11 @@ namespace JMSoftware.AsciiGeneratorDotNet
                 }
             }
 
+            newVersionAvailable = true;
+
             if (newVersionAvailable)
             {
-                this.NewVersionDialog(string.Format("{0}.{1}.{2}{3}", latestMajor, latestMinor, latestPatch, suffixString), this.url);
+                this.NewVersionDialog(string.Format("{0}.{1}.{2}{3}", latestMajor, latestMinor, latestPatch, suffixString), downloadUrl);
             }
             else
             {
@@ -260,12 +256,20 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// <param name="url">The URL to the new version.</param>
         private void NewVersionDialog(string version, string url)
         {
-            string caption = "Open the download page?";
             string text = string.Format("Version {0} is available", version);
 
-            if (MessageBox.Show(this.owner, caption, text, MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
+            if (url.Length > 0)
             {
-                System.Diagnostics.Process.Start(url);
+                string caption = "Open the download page?";
+
+                if (MessageBox.Show(this.owner, caption, text, MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
+                {
+                    System.Diagnostics.Process.Start(url);
+                }
+            }
+            else
+            {
+                MessageBox.Show(this.owner, text, String.Empty, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
