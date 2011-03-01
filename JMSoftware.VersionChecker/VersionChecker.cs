@@ -105,9 +105,37 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.patchVersion = currentPatch;
 
             this.suffixVersion = currentSuffix;
+
+            this.VersionAvailableString = "Version {0} is available";
+
+            this.OpenDownloadPageString = "Open the download page?";
+
+            this.ThisIsLatestVersionString = "This is the latest version";
         }
 
         #endregion Constructors
+
+        #region Properties
+
+        /// <summary>
+        /// Gets or sets the open download page string.
+        /// </summary>
+        /// <value>The open download page string.</value>
+        public string OpenDownloadPageString { get; set; }
+
+        /// <summary>
+        /// Gets or sets the this is latest version string.
+        /// </summary>
+        /// <value>The this is latest version string.</value>
+        public string ThisIsLatestVersionString { get; set; }
+
+        /// <summary>
+        /// Gets or sets the version available string.
+        /// </summary>
+        /// <value>The version available string.</value>
+        public string VersionAvailableString { get; set; }
+
+        #endregion Properties
 
         #region Public methods
 
@@ -229,8 +257,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
                 }
             }
 
-            newVersionAvailable = true;
-
             if (newVersionAvailable)
             {
                 this.NewVersionDialog(string.Format("{0}.{1}.{2}{3}", latestMajor, latestMinor, latestPatch, suffixString), downloadUrl);
@@ -241,7 +267,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
                 {
                     MessageBox.Show(
                                 this.owner,
-                                "This is the latest version",
+                                this.ThisIsLatestVersionString,
                                 string.Empty,
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Information);
@@ -256,13 +282,11 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// <param name="url">The URL to the new version.</param>
         private void NewVersionDialog(string version, string url)
         {
-            string text = string.Format("Version {0} is available", version);
+            string text = string.Format(this.VersionAvailableString, version);
 
             if (url.Length > 0)
             {
-                string caption = "Open the download page?";
-
-                if (MessageBox.Show(this.owner, caption, text, MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
+                if (MessageBox.Show(this.owner, this.OpenDownloadPageString, text, MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
                 {
                     System.Diagnostics.Process.Start(url);
                 }
