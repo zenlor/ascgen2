@@ -180,6 +180,10 @@ namespace JMSoftware.AsciiGeneratorDotNet
                                             Variables.Version.Patch,
                                             Variables.Version.SuffixNumber);
 
+                this.versionChecker.OpenDownloadPageString = Resource.GetString("Open the download page") + "?";
+                this.versionChecker.ThisIsLatestVersionString = Resource.GetString("This is the latest version");
+                this.versionChecker.VersionAvailableString = Resource.GetString("Version {0} is available");
+
                 this.versionChecker.Check();
             }
 
