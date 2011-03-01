@@ -152,19 +152,19 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             this.formSaveAs = new FormSaveAs();
 
-            this.formBatchConversion = new FormBatchConversion();
-
             this.dimensionsCalculator = new DimensionsCalculator(this.CurrentImageSection.Size, this.CharacterSize, Settings.Default.DefaultWidth, Settings.Default.DefaultHeight);
 
             this.dimensionsCalculator.OnOutputSizeChanged += new EventHandler(this.DimensionsCalculator_OnOutputSizeChanged);
 
             this.Font = Settings.Default.DefaultFont;
 
-            this.dialogChooseTextZoom = new TextImageMagnificationDialog(this.Font);
-
             this.SetupWidgets();
 
             this.SetupControls();
+
+            this.formBatchConversion = new FormBatchConversion();
+
+            this.dialogChooseTextZoom = new TextImageMagnificationDialog(this.Font);
 
             this.IsLandscape = Screen.PrimaryScreen.Bounds.Width > Screen.PrimaryScreen.Bounds.Height;
 
