@@ -168,22 +168,22 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             this.IsLandscape = Screen.PrimaryScreen.Bounds.Width > Screen.PrimaryScreen.Bounds.Height;
 
+            CheckForIllegalCrossThreadCalls = false;
+
+            this.versionChecker = new VersionChecker(
+                                        this,
+                                        "http://ascgen2.sourceforge.net/version.xml",
+                                        Variables.Version.Major,
+                                        Variables.Version.Minor,
+                                        Variables.Version.Patch,
+                                        Variables.Version.SuffixNumber);
+
+            this.versionChecker.OpenDownloadPageString = Resource.GetString("Open the download page") + "?";
+            this.versionChecker.ThisIsLatestVersionString = Resource.GetString("This is the latest version");
+            this.versionChecker.VersionAvailableString = Resource.GetString("Version {0} is available");
+
             if (Settings.Default.CheckForNewVersions)
             {
-                CheckForIllegalCrossThreadCalls = false;
-
-                this.versionChecker = new VersionChecker(
-                                            this,
-                                            "http://ascgen2.sourceforge.net/version.xml",
-                                            Variables.Version.Major,
-                                            Variables.Version.Minor,
-                                            Variables.Version.Patch,
-                                            Variables.Version.SuffixNumber);
-
-                this.versionChecker.OpenDownloadPageString = Resource.GetString("Open the download page") + "?";
-                this.versionChecker.ThisIsLatestVersionString = Resource.GetString("This is the latest version");
-                this.versionChecker.VersionAvailableString = Resource.GetString("Version {0} is available");
-
                 this.versionChecker.Check();
             }
 
