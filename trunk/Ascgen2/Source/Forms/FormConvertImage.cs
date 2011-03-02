@@ -1284,6 +1284,25 @@ namespace JMSoftware.AsciiGeneratorDotNet
         }
 
         /// <summary>
+        /// Checks the executables directory for translation files.
+        /// </summary>
+        private void CheckForTranslationFiles()
+        {
+            DirectoryInfo dir = new DirectoryInfo(Application.StartupPath);
+
+            FileInfo[] files = dir.GetFiles("translation.*.xml");
+
+            System.Collections.Specialized.StringCollection strings = new System.Collections.Specialized.StringCollection();
+
+            foreach (FileInfo file in files)
+            {
+                strings.Add(file.ToString());
+            }
+
+            Settings.Default.TranslationFiles = strings;
+        }
+
+        /// <summary>
         /// Update and check if the text image is valid
         /// </summary>
         /// <returns>Is it ok for the text image to be saved?</returns>
@@ -3553,7 +3572,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// </summary>
         private void UpdateUI()
         {
-            Variables.CheckForTranslationFiles();
+            this.CheckForTranslationFiles();
 
             this.menuFile.Text = Resource.GetString("&File");
             this.menuFileLoad.Text = Resource.GetString("&Load Image") + "...";

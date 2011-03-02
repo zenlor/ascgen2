@@ -397,18 +397,6 @@ namespace JMSoftware.AsciiGeneratorDotNet {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string TranslationFile {
-            get {
-                return ((string)(this["TranslationFile"]));
-            }
-            set {
-                this["TranslationFile"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool UnsharpMask {
             get {
@@ -481,6 +469,17 @@ namespace JMSoftware.AsciiGeneratorDotNet {
             }
             set {
                 this["UpdateWhileSelecting"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Collections.Specialized.StringCollection TranslationFiles {
+            get {
+                return ((global::System.Collections.Specialized.StringCollection)(this["TranslationFiles"]));
+            }
+            set {
+                this["TranslationFiles"] = value;
             }
         }
     }
