@@ -1312,6 +1312,11 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             using (FormSelectLanguage formSelectLanguage = new FormSelectLanguage(strings))
             {
+                if (Settings.Default.TranslationFile.Length > 0)
+                {
+                    formSelectLanguage.SelectedItem = Settings.Default.TranslationFile;
+                }
+
                 if (formSelectLanguage.ShowDialog() != DialogResult.OK)
                 {
                     return;
