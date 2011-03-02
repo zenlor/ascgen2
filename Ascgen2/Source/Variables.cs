@@ -25,14 +25,6 @@
 //---------------------------------------------------------------------------------------
 namespace JMSoftware.AsciiGeneratorDotNet
 {
-    using System;
-    using System.Collections;
-    using System.Drawing;
-    using System.Globalization;
-    using System.IO;
-    using System.Windows.Forms;
-    using System.Xml;
-
     /// <summary>
     /// Abstract class containing global variables for the program
     /// </summary>
@@ -146,34 +138,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
         }
 
         #endregion Public methods
-
-        #region Private methods
-
-        /// <summary>
-        /// If TranslationFile is not set, check the directory for a translation.*.xml file to use if one exists
-        /// </summary>
-        public static void CheckForTranslationFiles()
-        {
-            if (Settings.Default.TranslationFile.Length > 0)
-            {
-                return;
-            }
-
-            DirectoryInfo dir = new DirectoryInfo(Application.StartupPath);
-
-            FileInfo[] files = dir.GetFiles("translation.*.xml");
-
-            if (files.Length == 1)
-            {
-                Settings.Default.TranslationFile = files[0].Name;
-            }
-            else
-            {
-                Settings.Default.TranslationFile = "translation.xml";
-            }
-        }
-
-        #endregion Private methods
 
         #region Nested classes
 
