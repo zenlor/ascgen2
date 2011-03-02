@@ -470,6 +470,7 @@
     <None Include="Resources\image_delete.png" />
     <None Include="Resources\control_stop_blue.png" />
     <Content Include="Translation\translation.bg-BG.xml" />
+    <Content Include="Translation\translation.el-GR.xml" />
     <Content Include="Translation\translation.en-us.xml" />
     <Content Include="Translation\translation.fr-FR.xml" />
     <Content Include="Translation\translation.ru-RU.xml" />
