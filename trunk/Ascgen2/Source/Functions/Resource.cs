@@ -54,10 +54,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
         {
             Location = "AscGenDotNet.Resources.Localization.Localization";
 
-            if (Settings.Default.TranslationFiles.Count > 0)
-            {
-                TranslationFile = Settings.Default.TranslationFiles[0];
-            }
+            TranslationFile = Settings.Default.TranslationFile;
         }
 
         #endregion Constructors

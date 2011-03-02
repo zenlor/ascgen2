@@ -474,12 +474,13 @@ namespace JMSoftware.AsciiGeneratorDotNet {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.Collections.Specialized.StringCollection TranslationFiles {
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string TranslationFile {
             get {
-                return ((global::System.Collections.Specialized.StringCollection)(this["TranslationFiles"]));
+                return ((string)(this["TranslationFile"]));
             }
             set {
-                this["TranslationFiles"] = value;
+                this["TranslationFile"] = value;
             }
         }
     }
