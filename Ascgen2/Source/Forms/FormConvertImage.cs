@@ -26,6 +26,7 @@
 namespace JMSoftware.AsciiGeneratorDotNet
 {
     using System;
+    using System.Collections.Specialized;
     using System.Drawing;
     using System.Drawing.Imaging;
     using System.Drawing.Printing;
@@ -1292,14 +1293,32 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             FileInfo[] files = dir.GetFiles("translation.*.xml");
 
-            System.Collections.Specialized.StringCollection strings = new System.Collections.Specialized.StringCollection();
+            StringCollection strings = new StringCollection();
 
             foreach (FileInfo file in files)
             {
                 strings.Add(file.ToString());
             }
 
-            Settings.Default.TranslationFiles = strings;
+            if (strings.Count < 2)
+            {
+                if (strings.Count == 1)
+                {
+                    Settings.Default.TranslationFile = strings[0];
+                }
+
+                return;
+            }
+
+            using (FormSelectLanguage formSelectLanguage = new FormSelectLanguage(strings))
+            {
+                if (formSelectLanguage.ShowDialog() != DialogResult.OK)
+                {
+                    return;
+                }
+
+                Settings.Default.TranslationFile = formSelectLanguage.SelectedItem;
+            }
         }
 
         /// <summary>

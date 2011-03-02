@@ -127,7 +127,7 @@
     <Setting Name="UpdateWhileSelecting" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="TranslationFiles" Type="System.Collections.Specialized.StringCollection" Scope="User">
+    <Setting Name="TranslationFile" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
   </Settings>

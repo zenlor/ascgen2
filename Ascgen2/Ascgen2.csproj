@@ -153,6 +153,9 @@
       <DependentUpon>FormSaveAs.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Source\Forms\FormSelectLanguage.resx">
+      <DependentUpon>FormSelectLanguage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Source\Forms\TextImageMagnificationDialog.resx">
       <DependentUpon>TextImageMagnificationDialog.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -222,6 +225,12 @@
     </Compile>
     <Compile Include="Source\Forms\FormBatchConversion.designer.cs">
       <DependentUpon>FormBatchConversion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Source\Forms\FormSelectLanguage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Source\Forms\FormSelectLanguage.Designer.cs">
+      <DependentUpon>FormSelectLanguage.cs</DependentUpon>
     </Compile>
     <Compile Include="Source\Interfaces\IBrightnessContrast.cs" />
     <Compile Include="Source\Interfaces\IDither.cs" />
