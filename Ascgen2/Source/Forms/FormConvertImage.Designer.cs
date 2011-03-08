@@ -419,7 +419,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.pnlMain = new System.Windows.Forms.Panel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tableLayoutPanelText = new System.Windows.Forms.TableLayoutPanel();
-            this.rtbxConvertedText = new JMSoftware.Controls.TextViewerRichTextBox();
             this.buttonToggleImage = new System.Windows.Forms.Button();
             this.checkBoxFullScreen = new System.Windows.Forms.CheckBox();
             this.pbxMain = new JMSoftware.Controls.JMSelectablePictureBox();
@@ -451,6 +450,8 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.printDocument = new System.Drawing.Printing.PrintDocument();
             this.printDialog = new System.Windows.Forms.PrintDialog();
             this.printPreviewDialog = new System.Windows.Forms.PrintPreviewDialog();
+            this.rtbxConvertedText = new JMSoftware.Controls.TextViewerRichTextBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.contextMenuImage.SuspendLayout();
             this.contextMenuText.SuspendLayout();
             this.mainMenu1.SuspendLayout();
@@ -1379,28 +1380,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.tableLayoutPanelText.Size = new System.Drawing.Size(515, 465);
             this.tableLayoutPanelText.TabIndex = 1;
             // 
-            // rtbxConvertedText
-            // 
-            this.rtbxConvertedText.BackColor = System.Drawing.Color.White;
-            this.rtbxConvertedText.BackgroundColor = System.Drawing.Color.White;
-            this.rtbxConvertedText.ContextMenuStrip = this.contextMenuText;
-            this.rtbxConvertedText.DetectUrls = false;
-            this.rtbxConvertedText.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rtbxConvertedText.EnableAutoDragDrop = true;
-            this.rtbxConvertedText.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.rtbxConvertedText.Location = new System.Drawing.Point(0, 0);
-            this.rtbxConvertedText.Margin = new System.Windows.Forms.Padding(0);
-            this.rtbxConvertedText.Name = "rtbxConvertedText";
-            this.rtbxConvertedText.ReadOnly = true;
-            this.tableLayoutPanelText.SetRowSpan(this.rtbxConvertedText, 2);
-            this.rtbxConvertedText.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth;
-            this.rtbxConvertedText.ShowSelectionMargin = true;
-            this.rtbxConvertedText.Size = new System.Drawing.Size(491, 465);
-            this.rtbxConvertedText.TabIndex = 0;
-            this.rtbxConvertedText.Text = "";
-            this.rtbxConvertedText.TextColor = System.Drawing.SystemColors.WindowText;
-            this.rtbxConvertedText.WordWrap = false;
-            // 
             // buttonToggleImage
             // 
             this.buttonToggleImage.BackColor = System.Drawing.SystemColors.Control;
@@ -1724,6 +1703,28 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.printPreviewDialog.Name = "printPreviewDialog";
             this.printPreviewDialog.Visible = false;
             // 
+            // rtbxConvertedText
+            // 
+            this.rtbxConvertedText.BackColor = System.Drawing.Color.White;
+            this.rtbxConvertedText.BackgroundColor = System.Drawing.Color.White;
+            this.rtbxConvertedText.ContextMenuStrip = this.contextMenuText;
+            this.rtbxConvertedText.DetectUrls = false;
+            this.rtbxConvertedText.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rtbxConvertedText.EnableAutoDragDrop = true;
+            this.rtbxConvertedText.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.rtbxConvertedText.Location = new System.Drawing.Point(0, 0);
+            this.rtbxConvertedText.Margin = new System.Windows.Forms.Padding(0);
+            this.rtbxConvertedText.Name = "rtbxConvertedText";
+            this.rtbxConvertedText.ReadOnly = true;
+            this.tableLayoutPanelText.SetRowSpan(this.rtbxConvertedText, 2);
+            this.rtbxConvertedText.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth;
+            this.rtbxConvertedText.ShowSelectionMargin = true;
+            this.rtbxConvertedText.Size = new System.Drawing.Size(491, 465);
+            this.rtbxConvertedText.TabIndex = 0;
+            this.rtbxConvertedText.Text = "";
+            this.rtbxConvertedText.TextColor = System.Drawing.SystemColors.WindowText;
+            this.rtbxConvertedText.WordWrap = false;
+            // 
             // FormConvertImage
             // 
             this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
@@ -1773,5 +1774,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
         private ToolStripSeparator cmenuImageSeperator5;
         private ToolStripMenuItem cmenuImageUpdateWhileSelecting;
         private CheckBox checkBoxFullScreen;
+        private ToolTip toolTip1;
     }
 }

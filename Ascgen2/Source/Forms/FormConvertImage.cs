@@ -3688,9 +3688,8 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.tsbFont.ToolTipText = Resource.GetString("Choose the Font");
             this.tsbBlackOnWhite.ToolTipText = Resource.GetString("Invert the Output");
 
-            // TODO: create a tooltip and set it for the buttons
-            //// this.buttonToggleImage.ToolTipText = Resource.GetString("Input Image") + " (F12)";
-            //// this.checkBoxFullScreen.ToolTipText = Resource.GetString("Full Screen") + " (F11)";
+            this.toolTip1.SetToolTip(this.buttonToggleImage, Resource.GetString("Input Image") + " (F12)");
+            this.toolTip1.SetToolTip(this.checkBoxFullScreen, Resource.GetString("Full Screen") + " (F11)");
 
             this.tsbRotateClockwise.ToolTipText = Resource.GetString("Rotate Clockwise");
             this.tsbRotateAnticlockwise.ToolTipText = Resource.GetString("Rotate Anticlockwise");
