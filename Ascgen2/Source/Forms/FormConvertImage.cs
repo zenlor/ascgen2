@@ -626,7 +626,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
                 this.isFullScreen = value;
 
-                this.tsbFullScreen.Checked = this.IsFullScreen;
+                this.checkBoxFullScreen.Checked = this.IsFullScreen;
 
                 if (this.isFullScreen)
                 {
@@ -1252,6 +1252,16 @@ namespace JMSoftware.AsciiGeneratorDotNet
         private void CbxLocked_CheckedChanged(object sender, System.EventArgs e)
         {
             this.dimensionsCalculator.DimensionsAreLocked = this.cbxLocked.Checked;
+        }
+
+        /// <summary>
+        /// Handles the CheckedChanged event of the checkBoxFullScreen control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void CheckBoxFullScreen_CheckedChanged(object sender, EventArgs e)
+        {
+            this.IsFullScreen = !this.IsFullScreen;
         }
 
         /// <summary>
@@ -3453,16 +3463,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
         }
 
         /// <summary>
-        /// Handles the Click event of the tsbFullScreen control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void TsbFullScreen_Click(object sender, EventArgs e)
-        {
-            this.IsFullScreen = !this.IsFullScreen;
-        }
-
-        /// <summary>
         /// Handles the Click event of the tsbImageVisible control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
@@ -3687,7 +3687,10 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.tsbColourPreview.ToolTipText = Resource.GetString("Colour Preview");
             this.tsbFont.ToolTipText = Resource.GetString("Choose the Font");
             this.tsbBlackOnWhite.ToolTipText = Resource.GetString("Invert the Output");
-            this.tsbFullScreen.ToolTipText = Resource.GetString("Full Screen");
+
+            // TODO: create a tooltip and set it for the buttons
+            //// this.buttonToggleImage.ToolTipText = Resource.GetString("Input Image") + " (F12)";
+            //// this.checkBoxFullScreen.ToolTipText = Resource.GetString("Full Screen") + " (F11)";
 
             this.tsbRotateClockwise.ToolTipText = Resource.GetString("Rotate Clockwise");
             this.tsbRotateAnticlockwise.ToolTipText = Resource.GetString("Rotate Anticlockwise");
