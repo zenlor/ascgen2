@@ -288,8 +288,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
         private ToolStripButton tsbFont;
 
-        private ToolStripButton tsbFullScreen;
-
         private ToolStripButton tsbRotateAnticlockwise;
 
         private ToolStripButton tsbRotateClockwise;
@@ -421,7 +419,10 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.pnlMain = new System.Windows.Forms.Panel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tableLayoutPanelText = new System.Windows.Forms.TableLayoutPanel();
+            this.rtbxConvertedText = new JMSoftware.Controls.TextViewerRichTextBox();
             this.buttonToggleImage = new System.Windows.Forms.Button();
+            this.checkBoxFullScreen = new System.Windows.Forms.CheckBox();
+            this.pbxMain = new JMSoftware.Controls.JMSelectablePictureBox();
             this.tstripOutputSize = new System.Windows.Forms.ToolStrip();
             this.lblOutputSize = new System.Windows.Forms.ToolStripLabel();
             this.tbxWidth = new System.Windows.Forms.ToolStripTextBox();
@@ -435,10 +436,9 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.tsbFlipHorizontally = new System.Windows.Forms.ToolStripButton();
             this.tsbFlipVertically = new System.Windows.Forms.ToolStripButton();
             this.tstripButtons = new System.Windows.Forms.ToolStrip();
-            this.tsbColourPreview = new System.Windows.Forms.ToolStripButton();
             this.tsbFont = new System.Windows.Forms.ToolStripButton();
             this.tsbBlackOnWhite = new System.Windows.Forms.ToolStripButton();
-            this.tsbFullScreen = new System.Windows.Forms.ToolStripButton();
+            this.tsbColourPreview = new System.Windows.Forms.ToolStripButton();
             this.tstripRamp = new System.Windows.Forms.ToolStrip();
             this.lblRamp = new System.Windows.Forms.ToolStripLabel();
             this.cmbRamp = new System.Windows.Forms.ToolStripComboBox();
@@ -451,8 +451,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.printDocument = new System.Drawing.Printing.PrintDocument();
             this.printDialog = new System.Windows.Forms.PrintDialog();
             this.printPreviewDialog = new System.Windows.Forms.PrintPreviewDialog();
-            this.rtbxConvertedText = new JMSoftware.Controls.TextViewerRichTextBox();
-            this.pbxMain = new JMSoftware.Controls.JMSelectablePictureBox();
             this.contextMenuImage.SuspendLayout();
             this.contextMenuText.SuspendLayout();
             this.mainMenu1.SuspendLayout();
@@ -1367,18 +1365,41 @@ namespace JMSoftware.AsciiGeneratorDotNet
             // 
             this.tableLayoutPanelText.ColumnCount = 2;
             this.tableLayoutPanelText.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelText.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanelText.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 24F));
             this.tableLayoutPanelText.Controls.Add(this.rtbxConvertedText, 0, 0);
             this.tableLayoutPanelText.Controls.Add(this.buttonToggleImage, 1, 0);
+            this.tableLayoutPanelText.Controls.Add(this.checkBoxFullScreen, 1, 1);
             this.tableLayoutPanelText.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelText.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanelText.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanelText.Name = "tableLayoutPanelText";
             this.tableLayoutPanelText.RowCount = 2;
             this.tableLayoutPanelText.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelText.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanelText.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
             this.tableLayoutPanelText.Size = new System.Drawing.Size(515, 465);
             this.tableLayoutPanelText.TabIndex = 1;
+            // 
+            // rtbxConvertedText
+            // 
+            this.rtbxConvertedText.BackColor = System.Drawing.Color.White;
+            this.rtbxConvertedText.BackgroundColor = System.Drawing.Color.White;
+            this.rtbxConvertedText.ContextMenuStrip = this.contextMenuText;
+            this.rtbxConvertedText.DetectUrls = false;
+            this.rtbxConvertedText.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rtbxConvertedText.EnableAutoDragDrop = true;
+            this.rtbxConvertedText.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.rtbxConvertedText.Location = new System.Drawing.Point(0, 0);
+            this.rtbxConvertedText.Margin = new System.Windows.Forms.Padding(0);
+            this.rtbxConvertedText.Name = "rtbxConvertedText";
+            this.rtbxConvertedText.ReadOnly = true;
+            this.tableLayoutPanelText.SetRowSpan(this.rtbxConvertedText, 2);
+            this.rtbxConvertedText.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth;
+            this.rtbxConvertedText.ShowSelectionMargin = true;
+            this.rtbxConvertedText.Size = new System.Drawing.Size(491, 465);
+            this.rtbxConvertedText.TabIndex = 0;
+            this.rtbxConvertedText.Text = "";
+            this.rtbxConvertedText.TextColor = System.Drawing.SystemColors.WindowText;
+            this.rtbxConvertedText.WordWrap = false;
             // 
             // buttonToggleImage
             // 
@@ -1386,15 +1407,58 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.buttonToggleImage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonToggleImage.FlatAppearance.BorderSize = 0;
             this.buttonToggleImage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonToggleImage.Location = new System.Drawing.Point(497, 0);
+            this.buttonToggleImage.Location = new System.Drawing.Point(491, 0);
             this.buttonToggleImage.Margin = new System.Windows.Forms.Padding(0);
             this.buttonToggleImage.Name = "buttonToggleImage";
-            this.buttonToggleImage.Size = new System.Drawing.Size(18, 465);
+            this.buttonToggleImage.Size = new System.Drawing.Size(24, 441);
             this.buttonToggleImage.TabIndex = 1;
             this.buttonToggleImage.TabStop = false;
             this.buttonToggleImage.Text = ">";
             this.buttonToggleImage.UseVisualStyleBackColor = false;
             this.buttonToggleImage.Click += new System.EventHandler(this.ButtonToggleImage_Click);
+            // 
+            // checkBoxFullScreen
+            // 
+            this.checkBoxFullScreen.Appearance = System.Windows.Forms.Appearance.Button;
+            this.checkBoxFullScreen.AutoSize = true;
+            this.checkBoxFullScreen.BackColor = System.Drawing.SystemColors.Control;
+            this.checkBoxFullScreen.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.checkBoxFullScreen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.checkBoxFullScreen.ForeColor = System.Drawing.SystemColors.Control;
+            this.checkBoxFullScreen.Image = global::AscGenDotNet.Properties.Resources.monitor;
+            this.checkBoxFullScreen.Location = new System.Drawing.Point(491, 441);
+            this.checkBoxFullScreen.Margin = new System.Windows.Forms.Padding(0);
+            this.checkBoxFullScreen.Name = "checkBoxFullScreen";
+            this.checkBoxFullScreen.Size = new System.Drawing.Size(24, 24);
+            this.checkBoxFullScreen.TabIndex = 2;
+            this.checkBoxFullScreen.UseVisualStyleBackColor = false;
+            this.checkBoxFullScreen.CheckedChanged += new System.EventHandler(this.CheckBoxFullScreen_CheckedChanged);
+            // 
+            // pbxMain
+            // 
+            this.pbxMain.AllowDrop = true;
+            this.pbxMain.BackColor = System.Drawing.SystemColors.Control;
+            this.pbxMain.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pbxMain.ContextMenuStrip = this.contextMenuImage;
+            this.pbxMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pbxMain.DrawingImage = true;
+            this.pbxMain.FillSelectionRectangle = true;
+            this.pbxMain.ImageLocation = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.pbxMain.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
+            this.pbxMain.Location = new System.Drawing.Point(0, 0);
+            this.pbxMain.Name = "pbxMain";
+            this.pbxMain.SelectedArea = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.pbxMain.SelectionBorderColor = System.Drawing.Color.DarkBlue;
+            this.pbxMain.SelectionFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(173)))), ((int)(((byte)(216)))), ((int)(((byte)(230)))));
+            this.pbxMain.SelectionLocked = false;
+            this.pbxMain.Size = new System.Drawing.Size(223, 465);
+            this.pbxMain.SizeMode = JMSoftware.Controls.JMPictureBox.JMPictureBoxSizeMode.FitCenter;
+            this.pbxMain.TabIndex = 0;
+            this.pbxMain.SelectionChanged += new System.EventHandler(this.PbxMain_SelectionChanged);
+            this.pbxMain.SelectionChanging += new System.EventHandler(this.PbxMain_SelectionChanging);
+            this.pbxMain.DragDrop += new System.Windows.Forms.DragEventHandler(this.PbxMain_DragDrop);
+            this.pbxMain.DragOver += new System.Windows.Forms.DragEventHandler(this.PbxMain_DragOver);
+            this.pbxMain.DoubleClick += new System.EventHandler(this.PbxMain_DoubleClick);
             // 
             // tstripOutputSize
             // 
@@ -1473,8 +1537,8 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.tstripOutputSize);
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.tstripAlterInputImage);
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.tstripButtons);
-            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.tstripCharacters);
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.tstripRamp);
+            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.tstripCharacters);
             // 
             // tstripAlterInputImage
             // 
@@ -1535,22 +1599,11 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.tstripButtons.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbFont,
             this.tsbBlackOnWhite,
-            this.tsbFullScreen,
             this.tsbColourPreview});
             this.tstripButtons.Location = new System.Drawing.Point(3, 74);
             this.tstripButtons.Name = "tstripButtons";
-            this.tstripButtons.Size = new System.Drawing.Size(108, 25);
+            this.tstripButtons.Size = new System.Drawing.Size(85, 25);
             this.tstripButtons.TabIndex = 4;
-            // 
-            // tsbColourPreview
-            // 
-            this.tsbColourPreview.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbColourPreview.Image = global::AscGenDotNet.Properties.Resources.page_magnify_color;
-            this.tsbColourPreview.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbColourPreview.Name = "tsbColourPreview";
-            this.tsbColourPreview.Size = new System.Drawing.Size(23, 22);
-            this.tsbColourPreview.Text = "tsbColourPreview";
-            this.tsbColourPreview.Click += new System.EventHandler(this.TsbColourPreview_Click);
             // 
             // tsbFont
             // 
@@ -1574,17 +1627,15 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.tsbBlackOnWhite.ToolTipText = "tsbBlackOnWhite";
             this.tsbBlackOnWhite.CheckedChanged += new System.EventHandler(this.TsbBlackOnWhite_CheckedChanged);
             // 
-            // tsbFullScreen
+            // tsbColourPreview
             // 
-            this.tsbFullScreen.CheckOnClick = true;
-            this.tsbFullScreen.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbFullScreen.Image = global::AscGenDotNet.Properties.Resources.monitor;
-            this.tsbFullScreen.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbFullScreen.Name = "tsbFullScreen";
-            this.tsbFullScreen.Size = new System.Drawing.Size(23, 22);
-            this.tsbFullScreen.Text = "toolStripButton1";
-            this.tsbFullScreen.ToolTipText = "tsbFullScreen";
-            this.tsbFullScreen.Click += new System.EventHandler(this.TsbFullScreen_Click);
+            this.tsbColourPreview.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbColourPreview.Image = global::AscGenDotNet.Properties.Resources.page_magnify_color;
+            this.tsbColourPreview.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbColourPreview.Name = "tsbColourPreview";
+            this.tsbColourPreview.Size = new System.Drawing.Size(23, 22);
+            this.tsbColourPreview.Text = "tsbColourPreview";
+            this.tsbColourPreview.Click += new System.EventHandler(this.TsbColourPreview_Click);
             // 
             // tstripRamp
             // 
@@ -1593,7 +1644,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.lblRamp,
             this.cmbRamp,
             this.chkGenerate});
-            this.tstripRamp.Location = new System.Drawing.Point(3, 124);
+            this.tstripRamp.Location = new System.Drawing.Point(3, 99);
             this.tstripRamp.Name = "tstripRamp";
             this.tstripRamp.Size = new System.Drawing.Size(263, 25);
             this.tstripRamp.TabIndex = 2;
@@ -1630,7 +1681,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.tstripCharacters.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lblCharacters,
             this.cmbCharacters});
-            this.tstripCharacters.Location = new System.Drawing.Point(3, 99);
+            this.tstripCharacters.Location = new System.Drawing.Point(3, 124);
             this.tstripCharacters.Name = "tstripCharacters";
             this.tstripCharacters.Size = new System.Drawing.Size(211, 25);
             this.tstripCharacters.TabIndex = 3;
@@ -1673,53 +1724,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.printPreviewDialog.Name = "printPreviewDialog";
             this.printPreviewDialog.Visible = false;
             // 
-            // rtbxConvertedText
-            // 
-            this.rtbxConvertedText.BackColor = System.Drawing.Color.White;
-            this.rtbxConvertedText.BackgroundColor = System.Drawing.Color.White;
-            this.rtbxConvertedText.ContextMenuStrip = this.contextMenuText;
-            this.rtbxConvertedText.DetectUrls = false;
-            this.rtbxConvertedText.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rtbxConvertedText.EnableAutoDragDrop = true;
-            this.rtbxConvertedText.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.rtbxConvertedText.Location = new System.Drawing.Point(0, 0);
-            this.rtbxConvertedText.Margin = new System.Windows.Forms.Padding(0);
-            this.rtbxConvertedText.Name = "rtbxConvertedText";
-            this.rtbxConvertedText.ReadOnly = true;
-            this.rtbxConvertedText.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth;
-            this.rtbxConvertedText.ShowSelectionMargin = true;
-            this.rtbxConvertedText.Size = new System.Drawing.Size(497, 465);
-            this.rtbxConvertedText.TabIndex = 0;
-            this.rtbxConvertedText.Text = "";
-            this.rtbxConvertedText.TextColor = System.Drawing.SystemColors.WindowText;
-            this.rtbxConvertedText.WordWrap = false;
-            // 
-            // pbxMain
-            // 
-            this.pbxMain.AllowDrop = true;
-            this.pbxMain.BackColor = System.Drawing.SystemColors.Control;
-            this.pbxMain.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pbxMain.ContextMenuStrip = this.contextMenuImage;
-            this.pbxMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pbxMain.DrawingImage = true;
-            this.pbxMain.FillSelectionRectangle = true;
-            this.pbxMain.ImageLocation = new System.Drawing.Rectangle(0, 0, 0, 0);
-            this.pbxMain.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
-            this.pbxMain.Location = new System.Drawing.Point(0, 0);
-            this.pbxMain.Name = "pbxMain";
-            this.pbxMain.SelectedArea = new System.Drawing.Rectangle(0, 0, 0, 0);
-            this.pbxMain.SelectionBorderColor = System.Drawing.Color.DarkBlue;
-            this.pbxMain.SelectionFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(173)))), ((int)(((byte)(216)))), ((int)(((byte)(230)))));
-            this.pbxMain.SelectionLocked = false;
-            this.pbxMain.Size = new System.Drawing.Size(223, 465);
-            this.pbxMain.SizeMode = JMSoftware.Controls.JMPictureBox.JMPictureBoxSizeMode.FitCenter;
-            this.pbxMain.TabIndex = 0;
-            this.pbxMain.SelectionChanged += new System.EventHandler(this.PbxMain_SelectionChanged);
-            this.pbxMain.SelectionChanging += new System.EventHandler(this.PbxMain_SelectionChanging);
-            this.pbxMain.DragDrop += new System.Windows.Forms.DragEventHandler(this.PbxMain_DragDrop);
-            this.pbxMain.DragOver += new System.Windows.Forms.DragEventHandler(this.PbxMain_DragOver);
-            this.pbxMain.DoubleClick += new System.EventHandler(this.PbxMain_DoubleClick);
-            // 
             // FormConvertImage
             // 
             this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
@@ -1742,6 +1746,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.ResumeLayout(false);
             this.tableLayoutPanelText.ResumeLayout(false);
+            this.tableLayoutPanelText.PerformLayout();
             this.tstripOutputSize.ResumeLayout(false);
             this.tstripOutputSize.PerformLayout();
             this.toolStripContainer1.ContentPanel.ResumeLayout(false);
@@ -1767,5 +1772,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
         private Button buttonToggleImage;
         private ToolStripSeparator cmenuImageSeperator5;
         private ToolStripMenuItem cmenuImageUpdateWhileSelecting;
+        private CheckBox checkBoxFullScreen;
     }
 }
