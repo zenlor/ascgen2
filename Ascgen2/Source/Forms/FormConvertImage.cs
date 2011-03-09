@@ -1235,6 +1235,16 @@ namespace JMSoftware.AsciiGeneratorDotNet
         }
 
         /// <summary>
+        /// Handles the Click event of the buttonPreview control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void ButtonPreview_Click(object sender, EventArgs e)
+        {
+            this.ShowColourPreview();
+        }
+
+        /// <summary>
         /// Handles the Click event of the buttonToggleImage control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
@@ -1252,6 +1262,16 @@ namespace JMSoftware.AsciiGeneratorDotNet
         private void CbxLocked_CheckedChanged(object sender, System.EventArgs e)
         {
             this.dimensionsCalculator.DimensionsAreLocked = this.cbxLocked.Checked;
+        }
+
+        /// <summary>
+        /// Handles the CheckedChanged event of the CheckBoxBlackOnWhite control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void CheckBoxBlackOnWhite_CheckedChanged(object sender, EventArgs e)
+        {
+            this.IsBlackTextOnWhite = !this.checkBoxBlackOnWhite.Checked;
         }
 
         /// <summary>
@@ -3133,7 +3153,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.rtbxConvertedText.DragDrop += new DragEventHandler(this.RtbxConvertedText_DragDrop);
             this.rtbxConvertedText.DragEnter += new DragEventHandler(this.RtbxConvertedText_DragEnter);
 
-            this.tsbBlackOnWhite.Checked = !Settings.Default.BlackTextOnWhite;
+            this.checkBoxBlackOnWhite.Checked = !Settings.Default.BlackTextOnWhite;
             this.textViewer.BackgroundColor = this.BackgroundColor;
             this.textViewer.TextColor = this.TextColor;
 
@@ -3413,26 +3433,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
         }
 
         /// <summary>
-        /// Handles the CheckedChanged event of the tsbBlackOnWhite control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void TsbBlackOnWhite_CheckedChanged(object sender, System.EventArgs e)
-        {
-            this.IsBlackTextOnWhite = !this.tsbBlackOnWhite.Checked;
-        }
-
-        /// <summary>
-        /// Handles the Click event of the tsbColourPreview control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void TsbColourPreview_Click(object sender, EventArgs e)
-        {
-            this.ShowColourPreview();
-        }
-
-        /// <summary>
         /// Handles the Click event of the tsbFlipHorizontally control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
@@ -3558,7 +3558,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
                 this.menuFilePrint.Enabled =
                 this.menuFilePrintPreview.Enabled = this.ImageIsLoaded;
 
-            this.tsbColourPreview.Enabled =
+            this.buttonPreview.Enabled =
                 this.menuViewColourPreview.Enabled =
                 this.menuFilePrintColour.Enabled =
                 this.menuFilePrintPreviewColour.Enabled =
@@ -3683,17 +3683,17 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.cmenuImageSelectionBorderColor.Text = Resource.GetString("Selection Area Border Colour") + "...";
             this.cmenuImageUpdateWhileSelecting.Text = Resource.GetString("Update while Selection Changes");
 
-            this.tsbColourPreview.ToolTipText = Resource.GetString("Colour Preview");
             this.tsbFont.ToolTipText = Resource.GetString("Choose the Font");
-            this.tsbBlackOnWhite.ToolTipText = Resource.GetString("Invert the Output");
-
-            this.toolTip1.SetToolTip(this.buttonToggleImage, Resource.GetString("Input Image") + " (F12)");
-            this.toolTip1.SetToolTip(this.checkBoxFullScreen, Resource.GetString("Full Screen") + " (F11)");
 
             this.tsbRotateClockwise.ToolTipText = Resource.GetString("Rotate Clockwise");
             this.tsbRotateAnticlockwise.ToolTipText = Resource.GetString("Rotate Anticlockwise");
             this.tsbFlipHorizontally.ToolTipText = Resource.GetString("Flip Horizontally");
             this.tsbFlipVertically.ToolTipText = Resource.GetString("Flip Vertically");
+
+            this.toolTip1.SetToolTip(this.buttonToggleImage, Resource.GetString("Input Image") + " (F12)");
+            this.toolTip1.SetToolTip(this.checkBoxBlackOnWhite, Resource.GetString("Invert the Output"));
+            this.toolTip1.SetToolTip(this.checkBoxFullScreen, Resource.GetString("Full Screen") + " (F11)");
+            this.toolTip1.SetToolTip(this.buttonPreview, Resource.GetString("Colour Preview"));
 
             this.dialogSaveText.Title = Resource.GetString("Save to a Text File") + "...";
 
