@@ -3651,7 +3651,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.menuHelpCheckForNewVersionToolStrip.Text = Resource.GetString("Check for a New Version") + "...";
             this.menuHelpAbout.Text = Resource.GetString("&About") + "...";
 
-            this.lblOutputSize.Text = Resource.GetString("Size") + ":";
             this.lblRamp.Text = Resource.GetString("Ramp") + ":";
             this.tsbFont.Text = Resource.GetString("Font");
             this.chkGenerate.Text = Resource.GetString("Auto");
