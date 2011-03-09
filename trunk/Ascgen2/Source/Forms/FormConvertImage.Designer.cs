@@ -377,6 +377,8 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.menuEditInputFlipHorizontal = new System.Windows.Forms.ToolStripMenuItem();
             this.menuEditInputFlipVertical = new System.Windows.Forms.ToolStripMenuItem();
             this.menuEditOutput = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemInvertOutput = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.menuEditStretch = new System.Windows.Forms.ToolStripMenuItem();
             this.menuEditOutputSep1 = new System.Windows.Forms.ToolStripSeparator();
             this.menuEditSharpeningMethod = new System.Windows.Forms.ToolStripMenuItem();
@@ -1050,6 +1052,8 @@ namespace JMSoftware.AsciiGeneratorDotNet
             // menuEditOutput
             // 
             this.menuEditOutput.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItemInvertOutput,
+            this.toolStripSeparator2,
             this.menuEditStretch,
             this.menuEditOutputSep1,
             this.menuEditSharpeningMethod,
@@ -1062,18 +1066,31 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.menuEditOutput.Text = "menuEditOutput";
             this.menuEditOutput.DropDownOpening += new System.EventHandler(this.MenuEditOutput_Popup);
             // 
+            // toolStripMenuItemInvertOutput
+            // 
+            this.toolStripMenuItemInvertOutput.Image = global::AscGenDotNet.Properties.Resources.contrast_high;
+            this.toolStripMenuItemInvertOutput.Name = "toolStripMenuItemInvertOutput";
+            this.toolStripMenuItemInvertOutput.Size = new System.Drawing.Size(242, 22);
+            this.toolStripMenuItemInvertOutput.Text = "toolStripMenuItemInvertOutput";
+            this.toolStripMenuItemInvertOutput.Click += new System.EventHandler(this.ToolStripMenuItemInvertOutput_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(239, 6);
+            // 
             // menuEditStretch
             // 
             this.menuEditStretch.MergeIndex = 0;
             this.menuEditStretch.Name = "menuEditStretch";
-            this.menuEditStretch.Size = new System.Drawing.Size(227, 22);
+            this.menuEditStretch.Size = new System.Drawing.Size(242, 22);
             this.menuEditStretch.Text = "menuEditStretch";
             this.menuEditStretch.Click += new System.EventHandler(this.CmenuTextStretch_Click);
             // 
             // menuEditOutputSep1
             // 
             this.menuEditOutputSep1.Name = "menuEditOutputSep1";
-            this.menuEditOutputSep1.Size = new System.Drawing.Size(224, 6);
+            this.menuEditOutputSep1.Size = new System.Drawing.Size(239, 6);
             // 
             // menuEditSharpeningMethod
             // 
@@ -1083,7 +1100,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.menuEditSharpeningMethodUnsharp});
             this.menuEditSharpeningMethod.MergeIndex = 2;
             this.menuEditSharpeningMethod.Name = "menuEditSharpeningMethod";
-            this.menuEditSharpeningMethod.Size = new System.Drawing.Size(227, 22);
+            this.menuEditSharpeningMethod.Size = new System.Drawing.Size(242, 22);
             this.menuEditSharpeningMethod.Text = "menuEditSharpeningMethod";
             this.menuEditSharpeningMethod.DropDownOpening += new System.EventHandler(this.MenuEditSharpeningMethod_Popup);
             // 
@@ -1114,14 +1131,14 @@ namespace JMSoftware.AsciiGeneratorDotNet
             // menuEditOutputSep2
             // 
             this.menuEditOutputSep2.Name = "menuEditOutputSep2";
-            this.menuEditOutputSep2.Size = new System.Drawing.Size(224, 6);
+            this.menuEditOutputSep2.Size = new System.Drawing.Size(239, 6);
             // 
             // menuEditFlipHorizontal
             // 
             this.menuEditFlipHorizontal.Image = global::AscGenDotNet.Properties.Resources.shape_flip_horizontal;
             this.menuEditFlipHorizontal.MergeIndex = 4;
             this.menuEditFlipHorizontal.Name = "menuEditFlipHorizontal";
-            this.menuEditFlipHorizontal.Size = new System.Drawing.Size(227, 22);
+            this.menuEditFlipHorizontal.Size = new System.Drawing.Size(242, 22);
             this.menuEditFlipHorizontal.Text = "menuEditFlipHorizontal";
             this.menuEditFlipHorizontal.Click += new System.EventHandler(this.CmenuTextHorizontal_Click);
             // 
@@ -1130,7 +1147,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.menuEditFlipVertical.Image = global::AscGenDotNet.Properties.Resources.shape_flip_vertical;
             this.menuEditFlipVertical.MergeIndex = 5;
             this.menuEditFlipVertical.Name = "menuEditFlipVertical";
-            this.menuEditFlipVertical.Size = new System.Drawing.Size(227, 22);
+            this.menuEditFlipVertical.Size = new System.Drawing.Size(242, 22);
             this.menuEditFlipVertical.Text = "menuEditFlipVertical";
             this.menuEditFlipVertical.Click += new System.EventHandler(this.CmenuTextVertical_Click);
             // 
@@ -1448,7 +1465,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.checkBoxBlackOnWhite.Size = new System.Drawing.Size(24, 24);
             this.checkBoxBlackOnWhite.TabIndex = 3;
             this.checkBoxBlackOnWhite.UseVisualStyleBackColor = false;
-            this.checkBoxBlackOnWhite.CheckedChanged += new System.EventHandler(this.CheckBoxBlackOnWhite_CheckedChanged);
+            this.checkBoxBlackOnWhite.Click += new System.EventHandler(this.CheckBoxBlackOnWhite_Click);
             // 
             // buttonPreview
             // 
@@ -1561,8 +1578,8 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.tstripOutputSize);
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.tstripAlterInputImage);
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.tstripButtons);
-            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.tstripRamp);
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.tstripCharacters);
+            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.tstripRamp);
             // 
             // tstripAlterInputImage
             // 
@@ -1643,7 +1660,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.lblRamp,
             this.cmbRamp,
             this.chkGenerate});
-            this.tstripRamp.Location = new System.Drawing.Point(3, 99);
+            this.tstripRamp.Location = new System.Drawing.Point(3, 124);
             this.tstripRamp.Name = "tstripRamp";
             this.tstripRamp.Size = new System.Drawing.Size(263, 25);
             this.tstripRamp.TabIndex = 2;
@@ -1680,7 +1697,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.tstripCharacters.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lblCharacters,
             this.cmbCharacters});
-            this.tstripCharacters.Location = new System.Drawing.Point(3, 124);
+            this.tstripCharacters.Location = new System.Drawing.Point(3, 99);
             this.tstripCharacters.Name = "tstripCharacters";
             this.tstripCharacters.Size = new System.Drawing.Size(211, 25);
             this.tstripCharacters.TabIndex = 3;
@@ -1775,5 +1792,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
         private ToolTip toolTip1;
         private CheckBox checkBoxBlackOnWhite;
         private Button buttonPreview;
+        private ToolStripMenuItem toolStripMenuItemInvertOutput;
+        private ToolStripSeparator toolStripSeparator2;
     }
 }

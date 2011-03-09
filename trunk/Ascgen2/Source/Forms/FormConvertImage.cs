@@ -1265,13 +1265,13 @@ namespace JMSoftware.AsciiGeneratorDotNet
         }
 
         /// <summary>
-        /// Handles the CheckedChanged event of the CheckBoxBlackOnWhite control.
+        /// Handles the Click event of the checkBoxBlackOnWhite control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void CheckBoxBlackOnWhite_CheckedChanged(object sender, EventArgs e)
+        private void CheckBoxBlackOnWhite_Click(object sender, EventArgs e)
         {
-            this.IsBlackTextOnWhite = !this.checkBoxBlackOnWhite.Checked;
+            this.IsBlackTextOnWhite = !this.IsBlackTextOnWhite;
         }
 
         /// <summary>
@@ -2236,6 +2236,8 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void MenuEditOutput_Popup(object sender, System.EventArgs e)
         {
+            this.toolStripMenuItemInvertOutput.Checked = !this.IsBlackTextOnWhite;
+
             this.menuEditStretch.Checked = this.Stretch;
 
             this.menuEditFlipHorizontal.Checked = this.FlipHorizontally;
@@ -3433,6 +3435,16 @@ namespace JMSoftware.AsciiGeneratorDotNet
         }
 
         /// <summary>
+        /// Handles the Click event of the toolStripMenuItemInvertOutput control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void ToolStripMenuItemInvertOutput_Click(object sender, EventArgs e)
+        {
+            this.IsBlackTextOnWhite = !this.IsBlackTextOnWhite;
+        }
+
+        /// <summary>
         /// Handles the Click event of the tsbFlipHorizontally control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
@@ -3660,6 +3672,8 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.cmenuTextCopy.Text = Resource.GetString("Copy");
             this.cmenuTextSelectAll.Text = Resource.GetString("Select All");
             this.cmenuTextSelectNone.Text = Resource.GetString("Select None");
+
+            this.toolStripMenuItemInvertOutput.Text = Resource.GetString("Invert the Output");
             this.cmenuTextStretch.Text = Resource.GetString("Stretch");
             this.cmenuTextSharpening.Text = Resource.GetString("Sharpening Method");
             this.cmenuTextSharpeningNone.Text = Resource.GetString("None");
