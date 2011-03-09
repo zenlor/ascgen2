@@ -276,10 +276,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
         private ToolStripSeparator toolStripSeparator1;
 
-        private ToolStripButton tsbBlackOnWhite;
-
-        private ToolStripButton tsbColourPreview;
-
         private ToolStripButton tsbFlipHorizontally;
 
         private ToolStripButton tsbFlipVertically;
@@ -417,9 +413,10 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.pnlMain = new System.Windows.Forms.Panel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tableLayoutPanelText = new System.Windows.Forms.TableLayoutPanel();
-            this.rtbxConvertedText = new JMSoftware.Controls.TextViewerRichTextBox();
             this.buttonToggleImage = new System.Windows.Forms.Button();
             this.checkBoxFullScreen = new System.Windows.Forms.CheckBox();
+            this.checkBoxBlackOnWhite = new System.Windows.Forms.CheckBox();
+            this.buttonPreview = new System.Windows.Forms.Button();
             this.pbxMain = new JMSoftware.Controls.JMSelectablePictureBox();
             this.tstripOutputSize = new System.Windows.Forms.ToolStrip();
             this.tbxWidth = new System.Windows.Forms.ToolStripTextBox();
@@ -434,21 +431,20 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.tsbFlipVertically = new System.Windows.Forms.ToolStripButton();
             this.tstripButtons = new System.Windows.Forms.ToolStrip();
             this.tsbFont = new System.Windows.Forms.ToolStripButton();
-            this.tsbBlackOnWhite = new System.Windows.Forms.ToolStripButton();
-            this.tsbColourPreview = new System.Windows.Forms.ToolStripButton();
+            this.tstripCharacters = new System.Windows.Forms.ToolStrip();
+            this.lblCharacters = new System.Windows.Forms.ToolStripLabel();
+            this.cmbCharacters = new System.Windows.Forms.ToolStripComboBox();
             this.tstripRamp = new System.Windows.Forms.ToolStrip();
             this.lblRamp = new System.Windows.Forms.ToolStripLabel();
             this.cmbRamp = new System.Windows.Forms.ToolStripComboBox();
             this.chkGenerate = new System.Windows.Forms.ToolStripButton();
-            this.tstripCharacters = new System.Windows.Forms.ToolStrip();
-            this.lblCharacters = new System.Windows.Forms.ToolStripLabel();
-            this.cmbCharacters = new System.Windows.Forms.ToolStripComboBox();
             this.dialogSaveColour = new System.Windows.Forms.SaveFileDialog();
             this.pageSetupDialog = new System.Windows.Forms.PageSetupDialog();
             this.printDocument = new System.Drawing.Printing.PrintDocument();
             this.printDialog = new System.Windows.Forms.PrintDialog();
             this.printPreviewDialog = new System.Windows.Forms.PrintPreviewDialog();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.rtbxConvertedText = new JMSoftware.Controls.TextViewerRichTextBox();
             this.contextMenuImage.SuspendLayout();
             this.contextMenuText.SuspendLayout();
             this.mainMenu1.SuspendLayout();
@@ -463,8 +459,8 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.toolStripContainer1.SuspendLayout();
             this.tstripAlterInputImage.SuspendLayout();
             this.tstripButtons.SuspendLayout();
-            this.tstripRamp.SuspendLayout();
             this.tstripCharacters.SuspendLayout();
+            this.tstripRamp.SuspendLayout();
             this.SuspendLayout();
             // 
             // contextMenuImage
@@ -1366,38 +1362,21 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.tableLayoutPanelText.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 24F));
             this.tableLayoutPanelText.Controls.Add(this.rtbxConvertedText, 0, 0);
             this.tableLayoutPanelText.Controls.Add(this.buttonToggleImage, 1, 0);
-            this.tableLayoutPanelText.Controls.Add(this.checkBoxFullScreen, 1, 1);
+            this.tableLayoutPanelText.Controls.Add(this.checkBoxFullScreen, 1, 3);
+            this.tableLayoutPanelText.Controls.Add(this.checkBoxBlackOnWhite, 1, 1);
+            this.tableLayoutPanelText.Controls.Add(this.buttonPreview, 1, 2);
             this.tableLayoutPanelText.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelText.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanelText.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanelText.Name = "tableLayoutPanelText";
-            this.tableLayoutPanelText.RowCount = 2;
+            this.tableLayoutPanelText.RowCount = 4;
             this.tableLayoutPanelText.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanelText.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
+            this.tableLayoutPanelText.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
+            this.tableLayoutPanelText.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
+            this.tableLayoutPanelText.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelText.Size = new System.Drawing.Size(515, 490);
             this.tableLayoutPanelText.TabIndex = 1;
-            // 
-            // rtbxConvertedText
-            // 
-            this.rtbxConvertedText.BackColor = System.Drawing.Color.White;
-            this.rtbxConvertedText.BackgroundColor = System.Drawing.Color.White;
-            this.rtbxConvertedText.ContextMenuStrip = this.contextMenuText;
-            this.rtbxConvertedText.DetectUrls = false;
-            this.rtbxConvertedText.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rtbxConvertedText.EnableAutoDragDrop = true;
-            this.rtbxConvertedText.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.rtbxConvertedText.Location = new System.Drawing.Point(0, 0);
-            this.rtbxConvertedText.Margin = new System.Windows.Forms.Padding(0);
-            this.rtbxConvertedText.Name = "rtbxConvertedText";
-            this.rtbxConvertedText.ReadOnly = true;
-            this.tableLayoutPanelText.SetRowSpan(this.rtbxConvertedText, 2);
-            this.rtbxConvertedText.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth;
-            this.rtbxConvertedText.ShowSelectionMargin = true;
-            this.rtbxConvertedText.Size = new System.Drawing.Size(491, 490);
-            this.rtbxConvertedText.TabIndex = 0;
-            this.rtbxConvertedText.Text = "";
-            this.rtbxConvertedText.TextColor = System.Drawing.SystemColors.WindowText;
-            this.rtbxConvertedText.WordWrap = false;
             // 
             // buttonToggleImage
             // 
@@ -1408,7 +1387,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.buttonToggleImage.Location = new System.Drawing.Point(491, 0);
             this.buttonToggleImage.Margin = new System.Windows.Forms.Padding(0);
             this.buttonToggleImage.Name = "buttonToggleImage";
-            this.buttonToggleImage.Size = new System.Drawing.Size(24, 466);
+            this.buttonToggleImage.Size = new System.Drawing.Size(24, 418);
             this.buttonToggleImage.TabIndex = 1;
             this.buttonToggleImage.TabStop = false;
             this.buttonToggleImage.Text = ">";
@@ -1431,6 +1410,38 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.checkBoxFullScreen.TabIndex = 2;
             this.checkBoxFullScreen.UseVisualStyleBackColor = false;
             this.checkBoxFullScreen.CheckedChanged += new System.EventHandler(this.CheckBoxFullScreen_CheckedChanged);
+            // 
+            // checkBoxBlackOnWhite
+            // 
+            this.checkBoxBlackOnWhite.Appearance = System.Windows.Forms.Appearance.Button;
+            this.checkBoxBlackOnWhite.AutoSize = true;
+            this.checkBoxBlackOnWhite.BackColor = System.Drawing.SystemColors.Control;
+            this.checkBoxBlackOnWhite.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.checkBoxBlackOnWhite.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.checkBoxBlackOnWhite.ForeColor = System.Drawing.SystemColors.Control;
+            this.checkBoxBlackOnWhite.Image = global::AscGenDotNet.Properties.Resources.contrast_high;
+            this.checkBoxBlackOnWhite.Location = new System.Drawing.Point(491, 418);
+            this.checkBoxBlackOnWhite.Margin = new System.Windows.Forms.Padding(0);
+            this.checkBoxBlackOnWhite.Name = "checkBoxBlackOnWhite";
+            this.checkBoxBlackOnWhite.Size = new System.Drawing.Size(24, 24);
+            this.checkBoxBlackOnWhite.TabIndex = 3;
+            this.checkBoxBlackOnWhite.UseVisualStyleBackColor = false;
+            this.checkBoxBlackOnWhite.CheckedChanged += new System.EventHandler(this.CheckBoxBlackOnWhite_CheckedChanged);
+            // 
+            // buttonPreview
+            // 
+            this.buttonPreview.BackColor = System.Drawing.SystemColors.Control;
+            this.buttonPreview.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonPreview.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonPreview.ForeColor = System.Drawing.SystemColors.Control;
+            this.buttonPreview.Image = global::AscGenDotNet.Properties.Resources.page_magnify_color;
+            this.buttonPreview.Location = new System.Drawing.Point(491, 442);
+            this.buttonPreview.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonPreview.Name = "buttonPreview";
+            this.buttonPreview.Size = new System.Drawing.Size(24, 24);
+            this.buttonPreview.TabIndex = 4;
+            this.buttonPreview.UseVisualStyleBackColor = false;
+            this.buttonPreview.Click += new System.EventHandler(this.ButtonPreview_Click);
             // 
             // pbxMain
             // 
@@ -1467,7 +1478,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.tbxHeight});
             this.tstripOutputSize.Location = new System.Drawing.Point(3, 24);
             this.tstripOutputSize.Name = "tstripOutputSize";
-            this.tstripOutputSize.Size = new System.Drawing.Size(120, 25);
+            this.tstripOutputSize.Size = new System.Drawing.Size(89, 25);
             this.tstripOutputSize.TabIndex = 1;
             this.tstripOutputSize.Text = "toolStrip1";
             // 
@@ -1588,12 +1599,10 @@ namespace JMSoftware.AsciiGeneratorDotNet
             // 
             this.tstripButtons.Dock = System.Windows.Forms.DockStyle.None;
             this.tstripButtons.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsbFont,
-            this.tsbBlackOnWhite,
-            this.tsbColourPreview});
+            this.tsbFont});
             this.tstripButtons.Location = new System.Drawing.Point(3, 74);
             this.tstripButtons.Name = "tstripButtons";
-            this.tstripButtons.Size = new System.Drawing.Size(85, 25);
+            this.tstripButtons.Size = new System.Drawing.Size(68, 25);
             this.tstripButtons.TabIndex = 4;
             // 
             // tsbFont
@@ -1605,28 +1614,29 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.tsbFont.ToolTipText = "tsbFont";
             this.tsbFont.Click += new System.EventHandler(this.TsbFont_Click);
             // 
-            // tsbBlackOnWhite
+            // tstripCharacters
             // 
-            this.tsbBlackOnWhite.CheckOnClick = true;
-            this.tsbBlackOnWhite.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbBlackOnWhite.Image = global::AscGenDotNet.Properties.Resources.contrast_high;
-            this.tsbBlackOnWhite.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbBlackOnWhite.Margin = new System.Windows.Forms.Padding(0, 1, 2, 2);
-            this.tsbBlackOnWhite.Name = "tsbBlackOnWhite";
-            this.tsbBlackOnWhite.Size = new System.Drawing.Size(23, 22);
-            this.tsbBlackOnWhite.Text = "toolStripButton1";
-            this.tsbBlackOnWhite.ToolTipText = "tsbBlackOnWhite";
-            this.tsbBlackOnWhite.CheckedChanged += new System.EventHandler(this.TsbBlackOnWhite_CheckedChanged);
+            this.tstripCharacters.Dock = System.Windows.Forms.DockStyle.None;
+            this.tstripCharacters.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lblCharacters,
+            this.cmbCharacters});
+            this.tstripCharacters.Location = new System.Drawing.Point(266, 99);
+            this.tstripCharacters.Name = "tstripCharacters";
+            this.tstripCharacters.Size = new System.Drawing.Size(211, 25);
+            this.tstripCharacters.TabIndex = 3;
             // 
-            // tsbColourPreview
+            // lblCharacters
             // 
-            this.tsbColourPreview.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbColourPreview.Image = global::AscGenDotNet.Properties.Resources.page_magnify_color;
-            this.tsbColourPreview.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbColourPreview.Name = "tsbColourPreview";
-            this.tsbColourPreview.Size = new System.Drawing.Size(23, 22);
-            this.tsbColourPreview.Text = "tsbColourPreview";
-            this.tsbColourPreview.Click += new System.EventHandler(this.TsbColourPreview_Click);
+            this.lblCharacters.Name = "lblCharacters";
+            this.lblCharacters.Size = new System.Drawing.Size(76, 22);
+            this.lblCharacters.Text = "lblCharacters";
+            // 
+            // cmbCharacters
+            // 
+            this.cmbCharacters.Name = "cmbCharacters";
+            this.cmbCharacters.Size = new System.Drawing.Size(121, 25);
+            this.cmbCharacters.DropDown += new System.EventHandler(this.CmbCharacters_DropDown);
+            this.cmbCharacters.TextChanged += new System.EventHandler(this.CmbCharacters_TextChanged);
             // 
             // tstripRamp
             // 
@@ -1635,7 +1645,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.lblRamp,
             this.cmbRamp,
             this.chkGenerate});
-            this.tstripRamp.Location = new System.Drawing.Point(214, 99);
+            this.tstripRamp.Location = new System.Drawing.Point(3, 99);
             this.tstripRamp.Name = "tstripRamp";
             this.tstripRamp.Size = new System.Drawing.Size(263, 25);
             this.tstripRamp.TabIndex = 2;
@@ -1666,30 +1676,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.chkGenerate.ToolTipText = "Automatically Generate a Ramp";
             this.chkGenerate.CheckedChanged += new System.EventHandler(this.ChkGenerate_CheckedChanged);
             // 
-            // tstripCharacters
-            // 
-            this.tstripCharacters.Dock = System.Windows.Forms.DockStyle.None;
-            this.tstripCharacters.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.lblCharacters,
-            this.cmbCharacters});
-            this.tstripCharacters.Location = new System.Drawing.Point(3, 99);
-            this.tstripCharacters.Name = "tstripCharacters";
-            this.tstripCharacters.Size = new System.Drawing.Size(211, 25);
-            this.tstripCharacters.TabIndex = 3;
-            // 
-            // lblCharacters
-            // 
-            this.lblCharacters.Name = "lblCharacters";
-            this.lblCharacters.Size = new System.Drawing.Size(76, 22);
-            this.lblCharacters.Text = "lblCharacters";
-            // 
-            // cmbCharacters
-            // 
-            this.cmbCharacters.Name = "cmbCharacters";
-            this.cmbCharacters.Size = new System.Drawing.Size(121, 25);
-            this.cmbCharacters.DropDown += new System.EventHandler(this.CmbCharacters_DropDown);
-            this.cmbCharacters.TextChanged += new System.EventHandler(this.CmbCharacters_TextChanged);
-            // 
             // pageSetupDialog
             // 
             this.pageSetupDialog.AllowMargins = false;
@@ -1714,6 +1700,28 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.printPreviewDialog.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog.Icon")));
             this.printPreviewDialog.Name = "printPreviewDialog";
             this.printPreviewDialog.Visible = false;
+            // 
+            // rtbxConvertedText
+            // 
+            this.rtbxConvertedText.BackColor = System.Drawing.Color.White;
+            this.rtbxConvertedText.BackgroundColor = System.Drawing.Color.White;
+            this.rtbxConvertedText.ContextMenuStrip = this.contextMenuText;
+            this.rtbxConvertedText.DetectUrls = false;
+            this.rtbxConvertedText.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rtbxConvertedText.EnableAutoDragDrop = true;
+            this.rtbxConvertedText.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.rtbxConvertedText.Location = new System.Drawing.Point(0, 0);
+            this.rtbxConvertedText.Margin = new System.Windows.Forms.Padding(0);
+            this.rtbxConvertedText.Name = "rtbxConvertedText";
+            this.rtbxConvertedText.ReadOnly = true;
+            this.tableLayoutPanelText.SetRowSpan(this.rtbxConvertedText, 4);
+            this.rtbxConvertedText.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth;
+            this.rtbxConvertedText.ShowSelectionMargin = true;
+            this.rtbxConvertedText.Size = new System.Drawing.Size(491, 490);
+            this.rtbxConvertedText.TabIndex = 0;
+            this.rtbxConvertedText.Text = "";
+            this.rtbxConvertedText.TextColor = System.Drawing.SystemColors.WindowText;
+            this.rtbxConvertedText.WordWrap = false;
             // 
             // FormConvertImage
             // 
@@ -1749,10 +1757,10 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.tstripAlterInputImage.PerformLayout();
             this.tstripButtons.ResumeLayout(false);
             this.tstripButtons.PerformLayout();
-            this.tstripRamp.ResumeLayout(false);
-            this.tstripRamp.PerformLayout();
             this.tstripCharacters.ResumeLayout(false);
             this.tstripCharacters.PerformLayout();
+            this.tstripRamp.ResumeLayout(false);
+            this.tstripRamp.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1765,5 +1773,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
         private ToolStripMenuItem cmenuImageUpdateWhileSelecting;
         private CheckBox checkBoxFullScreen;
         private ToolTip toolTip1;
+        private CheckBox checkBoxBlackOnWhite;
+        private Button buttonPreview;
     }
 }
