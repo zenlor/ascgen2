@@ -1275,11 +1275,11 @@ namespace JMSoftware.AsciiGeneratorDotNet
         }
 
         /// <summary>
-        /// Handles the CheckedChanged event of the checkBoxFullScreen control.
+        /// Handles the Click event of the checkBoxFullScreen control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void CheckBoxFullScreen_CheckedChanged(object sender, EventArgs e)
+        private void CheckBoxFullScreen_Click(object sender, EventArgs e)
         {
             this.IsFullScreen = !this.IsFullScreen;
         }
