@@ -411,17 +411,16 @@ namespace JMSoftware.AsciiConversion
 
                 this.filterList = new System.Collections.ArrayList();
 
-                // only apply brightness and contrast if necessary
+                if (this.Stretch)
+                {
+                    this.filterList.Add(this.stretchFilter);
+                }
+
                 if (this.Brightness != 0 || this.Contrast != 0)
                 {
                     this.filterList.Add(new BrightnessContrast(
                         this.IsBlackTextOnWhite ? this.Brightness : -this.Brightness,
                         this.IsBlackTextOnWhite ? this.Contrast : -this.Contrast));
-                }
-
-                if (this.Stretch)
-                {
-                    this.filterList.Add(this.stretchFilter);
                 }
 
                 if (this.MinimumLevel != 0 || this.MaximumLevel != 255 || this.MedianLevel != 0.5f)
