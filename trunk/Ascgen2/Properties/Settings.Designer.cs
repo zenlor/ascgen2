@@ -169,30 +169,6 @@ namespace JMSoftware.AsciiGeneratorDotNet {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int DefaultImageBrightness {
-            get {
-                return ((int)(this["DefaultImageBrightness"]));
-            }
-            set {
-                this["DefaultImageBrightness"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int DefaultImageContrast {
-            get {
-                return ((int)(this["DefaultImageContrast"]));
-            }
-            set {
-                this["DefaultImageContrast"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("255")]
         public int DefaultMaxLevel {
             get {
@@ -356,18 +332,6 @@ namespace JMSoftware.AsciiGeneratorDotNet {
             }
             set {
                 this["SelectionFillColor"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool ShowBCWidgetImage {
-            get {
-                return ((bool)(this["ShowBCWidgetImage"]));
-            }
-            set {
-                this["ShowBCWidgetImage"] = value;
             }
         }
         

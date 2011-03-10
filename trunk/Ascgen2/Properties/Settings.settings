@@ -38,12 +38,6 @@
     <Setting Name="DefaultHeight" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">-1</Value>
     </Setting>
-    <Setting Name="DefaultImageBrightness" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">0</Value>
-    </Setting>
-    <Setting Name="DefaultImageContrast" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">0</Value>
-    </Setting>
     <Setting Name="DefaultMaxLevel" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">255</Value>
     </Setting>
@@ -85,9 +79,6 @@
     </Setting>
     <Setting Name="SelectionFillColor" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">128, 173, 216, 230</Value>
-    </Setting>
-    <Setting Name="ShowBCWidgetImage" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="ShowWidgetText" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>

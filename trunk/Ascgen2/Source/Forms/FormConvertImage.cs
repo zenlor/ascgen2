@@ -77,9 +77,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// <summary>The Save As form</summary>
         private FormSaveAs formSaveAs;
 
-        /// <summary>Interface to the object used to get and set the input images brightness and contrast</summary>
-        private IBrightnessContrast imageBrightnessContrast;
-
         /// <summary>Has the current image been saved?</summary>
         private bool imageSaved;
 
@@ -115,9 +112,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
         /// <summary>Handles checking for a new version</summary>
         private VersionChecker versionChecker;
-
-        /// <summary>Brightness/Contrast widget used</summary>
-        private WidgetBrightnessContrast widgetImageBrightnessContrast;
 
         /// <summary>Text settings widget</summary>
         private WidgetTextSettings widgetTextSettings;
@@ -1037,10 +1031,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             this.UpdateTitle();
 
-            this.AlterInputImageToolStripIsEnabled =
-                this.widgetTextSettings.Enabled = this.widgetImageBrightnessContrast.Enabled = true;
-
-            this.widgetImageBrightnessContrast.Refresh();
+            this.AlterInputImageToolStripIsEnabled = this.widgetTextSettings.Enabled = true;
 
             this.widgetTextSettings.Refresh();
 
@@ -1212,26 +1203,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
             }
 
             this.textViewer.Lines = AscgenConverter.Convert(this.values, this.textSettings);
-        }
-
-        /// <summary>
-        /// Appies the image brightness.
-        /// </summary>
-        private void AppyImageBrightness()
-        {
-            this.pbxMain.Brightness = (float)this.imageBrightnessContrast.Brightness / (float)255;
-            this.inputChanged = true;
-            this.imageSaved = false;
-        }
-
-        /// <summary>
-        /// Appies the image contrast.
-        /// </summary>
-        private void AppyImageContrast()
-        {
-            this.pbxMain.Contrast = ((float)this.imageBrightnessContrast.Contrast / (float)113) + 1f;
-            this.inputChanged = true;
-            this.imageSaved = false;
         }
 
         /// <summary>
@@ -1431,10 +1402,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             this.UpdateTitle();
 
-            this.imageBrightnessContrast.Brightness = Settings.Default.DefaultImageBrightness;
-
-            this.imageBrightnessContrast.Contrast = Settings.Default.DefaultImageContrast;
-
             this.brightnessContrast.Brightness = Settings.Default.DefaultTextBrightness;
 
             this.brightnessContrast.Contrast = Settings.Default.DefaultTextContrast;
@@ -1445,13 +1412,9 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             this.MaximumLevel = this.levels.Maximum = Settings.Default.DefaultMaxLevel;
 
-            this.widgetImageBrightnessContrast.Refresh();
-
             this.widgetTextSettings.Refresh();
 
-            this.AlterInputImageToolStripIsEnabled =
-                    this.widgetTextSettings.Enabled =
-                    this.widgetImageBrightnessContrast.Enabled = false;
+            this.AlterInputImageToolStripIsEnabled = this.widgetTextSettings.Enabled = false;
 
             this.UpdateMenus();
 
@@ -1916,7 +1879,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.values = ImageToValues.Convert(
                               (Bitmap)this.pbxMain.Image,
                               new Size(this.OutputWidth, this.OutputHeight),
-                              JMSoftware.Matrices.BrightnessContrast(this.pbxMain.Brightness, this.pbxMain.Contrast),
+                              JMSoftware.Matrices.Identity(),
                               this.CurrentImageSection);
 
             if (!this.ValuesCreated)
@@ -2088,50 +2051,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
             {
                 this.LoadImage(fileNames[0]);
             }
-        }
-
-        /// <summary>
-        /// Occurs when the images brightness has changed.
-        /// </summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void ImageBrightnessChanged(object sender, EventArgs e)
-        {
-            this.AppyImageBrightness();
-
-            this.DoConvert();
-        }
-
-        /// <summary>
-        /// Occurs when the images brightness is changing.
-        /// </summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void ImageBrightnessChanging(object sender, EventArgs e)
-        {
-            this.AppyImageBrightness();
-        }
-
-        /// <summary>
-        /// Occurs when the images contrast has changed.
-        /// </summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void ImageContrastChanged(object sender, EventArgs e)
-        {
-            this.AppyImageContrast();
-
-            this.DoConvert();
-        }
-
-        /// <summary>
-        /// Occurs when the images brightness is changing.
-        /// </summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void ImageContrastChanging(object sender, EventArgs e)
-        {
-            this.AppyImageContrast();
         }
 
         /// <summary>
@@ -2583,8 +2502,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void MenuView_Popup(object sender, System.EventArgs e)
         {
-            this.menuViewICBC.Checked = this.widgetImageBrightnessContrast.Visible;
-
             this.menuViewText.Checked = this.widgetTextSettings.Visible;
 
             this.menuViewFullScreen.Checked = this.IsFullScreen;
@@ -2612,18 +2529,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
         private void MenuViewFullScreen_Click(object sender, System.EventArgs e)
         {
             this.IsFullScreen = !this.IsFullScreen;
-        }
-
-        /// <summary>
-        /// Handles the Click event of the menuViewICBC control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void MenuViewICBC_Click(object sender, System.EventArgs e)
-        {
-            this.widgetImageBrightnessContrast.Visible = !this.widgetImageBrightnessContrast.Visible;
-
-            this.widgetImageBrightnessContrast.BringToFront();
         }
 
         /// <summary>
@@ -2998,9 +2903,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// </summary>
         private void SaveSettings()
         {
-            Settings.Default.DefaultImageBrightness = this.imageBrightnessContrast.Brightness;
-            Settings.Default.DefaultImageContrast = this.imageBrightnessContrast.Contrast;
-
             Settings.Default.DefaultWidth = this.OutputWidth;
             Settings.Default.DefaultHeight = this.OutputHeight;
 
@@ -3058,7 +2960,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
             Settings.Default.CurrentSelectedValidCharacters = this.cmbCharacters.SelectedIndex;
             Settings.Default.CurrentCharacters = Settings.Default.CurrentSelectedValidCharacters == -1 ? this.cmbCharacters.Text : String.Empty;
 
-            Settings.Default.ShowBCWidgetImage = this.widgetImageBrightnessContrast.Visible;
             Settings.Default.ShowWidgetText = this.widgetTextSettings.Visible;
 
             Settings.Default.SelectionBorderColor = this.pbxMain.SelectionBorderColor;
@@ -3201,33 +3102,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
         }
 
         /// <summary>
-        /// Setup the image widget.
-        /// </summary>
-        private void SetupImageWidget()
-        {
-            this.widgetImageBrightnessContrast = new WidgetBrightnessContrast();
-
-            this.widgetImageBrightnessContrast.Enabled = this.ImageIsLoaded;
-
-            this.widgetImageBrightnessContrast.BrightnessChanging += new EventHandler(this.ImageBrightnessChanging);
-            this.widgetImageBrightnessContrast.BrightnessChanged += new EventHandler(this.ImageBrightnessChanged);
-
-            this.widgetImageBrightnessContrast.ContrastChanging += new EventHandler(this.ImageContrastChanging);
-            this.widgetImageBrightnessContrast.ContrastChanged += new EventHandler(this.ImageContrastChanged);
-
-            this.widgetImageBrightnessContrast.Left = this.pnlMain.Width - this.widgetImageBrightnessContrast.Width - 4;
-            this.widgetImageBrightnessContrast.Top = this.pnlMain.Height - this.widgetImageBrightnessContrast.Height - 4;
-            this.widgetImageBrightnessContrast.MaximumBrightness = 200;
-            this.widgetImageBrightnessContrast.MinimumBrightness = -200;
-            this.widgetImageBrightnessContrast.MaximumContrast = 100;
-            this.widgetImageBrightnessContrast.MinimumContrast = -100;
-
-            this.imageBrightnessContrast = this.widgetImageBrightnessContrast;
-            this.imageBrightnessContrast.Brightness = Settings.Default.DefaultImageBrightness;
-            this.imageBrightnessContrast.Contrast = Settings.Default.DefaultImageContrast;
-        }
-
-        /// <summary>
         /// Setup the text widget.
         /// </summary>
         private void SetupTextWidget()
@@ -3294,13 +3168,9 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// </summary>
         private void SetupWidgets()
         {
-            this.SetupImageWidget();
-
             this.SetupTextWidget();
 
-            this.pnlMain.Controls.AddRange(new Control[] { this.widgetImageBrightnessContrast, this.widgetTextSettings });
-
-            this.widgetImageBrightnessContrast.Visible = Settings.Default.ShowBCWidgetImage;
+            this.pnlMain.Controls.AddRange(new Control[] { this.widgetTextSettings });
 
             this.widgetTextSettings.Visible = Settings.Default.ShowWidgetText;
         }
@@ -3646,8 +3516,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             this.menuView.Text = Resource.GetString("&View");
             this.menuViewColourPreview.Text = Resource.GetString("Colour Preview") + "...";
-            this.menuViewICBC.Text = Resource.GetString("Image") + " " +
-                Resource.GetString("Brightness") + "/" + Resource.GetString("Contrast");
 
             this.menuViewText.Text = Resource.GetString("Text Settings");
 
@@ -3749,12 +3617,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
                 Resource.GetString("Rich Text") + " (24-bit)|*.rtf";
             this.dialogSaveColour.FilterIndex = 1;
 
-            this.widgetTextSettings.Text = Resource.GetString("Text");
-            this.widgetImageBrightnessContrast.Text = Resource.GetString("Image");
-
             this.widgetTextSettings.UpdateUI();
-
-            this.widgetImageBrightnessContrast.UpdateUI();
 
             this.formSaveAs.UpdateUI();
         }

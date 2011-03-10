@@ -240,8 +240,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
         private ToolStripMenuItem menuViewFullScreen;
 
-        private ToolStripMenuItem menuViewICBC;
-
         private ToolStripMenuItem menuViewImage;
 
         private ToolStripMenuItem menuViewImagePosition;
@@ -394,7 +392,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.menuView = new System.Windows.Forms.ToolStripMenuItem();
             this.menuViewColourPreview = new System.Windows.Forms.ToolStripMenuItem();
             this.menuViewSep1 = new System.Windows.Forms.ToolStripSeparator();
-            this.menuViewICBC = new System.Windows.Forms.ToolStripMenuItem();
             this.menuViewText = new System.Windows.Forms.ToolStripMenuItem();
             this.menuViewSep2 = new System.Windows.Forms.ToolStripSeparator();
             this.menuViewFullScreen = new System.Windows.Forms.ToolStripMenuItem();
@@ -434,13 +431,13 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.tsbFlipVertically = new System.Windows.Forms.ToolStripButton();
             this.tstripButtons = new System.Windows.Forms.ToolStrip();
             this.tsbFont = new System.Windows.Forms.ToolStripButton();
+            this.tstripCharacters = new System.Windows.Forms.ToolStrip();
+            this.lblCharacters = new System.Windows.Forms.ToolStripLabel();
+            this.cmbCharacters = new System.Windows.Forms.ToolStripComboBox();
             this.tstripRamp = new System.Windows.Forms.ToolStrip();
             this.lblRamp = new System.Windows.Forms.ToolStripLabel();
             this.cmbRamp = new System.Windows.Forms.ToolStripComboBox();
             this.chkGenerate = new System.Windows.Forms.ToolStripButton();
-            this.tstripCharacters = new System.Windows.Forms.ToolStrip();
-            this.lblCharacters = new System.Windows.Forms.ToolStripLabel();
-            this.cmbCharacters = new System.Windows.Forms.ToolStripComboBox();
             this.dialogSaveColour = new System.Windows.Forms.SaveFileDialog();
             this.pageSetupDialog = new System.Windows.Forms.PageSetupDialog();
             this.printDocument = new System.Drawing.Printing.PrintDocument();
@@ -461,8 +458,8 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.toolStripContainer1.SuspendLayout();
             this.tstripAlterInputImage.SuspendLayout();
             this.tstripButtons.SuspendLayout();
-            this.tstripRamp.SuspendLayout();
             this.tstripCharacters.SuspendLayout();
+            this.tstripRamp.SuspendLayout();
             this.SuspendLayout();
             // 
             // contextMenuImage
@@ -1177,7 +1174,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.menuView.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuViewColourPreview,
             this.menuViewSep1,
-            this.menuViewICBC,
             this.menuViewText,
             this.menuViewSep2,
             this.menuViewFullScreen,
@@ -1201,15 +1197,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
             // 
             this.menuViewSep1.Name = "menuViewSep1";
             this.menuViewSep1.Size = new System.Drawing.Size(228, 6);
-            // 
-            // menuViewICBC
-            // 
-            this.menuViewICBC.Image = global::AscGenDotNet.Properties.Resources.lightbulb;
-            this.menuViewICBC.MergeIndex = 3;
-            this.menuViewICBC.Name = "menuViewICBC";
-            this.menuViewICBC.Size = new System.Drawing.Size(231, 22);
-            this.menuViewICBC.Text = "menuViewICBC";
-            this.menuViewICBC.Click += new System.EventHandler(this.MenuViewICBC_Click);
             // 
             // menuViewText
             // 
@@ -1578,8 +1565,8 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.tstripOutputSize);
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.tstripAlterInputImage);
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.tstripButtons);
-            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.tstripCharacters);
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.tstripRamp);
+            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.tstripCharacters);
             // 
             // tstripAlterInputImage
             // 
@@ -1653,6 +1640,30 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.tsbFont.ToolTipText = "tsbFont";
             this.tsbFont.Click += new System.EventHandler(this.TsbFont_Click);
             // 
+            // tstripCharacters
+            // 
+            this.tstripCharacters.Dock = System.Windows.Forms.DockStyle.None;
+            this.tstripCharacters.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lblCharacters,
+            this.cmbCharacters});
+            this.tstripCharacters.Location = new System.Drawing.Point(3, 124);
+            this.tstripCharacters.Name = "tstripCharacters";
+            this.tstripCharacters.Size = new System.Drawing.Size(211, 25);
+            this.tstripCharacters.TabIndex = 3;
+            // 
+            // lblCharacters
+            // 
+            this.lblCharacters.Name = "lblCharacters";
+            this.lblCharacters.Size = new System.Drawing.Size(76, 22);
+            this.lblCharacters.Text = "lblCharacters";
+            // 
+            // cmbCharacters
+            // 
+            this.cmbCharacters.Name = "cmbCharacters";
+            this.cmbCharacters.Size = new System.Drawing.Size(121, 25);
+            this.cmbCharacters.DropDown += new System.EventHandler(this.CmbCharacters_DropDown);
+            this.cmbCharacters.TextChanged += new System.EventHandler(this.CmbCharacters_TextChanged);
+            // 
             // tstripRamp
             // 
             this.tstripRamp.Dock = System.Windows.Forms.DockStyle.None;
@@ -1660,7 +1671,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.lblRamp,
             this.cmbRamp,
             this.chkGenerate});
-            this.tstripRamp.Location = new System.Drawing.Point(3, 124);
+            this.tstripRamp.Location = new System.Drawing.Point(3, 99);
             this.tstripRamp.Name = "tstripRamp";
             this.tstripRamp.Size = new System.Drawing.Size(263, 25);
             this.tstripRamp.TabIndex = 2;
@@ -1690,30 +1701,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.chkGenerate.Text = "chkGenerate";
             this.chkGenerate.ToolTipText = "Automatically Generate a Ramp";
             this.chkGenerate.CheckedChanged += new System.EventHandler(this.ChkGenerate_CheckedChanged);
-            // 
-            // tstripCharacters
-            // 
-            this.tstripCharacters.Dock = System.Windows.Forms.DockStyle.None;
-            this.tstripCharacters.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.lblCharacters,
-            this.cmbCharacters});
-            this.tstripCharacters.Location = new System.Drawing.Point(3, 99);
-            this.tstripCharacters.Name = "tstripCharacters";
-            this.tstripCharacters.Size = new System.Drawing.Size(211, 25);
-            this.tstripCharacters.TabIndex = 3;
-            // 
-            // lblCharacters
-            // 
-            this.lblCharacters.Name = "lblCharacters";
-            this.lblCharacters.Size = new System.Drawing.Size(76, 22);
-            this.lblCharacters.Text = "lblCharacters";
-            // 
-            // cmbCharacters
-            // 
-            this.cmbCharacters.Name = "cmbCharacters";
-            this.cmbCharacters.Size = new System.Drawing.Size(121, 25);
-            this.cmbCharacters.DropDown += new System.EventHandler(this.CmbCharacters_DropDown);
-            this.cmbCharacters.TextChanged += new System.EventHandler(this.CmbCharacters_TextChanged);
             // 
             // pageSetupDialog
             // 
@@ -1774,10 +1761,10 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.tstripAlterInputImage.PerformLayout();
             this.tstripButtons.ResumeLayout(false);
             this.tstripButtons.PerformLayout();
-            this.tstripRamp.ResumeLayout(false);
-            this.tstripRamp.PerformLayout();
             this.tstripCharacters.ResumeLayout(false);
             this.tstripCharacters.PerformLayout();
+            this.tstripRamp.ResumeLayout(false);
+            this.tstripRamp.PerformLayout();
             this.ResumeLayout(false);
 
         }
