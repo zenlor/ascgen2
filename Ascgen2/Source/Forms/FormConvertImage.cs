@@ -113,7 +113,14 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// <summary>Handles checking for a new version</summary>
         private VersionChecker versionChecker;
 
-        /// <summary>Text settings widget</summary>
+        /// <summary>
+        /// The image widget
+        /// </summary>
+        private WidgetImage widgetImage;
+
+        /// <summary>
+        /// Text settings widget
+        /// </summary>
         private WidgetTextSettings widgetTextSettings;
 
         #endregion Fields
@@ -128,6 +135,8 @@ namespace JMSoftware.AsciiGeneratorDotNet
         {
             // Required for Windows Form Designer support
             this.InitializeComponent();
+
+            this.Text = Variables.ProgramName + " v" + Variables.Version.GetVersion();
 
             this.filename = String.Empty;
 
@@ -147,21 +156,19 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             this.formSaveAs = new FormSaveAs();
 
+            this.SetupWidgets();
+
             this.dimensionsCalculator = new DimensionsCalculator(this.CurrentImageSection.Size, this.CharacterSize, Settings.Default.DefaultWidth, Settings.Default.DefaultHeight);
 
             this.dimensionsCalculator.OnOutputSizeChanged += new EventHandler(this.DimensionsCalculator_OnOutputSizeChanged);
 
             this.Font = Settings.Default.DefaultFont;
 
-            this.SetupWidgets();
-
             this.SetupControls();
 
             this.formBatchConversion = new FormBatchConversion();
 
             this.dialogChooseTextZoom = new TextImageMagnificationDialog(this.Font);
-
-            this.IsLandscape = Screen.PrimaryScreen.Bounds.Width > Screen.PrimaryScreen.Bounds.Height;
 
             CheckForIllegalCrossThreadCalls = false;
 
@@ -228,7 +235,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
                     return false;
                 }
 
-                return this.pbxMain.SelectedArea.Width > 0 && this.pbxMain.SelectedArea.Height > 0;
+                return this.widgetImage.SelectedArea.Width > 0 && this.widgetImage.SelectedArea.Height > 0;
             }
         }
 
@@ -329,10 +336,10 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
                 if (!this.AreaIsSelected)
                 {
-                    return new Rectangle(0, 0, this.pbxMain.Image.Width, this.pbxMain.Image.Height);
+                    return new Rectangle(0, 0, this.widgetImage.Image.Width, this.widgetImage.Image.Height);
                 }
 
-                return this.pbxMain.SelectedArea;
+                return this.widgetImage.SelectedArea;
             }
         }
 
@@ -402,7 +409,14 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             set
             {
+                if (value == null)
+                {
+                    return;
+                }
+
                 this.filename = value;
+
+                this.widgetImage.Text = Path.GetFileName(value);
             }
         }
 
@@ -512,7 +526,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
         {
             get
             {
-                return this.pbxMain.Image != null;
+                return this.widgetImage.Image != null;
             }
         }
 
@@ -549,10 +563,10 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
                 if (this.AreaIsSelected)
                 {
-                    return this.pbxMain.SelectedArea.Size;
+                    return this.widgetImage.SelectedArea.Size;
                 }
 
-                return this.pbxMain.Image.Size;
+                return this.widgetImage.Image.Size;
             }
         }
 
@@ -620,7 +634,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
                 this.isFullScreen = value;
 
-                this.checkBoxFullScreen.Checked = this.IsFullScreen;
+                this.toolStripButtonFullScreen.Checked = this.IsFullScreen;
 
                 if (this.isFullScreen)
                 {
@@ -690,54 +704,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
                 this.inputChanged = true;
 
                 this.imageSaved = false;
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether the forms orientation is landscape.
-        /// </summary>
-        /// <value>
-        ///     <c>true</c> if landscape; otherwise, <c>false</c>.
-        /// </value>
-        private bool IsLandscape
-        {
-            get
-            {
-                return this.splitContainer1.Orientation == Orientation.Vertical;
-            }
-
-            set
-            {
-                Orientation orientation = value ? Orientation.Vertical : Orientation.Horizontal;
-
-                if (this.splitContainer1.Orientation == orientation)
-                {
-                    return;
-                }
-
-                this.splitContainer1.Orientation = orientation;
-
-                if (this.splitContainer1.SplitterDistance > 300)
-                {
-                    this.splitContainer1.SplitterDistance = 300;
-                }
-
-                TableLayoutPanelCellPosition buttonPosition = new TableLayoutPanelCellPosition(
-                                                                                    value ? 1 : 0,
-                                                                                    value ? 0 : 1);
-
-                this.tableLayoutPanelText.SetCellPosition(this.buttonToggleImage, buttonPosition);
-
-                if (value)
-                {
-                    this.buttonToggleImage.Width = 18;
-                }
-                else
-                {
-                    this.buttonToggleImage.Height = 18;
-                }
-
-                this.UpdateButtonToggleImageText();
             }
         }
 
@@ -1023,13 +989,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             this.doConversion = false;
 
-            this.pbxMain.DrawingImage = false;
-
-            this.pbxMain.Image = image;
-
-            this.pbxMain.DrawingImage = true;
-
-            this.UpdateTitle();
+            this.widgetImage.Image = image;
 
             this.AlterInputImageToolStripIsEnabled = this.widgetTextSettings.Enabled = true;
 
@@ -1206,26 +1166,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
         }
 
         /// <summary>
-        /// Handles the Click event of the buttonPreview control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void ButtonPreview_Click(object sender, EventArgs e)
-        {
-            this.ShowColourPreview();
-        }
-
-        /// <summary>
-        /// Handles the Click event of the buttonToggleImage control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void ButtonToggleImage_Click(object sender, EventArgs e)
-        {
-            this.ToggleImageVisibility();
-        }
-
-        /// <summary>
         /// Handles the CheckedChanged event of the cbxLocked control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
@@ -1233,16 +1173,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
         private void CbxLocked_CheckedChanged(object sender, System.EventArgs e)
         {
             this.dimensionsCalculator.DimensionsAreLocked = this.cbxLocked.Checked;
-        }
-
-        /// <summary>
-        /// Handles the Click event of the checkBoxBlackOnWhite control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void CheckBoxBlackOnWhite_Click(object sender, EventArgs e)
-        {
-            this.IsBlackTextOnWhite = !this.IsBlackTextOnWhite;
         }
 
         /// <summary>
@@ -1392,15 +1322,13 @@ namespace JMSoftware.AsciiGeneratorDotNet
                 return false;
             }
 
-            this.pbxMain.Image = null;
+            this.widgetImage.Image = null;
 
             this.Filename = string.Empty;
 
             this.textViewer.Clear();
 
             this.values = null;
-
-            this.UpdateTitle();
 
             this.brightnessContrast.Brightness = Settings.Default.DefaultTextBrightness;
 
@@ -1571,66 +1499,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
         }
 
         /// <summary>
-        /// Handles the Click event of the cmenuImageSelectionBorderColor control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void CmenuImageSelectionBorderColor_Click(object sender, System.EventArgs e)
-        {
-            this.pbxMain.SelectionBorderColor = this.ShowColorDialog(this.pbxMain.SelectionBorderColor);
-        }
-
-        /// <summary>
-        /// Handles the Click event of the cmenuImageSelectionFillColor control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void CmenuImageSelectionFillColor_Click(object sender, System.EventArgs e)
-        {
-            this.pbxMain.SelectionFillColor = this.ShowColorDialog(this.pbxMain.SelectionFillColor);
-        }
-
-        /// <summary>
-        /// Handles the Click event of the cmenuImageSelectionLocked control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void CmenuImageSelectionLocked_Click(object sender, System.EventArgs e)
-        {
-            this.pbxMain.SelectionLocked = !this.pbxMain.SelectionLocked;
-        }
-
-        /// <summary>
-        /// Handles the Click event of the cmenuImageSelectionShow control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void CmenuImageSelectionShow_Click(object sender, System.EventArgs e)
-        {
-            this.pbxMain.FillSelectionRectangle = !this.pbxMain.FillSelectionRectangle;
-        }
-
-        /// <summary>
-        /// Handles the Click event of the cmenuImageSelectNone control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void CmenuImageSelectNone_Click(object sender, System.EventArgs e)
-        {
-            this.pbxMain.SelectNothing();
-        }
-
-        /// <summary>
-        /// Handles the Click event of the cmenuImageUpdateWhileSelecting control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void CmenuImageUpdateWhileSelecting_Click(object sender, EventArgs e)
-        {
-            Settings.Default.UpdateWhileSelecting = !Settings.Default.UpdateWhileSelecting;
-        }
-
-        /// <summary>
         /// Handles the Click event of the cmenuLoad control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
@@ -1738,30 +1606,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
         }
 
         /// <summary>
-        /// Handles the Popup event of the contextMenuImage control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void ContextMenuImage_Popup(object sender, System.EventArgs e)
-        {
-            this.cmenuImageSelectionLocked.Enabled =
-                    this.cmenuImageSelectionShow.Enabled =
-                    this.cmenuImageSelectNone.Enabled = this.AreaIsSelected;
-
-            this.cmenuImageRotate90.Enabled =
-                    this.cmenuImageRotate180.Enabled =
-                    this.cmenuImageRotate270.Enabled =
-                    this.cmenuImageFlipHorizontal.Enabled =
-                    this.cmenuImageFlipVertical.Enabled = this.ImageIsLoaded;
-
-            this.cmenuImageSelectionLocked.Checked = this.pbxMain.SelectionLocked;
-
-            this.cmenuImageSelectionShow.Checked = this.pbxMain.FillSelectionRectangle;
-
-            this.cmenuImageUpdateWhileSelecting.Checked = Settings.Default.UpdateWhileSelecting;
-        }
-
-        /// <summary>
         /// Handles the Popup event of the contextMenuText control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
@@ -1798,7 +1642,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
         private Image CreateColourImage(float zoom)
         {
             Color[][] colors = ImageToColors.Convert(
-                                    (Bitmap)this.pbxMain.BCImage,
+                                    (Bitmap)this.widgetImage.Image,
                                     new Size(this.OutputWidth, this.OutputHeight),
                                     this.CurrentImageSection,
                                     (this.dialogSaveColour.FilterIndex == 1 || this.dialogSaveColour.FilterIndex == 2));
@@ -1877,7 +1721,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             // convert the image into values
             this.values = ImageToValues.Convert(
-                              (Bitmap)this.pbxMain.Image,
+                              (Bitmap)this.widgetImage.Image,
                               new Size(this.OutputWidth, this.OutputHeight),
                               JMSoftware.Matrices.Identity(),
                               this.CurrentImageSection);
@@ -1926,7 +1770,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             if (this.printColour)
             {
                 Color[][] colors = ImageToColors.Convert(
-                                    (Bitmap)this.pbxMain.BCImage,
+                                    (Bitmap)this.widgetImage.Image,
                                     new Size(this.OutputWidth, this.OutputHeight),
                                     this.CurrentImageSection,
                                     false);
@@ -2015,7 +1859,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// <param name="type">The type of rotation/flip.</param>
         private void DoRotateFlip(RotateFlipType type)
         {
-            this.pbxMain.RotateImage(type);
+            this.widgetImage.RotateImage(type);
 
             this.dimensionsCalculator.ImageSize = this.CurrentImageSection.Size;
 
@@ -2505,10 +2349,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.menuViewText.Checked = this.widgetTextSettings.Visible;
 
             this.menuViewFullScreen.Checked = this.IsFullScreen;
-
-            this.menuViewImage.Checked = !this.splitContainer1.Panel2Collapsed;
-
-            this.menuViewImagePosition.Checked = this.splitContainer1.Orientation == Orientation.Horizontal;
         }
 
         /// <summary>
@@ -2538,7 +2378,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void MenuViewImage_Click(object sender, EventArgs e)
         {
-            this.ToggleImageVisibility();
         }
 
         /// <summary>
@@ -2548,8 +2387,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void MenuViewImagePosition_Click(object sender, EventArgs e)
         {
-            this.splitContainer1.Orientation = (this.splitContainer1.Orientation == Orientation.Horizontal) ?
-                                                    Orientation.Vertical : Orientation.Horizontal;
         }
 
         /// <summary>
@@ -2562,61 +2399,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.widgetTextSettings.Visible = !this.widgetTextSettings.Visible;
 
             this.widgetTextSettings.BringToFront();
-        }
-
-        /// <summary>
-        /// Handles the DoubleClick event of the pbxMain control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void PbxMain_DoubleClick(object sender, System.EventArgs e)
-        {
-            this.LoadDialog();
-        }
-
-        /// <summary>
-        /// Handles the DragDrop event of the pbxMain control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="System.Windows.Forms.DragEventArgs"/> instance containing the event data.</param>
-        private void PbxMain_DragDrop(object sender, System.Windows.Forms.DragEventArgs e)
-        {
-            this.HandleDragDrop(e);
-        }
-
-        /// <summary>
-        /// Handles the DragOver event of the pbxMain control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="System.Windows.Forms.DragEventArgs"/> instance containing the event data.</param>
-        private void PbxMain_DragOver(object sender, System.Windows.Forms.DragEventArgs e)
-        {
-            HandleDragOver(e);
-        }
-
-        /// <summary>
-        /// Handles the SelectionChanged event of the pbxMain control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void PbxMain_SelectionChanged(object sender, System.EventArgs e)
-        {
-            this.ProcessSelectionAreaChange();
-        }
-
-        /// <summary>
-        /// Handles the SelectionChanging event of the pbxMain control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void PbxMain_SelectionChanging(object sender, EventArgs e)
-        {
-            if (!Settings.Default.UpdateWhileSelecting)
-            {
-                return;
-            }
-
-            this.ProcessSelectionAreaChange();
         }
 
         /// <summary>
@@ -2634,12 +2416,12 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// </summary>
         private void ProcessSelectionAreaChange()
         {
-            if (this.oldSelectionPosition == this.pbxMain.SelectedArea)
+            if (this.oldSelectionPosition == this.widgetImage.SelectedArea)
             {
                 return;
             }
 
-            if (this.oldSelectionPosition.Size == this.pbxMain.SelectedArea.Size)
+            if (this.oldSelectionPosition.Size == this.widgetImage.SelectedArea.Size)
             {
                 this.inputChanged = true;
 
@@ -2652,7 +2434,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
                 this.UpdateTextSizeControls();
             }
 
-            this.oldSelectionPosition = this.pbxMain.SelectedArea;
+            this.oldSelectionPosition = this.widgetImage.SelectedArea;
         }
 
         /// <summary>
@@ -2850,7 +2632,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             // create the array of Colors
             Color[][] colors = ImageToColors.Convert(
-                                (Bitmap)this.pbxMain.BCImage,
+                                (Bitmap)this.widgetImage.Image,
                                 new Size(this.OutputWidth, this.OutputHeight),
                                 this.CurrentImageSection,
                                 (this.dialogSaveColour.FilterIndex == 1 || this.dialogSaveColour.FilterIndex == 2));
@@ -2962,8 +2744,8 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             Settings.Default.ShowWidgetText = this.widgetTextSettings.Visible;
 
-            Settings.Default.SelectionBorderColor = this.pbxMain.SelectionBorderColor;
-            Settings.Default.SelectionFillColor = this.pbxMain.SelectionFillColor;
+            Settings.Default.SelectionBorderColor = this.widgetImage.SelectionBorderColor;
+            Settings.Default.SelectionFillColor = this.widgetImage.SelectionFillColor;
 
             Variables.SaveSettings();
         }
@@ -3038,25 +2820,20 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// </summary>
         private void SetupControls()
         {
-            this.UpdateTitle();
-
             this.tbxWidth.MaxLength = Settings.Default.MaximumWidth.ToString(Settings.Default.Culture).Length;
 
             this.tbxHeight.MaxLength = Settings.Default.MaximumHeight.ToString(Settings.Default.Culture).Length;
 
             this.cbxLocked.Checked = Settings.Default.DefaultWidth < 1 || Settings.Default.DefaultHeight < 1;
 
-            this.pbxMain.SelectionBorderColor = Settings.Default.SelectionBorderColor;
-
-            this.pbxMain.SelectionFillColor = Settings.Default.SelectionFillColor;
-
-            this.pbxMain.AllowDrop = true;
+            this.widgetImage.SelectionBorderColor = Settings.Default.SelectionBorderColor;
+            this.widgetImage.SelectionFillColor = Settings.Default.SelectionFillColor;
 
             this.rtbxConvertedText.AllowDrop = true;
             this.rtbxConvertedText.DragDrop += new DragEventHandler(this.RtbxConvertedText_DragDrop);
             this.rtbxConvertedText.DragEnter += new DragEventHandler(this.RtbxConvertedText_DragEnter);
 
-            this.checkBoxBlackOnWhite.Checked = !Settings.Default.BlackTextOnWhite;
+            this.toolStripButtonBlackOnWhite.Checked = !Settings.Default.BlackTextOnWhite;
             this.textViewer.BackgroundColor = this.BackgroundColor;
             this.textViewer.TextColor = this.TextColor;
 
@@ -3095,10 +2872,25 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.UpdateUI();
 
             this.UpdateMenus();
+        }
 
-            this.splitContainer1.SendToBack();
+        /// <summary>
+        /// Sets up the image widget.
+        /// </summary>
+        private void SetupImageWidget()
+        {
+            this.widgetImage = new WidgetImage();
 
-            this.pbxMain.Select();
+            this.widgetImage.Left = this.pnlMain.Width - this.widgetImage.Width - 4;
+            this.widgetImage.Top = this.pnlMain.Height - this.widgetImage.Height - 4;
+
+            this.widgetImage.SelectionChanging += new EventHandler(this.WidgetImage_SelectionChanging);
+
+            this.widgetImage.SelectionChanged += new EventHandler(this.WidgetImage_SelectionChanged);
+
+            this.widgetImage.DoubleClick += new EventHandler(this.WidgetImage_DoubleClick);
+
+            this.widgetImage.OnDragDrop += new DragEventHandler(this.WidgetImage_OnDragDrop);
         }
 
         /// <summary>
@@ -3149,6 +2941,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.toolStripContainer1.TopToolStripPanel.Controls.Clear();
 
             this.toolStripContainer1.TopToolStripPanel.Join(this.mainMenu1);
+            this.toolStripContainer1.TopToolStripPanel.Join(this.toolStripDisplay, 1);
             this.toolStripContainer1.TopToolStripPanel.Join(this.tstripAlterInputImage, 1);
             this.toolStripContainer1.TopToolStripPanel.Join(this.tstripButtons, 1);
             this.toolStripContainer1.TopToolStripPanel.Join(this.tstripCharacters, 1);
@@ -3164,15 +2957,23 @@ namespace JMSoftware.AsciiGeneratorDotNet
         }
 
         /// <summary>
-        /// Create and setup the widgets.
+        /// Create and set up the widgets.
         /// </summary>
         private void SetupWidgets()
         {
             this.SetupTextWidget();
 
-            this.pnlMain.Controls.AddRange(new Control[] { this.widgetTextSettings });
+            this.SetupImageWidget();
+
+            this.pnlMain.Controls.AddRange(new Control[] { this.widgetTextSettings, this.widgetImage });
 
             this.widgetTextSettings.Visible = Settings.Default.ShowWidgetText;
+
+            // TODO: This, better
+            foreach (Control control in this.pnlMain.Controls)
+            {
+                control.BringToFront();
+            }
         }
 
         /// <summary>
@@ -3295,13 +3096,33 @@ namespace JMSoftware.AsciiGeneratorDotNet
         }
 
         /// <summary>
-        /// Toggles the image visibility.
+        /// Handles the Click event of the toolStripButtonBlackOnWhite control.
         /// </summary>
-        private void ToggleImageVisibility()
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void ToolStripButtonBlackOnWhite_Click(object sender, EventArgs e)
         {
-            this.splitContainer1.Panel2Collapsed = !this.splitContainer1.Panel2Collapsed;
+            this.IsBlackTextOnWhite = !this.IsBlackTextOnWhite;
+        }
 
-            this.UpdateButtonToggleImageText();
+        /// <summary>
+        /// Handles the Click event of the toolStripButtonFullScreen control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void ToolStripButtonFullScreen_Click(object sender, EventArgs e)
+        {
+            this.IsFullScreen = !this.IsFullScreen;
+        }
+
+        /// <summary>
+        /// Handles the Click event of the toolStripButton1 control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void ToolStripButtonPreview_Click(object sender, EventArgs e)
+        {
+            this.ShowColourPreview();
         }
 
         /// <summary>
@@ -3351,7 +3172,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void TsbImageVisible_Click(object sender, EventArgs e)
         {
-            this.ToggleImageVisibility();
         }
 
         /// <summary>
@@ -3372,21 +3192,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
         private void TstripRotateClockwise_Click(object sender, EventArgs e)
         {
             this.DoRotateFlip(RotateFlipType.Rotate90FlipNone);
-        }
-
-        /// <summary>
-        /// Updates the text for the toggle image button.
-        /// </summary>
-        private void UpdateButtonToggleImageText()
-        {
-            if (this.IsLandscape)
-            {
-                this.buttonToggleImage.Text = this.splitContainer1.Panel2Collapsed ? "<" : ">";
-            }
-            else
-            {
-                this.buttonToggleImage.Text = this.splitContainer1.Panel2Collapsed ? @"/\" : @"\/";
-            }
         }
 
         /// <summary>
@@ -3440,7 +3245,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
                 this.menuFilePrint.Enabled =
                 this.menuFilePrintPreview.Enabled = this.ImageIsLoaded;
 
-            this.buttonPreview.Enabled =
+            this.toolStripButtonPreview.Enabled =
                 this.menuViewColourPreview.Enabled =
                 this.menuFilePrintColour.Enabled =
                 this.menuFilePrintPreviewColour.Enabled =
@@ -3455,19 +3260,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.tbxWidth.Text = this.dimensionsCalculator.Width.ToString();
             this.tbxHeight.Text = this.dimensionsCalculator.Height.ToString();
             this.tstripOutputSize.Refresh();
-        }
-
-        /// <summary>
-        /// Updates the form title.
-        /// </summary>
-        private void UpdateTitle()
-        {
-            this.Text = Variables.ProgramName + " v" + Variables.Version.GetVersion();
-
-            if (this.Filename.Length > 0)
-            {
-                this.Text = Path.GetFileName(this.Filename) + " - " + this.Text;
-            }
         }
 
         /// <summary>
@@ -3551,20 +3343,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.cmenuTextVertical.Text = Resource.GetString("Flip Vertically");
             this.cmenuTextHorizontal.Text = Resource.GetString("Flip Horizontally");
 
-            this.cmenuImageLoad.Text = Resource.GetString("&Load Image") + "...";
-            this.cmenuImageRotate90.Text = Resource.GetString("Rotate") + " 90°";
-            this.cmenuImageRotate180.Text = Resource.GetString("Rotate") + " 180°";
-            this.cmenuImageRotate270.Text = Resource.GetString("Rotate") + " 270°";
-            this.cmenuImageFlipHorizontal.Text = Resource.GetString("Flip Horizontally");
-            this.cmenuImageFlipVertical.Text = Resource.GetString("Flip Vertically");
-            this.cmenuTextHorizontal.Text = Resource.GetString("Flip Horizontally");
-            this.cmenuImageSelectNone.Text = Resource.GetString("Remove Selection");
-            this.cmenuImageSelectionLocked.Text = Resource.GetString("Lock Selected Area");
-            this.cmenuImageSelectionShow.Text = Resource.GetString("Fill Selected Area");
-            this.cmenuImageSelectionFillColor.Text = Resource.GetString("Selection Area Fill Colour") + "...";
-            this.cmenuImageSelectionBorderColor.Text = Resource.GetString("Selection Area Border Colour") + "...";
-            this.cmenuImageUpdateWhileSelecting.Text = Resource.GetString("Update while Selection Changes");
-
             this.tsbFont.ToolTipText = Resource.GetString("Choose the Font");
 
             this.tsbRotateClockwise.ToolTipText = Resource.GetString("Rotate Clockwise");
@@ -3572,14 +3350,13 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.tsbFlipHorizontally.ToolTipText = Resource.GetString("Flip Horizontally");
             this.tsbFlipVertically.ToolTipText = Resource.GetString("Flip Vertically");
 
-            this.toolTip1.SetToolTip(this.buttonToggleImage, Resource.GetString("Input Image") + " (F12)");
-            this.toolTip1.SetToolTip(this.checkBoxBlackOnWhite, Resource.GetString("Invert the Output"));
-            this.toolTip1.SetToolTip(this.checkBoxFullScreen, Resource.GetString("Full Screen") + " (F11)");
-            this.toolTip1.SetToolTip(this.buttonPreview, Resource.GetString("Colour Preview"));
+            this.toolStripButtonBlackOnWhite.ToolTipText = Resource.GetString("Invert the Output");
+            this.toolStripButtonPreview.ToolTipText = Resource.GetString("Colour Preview");
+            this.toolStripButtonFullScreen.ToolTipText = Resource.GetString("Full Screen") + " (F11)";
 
             this.dialogSaveText.Title = Resource.GetString("Save to a Text File") + "...";
 
-            this.pbxMain.Text = Resource.GetString("Doubleclick to load an image, or drag and drop here.") +
+            this.widgetImage.DisplayText = Resource.GetString("Doubleclick to load an image, or drag and drop here.") +
                 Environment.NewLine + Environment.NewLine + Resource.GetString("Click and drag on an image to select an area");
 
             this.dialogLoadImage.Filter =
@@ -3620,6 +3397,51 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.widgetTextSettings.UpdateUI();
 
             this.formSaveAs.UpdateUI();
+        }
+
+        /// <summary>
+        /// Handles the OnDoubleClick event of the widgetImage control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void WidgetImage_DoubleClick(object sender, EventArgs e)
+        {
+            this.LoadDialog();
+        }
+
+        /// <summary>
+        /// Handles the OnDragDrop event of the widgetImage control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void WidgetImage_OnDragDrop(object sender, DragEventArgs e)
+        {
+            this.HandleDragDrop(e);
+        }
+
+        /// <summary>
+        /// Handles the SelectionChanged event of the widgetImage control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void WidgetImage_SelectionChanged(object sender, EventArgs e)
+        {
+            this.ProcessSelectionAreaChange();
+        }
+
+        /// <summary>
+        /// Handles the SelectionChanging event of the widgetImage control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void WidgetImage_SelectionChanging(object sender, EventArgs e)
+        {
+            if (!Settings.Default.UpdateWhileSelecting)
+            {
+                return;
+            }
+
+            this.ProcessSelectionAreaChange();
         }
 
         #endregion Private methods
