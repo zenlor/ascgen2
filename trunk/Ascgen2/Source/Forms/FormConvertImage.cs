@@ -1449,56 +1449,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
         }
 
         /// <summary>
-        /// Handles the Click event of the cmenuImageFlipHorizontal control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void CmenuImageFlipHorizontal_Click(object sender, EventArgs e)
-        {
-            this.DoRotateFlip(RotateFlipType.RotateNoneFlipX);
-        }
-
-        /// <summary>
-        /// Handles the Click event of the cmenuImageFlipVertical control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void CmenuImageFlipVertical_Click(object sender, EventArgs e)
-        {
-            this.DoRotateFlip(RotateFlipType.RotateNoneFlipY);
-        }
-
-        /// <summary>
-        /// Handles the Click event of the cmenuImageRotate180 control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void CmenuImageRotate180_Click(object sender, EventArgs e)
-        {
-            this.DoRotateFlip(RotateFlipType.Rotate180FlipNone);
-        }
-
-        /// <summary>
-        /// Handles the Click event of the cmenuImageRotate270 control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void CmenuImageRotate270_Click(object sender, EventArgs e)
-        {
-            this.DoRotateFlip(RotateFlipType.Rotate270FlipNone);
-        }
-
-        /// <summary>
-        /// Handles the Click event of the cmenuImageRotate90 control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void CmenuImageRotate90_Click(object sender, EventArgs e)
-        {
-            this.DoRotateFlip(RotateFlipType.Rotate90FlipNone);
-        }
-
-        /// <summary>
         /// Handles the Click event of the cmenuLoad control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
@@ -1854,18 +1804,12 @@ namespace JMSoftware.AsciiGeneratorDotNet
         }
 
         /// <summary>
-        /// Does the rotate/flip.
+        /// Apply the rotate/flip on the image.
         /// </summary>
         /// <param name="type">The type of rotation/flip.</param>
         private void DoRotateFlip(RotateFlipType type)
         {
-            this.widgetImage.RotateImage(type);
-
-            this.dimensionsCalculator.ImageSize = this.CurrentImageSection.Size;
-
-            this.inputChanged = true;
-
-            this.DoConvert();
+            this.widgetImage.DoRotateFlip(type, this, new EventArgs());
         }
 
         /// <summary>
@@ -1990,6 +1934,56 @@ namespace JMSoftware.AsciiGeneratorDotNet
         private void MenuEditInput_DropDownOpening(object sender, EventArgs e)
         {
             this.menuEditInput.DropDown.Enabled = this.menuEditInput.Enabled;
+        }
+
+        /// <summary>
+        /// Handles the Click event of the menuEditInputFlipHorizontal control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void MenuEditInputFlipHorizontal_Click(object sender, EventArgs e)
+        {
+            this.widgetImage.DoRotateFlip(RotateFlipType.RotateNoneFlipX, sender, e);
+        }
+
+        /// <summary>
+        /// Handles the Click event of the menuEditInputFlipVertical control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void MenuEditInputFlipVertical_Click(object sender, EventArgs e)
+        {
+            this.widgetImage.DoRotateFlip(RotateFlipType.RotateNoneFlipY, sender, e);
+        }
+
+        /// <summary>
+        /// Handles the Click event of the menuEditInputRotate180 control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void MenuEditInputRotate180_Click(object sender, EventArgs e)
+        {
+            this.widgetImage.DoRotateFlip(RotateFlipType.Rotate180FlipNone, sender, e);
+        }
+
+        /// <summary>
+        /// Handles the Click event of the menuEditInputRotate270 control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void MenuEditInputRotate270_Click(object sender, EventArgs e)
+        {
+            this.widgetImage.DoRotateFlip(RotateFlipType.Rotate270FlipNone, sender, e);
+        }
+
+        /// <summary>
+        /// Handles the Click event of the menuEditInputRotate90 control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void MenuEditInputRotate90_Click(object sender, EventArgs e)
+        {
+            this.widgetImage.DoRotateFlip(RotateFlipType.Rotate90FlipNone, sender, e);
         }
 
         /// <summary>
@@ -2891,6 +2885,10 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.widgetImage.DoubleClick += new EventHandler(this.WidgetImage_DoubleClick);
 
             this.widgetImage.OnDragDrop += new DragEventHandler(this.WidgetImage_OnDragDrop);
+
+            this.widgetImage.LoadImage += new EventHandler(this.WidgetImage_LoadImage);
+
+            this.widgetImage.ImageUpdated += new EventHandler(this.WidgetImage_ImageUpdated);
         }
 
         /// <summary>
@@ -3166,15 +3164,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
         }
 
         /// <summary>
-        /// Handles the Click event of the tsbImageVisible control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void TsbImageVisible_Click(object sender, EventArgs e)
-        {
-        }
-
-        /// <summary>
         /// Handles the Click event of the tstripRotateAnticlockwise control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
@@ -3396,6 +3385,8 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             this.widgetTextSettings.UpdateUI();
 
+            this.widgetImage.UpdateUI();
+
             this.formSaveAs.UpdateUI();
         }
 
@@ -3405,6 +3396,30 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void WidgetImage_DoubleClick(object sender, EventArgs e)
+        {
+            this.LoadDialog();
+        }
+
+        /// <summary>
+        /// Handles the ImageUpdated event of the widgetImage control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void WidgetImage_ImageUpdated(object sender, EventArgs e)
+        {
+            this.inputChanged = true;
+
+            this.dimensionsCalculator.ImageSize = this.CurrentImageSection.Size;
+
+            this.DoConvert();
+        }
+
+        /// <summary>
+        /// Handles the LoadImage event of the widgetImage control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void WidgetImage_LoadImage(object sender, EventArgs e)
         {
             this.LoadDialog();
         }

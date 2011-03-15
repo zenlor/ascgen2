@@ -29,6 +29,7 @@ namespace JMSoftware.Widgets
     using System.ComponentModel;
     using System.Drawing;
     using System.Windows.Forms;
+    using JMSoftware.AsciiGeneratorDotNet;
 
     /// <summary>
     /// Widget to display a jmSelectablePictureBox
@@ -54,6 +55,18 @@ namespace JMSoftware.Widgets
         /// </summary>
         [Browsable(true), Description("Event raised when the image has been double clicked")]
         public new event EventHandler DoubleClick;
+
+        /// <summary>
+        /// Occurs when image has been updated by the widget.
+        /// </summary>
+        [Browsable(true), Description("Occurs when image has been updated by the widget.")]
+        public event EventHandler ImageUpdated;
+
+        /// <summary>
+        /// Occurs when the user wants to load an image.
+        /// </summary>
+        [Browsable(true), Description("Occurs when the user wants to load an image.")]
+        public event EventHandler LoadImage;
 
         /// <summary>
         /// Occurs when a drag-and-drop operation is completed.
@@ -167,6 +180,22 @@ namespace JMSoftware.Widgets
         #region Public methods
 
         /// <summary>
+        /// Rotates/flips the image and calls the event.
+        /// </summary>
+        /// <param name="type">The type of rotation/flip.</param>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        public void DoRotateFlip(RotateFlipType type, object sender, EventArgs e)
+        {
+            this.jmSelectablePictureBox1.RotateImage(type);
+
+            if (this.ImageUpdated != null)
+            {
+                this.ImageUpdated(sender, e);
+            }
+        }
+
+        /// <summary>
         /// Rotates the image.
         /// </summary>
         /// <param name="type">The rotation type.</param>
@@ -181,6 +210,28 @@ namespace JMSoftware.Widgets
         public void SelectNothing()
         {
             this.jmSelectablePictureBox1.SelectNothing();
+        }
+
+        /// <summary>
+        /// Updates the UI from the resource file.
+        /// </summary>
+        public void UpdateUI()
+        {
+            this.loadImageToolStripMenuItem.Text = Resource.GetString("&Load Image") + "...";
+
+            this.rotate90ToolStripMenuItem.Text = Resource.GetString("Rotate") + " 90°";
+            this.rotate180ToolStripMenuItem.Text = Resource.GetString("Rotate") + " 180°";
+            this.rotate270ToolStripMenuItem.Text = Resource.GetString("Rotate") + " 270°";
+
+            this.flipHorizontallyToolStripMenuItem.Text = Resource.GetString("Flip Horizontally");
+            this.flipVerticallyToolStripMenuItem.Text = Resource.GetString("Flip Vertically");
+
+            this.removeSelectionToolStripMenuItem.Text = Resource.GetString("Remove Selection");
+            this.lockSelectedAreaToolStripMenuItem.Text = Resource.GetString("Lock Selected Area");
+            this.fillSelectedAreaToolStripMenuItem.Text = Resource.GetString("Fill Selected Area");
+
+            this.selectionAreaFillColourToolStripMenuItem.Text = Resource.GetString("Selection Area Fill Colour") + "...";
+            this.selectionAreaBorderColourToolStripMenuItem.Text = Resource.GetString("Selection Area Border Colour") + "...";
         }
 
         #endregion Public methods
@@ -204,12 +255,69 @@ namespace JMSoftware.Widgets
         }
 
         /// <summary>
+        /// Handles the Opening event of the contextMenuStrip1 control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.ComponentModel.CancelEventArgs"/> instance containing the event data.</param>
+        private void ContextMenuStrip1_Opening(object sender, CancelEventArgs e)
+        {
+            this.rotate90ToolStripMenuItem.Enabled =
+                this.rotate180ToolStripMenuItem.Enabled =
+                this.rotate270ToolStripMenuItem.Enabled =
+                this.flipHorizontallyToolStripMenuItem.Enabled =
+                this.flipVerticallyToolStripMenuItem.Enabled =
+                    this.jmSelectablePictureBox1.Image != null;
+
+            this.removeSelectionToolStripMenuItem.Enabled =
+                this.lockSelectedAreaToolStripMenuItem.Enabled =
+                    (this.jmSelectablePictureBox1.Image != null) &&
+                    (this.jmSelectablePictureBox1.SelectedArea.Width > 0 && this.jmSelectablePictureBox1.SelectedArea.Height > 0);
+
+            this.lockSelectedAreaToolStripMenuItem.Checked = this.jmSelectablePictureBox1.SelectionLocked;
+
+            this.fillSelectedAreaToolStripMenuItem.Checked = this.jmSelectablePictureBox1.FillSelectionRectangle;
+        }
+
+        /// <summary>
+        /// Handles the Click event of the fillSelectedAreaToolStripMenuItem control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void FillSelectedAreaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.jmSelectablePictureBox1.FillSelectionRectangle = !this.jmSelectablePictureBox1.FillSelectionRectangle;
+        }
+
+        /// <summary>
+        /// Handles the Click event of the flipHorizontallyToolStripMenuItem control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void FlipHorizontallyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.DoRotateFlip(RotateFlipType.RotateNoneFlipX, sender, e);
+        }
+
+        /// <summary>
+        /// Handles the Click event of the flipVerticallyToolStripMenuItem control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void FlipVerticallyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.DoRotateFlip(RotateFlipType.RotateNoneFlipY, sender, e);
+        }
+
+        /// <summary>
         /// Handles the drag drop.
         /// </summary>
         /// <param name="e">The <see cref="System.Windows.Forms.DragEventArgs"/> instance containing the event data.</param>
         private void HandleDragDrop(DragEventArgs e)
         {
-            this.OnDragDrop(this, e);
+            if (this.OnDragDrop != null)
+            {
+                this.OnDragDrop(this, e);
+            }
         }
 
         /// <summary>
@@ -219,7 +327,10 @@ namespace JMSoftware.Widgets
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void JMSelectablePictureBox1_DoubleClick(object sender, EventArgs e)
         {
-            this.DoubleClick(sender, e);
+            if (this.DoubleClick != null)
+            {
+                this.DoubleClick(sender, e);
+            }
         }
 
         /// <summary>
@@ -260,6 +371,103 @@ namespace JMSoftware.Widgets
         private void JMSelectablePictureBox1_SelectionChanging(object sender, EventArgs e)
         {
             this.SelectionChanging(sender, e);
+        }
+
+        /// <summary>
+        /// Handles the Click event of the loadImageToolStripMenuItem control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void LoadImageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.LoadImage != null)
+            {
+                this.LoadImage(this, e);
+            }
+        }
+
+        /// <summary>
+        /// Handles the Click event of the lockSelectedAreaToolStripMenuItem control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void LockSelectedAreaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.jmSelectablePictureBox1.SelectionLocked = !this.jmSelectablePictureBox1.SelectionLocked;
+        }
+
+        /// <summary>
+        /// Handles the Click event of the removeSelectionToolStripMenuItem control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void RemoveSelectionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.jmSelectablePictureBox1.SelectNothing();
+        }
+
+        /// <summary>
+        /// Handles the Click event of the rotate180ToolStripMenuItem control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void Rotate180ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.DoRotateFlip(RotateFlipType.Rotate180FlipNone, sender, e);
+        }
+
+        /// <summary>
+        /// Handles the Click event of the rotate270ToolStripMenuItem control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void Rotate270ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.DoRotateFlip(RotateFlipType.Rotate270FlipNone, sender, e);
+        }
+
+        /// <summary>
+        /// Handles the Click event of the rotate90ToolStripMenuItem control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void Rotate90ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.DoRotateFlip(RotateFlipType.Rotate90FlipNone, sender, e);
+        }
+
+        /// <summary>
+        /// Handles the Click event of the selectionAreaBorderColourToolStripMenuItem control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void SelectionAreaBorderColourToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.colorDialog1.Color = this.jmSelectablePictureBox1.SelectionBorderColor;
+
+            if (this.colorDialog1.ShowDialog() != System.Windows.Forms.DialogResult.OK)
+            {
+                return;
+            }
+
+            this.jmSelectablePictureBox1.SelectionBorderColor = this.colorDialog1.Color;
+        }
+
+        /// <summary>
+        /// Handles the Click event of the selectionAreaFillColourToolStripMenuItem control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void SelectionAreaFillColourToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.colorDialog1.Color = this.jmSelectablePictureBox1.SelectionFillColor;
+
+            if (this.colorDialog1.ShowDialog() != System.Windows.Forms.DialogResult.OK)
+            {
+                return;
+            }
+
+            this.jmSelectablePictureBox1.SelectionFillColor = this.colorDialog1.Color;
         }
 
         /// <summary>

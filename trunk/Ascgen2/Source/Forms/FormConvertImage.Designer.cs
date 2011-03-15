@@ -560,7 +560,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.menuHelp});
             this.mainMenu1.Location = new System.Drawing.Point(0, 0);
             this.mainMenu1.Name = "mainMenu1";
-            this.mainMenu1.Size = new System.Drawing.Size(742, 24);
+            this.mainMenu1.Size = new System.Drawing.Size(684, 24);
             this.mainMenu1.TabIndex = 0;
             // 
             // menuFile
@@ -797,21 +797,21 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.menuEditInputRotate90.Name = "menuEditInputRotate90";
             this.menuEditInputRotate90.Size = new System.Drawing.Size(227, 22);
             this.menuEditInputRotate90.Text = "menuEditInputRotate90";
-            this.menuEditInputRotate90.Click += new System.EventHandler(this.CmenuImageRotate90_Click);
+            this.menuEditInputRotate90.Click += new System.EventHandler(this.MenuEditInputRotate90_Click);
             // 
             // menuEditInputRotate180
             // 
             this.menuEditInputRotate180.Name = "menuEditInputRotate180";
             this.menuEditInputRotate180.Size = new System.Drawing.Size(227, 22);
             this.menuEditInputRotate180.Text = "menuEditInputRotate180";
-            this.menuEditInputRotate180.Click += new System.EventHandler(this.CmenuImageRotate180_Click);
+            this.menuEditInputRotate180.Click += new System.EventHandler(this.MenuEditInputRotate180_Click);
             // 
             // menuEditInputRotate270
             // 
             this.menuEditInputRotate270.Name = "menuEditInputRotate270";
             this.menuEditInputRotate270.Size = new System.Drawing.Size(227, 22);
             this.menuEditInputRotate270.Text = "menuEditInputRotate270";
-            this.menuEditInputRotate270.Click += new System.EventHandler(this.CmenuImageRotate270_Click);
+            this.menuEditInputRotate270.Click += new System.EventHandler(this.MenuEditInputRotate270_Click);
             // 
             // toolStripSeparator1
             // 
@@ -824,7 +824,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.menuEditInputFlipHorizontal.Name = "menuEditInputFlipHorizontal";
             this.menuEditInputFlipHorizontal.Size = new System.Drawing.Size(227, 22);
             this.menuEditInputFlipHorizontal.Text = "menuEditInputFlipHorizontal";
-            this.menuEditInputFlipHorizontal.Click += new System.EventHandler(this.CmenuImageFlipHorizontal_Click);
+            this.menuEditInputFlipHorizontal.Click += new System.EventHandler(this.MenuEditInputFlipHorizontal_Click);
             // 
             // menuEditInputFlipVertical
             // 
@@ -832,7 +832,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.menuEditInputFlipVertical.Name = "menuEditInputFlipVertical";
             this.menuEditInputFlipVertical.Size = new System.Drawing.Size(227, 22);
             this.menuEditInputFlipVertical.Text = "menuEditInputFlipVertical";
-            this.menuEditInputFlipVertical.Click += new System.EventHandler(this.CmenuImageFlipVertical_Click);
+            this.menuEditInputFlipVertical.Click += new System.EventHandler(this.MenuEditInputFlipVertical_Click);
             // 
             // menuEditOutput
             // 
@@ -1121,7 +1121,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlMain.Location = new System.Drawing.Point(0, 0);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(742, 465);
+            this.pnlMain.Size = new System.Drawing.Size(684, 465);
             this.pnlMain.TabIndex = 1;
             this.pnlMain.Resize += new System.EventHandler(this.PnlMain_Resize);
             // 
@@ -1140,7 +1140,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.rtbxConvertedText.ReadOnly = true;
             this.rtbxConvertedText.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth;
             this.rtbxConvertedText.ShowSelectionMargin = true;
-            this.rtbxConvertedText.Size = new System.Drawing.Size(742, 465);
+            this.rtbxConvertedText.Size = new System.Drawing.Size(684, 465);
             this.rtbxConvertedText.TabIndex = 0;
             this.rtbxConvertedText.Text = "";
             this.rtbxConvertedText.TextColor = System.Drawing.SystemColors.WindowText;
@@ -1200,13 +1200,13 @@ namespace JMSoftware.AsciiGeneratorDotNet
             // 
             this.toolStripContainer1.ContentPanel.AutoScroll = true;
             this.toolStripContainer1.ContentPanel.Controls.Add(this.pnlMain);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(742, 465);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(684, 465);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer1.LeftToolStripPanelVisible = false;
             this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
             this.toolStripContainer1.Name = "toolStripContainer1";
             this.toolStripContainer1.RightToolStripPanelVisible = false;
-            this.toolStripContainer1.Size = new System.Drawing.Size(742, 614);
+            this.toolStripContainer1.Size = new System.Drawing.Size(684, 614);
             this.toolStripContainer1.TabIndex = 2;
             this.toolStripContainer1.Text = "toolStripContainer1";
             // 
@@ -1425,7 +1425,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             // 
             this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.ClientSize = new System.Drawing.Size(742, 614);
+            this.ClientSize = new System.Drawing.Size(684, 614);
             this.Controls.Add(this.toolStripContainer1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.mainMenu1;
