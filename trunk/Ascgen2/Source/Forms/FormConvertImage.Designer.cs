@@ -40,8 +40,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
         private ToolStripButton chkGenerate;
 
-        private ToolStripComboBox cmbCharacters;
-
         private ToolStripComboBox cmbRamp;
 
         private ToolStripSeparator cmenuHelpSep1;
@@ -49,36 +47,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
         private ToolStripSeparator cmenuHelpSep2;
 
         private ToolStripSeparator cmenuHelpSep3;
-
-        private ToolStripMenuItem cmenuImageFlipHorizontal;
-
-        private ToolStripMenuItem cmenuImageFlipVertical;
-
-        private ToolStripMenuItem cmenuImageLoad;
-
-        private ToolStripMenuItem cmenuImageRotate180;
-
-        private ToolStripMenuItem cmenuImageRotate270;
-
-        private ToolStripMenuItem cmenuImageRotate90;
-
-        private ToolStripMenuItem cmenuImageSelectionBorderColor;
-
-        private ToolStripMenuItem cmenuImageSelectionFillColor;
-
-        private ToolStripMenuItem cmenuImageSelectionLocked;
-
-        private ToolStripMenuItem cmenuImageSelectionShow;
-
-        private ToolStripMenuItem cmenuImageSelectNone;
-
-        private ToolStripSeparator cmenuImageSeperator1;
-
-        private ToolStripSeparator cmenuImageSeperator2;
-
-        private ToolStripSeparator cmenuImageSeperator3;
-
-        private ToolStripSeparator cmenuImageSeperator4;
 
         private ToolStripMenuItem cmenuTextCopy;
 
@@ -114,8 +82,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
         private System.ComponentModel.IContainer components;
 
-        private ContextMenuStrip contextMenuImage;
-
         private ContextMenuStrip contextMenuText;
 
         private FontDialog dialogChooseFont;
@@ -129,8 +95,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
         private SaveFileDialog dialogSaveText;
 
         private ColorDialog dialogSelectionColor;
-
-        private ToolStripLabel lblCharacters;
 
         private ToolStripLabel lblRamp;
 
@@ -252,8 +216,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
         private PageSetupDialog pageSetupDialog;
 
-        private JMSelectablePictureBox pbxMain;
-
         private Panel pnlMain;
 
         private PrintDialog printDialog;
@@ -263,8 +225,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
         private PrintPreviewDialog printPreviewDialog;
 
         private TextViewerRichTextBox rtbxConvertedText;
-
-        private SplitContainer splitContainer1;
 
         private ToolStripTextBox tbxHeight;
 
@@ -306,24 +266,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormConvertImage));
-            this.contextMenuImage = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.cmenuImageLoad = new System.Windows.Forms.ToolStripMenuItem();
-            this.cmenuImageSeperator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.cmenuImageRotate90 = new System.Windows.Forms.ToolStripMenuItem();
-            this.cmenuImageRotate180 = new System.Windows.Forms.ToolStripMenuItem();
-            this.cmenuImageRotate270 = new System.Windows.Forms.ToolStripMenuItem();
-            this.cmenuImageSeperator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.cmenuImageFlipHorizontal = new System.Windows.Forms.ToolStripMenuItem();
-            this.cmenuImageFlipVertical = new System.Windows.Forms.ToolStripMenuItem();
-            this.cmenuImageSeperator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.cmenuImageSelectNone = new System.Windows.Forms.ToolStripMenuItem();
-            this.cmenuImageSelectionLocked = new System.Windows.Forms.ToolStripMenuItem();
-            this.cmenuImageSelectionShow = new System.Windows.Forms.ToolStripMenuItem();
-            this.cmenuImageSeperator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.cmenuImageSelectionFillColor = new System.Windows.Forms.ToolStripMenuItem();
-            this.cmenuImageSelectionBorderColor = new System.Windows.Forms.ToolStripMenuItem();
-            this.cmenuImageSeperator5 = new System.Windows.Forms.ToolStripSeparator();
-            this.cmenuImageUpdateWhileSelecting = new System.Windows.Forms.ToolStripMenuItem();
             this.dialogLoadImage = new System.Windows.Forms.OpenFileDialog();
             this.contextMenuText = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.cmenuTextCopy = new System.Windows.Forms.ToolStripMenuItem();
@@ -410,14 +352,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.dialogSaveImage = new System.Windows.Forms.SaveFileDialog();
             this.dialogChooseFont = new System.Windows.Forms.FontDialog();
             this.pnlMain = new System.Windows.Forms.Panel();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.tableLayoutPanelText = new System.Windows.Forms.TableLayoutPanel();
             this.rtbxConvertedText = new JMSoftware.Controls.TextViewerRichTextBox();
-            this.buttonToggleImage = new System.Windows.Forms.Button();
-            this.checkBoxFullScreen = new System.Windows.Forms.CheckBox();
-            this.checkBoxBlackOnWhite = new System.Windows.Forms.CheckBox();
-            this.buttonPreview = new System.Windows.Forms.Button();
-            this.pbxMain = new JMSoftware.Controls.JMSelectablePictureBox();
             this.tstripOutputSize = new System.Windows.Forms.ToolStrip();
             this.tbxWidth = new System.Windows.Forms.ToolStripTextBox();
             this.cbxLocked = new System.Windows.Forms.ToolStripButton();
@@ -431,183 +366,36 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.tsbFlipVertically = new System.Windows.Forms.ToolStripButton();
             this.tstripButtons = new System.Windows.Forms.ToolStrip();
             this.tsbFont = new System.Windows.Forms.ToolStripButton();
-            this.tstripCharacters = new System.Windows.Forms.ToolStrip();
-            this.lblCharacters = new System.Windows.Forms.ToolStripLabel();
-            this.cmbCharacters = new System.Windows.Forms.ToolStripComboBox();
+            this.toolStripDisplay = new System.Windows.Forms.ToolStrip();
+            this.toolStripButtonBlackOnWhite = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonPreview = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonFullScreen = new System.Windows.Forms.ToolStripButton();
             this.tstripRamp = new System.Windows.Forms.ToolStrip();
             this.lblRamp = new System.Windows.Forms.ToolStripLabel();
             this.cmbRamp = new System.Windows.Forms.ToolStripComboBox();
             this.chkGenerate = new System.Windows.Forms.ToolStripButton();
+            this.tstripCharacters = new System.Windows.Forms.ToolStrip();
+            this.lblCharacters = new System.Windows.Forms.ToolStripLabel();
+            this.cmbCharacters = new System.Windows.Forms.ToolStripComboBox();
             this.dialogSaveColour = new System.Windows.Forms.SaveFileDialog();
             this.pageSetupDialog = new System.Windows.Forms.PageSetupDialog();
             this.printDocument = new System.Drawing.Printing.PrintDocument();
             this.printDialog = new System.Windows.Forms.PrintDialog();
             this.printPreviewDialog = new System.Windows.Forms.PrintPreviewDialog();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.contextMenuImage.SuspendLayout();
             this.contextMenuText.SuspendLayout();
             this.mainMenu1.SuspendLayout();
             this.pnlMain.SuspendLayout();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
-            this.tableLayoutPanelText.SuspendLayout();
             this.tstripOutputSize.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
             this.tstripAlterInputImage.SuspendLayout();
             this.tstripButtons.SuspendLayout();
-            this.tstripCharacters.SuspendLayout();
+            this.toolStripDisplay.SuspendLayout();
             this.tstripRamp.SuspendLayout();
+            this.tstripCharacters.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // contextMenuImage
-            // 
-            this.contextMenuImage.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cmenuImageLoad,
-            this.cmenuImageSeperator1,
-            this.cmenuImageRotate90,
-            this.cmenuImageRotate180,
-            this.cmenuImageRotate270,
-            this.cmenuImageSeperator2,
-            this.cmenuImageFlipHorizontal,
-            this.cmenuImageFlipVertical,
-            this.cmenuImageSeperator3,
-            this.cmenuImageSelectNone,
-            this.cmenuImageSelectionLocked,
-            this.cmenuImageSelectionShow,
-            this.cmenuImageSeperator4,
-            this.cmenuImageSelectionFillColor,
-            this.cmenuImageSelectionBorderColor,
-            this.cmenuImageSeperator5,
-            this.cmenuImageUpdateWhileSelecting});
-            this.contextMenuImage.Name = "contextMenuImage";
-            this.contextMenuImage.Size = new System.Drawing.Size(261, 298);
-            this.contextMenuImage.Opened += new System.EventHandler(this.ContextMenuImage_Popup);
-            // 
-            // cmenuImageLoad
-            // 
-            this.cmenuImageLoad.Image = global::AscGenDotNet.Properties.Resources.folder;
-            this.cmenuImageLoad.MergeIndex = 0;
-            this.cmenuImageLoad.Name = "cmenuImageLoad";
-            this.cmenuImageLoad.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L)));
-            this.cmenuImageLoad.Size = new System.Drawing.Size(260, 22);
-            this.cmenuImageLoad.Text = "cmenuImageLoad";
-            this.cmenuImageLoad.Click += new System.EventHandler(this.CmenuLoad_Click);
-            // 
-            // cmenuImageSeperator1
-            // 
-            this.cmenuImageSeperator1.MergeIndex = 1;
-            this.cmenuImageSeperator1.Name = "cmenuImageSeperator1";
-            this.cmenuImageSeperator1.Size = new System.Drawing.Size(257, 6);
-            // 
-            // cmenuImageRotate90
-            // 
-            this.cmenuImageRotate90.Name = "cmenuImageRotate90";
-            this.cmenuImageRotate90.Size = new System.Drawing.Size(260, 22);
-            this.cmenuImageRotate90.Text = "cmenuImageRotate90";
-            this.cmenuImageRotate90.Click += new System.EventHandler(this.CmenuImageRotate90_Click);
-            // 
-            // cmenuImageRotate180
-            // 
-            this.cmenuImageRotate180.Name = "cmenuImageRotate180";
-            this.cmenuImageRotate180.Size = new System.Drawing.Size(260, 22);
-            this.cmenuImageRotate180.Text = "cmenuImageRotate180";
-            this.cmenuImageRotate180.Click += new System.EventHandler(this.CmenuImageRotate180_Click);
-            // 
-            // cmenuImageRotate270
-            // 
-            this.cmenuImageRotate270.Name = "cmenuImageRotate270";
-            this.cmenuImageRotate270.Size = new System.Drawing.Size(260, 22);
-            this.cmenuImageRotate270.Text = "cmenuImageRotate270";
-            this.cmenuImageRotate270.Click += new System.EventHandler(this.CmenuImageRotate270_Click);
-            // 
-            // cmenuImageSeperator2
-            // 
-            this.cmenuImageSeperator2.MergeIndex = 5;
-            this.cmenuImageSeperator2.Name = "cmenuImageSeperator2";
-            this.cmenuImageSeperator2.Size = new System.Drawing.Size(257, 6);
-            // 
-            // cmenuImageFlipHorizontal
-            // 
-            this.cmenuImageFlipHorizontal.Image = global::AscGenDotNet.Properties.Resources.shape_flip_horizontal;
-            this.cmenuImageFlipHorizontal.Name = "cmenuImageFlipHorizontal";
-            this.cmenuImageFlipHorizontal.Size = new System.Drawing.Size(260, 22);
-            this.cmenuImageFlipHorizontal.Text = "cmenuImageFlipHorizontal";
-            this.cmenuImageFlipHorizontal.Click += new System.EventHandler(this.CmenuImageFlipHorizontal_Click);
-            // 
-            // cmenuImageFlipVertical
-            // 
-            this.cmenuImageFlipVertical.Image = global::AscGenDotNet.Properties.Resources.shape_flip_vertical;
-            this.cmenuImageFlipVertical.Name = "cmenuImageFlipVertical";
-            this.cmenuImageFlipVertical.Size = new System.Drawing.Size(260, 22);
-            this.cmenuImageFlipVertical.Text = "cmenuImageFlipVertical";
-            this.cmenuImageFlipVertical.Click += new System.EventHandler(this.CmenuImageFlipVertical_Click);
-            // 
-            // cmenuImageSeperator3
-            // 
-            this.cmenuImageSeperator3.Name = "cmenuImageSeperator3";
-            this.cmenuImageSeperator3.Size = new System.Drawing.Size(257, 6);
-            // 
-            // cmenuImageSelectNone
-            // 
-            this.cmenuImageSelectNone.MergeIndex = 2;
-            this.cmenuImageSelectNone.Name = "cmenuImageSelectNone";
-            this.cmenuImageSelectNone.Size = new System.Drawing.Size(260, 22);
-            this.cmenuImageSelectNone.Text = "cmenuImageSelectNone";
-            this.cmenuImageSelectNone.Click += new System.EventHandler(this.CmenuImageSelectNone_Click);
-            // 
-            // cmenuImageSelectionLocked
-            // 
-            this.cmenuImageSelectionLocked.MergeIndex = 3;
-            this.cmenuImageSelectionLocked.Name = "cmenuImageSelectionLocked";
-            this.cmenuImageSelectionLocked.Size = new System.Drawing.Size(260, 22);
-            this.cmenuImageSelectionLocked.Text = "cmenuImageSelectionLocked";
-            this.cmenuImageSelectionLocked.Click += new System.EventHandler(this.CmenuImageSelectionLocked_Click);
-            // 
-            // cmenuImageSelectionShow
-            // 
-            this.cmenuImageSelectionShow.MergeIndex = 4;
-            this.cmenuImageSelectionShow.Name = "cmenuImageSelectionShow";
-            this.cmenuImageSelectionShow.Size = new System.Drawing.Size(260, 22);
-            this.cmenuImageSelectionShow.Text = "cmenuImageSelectionShow";
-            this.cmenuImageSelectionShow.Click += new System.EventHandler(this.CmenuImageSelectionShow_Click);
-            // 
-            // cmenuImageSeperator4
-            // 
-            this.cmenuImageSeperator4.Name = "cmenuImageSeperator4";
-            this.cmenuImageSeperator4.Size = new System.Drawing.Size(257, 6);
-            // 
-            // cmenuImageSelectionFillColor
-            // 
-            this.cmenuImageSelectionFillColor.Image = global::AscGenDotNet.Properties.Resources.color_swatch;
-            this.cmenuImageSelectionFillColor.MergeIndex = 6;
-            this.cmenuImageSelectionFillColor.Name = "cmenuImageSelectionFillColor";
-            this.cmenuImageSelectionFillColor.Size = new System.Drawing.Size(260, 22);
-            this.cmenuImageSelectionFillColor.Text = "cmenuImageSelectionFillColor";
-            this.cmenuImageSelectionFillColor.Click += new System.EventHandler(this.CmenuImageSelectionFillColor_Click);
-            // 
-            // cmenuImageSelectionBorderColor
-            // 
-            this.cmenuImageSelectionBorderColor.Image = global::AscGenDotNet.Properties.Resources.color_swatch;
-            this.cmenuImageSelectionBorderColor.MergeIndex = 7;
-            this.cmenuImageSelectionBorderColor.Name = "cmenuImageSelectionBorderColor";
-            this.cmenuImageSelectionBorderColor.Size = new System.Drawing.Size(260, 22);
-            this.cmenuImageSelectionBorderColor.Text = "cmenuImageSelectionBorderColor";
-            this.cmenuImageSelectionBorderColor.Click += new System.EventHandler(this.CmenuImageSelectionBorderColor_Click);
-            // 
-            // cmenuImageSeperator5
-            // 
-            this.cmenuImageSeperator5.Name = "cmenuImageSeperator5";
-            this.cmenuImageSeperator5.Size = new System.Drawing.Size(257, 6);
-            // 
-            // cmenuImageUpdateWhileSelecting
-            // 
-            this.cmenuImageUpdateWhileSelecting.Name = "cmenuImageUpdateWhileSelecting";
-            this.cmenuImageUpdateWhileSelecting.Size = new System.Drawing.Size(260, 22);
-            this.cmenuImageUpdateWhileSelecting.Text = "cmenuImageUpdateWhileSelecting";
-            this.cmenuImageUpdateWhileSelecting.Click += new System.EventHandler(this.CmenuImageUpdateWhileSelecting_Click);
             // 
             // contextMenuText
             // 
@@ -1329,58 +1117,13 @@ namespace JMSoftware.AsciiGeneratorDotNet
             // pnlMain
             // 
             this.pnlMain.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.pnlMain.Controls.Add(this.splitContainer1);
+            this.pnlMain.Controls.Add(this.rtbxConvertedText);
             this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlMain.Location = new System.Drawing.Point(0, 0);
             this.pnlMain.Name = "pnlMain";
             this.pnlMain.Size = new System.Drawing.Size(742, 465);
             this.pnlMain.TabIndex = 1;
             this.pnlMain.Resize += new System.EventHandler(this.PnlMain_Resize);
-            // 
-            // splitContainer1
-            // 
-            this.splitContainer1.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Name = "splitContainer1";
-            // 
-            // splitContainer1.Panel1
-            // 
-            this.splitContainer1.Panel1.AutoScroll = true;
-            this.splitContainer1.Panel1.Controls.Add(this.tableLayoutPanelText);
-            this.splitContainer1.Panel1MinSize = 150;
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.AutoScroll = true;
-            this.splitContainer1.Panel2.Controls.Add(this.pbxMain);
-            this.splitContainer1.Panel2MinSize = 100;
-            this.splitContainer1.Size = new System.Drawing.Size(742, 465);
-            this.splitContainer1.SplitterDistance = 515;
-            this.splitContainer1.TabIndex = 1;
-            // 
-            // tableLayoutPanelText
-            // 
-            this.tableLayoutPanelText.ColumnCount = 2;
-            this.tableLayoutPanelText.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelText.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-            this.tableLayoutPanelText.Controls.Add(this.rtbxConvertedText, 0, 0);
-            this.tableLayoutPanelText.Controls.Add(this.buttonToggleImage, 1, 0);
-            this.tableLayoutPanelText.Controls.Add(this.checkBoxFullScreen, 1, 3);
-            this.tableLayoutPanelText.Controls.Add(this.checkBoxBlackOnWhite, 1, 1);
-            this.tableLayoutPanelText.Controls.Add(this.buttonPreview, 1, 2);
-            this.tableLayoutPanelText.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelText.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanelText.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanelText.Name = "tableLayoutPanelText";
-            this.tableLayoutPanelText.RowCount = 4;
-            this.tableLayoutPanelText.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelText.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-            this.tableLayoutPanelText.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-            this.tableLayoutPanelText.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-            this.tableLayoutPanelText.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelText.Size = new System.Drawing.Size(515, 465);
-            this.tableLayoutPanelText.TabIndex = 1;
             // 
             // rtbxConvertedText
             // 
@@ -1395,105 +1138,13 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.rtbxConvertedText.Margin = new System.Windows.Forms.Padding(0);
             this.rtbxConvertedText.Name = "rtbxConvertedText";
             this.rtbxConvertedText.ReadOnly = true;
-            this.tableLayoutPanelText.SetRowSpan(this.rtbxConvertedText, 4);
             this.rtbxConvertedText.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth;
             this.rtbxConvertedText.ShowSelectionMargin = true;
-            this.rtbxConvertedText.Size = new System.Drawing.Size(491, 465);
+            this.rtbxConvertedText.Size = new System.Drawing.Size(742, 465);
             this.rtbxConvertedText.TabIndex = 0;
             this.rtbxConvertedText.Text = "";
             this.rtbxConvertedText.TextColor = System.Drawing.SystemColors.WindowText;
             this.rtbxConvertedText.WordWrap = false;
-            // 
-            // buttonToggleImage
-            // 
-            this.buttonToggleImage.BackColor = System.Drawing.SystemColors.Control;
-            this.buttonToggleImage.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonToggleImage.FlatAppearance.BorderSize = 0;
-            this.buttonToggleImage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonToggleImage.Location = new System.Drawing.Point(491, 0);
-            this.buttonToggleImage.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonToggleImage.Name = "buttonToggleImage";
-            this.buttonToggleImage.Size = new System.Drawing.Size(24, 393);
-            this.buttonToggleImage.TabIndex = 1;
-            this.buttonToggleImage.TabStop = false;
-            this.buttonToggleImage.Text = ">";
-            this.buttonToggleImage.UseVisualStyleBackColor = false;
-            this.buttonToggleImage.Click += new System.EventHandler(this.ButtonToggleImage_Click);
-            // 
-            // checkBoxFullScreen
-            // 
-            this.checkBoxFullScreen.Appearance = System.Windows.Forms.Appearance.Button;
-            this.checkBoxFullScreen.AutoSize = true;
-            this.checkBoxFullScreen.BackColor = System.Drawing.SystemColors.Control;
-            this.checkBoxFullScreen.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.checkBoxFullScreen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.checkBoxFullScreen.ForeColor = System.Drawing.SystemColors.Control;
-            this.checkBoxFullScreen.Image = global::AscGenDotNet.Properties.Resources.monitor;
-            this.checkBoxFullScreen.Location = new System.Drawing.Point(491, 441);
-            this.checkBoxFullScreen.Margin = new System.Windows.Forms.Padding(0);
-            this.checkBoxFullScreen.Name = "checkBoxFullScreen";
-            this.checkBoxFullScreen.Size = new System.Drawing.Size(24, 24);
-            this.checkBoxFullScreen.TabIndex = 2;
-            this.checkBoxFullScreen.UseVisualStyleBackColor = false;
-            this.checkBoxFullScreen.Click += new System.EventHandler(this.CheckBoxFullScreen_Click);
-            // 
-            // checkBoxBlackOnWhite
-            // 
-            this.checkBoxBlackOnWhite.Appearance = System.Windows.Forms.Appearance.Button;
-            this.checkBoxBlackOnWhite.AutoSize = true;
-            this.checkBoxBlackOnWhite.BackColor = System.Drawing.SystemColors.Control;
-            this.checkBoxBlackOnWhite.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.checkBoxBlackOnWhite.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.checkBoxBlackOnWhite.ForeColor = System.Drawing.SystemColors.Control;
-            this.checkBoxBlackOnWhite.Image = global::AscGenDotNet.Properties.Resources.contrast_high;
-            this.checkBoxBlackOnWhite.Location = new System.Drawing.Point(491, 393);
-            this.checkBoxBlackOnWhite.Margin = new System.Windows.Forms.Padding(0);
-            this.checkBoxBlackOnWhite.Name = "checkBoxBlackOnWhite";
-            this.checkBoxBlackOnWhite.Size = new System.Drawing.Size(24, 24);
-            this.checkBoxBlackOnWhite.TabIndex = 3;
-            this.checkBoxBlackOnWhite.UseVisualStyleBackColor = false;
-            this.checkBoxBlackOnWhite.Click += new System.EventHandler(this.CheckBoxBlackOnWhite_Click);
-            // 
-            // buttonPreview
-            // 
-            this.buttonPreview.BackColor = System.Drawing.SystemColors.Control;
-            this.buttonPreview.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonPreview.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonPreview.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonPreview.Image = global::AscGenDotNet.Properties.Resources.page_magnify_color;
-            this.buttonPreview.Location = new System.Drawing.Point(491, 417);
-            this.buttonPreview.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonPreview.Name = "buttonPreview";
-            this.buttonPreview.Size = new System.Drawing.Size(24, 24);
-            this.buttonPreview.TabIndex = 4;
-            this.buttonPreview.UseVisualStyleBackColor = false;
-            this.buttonPreview.Click += new System.EventHandler(this.ButtonPreview_Click);
-            // 
-            // pbxMain
-            // 
-            this.pbxMain.AllowDrop = true;
-            this.pbxMain.BackColor = System.Drawing.SystemColors.Control;
-            this.pbxMain.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pbxMain.ContextMenuStrip = this.contextMenuImage;
-            this.pbxMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pbxMain.DrawingImage = true;
-            this.pbxMain.FillSelectionRectangle = true;
-            this.pbxMain.ImageLocation = new System.Drawing.Rectangle(0, 0, 0, 0);
-            this.pbxMain.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
-            this.pbxMain.Location = new System.Drawing.Point(0, 0);
-            this.pbxMain.Name = "pbxMain";
-            this.pbxMain.SelectedArea = new System.Drawing.Rectangle(0, 0, 0, 0);
-            this.pbxMain.SelectionBorderColor = System.Drawing.Color.DarkBlue;
-            this.pbxMain.SelectionFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(173)))), ((int)(((byte)(216)))), ((int)(((byte)(230)))));
-            this.pbxMain.SelectionLocked = false;
-            this.pbxMain.Size = new System.Drawing.Size(223, 465);
-            this.pbxMain.SizeMode = JMSoftware.Controls.JMPictureBox.JMPictureBoxSizeMode.FitCenter;
-            this.pbxMain.TabIndex = 0;
-            this.pbxMain.SelectionChanged += new System.EventHandler(this.PbxMain_SelectionChanged);
-            this.pbxMain.SelectionChanging += new System.EventHandler(this.PbxMain_SelectionChanging);
-            this.pbxMain.DragDrop += new System.Windows.Forms.DragEventHandler(this.PbxMain_DragDrop);
-            this.pbxMain.DragOver += new System.Windows.Forms.DragEventHandler(this.PbxMain_DragOver);
-            this.pbxMain.DoubleClick += new System.EventHandler(this.PbxMain_DoubleClick);
             // 
             // tstripOutputSize
             // 
@@ -1565,6 +1216,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.tstripOutputSize);
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.tstripAlterInputImage);
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.tstripButtons);
+            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStripDisplay);
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.tstripRamp);
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.tstripCharacters);
             // 
@@ -1640,29 +1292,47 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.tsbFont.ToolTipText = "tsbFont";
             this.tsbFont.Click += new System.EventHandler(this.TsbFont_Click);
             // 
-            // tstripCharacters
+            // toolStripDisplay
             // 
-            this.tstripCharacters.Dock = System.Windows.Forms.DockStyle.None;
-            this.tstripCharacters.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.lblCharacters,
-            this.cmbCharacters});
-            this.tstripCharacters.Location = new System.Drawing.Point(3, 124);
-            this.tstripCharacters.Name = "tstripCharacters";
-            this.tstripCharacters.Size = new System.Drawing.Size(211, 25);
-            this.tstripCharacters.TabIndex = 3;
+            this.toolStripDisplay.Dock = System.Windows.Forms.DockStyle.None;
+            this.toolStripDisplay.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButtonBlackOnWhite,
+            this.toolStripButtonPreview,
+            this.toolStripButtonFullScreen});
+            this.toolStripDisplay.Location = new System.Drawing.Point(3, 99);
+            this.toolStripDisplay.Name = "toolStripDisplay";
+            this.toolStripDisplay.Size = new System.Drawing.Size(81, 25);
+            this.toolStripDisplay.TabIndex = 6;
             // 
-            // lblCharacters
+            // toolStripButtonBlackOnWhite
             // 
-            this.lblCharacters.Name = "lblCharacters";
-            this.lblCharacters.Size = new System.Drawing.Size(76, 22);
-            this.lblCharacters.Text = "lblCharacters";
+            this.toolStripButtonBlackOnWhite.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonBlackOnWhite.Image = global::AscGenDotNet.Properties.Resources.contrast_high;
+            this.toolStripButtonBlackOnWhite.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonBlackOnWhite.Name = "toolStripButtonBlackOnWhite";
+            this.toolStripButtonBlackOnWhite.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButtonBlackOnWhite.Text = "toolStripButton1";
+            this.toolStripButtonBlackOnWhite.Click += new System.EventHandler(this.ToolStripButtonBlackOnWhite_Click);
             // 
-            // cmbCharacters
+            // toolStripButtonPreview
             // 
-            this.cmbCharacters.Name = "cmbCharacters";
-            this.cmbCharacters.Size = new System.Drawing.Size(121, 25);
-            this.cmbCharacters.DropDown += new System.EventHandler(this.CmbCharacters_DropDown);
-            this.cmbCharacters.TextChanged += new System.EventHandler(this.CmbCharacters_TextChanged);
+            this.toolStripButtonPreview.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonPreview.Image = global::AscGenDotNet.Properties.Resources.page_magnify_color;
+            this.toolStripButtonPreview.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonPreview.Name = "toolStripButtonPreview";
+            this.toolStripButtonPreview.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButtonPreview.Text = "toolStripButtonPreview";
+            this.toolStripButtonPreview.Click += new System.EventHandler(this.ToolStripButtonPreview_Click);
+            // 
+            // toolStripButtonFullScreen
+            // 
+            this.toolStripButtonFullScreen.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonFullScreen.Image = global::AscGenDotNet.Properties.Resources.monitor;
+            this.toolStripButtonFullScreen.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonFullScreen.Name = "toolStripButtonFullScreen";
+            this.toolStripButtonFullScreen.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButtonFullScreen.Text = "toolStripButtonFullScreen";
+            this.toolStripButtonFullScreen.Click += new System.EventHandler(this.ToolStripButtonFullScreen_Click);
             // 
             // tstripRamp
             // 
@@ -1671,7 +1341,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.lblRamp,
             this.cmbRamp,
             this.chkGenerate});
-            this.tstripRamp.Location = new System.Drawing.Point(3, 99);
+            this.tstripRamp.Location = new System.Drawing.Point(84, 99);
             this.tstripRamp.Name = "tstripRamp";
             this.tstripRamp.Size = new System.Drawing.Size(263, 25);
             this.tstripRamp.TabIndex = 2;
@@ -1701,6 +1371,30 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.chkGenerate.Text = "chkGenerate";
             this.chkGenerate.ToolTipText = "Automatically Generate a Ramp";
             this.chkGenerate.CheckedChanged += new System.EventHandler(this.ChkGenerate_CheckedChanged);
+            // 
+            // tstripCharacters
+            // 
+            this.tstripCharacters.Dock = System.Windows.Forms.DockStyle.None;
+            this.tstripCharacters.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lblCharacters,
+            this.cmbCharacters});
+            this.tstripCharacters.Location = new System.Drawing.Point(3, 124);
+            this.tstripCharacters.Name = "tstripCharacters";
+            this.tstripCharacters.Size = new System.Drawing.Size(211, 25);
+            this.tstripCharacters.TabIndex = 3;
+            // 
+            // lblCharacters
+            // 
+            this.lblCharacters.Name = "lblCharacters";
+            this.lblCharacters.Size = new System.Drawing.Size(76, 22);
+            this.lblCharacters.Text = "lblCharacters";
+            // 
+            // cmbCharacters
+            // 
+            this.cmbCharacters.Name = "cmbCharacters";
+            this.cmbCharacters.Size = new System.Drawing.Size(121, 25);
+            this.cmbCharacters.DropDown += new System.EventHandler(this.CmbCharacters_DropDown);
+            this.cmbCharacters.TextChanged += new System.EventHandler(this.CmbCharacters_TextChanged);
             // 
             // pageSetupDialog
             // 
@@ -1740,16 +1434,10 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ASCGEN dotNET ";
             this.Closing += new System.ComponentModel.CancelEventHandler(this.FormConvertImage_Closing);
-            this.contextMenuImage.ResumeLayout(false);
             this.contextMenuText.ResumeLayout(false);
             this.mainMenu1.ResumeLayout(false);
             this.mainMenu1.PerformLayout();
             this.pnlMain.ResumeLayout(false);
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            this.splitContainer1.ResumeLayout(false);
-            this.tableLayoutPanelText.ResumeLayout(false);
-            this.tableLayoutPanelText.PerformLayout();
             this.tstripOutputSize.ResumeLayout(false);
             this.tstripOutputSize.PerformLayout();
             this.toolStripContainer1.ContentPanel.ResumeLayout(false);
@@ -1761,25 +1449,26 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.tstripAlterInputImage.PerformLayout();
             this.tstripButtons.ResumeLayout(false);
             this.tstripButtons.PerformLayout();
-            this.tstripCharacters.ResumeLayout(false);
-            this.tstripCharacters.PerformLayout();
+            this.toolStripDisplay.ResumeLayout(false);
+            this.toolStripDisplay.PerformLayout();
             this.tstripRamp.ResumeLayout(false);
             this.tstripRamp.PerformLayout();
+            this.tstripCharacters.ResumeLayout(false);
+            this.tstripCharacters.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion Private methods
 
-        private TableLayoutPanel tableLayoutPanelText;
-        private Button buttonToggleImage;
-        private ToolStripSeparator cmenuImageSeperator5;
-        private ToolStripMenuItem cmenuImageUpdateWhileSelecting;
-        private CheckBox checkBoxFullScreen;
         private ToolTip toolTip1;
-        private CheckBox checkBoxBlackOnWhite;
-        private Button buttonPreview;
         private ToolStripMenuItem toolStripMenuItemInvertOutput;
         private ToolStripSeparator toolStripSeparator2;
+        private ToolStrip toolStripDisplay;
+        private ToolStripButton toolStripButtonBlackOnWhite;
+        private ToolStripLabel lblCharacters;
+        private ToolStripComboBox cmbCharacters;
+        private ToolStripButton toolStripButtonPreview;
+        private ToolStripButton toolStripButtonFullScreen;
     }
 }
