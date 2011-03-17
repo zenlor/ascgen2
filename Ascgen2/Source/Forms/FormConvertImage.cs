@@ -215,7 +215,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             set
             {
-                foreach (ToolStripItem item in this.tstripAlterInputImage.Items)
+                foreach (ToolStripItem item in this.toolStripRotateFlip.Items)
                 {
                     item.Enabled = value;
                 }
@@ -490,7 +490,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
                                     Settings.Default.DefaultFont =
                                     this.dialogChooseFont.Font = value;
 
-                this.tstripRamp.Visible =
+                this.toolStripRamp.Visible =
                         this.chkGenerate.Visible =
                         this.lblRamp.Visible =
                         this.cmbRamp.Visible = this.IsFixedWidth;
@@ -683,12 +683,12 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             set
             {
-                if (this.textSettings.IsGeneratedRamp == value && this.chkGenerate.Checked == value && this.tstripCharacters.Visible == value)
+                if (this.textSettings.IsGeneratedRamp == value && this.chkGenerate.Checked == value && this.toolStripCharacters.Visible == value)
                 {
                     return;
                 }
 
-                this.tstripCharacters.Visible = this.chkGenerate.Checked = this.textSettings.IsGeneratedRamp = value;
+                this.toolStripCharacters.Visible = this.chkGenerate.Checked = this.textSettings.IsGeneratedRamp = value;
 
                 this.cmbRamp.Enabled = !value;
 
@@ -1455,7 +1455,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void CmenuLoad_Click(object sender, System.EventArgs e)
         {
-            this.LoadDialog();
+            this.ShowLoadImageDialog();
         }
 
         /// <summary>
@@ -1863,19 +1863,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
         }
 
         /// <summary>
-        /// Show the load dialog, and process its result
-        /// </summary>
-        private void LoadDialog()
-        {
-            if (this.dialogLoadImage.ShowDialog() != DialogResult.OK)
-            {
-                return;
-            }
-
-            this.LoadImage(this.dialogLoadImage.FileName);
-        }
-
-        /// <summary>
         /// Handles the Popup event of the menuEdit control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
@@ -2186,7 +2173,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void MenuFileLoad_Click(object sender, System.EventArgs e)
         {
-            this.LoadDialog();
+            this.ShowLoadImageDialog();
         }
 
         /// <summary>
@@ -2939,12 +2926,15 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.toolStripContainer1.TopToolStripPanel.Controls.Clear();
 
             this.toolStripContainer1.TopToolStripPanel.Join(this.mainMenu1);
+
             this.toolStripContainer1.TopToolStripPanel.Join(this.toolStripDisplay, 1);
-            this.toolStripContainer1.TopToolStripPanel.Join(this.tstripAlterInputImage, 1);
-            this.toolStripContainer1.TopToolStripPanel.Join(this.tstripButtons, 1);
-            this.toolStripContainer1.TopToolStripPanel.Join(this.tstripCharacters, 1);
-            this.toolStripContainer1.TopToolStripPanel.Join(this.tstripRamp, 1);
-            this.toolStripContainer1.TopToolStripPanel.Join(this.tstripOutputSize, 1);
+            this.toolStripContainer1.TopToolStripPanel.Join(this.toolStripRotateFlip, 1);
+            this.toolStripContainer1.TopToolStripPanel.Join(this.toolStripFont, 1);
+            this.toolStripContainer1.TopToolStripPanel.Join(this.toolStripOutputSize, 1);
+            this.toolStripContainer1.TopToolStripPanel.Join(this.toolStripFile, 1);
+
+            this.toolStripContainer1.TopToolStripPanel.Join(this.toolStripCharacters, 2);
+            this.toolStripContainer1.TopToolStripPanel.Join(this.toolStripRamp, 2);
 
             foreach (ToolStrip strip in this.toolStripContainer1.TopToolStripPanel.Controls)
             {
@@ -3007,6 +2997,19 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
                 preview.ShowDialog(this);
             }
+        }
+
+        /// <summary>
+        /// Shows the load image dialog, and processess its result
+        /// </summary>
+        private void ShowLoadImageDialog()
+        {
+            if (this.dialogLoadImage.ShowDialog() != DialogResult.OK)
+            {
+                return;
+            }
+
+            this.LoadImage(this.dialogLoadImage.FileName);
         }
 
         /// <summary>
@@ -3114,6 +3117,16 @@ namespace JMSoftware.AsciiGeneratorDotNet
         }
 
         /// <summary>
+        /// Handles the Click event of the toolStripButtonLoad control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void ToolStripButtonLoad_Click(object sender, EventArgs e)
+        {
+            this.ShowLoadImageDialog();
+        }
+
+        /// <summary>
         /// Handles the Click event of the toolStripButton1 control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
@@ -3121,6 +3134,16 @@ namespace JMSoftware.AsciiGeneratorDotNet
         private void ToolStripButtonPreview_Click(object sender, EventArgs e)
         {
             this.ShowColourPreview();
+        }
+
+        /// <summary>
+        /// Handles the Click event of the toolStripButtonSave control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void ToolStripButtonSave_Click(object sender, EventArgs e)
+        {
+            this.ShowSaveDialog();
         }
 
         /// <summary>
@@ -3232,7 +3255,9 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.menuFileSaveAs.Enabled =
                 this.menuFileClose.Enabled =
                 this.menuFilePrint.Enabled =
-                this.menuFilePrintPreview.Enabled = this.ImageIsLoaded;
+                this.menuFilePrintPreview.Enabled =
+                this.toolStripButtonSave.Enabled =
+                    this.ImageIsLoaded;
 
             this.toolStripButtonPreview.Enabled =
                 this.menuViewColourPreview.Enabled =
@@ -3248,7 +3273,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
         {
             this.tbxWidth.Text = this.dimensionsCalculator.Width.ToString();
             this.tbxHeight.Text = this.dimensionsCalculator.Height.ToString();
-            this.tstripOutputSize.Refresh();
+            this.toolStripOutputSize.Refresh();
         }
 
         /// <summary>
@@ -3312,8 +3337,9 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.menuHelpCheckForNewVersionToolStrip.Text = Resource.GetString("Check for a New Version") + "...";
             this.menuHelpAbout.Text = Resource.GetString("&About") + "...";
 
+            this.toolStripLabelSize.Text = Resource.GetString("Size") + ":";
             this.lblRamp.Text = Resource.GetString("Ramp") + ":";
-            this.tsbFont.Text = Resource.GetString("Font");
+            this.tsbFont.Text = Resource.GetString("Font") + "...";
             this.chkGenerate.Text = Resource.GetString("Auto");
 
             this.lblCharacters.Text = Resource.GetString("Characters") + ":";
@@ -3397,7 +3423,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void WidgetImage_DoubleClick(object sender, EventArgs e)
         {
-            this.LoadDialog();
+            this.ShowLoadImageDialog();
         }
 
         /// <summary>
@@ -3421,7 +3447,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void WidgetImage_LoadImage(object sender, EventArgs e)
         {
-            this.LoadDialog();
+            this.ShowLoadImageDialog();
         }
 
         /// <summary>
