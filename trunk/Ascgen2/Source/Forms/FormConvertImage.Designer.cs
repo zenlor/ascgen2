@@ -204,10 +204,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
         private ToolStripMenuItem menuViewFullScreen;
 
-        private ToolStripMenuItem menuViewImage;
-
-        private ToolStripMenuItem menuViewImagePosition;
-
         private ToolStripSeparator menuViewSep1;
 
         private ToolStripSeparator menuViewSep2;
@@ -335,10 +331,9 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.menuViewColourPreview = new System.Windows.Forms.ToolStripMenuItem();
             this.menuViewSep1 = new System.Windows.Forms.ToolStripSeparator();
             this.menuViewText = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemShowImage = new System.Windows.Forms.ToolStripMenuItem();
             this.menuViewSep2 = new System.Windows.Forms.ToolStripSeparator();
             this.menuViewFullScreen = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuViewImage = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuViewImagePosition = new System.Windows.Forms.ToolStripMenuItem();
             this.menuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.menuHelpTutorials = new System.Windows.Forms.ToolStripMenuItem();
             this.cmenuHelpSep1 = new System.Windows.Forms.ToolStripSeparator();
@@ -352,7 +347,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.dialogSaveImage = new System.Windows.Forms.SaveFileDialog();
             this.dialogChooseFont = new System.Windows.Forms.FontDialog();
             this.pnlMain = new System.Windows.Forms.Panel();
-            this.rtbxConvertedText = new JMSoftware.Controls.TextViewerRichTextBox();
             this.toolStripOutputSize = new System.Windows.Forms.ToolStrip();
             this.toolStripLabelSize = new System.Windows.Forms.ToolStripLabel();
             this.tbxWidth = new System.Windows.Forms.ToolStripTextBox();
@@ -367,26 +361,27 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.tsbFlipVertically = new System.Windows.Forms.ToolStripButton();
             this.toolStripFont = new System.Windows.Forms.ToolStrip();
             this.tsbFont = new System.Windows.Forms.ToolStripButton();
-            this.toolStripDisplay = new System.Windows.Forms.ToolStrip();
-            this.toolStripButtonBlackOnWhite = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonPreview = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonFullScreen = new System.Windows.Forms.ToolStripButton();
-            this.toolStripRamp = new System.Windows.Forms.ToolStrip();
-            this.lblRamp = new System.Windows.Forms.ToolStripLabel();
-            this.cmbRamp = new System.Windows.Forms.ToolStripComboBox();
-            this.chkGenerate = new System.Windows.Forms.ToolStripButton();
             this.toolStripCharacters = new System.Windows.Forms.ToolStrip();
             this.lblCharacters = new System.Windows.Forms.ToolStripLabel();
             this.cmbCharacters = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripFile = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonLoad = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonSave = new System.Windows.Forms.ToolStripButton();
+            this.toolStripRamp = new System.Windows.Forms.ToolStrip();
+            this.lblRamp = new System.Windows.Forms.ToolStripLabel();
+            this.cmbRamp = new System.Windows.Forms.ToolStripComboBox();
+            this.chkGenerate = new System.Windows.Forms.ToolStripButton();
+            this.toolStripDisplay = new System.Windows.Forms.ToolStrip();
+            this.toolStripButtonBlackOnWhite = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonPreview = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonFullScreen = new System.Windows.Forms.ToolStripButton();
             this.dialogSaveColour = new System.Windows.Forms.SaveFileDialog();
             this.pageSetupDialog = new System.Windows.Forms.PageSetupDialog();
             this.printDocument = new System.Drawing.Printing.PrintDocument();
             this.printDialog = new System.Windows.Forms.PrintDialog();
             this.printPreviewDialog = new System.Windows.Forms.PrintPreviewDialog();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.rtbxConvertedText = new JMSoftware.Controls.TextViewerRichTextBox();
             this.contextMenuText.SuspendLayout();
             this.mainMenu1.SuspendLayout();
             this.pnlMain.SuspendLayout();
@@ -396,10 +391,10 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.toolStripContainer1.SuspendLayout();
             this.toolStripRotateFlip.SuspendLayout();
             this.toolStripFont.SuspendLayout();
-            this.toolStripDisplay.SuspendLayout();
-            this.toolStripRamp.SuspendLayout();
             this.toolStripCharacters.SuspendLayout();
             this.toolStripFile.SuspendLayout();
+            this.toolStripRamp.SuspendLayout();
+            this.toolStripDisplay.SuspendLayout();
             this.SuspendLayout();
             // 
             // contextMenuText
@@ -965,13 +960,12 @@ namespace JMSoftware.AsciiGeneratorDotNet
             // menuView
             // 
             this.menuView.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuViewColourPreview,
-            this.menuViewSep1,
             this.menuViewText,
+            this.toolStripMenuItemShowImage,
+            this.menuViewSep1,
+            this.menuViewColourPreview,
             this.menuViewSep2,
-            this.menuViewFullScreen,
-            this.menuViewImage,
-            this.menuViewImagePosition});
+            this.menuViewFullScreen});
             this.menuView.MergeIndex = 2;
             this.menuView.Name = "menuView";
             this.menuView.Size = new System.Drawing.Size(75, 20);
@@ -982,28 +976,36 @@ namespace JMSoftware.AsciiGeneratorDotNet
             // 
             this.menuViewColourPreview.Image = global::AscGenDotNet.Properties.Resources.page_magnify_color;
             this.menuViewColourPreview.Name = "menuViewColourPreview";
-            this.menuViewColourPreview.Size = new System.Drawing.Size(231, 22);
+            this.menuViewColourPreview.Size = new System.Drawing.Size(236, 22);
             this.menuViewColourPreview.Text = "menuViewColourPreview";
             this.menuViewColourPreview.Click += new System.EventHandler(this.MenuViewColourPreview_Click);
             // 
             // menuViewSep1
             // 
             this.menuViewSep1.Name = "menuViewSep1";
-            this.menuViewSep1.Size = new System.Drawing.Size(228, 6);
+            this.menuViewSep1.Size = new System.Drawing.Size(233, 6);
             // 
             // menuViewText
             // 
             this.menuViewText.Image = global::AscGenDotNet.Properties.Resources.text_align_justify;
             this.menuViewText.MergeIndex = 4;
             this.menuViewText.Name = "menuViewText";
-            this.menuViewText.Size = new System.Drawing.Size(231, 22);
+            this.menuViewText.Size = new System.Drawing.Size(236, 22);
             this.menuViewText.Text = "menuViewText";
             this.menuViewText.Click += new System.EventHandler(this.MenuViewText_Click);
+            // 
+            // toolStripMenuItemShowImage
+            // 
+            this.toolStripMenuItemShowImage.Image = global::AscGenDotNet.Properties.Resources.image;
+            this.toolStripMenuItemShowImage.Name = "toolStripMenuItemShowImage";
+            this.toolStripMenuItemShowImage.Size = new System.Drawing.Size(236, 22);
+            this.toolStripMenuItemShowImage.Text = "toolStripMenuItemShowImage";
+            this.toolStripMenuItemShowImage.Click += new System.EventHandler(this.ToolStripMenuItemShowImage_Click);
             // 
             // menuViewSep2
             // 
             this.menuViewSep2.Name = "menuViewSep2";
-            this.menuViewSep2.Size = new System.Drawing.Size(228, 6);
+            this.menuViewSep2.Size = new System.Drawing.Size(233, 6);
             // 
             // menuViewFullScreen
             // 
@@ -1011,27 +1013,9 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.menuViewFullScreen.MergeIndex = 7;
             this.menuViewFullScreen.Name = "menuViewFullScreen";
             this.menuViewFullScreen.ShortcutKeys = System.Windows.Forms.Keys.F11;
-            this.menuViewFullScreen.Size = new System.Drawing.Size(231, 22);
+            this.menuViewFullScreen.Size = new System.Drawing.Size(236, 22);
             this.menuViewFullScreen.Text = "menuViewFullScreen";
             this.menuViewFullScreen.Click += new System.EventHandler(this.MenuViewFullScreen_Click);
-            // 
-            // menuViewImage
-            // 
-            this.menuViewImage.Image = global::AscGenDotNet.Properties.Resources.image;
-            this.menuViewImage.Name = "menuViewImage";
-            this.menuViewImage.ShortcutKeys = System.Windows.Forms.Keys.F12;
-            this.menuViewImage.Size = new System.Drawing.Size(231, 22);
-            this.menuViewImage.Text = "menuViewImage";
-            this.menuViewImage.Click += new System.EventHandler(this.MenuViewImage_Click);
-            // 
-            // menuViewImagePosition
-            // 
-            this.menuViewImagePosition.Image = global::AscGenDotNet.Properties.Resources.application_split;
-            this.menuViewImagePosition.Name = "menuViewImagePosition";
-            this.menuViewImagePosition.ShortcutKeys = System.Windows.Forms.Keys.F10;
-            this.menuViewImagePosition.Size = new System.Drawing.Size(231, 22);
-            this.menuViewImagePosition.Text = "menuViewImagePosition";
-            this.menuViewImagePosition.Click += new System.EventHandler(this.MenuViewImagePosition_Click);
             // 
             // menuHelp
             // 
@@ -1130,27 +1114,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.pnlMain.TabIndex = 1;
             this.pnlMain.Resize += new System.EventHandler(this.PnlMain_Resize);
             // 
-            // rtbxConvertedText
-            // 
-            this.rtbxConvertedText.BackColor = System.Drawing.Color.White;
-            this.rtbxConvertedText.BackgroundColor = System.Drawing.Color.White;
-            this.rtbxConvertedText.ContextMenuStrip = this.contextMenuText;
-            this.rtbxConvertedText.DetectUrls = false;
-            this.rtbxConvertedText.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rtbxConvertedText.EnableAutoDragDrop = true;
-            this.rtbxConvertedText.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.rtbxConvertedText.Location = new System.Drawing.Point(0, 0);
-            this.rtbxConvertedText.Margin = new System.Windows.Forms.Padding(0);
-            this.rtbxConvertedText.Name = "rtbxConvertedText";
-            this.rtbxConvertedText.ReadOnly = true;
-            this.rtbxConvertedText.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth;
-            this.rtbxConvertedText.ShowSelectionMargin = true;
-            this.rtbxConvertedText.Size = new System.Drawing.Size(624, 428);
-            this.rtbxConvertedText.TabIndex = 0;
-            this.rtbxConvertedText.Text = "";
-            this.rtbxConvertedText.TextColor = System.Drawing.SystemColors.WindowText;
-            this.rtbxConvertedText.WordWrap = false;
-            // 
             // toolStripOutputSize
             // 
             this.toolStripOutputSize.Dock = System.Windows.Forms.DockStyle.None;
@@ -1228,8 +1191,8 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStripOutputSize);
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStripRotateFlip);
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStripFont);
-            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStripDisplay);
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStripRamp);
+            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStripDisplay);
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStripFile);
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStripCharacters);
             // 
@@ -1305,93 +1268,13 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.tsbFont.ToolTipText = "tsbFont";
             this.tsbFont.Click += new System.EventHandler(this.TsbFont_Click);
             // 
-            // toolStripDisplay
-            // 
-            this.toolStripDisplay.Dock = System.Windows.Forms.DockStyle.None;
-            this.toolStripDisplay.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButtonBlackOnWhite,
-            this.toolStripButtonPreview,
-            this.toolStripButtonFullScreen});
-            this.toolStripDisplay.Location = new System.Drawing.Point(3, 124);
-            this.toolStripDisplay.Name = "toolStripDisplay";
-            this.toolStripDisplay.Size = new System.Drawing.Size(81, 25);
-            this.toolStripDisplay.TabIndex = 6;
-            // 
-            // toolStripButtonBlackOnWhite
-            // 
-            this.toolStripButtonBlackOnWhite.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonBlackOnWhite.Image = global::AscGenDotNet.Properties.Resources.contrast_high;
-            this.toolStripButtonBlackOnWhite.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonBlackOnWhite.Name = "toolStripButtonBlackOnWhite";
-            this.toolStripButtonBlackOnWhite.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButtonBlackOnWhite.Text = "toolStripButton1";
-            this.toolStripButtonBlackOnWhite.Click += new System.EventHandler(this.ToolStripButtonBlackOnWhite_Click);
-            // 
-            // toolStripButtonPreview
-            // 
-            this.toolStripButtonPreview.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonPreview.Image = global::AscGenDotNet.Properties.Resources.page_magnify_color;
-            this.toolStripButtonPreview.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonPreview.Name = "toolStripButtonPreview";
-            this.toolStripButtonPreview.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButtonPreview.Text = "toolStripButtonPreview";
-            this.toolStripButtonPreview.Click += new System.EventHandler(this.ToolStripButtonPreview_Click);
-            // 
-            // toolStripButtonFullScreen
-            // 
-            this.toolStripButtonFullScreen.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonFullScreen.Image = global::AscGenDotNet.Properties.Resources.monitor;
-            this.toolStripButtonFullScreen.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonFullScreen.Name = "toolStripButtonFullScreen";
-            this.toolStripButtonFullScreen.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButtonFullScreen.Text = "toolStripButtonFullScreen";
-            this.toolStripButtonFullScreen.Click += new System.EventHandler(this.ToolStripButtonFullScreen_Click);
-            // 
-            // toolStripRamp
-            // 
-            this.toolStripRamp.Dock = System.Windows.Forms.DockStyle.None;
-            this.toolStripRamp.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.lblRamp,
-            this.cmbRamp,
-            this.chkGenerate});
-            this.toolStripRamp.Location = new System.Drawing.Point(84, 124);
-            this.toolStripRamp.Name = "toolStripRamp";
-            this.toolStripRamp.Size = new System.Drawing.Size(263, 25);
-            this.toolStripRamp.TabIndex = 2;
-            // 
-            // lblRamp
-            // 
-            this.lblRamp.Name = "lblRamp";
-            this.lblRamp.Size = new System.Drawing.Size(51, 22);
-            this.lblRamp.Text = "lblRamp";
-            // 
-            // cmbRamp
-            // 
-            this.cmbRamp.Name = "cmbRamp";
-            this.cmbRamp.Size = new System.Drawing.Size(121, 25);
-            this.cmbRamp.DropDown += new System.EventHandler(this.CmbRamp_DropDown);
-            this.cmbRamp.SelectedIndexChanged += new System.EventHandler(this.CmbRamp_SelectedIndexChanged);
-            this.cmbRamp.TextChanged += new System.EventHandler(this.CmbRamp_TextChanged);
-            // 
-            // chkGenerate
-            // 
-            this.chkGenerate.CheckOnClick = true;
-            this.chkGenerate.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.chkGenerate.Image = ((System.Drawing.Image)(resources.GetObject("chkGenerate.Image")));
-            this.chkGenerate.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.chkGenerate.Name = "chkGenerate";
-            this.chkGenerate.Size = new System.Drawing.Size(77, 22);
-            this.chkGenerate.Text = "chkGenerate";
-            this.chkGenerate.ToolTipText = "Automatically Generate a Ramp";
-            this.chkGenerate.CheckedChanged += new System.EventHandler(this.ChkGenerate_CheckedChanged);
-            // 
             // toolStripCharacters
             // 
             this.toolStripCharacters.Dock = System.Windows.Forms.DockStyle.None;
             this.toolStripCharacters.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lblCharacters,
             this.cmbCharacters});
-            this.toolStripCharacters.Location = new System.Drawing.Point(3, 99);
+            this.toolStripCharacters.Location = new System.Drawing.Point(61, 149);
             this.toolStripCharacters.Name = "toolStripCharacters";
             this.toolStripCharacters.Size = new System.Drawing.Size(211, 25);
             this.toolStripCharacters.TabIndex = 3;
@@ -1438,6 +1321,86 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.toolStripButtonSave.Size = new System.Drawing.Size(23, 22);
             this.toolStripButtonSave.Click += new System.EventHandler(this.ToolStripButtonSave_Click);
             // 
+            // toolStripRamp
+            // 
+            this.toolStripRamp.Dock = System.Windows.Forms.DockStyle.None;
+            this.toolStripRamp.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lblRamp,
+            this.cmbRamp,
+            this.chkGenerate});
+            this.toolStripRamp.Location = new System.Drawing.Point(3, 99);
+            this.toolStripRamp.Name = "toolStripRamp";
+            this.toolStripRamp.Size = new System.Drawing.Size(263, 25);
+            this.toolStripRamp.TabIndex = 2;
+            // 
+            // lblRamp
+            // 
+            this.lblRamp.Name = "lblRamp";
+            this.lblRamp.Size = new System.Drawing.Size(51, 22);
+            this.lblRamp.Text = "lblRamp";
+            // 
+            // cmbRamp
+            // 
+            this.cmbRamp.Name = "cmbRamp";
+            this.cmbRamp.Size = new System.Drawing.Size(121, 25);
+            this.cmbRamp.DropDown += new System.EventHandler(this.CmbRamp_DropDown);
+            this.cmbRamp.SelectedIndexChanged += new System.EventHandler(this.CmbRamp_SelectedIndexChanged);
+            this.cmbRamp.TextChanged += new System.EventHandler(this.CmbRamp_TextChanged);
+            // 
+            // chkGenerate
+            // 
+            this.chkGenerate.CheckOnClick = true;
+            this.chkGenerate.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.chkGenerate.Image = ((System.Drawing.Image)(resources.GetObject("chkGenerate.Image")));
+            this.chkGenerate.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.chkGenerate.Name = "chkGenerate";
+            this.chkGenerate.Size = new System.Drawing.Size(77, 22);
+            this.chkGenerate.Text = "chkGenerate";
+            this.chkGenerate.ToolTipText = "Automatically Generate a Ramp";
+            this.chkGenerate.CheckedChanged += new System.EventHandler(this.ChkGenerate_CheckedChanged);
+            // 
+            // toolStripDisplay
+            // 
+            this.toolStripDisplay.Dock = System.Windows.Forms.DockStyle.None;
+            this.toolStripDisplay.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButtonBlackOnWhite,
+            this.toolStripButtonPreview,
+            this.toolStripButtonFullScreen});
+            this.toolStripDisplay.Location = new System.Drawing.Point(3, 124);
+            this.toolStripDisplay.Name = "toolStripDisplay";
+            this.toolStripDisplay.Size = new System.Drawing.Size(81, 25);
+            this.toolStripDisplay.TabIndex = 6;
+            // 
+            // toolStripButtonBlackOnWhite
+            // 
+            this.toolStripButtonBlackOnWhite.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonBlackOnWhite.Image = global::AscGenDotNet.Properties.Resources.contrast_high;
+            this.toolStripButtonBlackOnWhite.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonBlackOnWhite.Name = "toolStripButtonBlackOnWhite";
+            this.toolStripButtonBlackOnWhite.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButtonBlackOnWhite.Text = "toolStripButton1";
+            this.toolStripButtonBlackOnWhite.Click += new System.EventHandler(this.ToolStripButtonBlackOnWhite_Click);
+            // 
+            // toolStripButtonPreview
+            // 
+            this.toolStripButtonPreview.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonPreview.Image = global::AscGenDotNet.Properties.Resources.page_magnify_color;
+            this.toolStripButtonPreview.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonPreview.Name = "toolStripButtonPreview";
+            this.toolStripButtonPreview.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButtonPreview.Text = "toolStripButtonPreview";
+            this.toolStripButtonPreview.Click += new System.EventHandler(this.ToolStripButtonPreview_Click);
+            // 
+            // toolStripButtonFullScreen
+            // 
+            this.toolStripButtonFullScreen.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonFullScreen.Image = global::AscGenDotNet.Properties.Resources.monitor;
+            this.toolStripButtonFullScreen.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonFullScreen.Name = "toolStripButtonFullScreen";
+            this.toolStripButtonFullScreen.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButtonFullScreen.Text = "toolStripButtonFullScreen";
+            this.toolStripButtonFullScreen.Click += new System.EventHandler(this.ToolStripButtonFullScreen_Click);
+            // 
             // pageSetupDialog
             // 
             this.pageSetupDialog.AllowMargins = false;
@@ -1462,6 +1425,27 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.printPreviewDialog.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog.Icon")));
             this.printPreviewDialog.Name = "printPreviewDialog";
             this.printPreviewDialog.Visible = false;
+            // 
+            // rtbxConvertedText
+            // 
+            this.rtbxConvertedText.BackColor = System.Drawing.Color.White;
+            this.rtbxConvertedText.BackgroundColor = System.Drawing.Color.White;
+            this.rtbxConvertedText.ContextMenuStrip = this.contextMenuText;
+            this.rtbxConvertedText.DetectUrls = false;
+            this.rtbxConvertedText.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rtbxConvertedText.EnableAutoDragDrop = true;
+            this.rtbxConvertedText.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.rtbxConvertedText.Location = new System.Drawing.Point(0, 0);
+            this.rtbxConvertedText.Margin = new System.Windows.Forms.Padding(0);
+            this.rtbxConvertedText.Name = "rtbxConvertedText";
+            this.rtbxConvertedText.ReadOnly = true;
+            this.rtbxConvertedText.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth;
+            this.rtbxConvertedText.ShowSelectionMargin = true;
+            this.rtbxConvertedText.Size = new System.Drawing.Size(624, 428);
+            this.rtbxConvertedText.TabIndex = 0;
+            this.rtbxConvertedText.Text = "";
+            this.rtbxConvertedText.TextColor = System.Drawing.SystemColors.WindowText;
+            this.rtbxConvertedText.WordWrap = false;
             // 
             // FormConvertImage
             // 
@@ -1491,14 +1475,14 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.toolStripRotateFlip.PerformLayout();
             this.toolStripFont.ResumeLayout(false);
             this.toolStripFont.PerformLayout();
-            this.toolStripDisplay.ResumeLayout(false);
-            this.toolStripDisplay.PerformLayout();
-            this.toolStripRamp.ResumeLayout(false);
-            this.toolStripRamp.PerformLayout();
             this.toolStripCharacters.ResumeLayout(false);
             this.toolStripCharacters.PerformLayout();
             this.toolStripFile.ResumeLayout(false);
             this.toolStripFile.PerformLayout();
+            this.toolStripRamp.ResumeLayout(false);
+            this.toolStripRamp.PerformLayout();
+            this.toolStripDisplay.ResumeLayout(false);
+            this.toolStripDisplay.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1518,5 +1502,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
         private ToolStrip toolStripFile;
         private ToolStripButton toolStripButtonLoad;
         private ToolStripButton toolStripButtonSave;
+        private ToolStripMenuItem toolStripMenuItemShowImage;
     }
 }

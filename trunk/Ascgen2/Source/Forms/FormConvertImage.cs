@@ -2329,7 +2329,9 @@ namespace JMSoftware.AsciiGeneratorDotNet
         {
             this.menuViewText.Checked = this.widgetTextSettings.Visible;
 
-            this.menuViewFullScreen.Checked = this.IsFullScreen;
+            this.toolStripMenuItemShowImage.Checked = this.widgetImage.Visible;
+
+            this.menuViewFullScreen.Checked = this.IsFullScreen;            
         }
 
         /// <summary>
@@ -2350,24 +2352,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
         private void MenuViewFullScreen_Click(object sender, System.EventArgs e)
         {
             this.IsFullScreen = !this.IsFullScreen;
-        }
-
-        /// <summary>
-        /// Handles the Click event of the menuViewImage control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void MenuViewImage_Click(object sender, EventArgs e)
-        {
-        }
-
-        /// <summary>
-        /// Handles the Click event of the menuViewImagePosition control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void MenuViewImagePosition_Click(object sender, EventArgs e)
-        {
         }
 
         /// <summary>
@@ -3324,10 +3308,8 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.menuViewColourPreview.Text = Resource.GetString("Colour Preview") + "...";
 
             this.menuViewText.Text = Resource.GetString("Text Settings");
-
+            this.toolStripMenuItemShowImage.Text = Resource.GetString("Input Image");
             this.menuViewFullScreen.Text = Resource.GetString("&Full Screen");
-            this.menuViewImage.Text = Resource.GetString("Input Image");
-            this.menuViewImagePosition.Text = Resource.GetString("Input Image Position");
 
             this.menuHelp.Text = Resource.GetString("&Help");
             this.menuHelpDonate.Text = Resource.GetString("&Donate") + "...";
@@ -3357,6 +3339,9 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.cmenuTextFont.Text = Resource.GetString("Font") + "...";
             this.cmenuTextVertical.Text = Resource.GetString("Flip Vertically");
             this.cmenuTextHorizontal.Text = Resource.GetString("Flip Horizontally");
+
+            this.toolStripButtonLoad.ToolTipText = Resource.GetString("&Load Image").Replace("&", "");
+            this.toolStripButtonSave.ToolTipText = Resource.GetString("Save");
 
             this.tsbFont.ToolTipText = Resource.GetString("Choose the Font");
 
@@ -3486,5 +3471,15 @@ namespace JMSoftware.AsciiGeneratorDotNet
         }
 
         #endregion Private methods
+
+        /// <summary>
+        /// Handles the Click event of the toolStripMenuItemShowImage control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void ToolStripMenuItemShowImage_Click(object sender, EventArgs e)
+        {
+            this.widgetImage.Visible = !this.widgetImage.Visible;
+        }
     }
 }
