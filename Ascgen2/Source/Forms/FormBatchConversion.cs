@@ -1120,12 +1120,11 @@ namespace JMSoftware.AsciiGeneratorDotNet
             {
                 if (this.OutputIsHtml)
                 {
-                    string output = OutputCreator.CreateHTML(
-                                                convertedText,
-                                                colors,
-                                                this.textProcessingSettings.IsBlackTextOnWhite ? Color.White : Color.Black,
-                                                this.textProcessingSettings,
-                                                Path.GetFileNameWithoutExtension(outputFilename));
+                    OutputCreator outputCreator = new OutputCreator(convertedText, this.textProcessingSettings, colors);
+
+                    outputCreator.Title = Path.GetFileNameWithoutExtension(outputFilename);
+
+                    string output = outputCreator.CreateHTML();
 
                     writer.Write(output);
                 }

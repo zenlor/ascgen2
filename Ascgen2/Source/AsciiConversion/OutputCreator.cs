@@ -1,7 +1,7 @@
-//---------------------------------------------------------------------------------------
+﻿//---------------------------------------------------------------------------------------
 // <copyright file="OutputCreator.cs" company="Jonathan Mathews Software">
 //     ASCII Generator dotNET - Image to ASCII Art Conversion Program
-//     Copyright (C) 2009 Jonathan Mathews Software. All rights reserved.
+//     Copyright (C) 2011 Jonathan Mathews Software. All rights reserved.
 // </copyright>
 // <author>Jonathan Mathews</author>
 // <email>info@jmsoftware.co.uk</email>
@@ -33,78 +33,94 @@ namespace JMSoftware
     using JMSoftware.AsciiGeneratorDotNet;
 
     /// <summary>
-    /// Class to create the formatted text
+    /// Creates the custom output text files
     /// </summary>
-    public abstract class OutputCreator
+    public class OutputCreator
     {
-        #region�Constructors
+        #region Fields
 
         /// <summary>
-        /// Prevents a default instance of the <see cref="OutputCreator"/> class from being created.
+        /// Array that stores the list id for each position of the color in uniqueColors
         /// </summary>
-        private OutputCreator()
+        private int[][] characterToColor;
+
+        /// <summary>
+        /// The 2d array of colors.
+        /// </summary>
+        private Color[][] colors;
+
+        /// <summary>
+        /// The strings containing the ASCII image.
+        /// </summary>
+        private string[] strings;
+
+        /// <summary>
+        /// The text processing settings.
+        /// </summary>
+        private TextProcessingSettings textProcessingSettings;
+
+        /// <summary>
+        /// List of unique colors.
+        /// </summary>
+        private ArrayList uniqueColors;
+
+        #endregion Fields
+
+        #region Constructors
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="OutputCreator"/> class.
+        /// </summary>
+        /// <param name="strings">The strings containing the ASCII image.</param>
+        /// <param name="textProcessingSettings">The text processing settings.</param>
+        public OutputCreator(string[] strings, TextProcessingSettings textProcessingSettings)
+            : this(strings, textProcessingSettings, null)
         {
         }
 
-        #endregion�Constructors
+        /// <summary>
+        /// Initializes a new instance of the <see cref="OutputCreator"/> class.
+        /// </summary>
+        /// <param name="strings">The strings containing the ASCII image.</param>
+        /// <param name="textProcessingSettings">The text processing settings.</param>
+        /// <param name="colors">The 2d array of colors.</param>
+        public OutputCreator(string[] strings, TextProcessingSettings textProcessingSettings, Color[][] colors)
+        {
+            this.strings = strings;
 
-        #region�Public�methods
+            this.textProcessingSettings = textProcessingSettings;
+
+            if (colors != null && !textProcessingSettings.IsFixedWidth)
+            {
+                this.colors = colors;
+
+                this.SetupColorArrays();
+            }
+        }
+
+        #endregion Constructors
+
+        #region Properties
 
         /// <summary>
-        /// Creates the html text
+        /// Gets or sets the title.
         /// </summary>
-        /// <param name="strings">The strings.</param>
-        /// <param name="colors">The colors.</param>
-        /// <param name="backgroundColor">The backgroundcolor.</param>
-        /// <param name="textSettings">The text settings.</param>
-        /// <param name="title">The title.</param>
-        /// <returns>The formatted html</returns>
-        public static string CreateHTML(string[] strings, Color[][] colors, Color backgroundColor, TextProcessingSettings textSettings, string title)
+        /// <value>The title.</value>
+        public string Title { get; set; }
+
+        #endregion Properties
+
+        #region Public methods
+
+        /// <summary>
+        /// Creates the HTML.
+        /// </summary>
+        /// <returns>A string containing the HTML file.</returns>
+        public string CreateHTML()
         {
-            bool useColor = (colors != null) && textSettings.IsFixedWidth;
+            bool useColor = this.colors != null;
 
-            //--
-            // Create the unique color array, and the array of int pointers
-            //--
-            int[][] characterToColor = new int[colors.Length][];
-
-            ArrayList uniqueColors = new ArrayList();
-
-            if (useColor)
-            {
-                for (int i = 0; i < colors.Length; i++)
-                {
-                    characterToColor[i] = new int[colors[0].Length];
-                }
-
-                int colorId;
-                int previousColorId = -1;
-
-                for (int y = 0; y < colors.Length; y++)
-                {
-                    for (int x = 0; x < colors[0].Length; x++)
-                    {
-                        colorId = uniqueColors.IndexOf(colors[y][x]);
-
-                        if (colorId > -1)
-                        {
-                            if (colorId == previousColorId)
-                            {
-                                characterToColor[y][x] = -1;
-                            }
-                            else
-                            {
-                                previousColorId = characterToColor[y][x] = colorId;
-                            }
-                        }
-                        else
-                        {
-                            // New Color
-                            previousColorId = characterToColor[y][x] = uniqueColors.Add(colors[y][x]);
-                        }
-                    }
-                }
-            }
+            Color backgroundColor = this.textProcessingSettings.IsBlackTextOnWhite ? Color.White : Color.Black;
 
             StringBuilder builder = new StringBuilder();
 
@@ -115,12 +131,15 @@ namespace JMSoftware
             builder.AppendLine("<head>");
             builder.AppendLine(String.Empty);
 
-            builder.Append("<title>");
-            builder.Append(title);
-            builder.Append("</title>");
-            builder.Append(Environment.NewLine);
+            if (this.Title.Length > 0)
+            {
+                builder.Append("<title>");
+                builder.Append(this.Title);
+                builder.Append("</title>");
+                builder.Append(Environment.NewLine);
 
-            builder.AppendLine(String.Empty);
+                builder.AppendLine(String.Empty);
+            }
 
             builder.Append("<meta name=\"generator\" content=\"Ascgen dotNET ");
             builder.Append(Variables.Version.GetVersion());
@@ -134,12 +153,12 @@ namespace JMSoftware
 
             builder.AppendLine("#ascgen-image pre {");
             builder.Append("	font-family: \"");
-            builder.Append(textSettings.Font.Name);
+            builder.Append(this.textProcessingSettings.Font.Name);
             builder.Append("\", monospace;");
             builder.Append(Environment.NewLine);
 
             builder.Append("	font-size: ");
-            builder.Append(textSettings.Font.Size);
+            builder.Append(this.textProcessingSettings.Font.Size);
             builder.Append("pt;");
             builder.Append(Environment.NewLine);
 
@@ -151,8 +170,8 @@ namespace JMSoftware
             builder.Append(Environment.NewLine);
 
             Color forecolor = Color.FromArgb(
-                                        (byte)(~backgroundColor.R), 
-                                        (byte)(~backgroundColor.G), 
+                                        (byte)(~backgroundColor.R),
+                                        (byte)(~backgroundColor.G),
                                         (byte)(~backgroundColor.B));
 
             builder.Append("	color: #");
@@ -164,7 +183,7 @@ namespace JMSoftware
 
             builder.AppendLine("	float: left;");     // avoids firefox problem with scrolling horizontally
             builder.Append("	line-height: ");  // fixes firefox problem with extra space between lines
-            builder.Append(textSettings.CharacterSize.Height);
+            builder.Append(this.textProcessingSettings.CharacterSize.Height);
             builder.Append("px;");
             builder.Append(Environment.NewLine);
 
@@ -178,7 +197,7 @@ namespace JMSoftware
 
                 int count = 0;
 
-                foreach (Color c in uniqueColors)
+                foreach (Color c in this.uniqueColors)
                 {
                     builder.Append(".c");
                     builder.Append(count++);
@@ -204,13 +223,13 @@ namespace JMSoftware
             bool spanIsOpen = false;
 
             // the text
-            if (textSettings.IsFixedWidth)
+            if (this.textProcessingSettings.IsFixedWidth)
             {
-                for (int y = 0; y < textSettings.Height; y++)
+                for (int y = 0; y < this.textProcessingSettings.Height; y++)
                 {
-                    for (int x = 0; x < textSettings.Width; x++)
+                    for (int x = 0; x < this.textProcessingSettings.Width; x++)
                     {
-                        if (useColor && characterToColor[y][x] != -1)
+                        if (useColor && this.characterToColor[y][x] != -1)
                         {
                             if (spanIsOpen)
                             {
@@ -219,15 +238,15 @@ namespace JMSoftware
                             }
 
                             builder.Append("<span class=\"c");
-                            builder.Append(characterToColor[y][x]);
+                            builder.Append(this.characterToColor[y][x]);
                             builder.Append("\">");
                             spanIsOpen = true;
                         }
 
-                        builder.Append(strings[y][x]);
+                        builder.Append(this.strings[y][x]);
                     }
 
-                    if (y < textSettings.Height - 1)
+                    if (y < this.textProcessingSettings.Height - 1)
                     {
                         builder.Append(Environment.NewLine);
                     }
@@ -235,7 +254,7 @@ namespace JMSoftware
             }
             else
             {
-                foreach (string s in strings)
+                foreach (string s in this.strings)
                 {
                     builder.Append(s);
                     builder.Append(Environment.NewLine);
@@ -259,71 +278,24 @@ namespace JMSoftware
         }
 
         /// <summary>
-        /// Creates the RTF text
+        /// Creates the RTF.
         /// </summary>
-        /// <param name="strings">The strings.</param>
-        /// <param name="colors">The colors.</param>
-        /// <param name="textSettings">The text settings.</param>
-        /// <returns>The formatted rtf text</returns>
-        public static string CreateRTF(string[] strings, Color[][] colors, TextProcessingSettings textSettings)
+        /// <returns>a string containing the RTF file.</returns>
+        public string CreateRTF()
         {
-            if (!textSettings.IsFixedWidth)
-            {
-                return null;
-            }
-
-            //--
-            // Create the unique color array, and the array of int pointers
-            //--
-            int[][] characterToColor = new int[colors.Length][];
-
-            for (int i = 0; i < colors.Length; i++)
-            {
-                characterToColor[i] = new int[colors[0].Length];
-            }
-
-            ArrayList uniqueColors = new ArrayList();
-            int colorId;
-            int previousColorId = -1;
-
-            for (int y = 0; y < colors.Length; y++)
-            {
-                for (int x = 0; x < colors[0].Length; x++)
-                {
-                    colorId = uniqueColors.IndexOf(colors[y][x]);
-
-                    if (colorId > -1)
-                    {
-                        if (colorId == previousColorId)
-                        {
-                            characterToColor[y][x] = -1;
-                        }
-                        else
-                        {
-                            previousColorId = characterToColor[y][x] = colorId;
-                        }
-                    }
-                    else
-                    {
-                        // New Color
-                        previousColorId = characterToColor[y][x] = uniqueColors.Add(colors[y][x]);
-                    }
-                }
-            }
-
             // Create and output the text
             StringBuilder builder = new StringBuilder();
 
             // the rtf header
             builder.Append(@"{\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\fnil\fcharset0 ");
-            builder.Append(textSettings.Font.Name);
+            builder.Append(this.textProcessingSettings.Font.Name);
             builder.Append(";}}");
             builder.Append(Environment.NewLine);
 
             // the rtf colortbl
             builder.Append(@"{\colortbl ;");
 
-            foreach (Color c in uniqueColors)
+            foreach (Color c in this.uniqueColors)
             {
                 builder.Append(@"\red");
                 builder.Append(c.R);
@@ -343,42 +315,42 @@ namespace JMSoftware
             // the font settings
             builder.Append(@"\viewkind4\uc1\pard\lang2057\f0");
 
-            if (textSettings.Font.Bold)
+            if (this.textProcessingSettings.Font.Bold)
             {
                 builder.Append(@"\b");
             }
 
-            if (textSettings.Font.Italic)
+            if (this.textProcessingSettings.Font.Italic)
             {
                 builder.Append(@"\i");
             }
 
-            if (textSettings.Font.Underline)
+            if (this.textProcessingSettings.Font.Underline)
             {
                 builder.Append(@"\ul");
             }
 
-            if (textSettings.Font.Strikeout)
+            if (this.textProcessingSettings.Font.Strikeout)
             {
                 builder.Append(@"\strike");
             }
 
             builder.Append(@"\fs");
-            builder.Append((int)(textSettings.Font.Size * 2));
+            builder.Append((int)(this.textProcessingSettings.Font.Size * 2));
 
             // the text
-            for (int y = 0; y < textSettings.Height; y++)
+            for (int y = 0; y < this.textProcessingSettings.Height; y++)
             {
-                for (int x = 0; x < textSettings.Width; x++)
+                for (int x = 0; x < this.textProcessingSettings.Width; x++)
                 {
-                    if (characterToColor[y][x] != -1)
+                    if (this.characterToColor[y][x] != -1)
                     {
                         builder.Append(@"\cf");
-                        builder.Append(characterToColor[y][x] + 1);
+                        builder.Append(this.characterToColor[y][x] + 1);
                         builder.Append(" ");
                     }
 
-                    builder.Append(strings[y][x]);
+                    builder.Append(this.strings[y][x]);
                 }
 
                 builder.Append(@"\par");
@@ -390,6 +362,57 @@ namespace JMSoftware
             return builder.ToString();
         }
 
-        #endregion�Public�methods
+        #endregion Public methods
+
+        #region Private methods
+
+        /// <summary>
+        /// Sets up the color arrays.
+        /// </summary>
+        private void SetupColorArrays()
+        {
+            if (this.colors == null)
+            {
+                return;
+            }
+
+            this.uniqueColors = new ArrayList();
+
+            this.characterToColor = new int[this.colors.Length][];
+
+            int previousColorId = -1;
+
+            for (int y = 0; y < this.colors.Length; y++)
+            {
+                this.characterToColor[y] = new int[this.colors[0].Length];
+
+                for (int x = 0; x < this.colors[0].Length; x++)
+                {
+                    // check if the colour is already in the unique array
+                    int colorId = this.uniqueColors.IndexOf(this.colors[y][x]);
+
+                    if (colorId > -1)
+                    {
+                        // if color is the same as the previous one
+                        if (colorId == previousColorId)
+                        {
+                            this.characterToColor[y][x] = -1;
+                        }
+                        else
+                        {
+                            // save the id of the color to the array
+                            previousColorId = this.characterToColor[y][x] = colorId;
+                        }
+                    }
+                    else
+                    {
+                        // Add the new Color and save the id
+                        previousColorId = this.characterToColor[y][x] = this.uniqueColors.Add(this.colors[y][x]);
+                    }
+                }
+            }
+        }
+
+        #endregion Private methods
     }
 }
