@@ -93,7 +93,7 @@ namespace JMSoftware.AsciiConversion
             this.strings = strings;
 
             this.textProcessingSettings = textProcessingSettings;
-            
+
             this.useColor = colors != null;
 
             if (this.useColor && textProcessingSettings.IsFixedWidth)
