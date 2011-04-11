@@ -64,6 +64,11 @@ namespace JMSoftware
         /// </summary>
         private ArrayList uniqueColors;
 
+        /// <summary>
+        /// Are we using Colors in the output?
+        /// </summary>
+        private bool useColor;
+
         #endregion Fields
 
         #region Constructors
@@ -89,8 +94,10 @@ namespace JMSoftware
             this.strings = strings;
 
             this.textProcessingSettings = textProcessingSettings;
+            
+            this.useColor = colors != null;
 
-            if (colors != null && !textProcessingSettings.IsFixedWidth)
+            if (this.useColor && textProcessingSettings.IsFixedWidth)
             {
                 this.colors = colors;
 
@@ -118,8 +125,6 @@ namespace JMSoftware
         /// <returns>A string containing the HTML file.</returns>
         public string CreateHTML()
         {
-            bool useColor = this.colors != null;
-
             Color backgroundColor = this.textProcessingSettings.IsBlackTextOnWhite ? Color.White : Color.Black;
 
             StringBuilder builder = new StringBuilder();
@@ -191,7 +196,7 @@ namespace JMSoftware
 
             builder.AppendLine("}");
 
-            if (useColor)
+            if (this.useColor)
             {
                 builder.Append(Environment.NewLine);
 
@@ -229,7 +234,7 @@ namespace JMSoftware
                 {
                     for (int x = 0; x < this.textProcessingSettings.Width; x++)
                     {
-                        if (useColor && this.characterToColor[y][x] != -1)
+                        if (this.useColor && this.characterToColor[y][x] != -1)
                         {
                             if (spanIsOpen)
                             {
@@ -261,7 +266,7 @@ namespace JMSoftware
                 }
             }
 
-            if (useColor)
+            if (this.useColor)
             {
                 builder.Append("</span>");
             }
@@ -283,7 +288,6 @@ namespace JMSoftware
         /// <returns>a string containing the RTF file.</returns>
         public string CreateRTF()
         {
-            // Create and output the text
             StringBuilder builder = new StringBuilder();
 
             // the rtf header
@@ -292,22 +296,26 @@ namespace JMSoftware
             builder.Append(";}}");
             builder.Append(Environment.NewLine);
 
-            // the rtf colortbl
-            builder.Append(@"{\colortbl ;");
-
-            foreach (Color c in this.uniqueColors)
+            if (this.useColor)
             {
-                builder.Append(@"\red");
-                builder.Append(c.R);
-                builder.Append(@"\green");
-                builder.Append(c.G);
-                builder.Append(@"\blue");
-                builder.Append(c.B);
-                builder.Append(";");
+                // the rtf colortbl
+                builder.Append(@"{\colortbl ;");
+
+                foreach (Color c in this.uniqueColors)
+                {
+                    builder.Append(@"\red");
+                    builder.Append(c.R);
+                    builder.Append(@"\green");
+                    builder.Append(c.G);
+                    builder.Append(@"\blue");
+                    builder.Append(c.B);
+                    builder.Append(";");
+                }
+
+                builder.Append("}");
+                builder.Append(Environment.NewLine);
             }
 
-            builder.Append("}");
-            builder.Append(Environment.NewLine);
             builder.Append(@"{\*\generator Ascgen dotNET ");
             builder.Append(Variables.Version.GetVersion());
             builder.Append(";}");
@@ -343,7 +351,7 @@ namespace JMSoftware
             {
                 for (int x = 0; x < this.textProcessingSettings.Width; x++)
                 {
-                    if (this.characterToColor[y][x] != -1)
+                    if (this.useColor && this.characterToColor[y][x] != -1)
                     {
                         builder.Append(@"\cf");
                         builder.Append(this.characterToColor[y][x] + 1);
