@@ -2608,11 +2608,13 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             System.Text.Encoding encoding;
 
+            OutputCreator outputCreator = new OutputCreator(strings, this.textSettings, colors);
+
             switch (this.dialogSaveColour.FilterIndex)
             {
                 case 2: // rtf 256 color
                 case 4: // rtf 24-bit
-                    output = OutputCreator.CreateRTF(strings, colors, this.textSettings);
+                    output = outputCreator.CreateRTF();
 
                     encoding = System.Text.Encoding.ASCII;
 
@@ -2621,12 +2623,9 @@ namespace JMSoftware.AsciiGeneratorDotNet
                 case 1: // html 256 color
                 case 3: // html 24-bit
                 default:
-                    output = OutputCreator.CreateHTML(
-                                    strings,
-                                    colors,
-                                    this.BackgroundColor,
-                                    this.textSettings,
-                                    Path.GetFileNameWithoutExtension(this.Filename));
+                    outputCreator.Title = Path.GetFileNameWithoutExtension(this.Filename);
+
+                    output = outputCreator.CreateHTML();
 
                     encoding = System.Text.Encoding.UTF8;
 
@@ -2756,12 +2755,11 @@ namespace JMSoftware.AsciiGeneratorDotNet
                 case 5: // XHTML
                     using (StreamWriter writer = new StreamWriter(this.dialogSaveText.FileName))
                     {
-                        writer.Write(OutputCreator.CreateHTML(
-                                            this.textViewer.Lines,
-                                            null,
-                                            this.BackgroundColor,
-                                            this.textSettings,
-                                            Path.GetFileNameWithoutExtension(this.Filename)));
+                        OutputCreator outputCreator = new OutputCreator(this.textViewer.Lines, this.textSettings);
+
+                        outputCreator.Title = Path.GetFileNameWithoutExtension(this.Filename);
+
+                        writer.Write(outputCreator.CreateHTML());
                     }
 
                     saved = true;
@@ -3340,7 +3338,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.cmenuTextVertical.Text = Resource.GetString("Flip Vertically");
             this.cmenuTextHorizontal.Text = Resource.GetString("Flip Horizontally");
 
-            this.toolStripButtonLoad.ToolTipText = Resource.GetString("&Load Image").Replace("&", "");
+            this.toolStripButtonLoad.ToolTipText = Resource.GetString("&Load Image").Replace("&", String.Empty);
             this.toolStripButtonSave.ToolTipText = Resource.GetString("Save");
 
             this.tsbFont.ToolTipText = Resource.GetString("Choose the Font");
