@@ -155,10 +155,10 @@ namespace JMSoftware.AsciiGeneratorDotNet
             txt,
 
             /// <summary>.html files</summary>
-            html
+            html,
 
             /// <summary>Richtext files</summary>
-            ////rtf,
+            rtf
         }
 
         /// <summary>
@@ -248,6 +248,18 @@ namespace JMSoftware.AsciiGeneratorDotNet
             get
             {
                 return this.OutputIsText && this.comboBoxOutputFormat.SelectedIndex == 1;
+            }
+        }
+
+        /// <summary>
+        /// Gets a value indicating whether the output format is RTF.
+        /// </summary>
+        /// <value><c>true</c> if output is RTF; otherwise, <c>false</c>.</value>
+        private bool OutputIsRtf
+        {
+            get
+            {
+                return this.OutputIsText && this.comboBoxOutputFormat.SelectedIndex == 2;
             }
         }
 
@@ -1118,15 +1130,13 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             using (StreamWriter writer = new StreamWriter(outputFilename))
             {
-                if (this.OutputIsHtml)
+                if (this.OutputIsHtml || this.OutputIsRtf)
                 {
                     OutputCreator outputCreator = new OutputCreator(convertedText, this.textProcessingSettings, colors);
 
                     outputCreator.Title = Path.GetFileNameWithoutExtension(outputFilename);
 
-                    string output = outputCreator.CreateHTML();
-
-                    writer.Write(output);
+                    writer.Write(this.OutputIsHtml ? outputCreator.CreateHTML() : outputCreator.CreateRTF());
                 }
                 else
                 {
@@ -1135,7 +1145,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
                         return false;
                     }
 
-                    // TODO: rtf
                     foreach (string line in convertedText)
                     {
                         writer.WriteLine(line);
@@ -1340,7 +1349,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// </summary>
         private void UpdateComboboxColour()
         {
-            this.checkBoxColour.Enabled = this.OutputIsImage || this.OutputIsHtml;
+            this.checkBoxColour.Enabled = this.OutputIsImage || this.OutputIsHtml || this.OutputIsRtf;
         }
 
         #endregion Private methods
