@@ -2331,7 +2331,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             this.toolStripMenuItemShowImage.Checked = this.widgetImage.Visible;
 
-            this.menuViewFullScreen.Checked = this.IsFullScreen;            
+            this.menuViewFullScreen.Checked = this.IsFullScreen;
         }
 
         /// <summary>
@@ -2361,9 +2361,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void MenuViewText_Click(object sender, System.EventArgs e)
         {
-            this.widgetTextSettings.Visible = !this.widgetTextSettings.Visible;
-
-            this.widgetTextSettings.BringToFront();
+            this.ToggleTextWidget();
         }
 
         /// <summary>
@@ -2910,6 +2908,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.toolStripContainer1.TopToolStripPanel.Join(this.mainMenu1);
 
             this.toolStripContainer1.TopToolStripPanel.Join(this.toolStripDisplay, 1);
+            this.toolStripContainer1.TopToolStripPanel.Join(this.toolStripWidgets, 1);
             this.toolStripContainer1.TopToolStripPanel.Join(this.toolStripRotateFlip, 1);
             this.toolStripContainer1.TopToolStripPanel.Join(this.toolStripFont, 1);
             this.toolStripContainer1.TopToolStripPanel.Join(this.toolStripOutputSize, 1);
@@ -3079,6 +3078,24 @@ namespace JMSoftware.AsciiGeneratorDotNet
         }
 
         /// <summary>
+        /// Toggles the image widget.
+        /// </summary>
+        private void ToggleImageWidget()
+        {
+            this.toolStripButtonShowImageWidget.Checked = this.widgetImage.Visible = !this.widgetImage.Visible;
+        }
+
+        /// <summary>
+        /// Toggles the text widget.
+        /// </summary>
+        private void ToggleTextWidget()
+        {
+            this.toolStripButtonShowTextWidget.Checked = this.widgetTextSettings.Visible = !this.widgetTextSettings.Visible;
+
+            this.widgetTextSettings.BringToFront();
+        }
+
+        /// <summary>
         /// Handles the Click event of the toolStripButtonBlackOnWhite control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
@@ -3129,6 +3146,26 @@ namespace JMSoftware.AsciiGeneratorDotNet
         }
 
         /// <summary>
+        /// Handles the Click event of the toolStripButtonShowImageWidget control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void ToolStripButtonShowImageWidget_Click(object sender, EventArgs e)
+        {
+            this.ToggleImageWidget();
+        }
+
+        /// <summary>
+        /// Handles the Click event of the toolStripButtonShowTextWidget control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void ToolStripButtonShowTextWidget_Click(object sender, EventArgs e)
+        {
+            this.ToggleTextWidget();
+        }
+
+        /// <summary>
         /// Handles the Click event of the toolStripMenuItemInvertOutput control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
@@ -3136,6 +3173,16 @@ namespace JMSoftware.AsciiGeneratorDotNet
         private void ToolStripMenuItemInvertOutput_Click(object sender, EventArgs e)
         {
             this.IsBlackTextOnWhite = !this.IsBlackTextOnWhite;
+        }
+
+        /// <summary>
+        /// Handles the Click event of the toolStripMenuItemShowImage control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void ToolStripMenuItemShowImage_Click(object sender, EventArgs e)
+        {
+            this.ToggleImageWidget();
         }
 
         /// <summary>
@@ -3469,15 +3516,5 @@ namespace JMSoftware.AsciiGeneratorDotNet
         }
 
         #endregion Private methods
-
-        /// <summary>
-        /// Handles the Click event of the toolStripMenuItemShowImage control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void ToolStripMenuItemShowImage_Click(object sender, EventArgs e)
-        {
-            this.widgetImage.Visible = !this.widgetImage.Visible;
-        }
     }
 }
