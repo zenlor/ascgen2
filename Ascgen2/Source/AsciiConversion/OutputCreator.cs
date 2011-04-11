@@ -344,6 +344,7 @@ namespace JMSoftware.AsciiConversion
 
             builder.Append(@"\fs");
             builder.Append((int)(this.textProcessingSettings.Font.Size * 2));
+            builder.Append(Environment.NewLine);
 
             // the text
             for (int y = 0; y < this.textProcessingSettings.Height; y++)
