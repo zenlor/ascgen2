@@ -23,13 +23,12 @@
 //    along with this program.  If not, see http://www.gnu.org/licenses/.
 // </license>
 //---------------------------------------------------------------------------------------
-namespace JMSoftware
+namespace JMSoftware.AsciiConversion
 {
     using System;
     using System.Collections;
     using System.Drawing;
     using System.Text;
-    using JMSoftware.AsciiConversion;
     using JMSoftware.AsciiGeneratorDotNet;
 
     /// <summary>
