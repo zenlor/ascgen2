@@ -162,6 +162,8 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             this.dimensionsCalculator.OnOutputSizeChanged += new EventHandler(this.DimensionsCalculator_OnOutputSizeChanged);
 
+            this.textSettings.Font = null;
+
             this.Font = Settings.Default.DefaultFont;
 
             this.SetupControls();
@@ -480,7 +482,8 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             set
             {
-                if (value == null)
+                // having to use Font.Equals() as == isn't catching it
+                if (value == null || value.Equals(this.textSettings.Font))
                 {
                     return;
                 }
@@ -512,7 +515,10 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
                 this.UpdateMenus();
 
-                this.dimensionsCalculator.CharacterSize = fontSize;
+                if (this.textSettings.CalculateCharacterSize)
+                {
+                    this.CharacterSize = fontSize;
+                }
 
                 this.DoConvert();
             }
