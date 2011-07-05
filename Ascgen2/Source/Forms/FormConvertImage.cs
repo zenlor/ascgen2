@@ -1004,15 +1004,19 @@ namespace JMSoftware.AsciiGeneratorDotNet
             {
                 float ratio = (float)image.Height / (float)image.Width;
 
+                int width = (ratio < 0.3) ? 400 : 300;
+
                 // Calculate the height
-                this.widgetImage.Size = new Size(300, (int)(((float)284 * ratio) + 0.5f) + 34);
+                this.widgetImage.Size = new Size(width, (int)(((float)(width - 16) * ratio) + 0.5f) + 34);
             }
             else
             {
                 float ratio = (float)image.Width / (float)image.Height;
 
+                int height = (ratio < 0.3) ? 400 : 300;
+
                 // Calculate the width
-                this.widgetImage.Size = new Size((int)(((float)266 * ratio) + 0.5f) + 16, 300);
+                this.widgetImage.Size = new Size((int)(((float)(height - 34) * ratio) + 0.5f) + 16, height);
             }
 
             this.widgetImage.Left = this.pnlMain.Width - this.widgetImage.Width - 4;
