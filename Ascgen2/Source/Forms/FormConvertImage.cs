@@ -995,7 +995,32 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             this.doConversion = false;
 
+            this.widgetImage.Hide();
+
             this.widgetImage.Image = image;
+
+            // Note: widget borders are x=16 (8+8), and y=34 (26+8)
+            if (image.Width > image.Height)
+            {
+                float ratio = (float)image.Height / (float)image.Width;
+
+                // Calculate the height
+                this.widgetImage.Size = new Size(300, (int)(((float)284 * ratio) + 0.5f) + 34);
+            }
+            else
+            {
+                float ratio = (float)image.Width / (float)image.Height;
+
+                // Calculate the width
+                this.widgetImage.Size = new Size((int)(((float)266 * ratio) + 0.5f) + 16, 300);
+            }
+
+            this.widgetImage.Left = this.pnlMain.Width - this.widgetImage.Width - 4;
+            this.widgetImage.Top = this.pnlMain.Height - this.widgetImage.Height - 4;
+
+            this.widgetImage.Show();
+
+            this.widgetImage.Refresh();
 
             this.AlterInputImageToolStripIsEnabled = this.widgetTextSettings.Enabled = true;
 
