@@ -118,11 +118,9 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="tbxLicence.Text" xml:space="preserve">
-    <value>ASCII Generator dotNET, Copyright (C) 2005-10 Jonathan Mathews. All rights reserved.
+    <value>ASCII Generator 2.0, ASCII Generator dotNET, "Ascgen" Copyright (C) 2005-12 Jonathan Mathews. All rights reserved.
 
-ASCII Generator dotNET comes with ABSOLUTELY NO WARRANTY; for details see 'gpl.txt'.  This is free software, and you are welcome to redistribute it under certain conditions; see 'gpl.txt' for details.
-
-Icons by Mark James (http://www.famfamfam.com/lab/icons/silk/) and used under Creative Commons Attribution 2.5 License.</value>
+Ascgen 2.0 comes with ABSOLUTELY NO WARRANTY; for details see 'gpl.txt'.  This is free software, and you are welcome to redistribute it under certain conditions; see 'gpl.txt' for details.</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="pbxIcon.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
