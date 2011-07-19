@@ -111,6 +111,11 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
                 XmlDocument doc = new XmlDocument();
 
+                if (TranslationFile.Length == 0)
+                {
+                    return translations;
+                }
+
                 try
                 {
                     doc.Load(TranslationFile);
