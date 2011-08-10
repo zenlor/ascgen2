@@ -21,7 +21,10 @@
 	<data name="&amp;Donate">
 		<value>&amp;Donate</value>
 	</data>
-	<data name="&amp;File">
+  <data name="FAQ">
+    <value>FAQ</value>
+  </data>
+  <data name="&amp;File">
 		<value>&amp;File</value>
 	</data>
 	<data name="&amp;Full Screen">

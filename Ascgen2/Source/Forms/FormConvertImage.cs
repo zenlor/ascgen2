@@ -3201,6 +3201,16 @@ namespace JMSoftware.AsciiGeneratorDotNet
         }
 
         /// <summary>
+        /// Handles the Click event of the ToolStripMenuItemFAQ control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void ToolStripMenuItemFAQ_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("http://ascgendotnet.jmsoftware.co.uk/help/faq");
+        }
+
+        /// <summary>
         /// Handles the Click event of the toolStripMenuItemInvertOutput control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
@@ -3392,10 +3402,11 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.menuViewFullScreen.Text = Resource.GetString("&Full Screen");
 
             this.menuHelp.Text = Resource.GetString("&Help");
-            this.menuHelpDonate.Text = Resource.GetString("&Donate") + "...";
-            this.menuHelpReportBug.Text = Resource.GetString("Report a Bug") + "...";
-            this.menuHelpRequestFeature.Text = Resource.GetString("Request a Feature") + "...";
             this.menuHelpTutorials.Text = Resource.GetString("Tutorials") + "...";
+            this.toolStripMenuItemFAQ.Text = Resource.GetString("FAQ") + "...";
+            this.menuHelpRequestFeature.Text = Resource.GetString("Request a Feature") + "...";
+            this.menuHelpReportBug.Text = Resource.GetString("Report a Bug") + "...";
+            this.menuHelpDonate.Text = Resource.GetString("&Donate") + "...";
             this.menuHelpCheckForNewVersionToolStrip.Text = Resource.GetString("Check for a New Version") + "...";
             this.menuHelpAbout.Text = Resource.GetString("&About") + "...";
 
