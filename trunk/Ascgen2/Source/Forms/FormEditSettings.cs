@@ -220,9 +220,9 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             this.tbxOutputDirectory.Text = Variables.InitialOutputDirectory;
 
-            this.cbxConfirmClose.Checked = Settings.Default.ConfirmOnClose;
+            this.cbxConfirmClose.Checked = Variables.ConfirmOnClose;
 
-            this.cbxConfirmVersionCheck.Checked = Settings.Default.CheckForNewVersions;
+            this.cbxConfirmVersionCheck.Checked = Variables.CheckForNewVersion;
         }
 
         /// <summary>

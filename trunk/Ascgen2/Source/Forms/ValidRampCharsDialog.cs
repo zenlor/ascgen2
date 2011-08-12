@@ -114,9 +114,9 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void BtnDefault_Click(object sender, System.EventArgs e)
         {
-            this.cmbCharacters.Text = Settings.Default.CurrentSelectedValidCharacters > -1 ?
-                (string)Variables.DefaultValidCharacters[Settings.Default.CurrentSelectedValidCharacters] :
-                Settings.Default.CurrentCharacters;
+            this.cmbCharacters.Text = Variables.CurrentSelectedValidCharacters > -1 ?
+                (string)Variables.DefaultValidCharacters[Variables.CurrentSelectedValidCharacters] :
+                Variables.CurrentCharacters;
 
             this.cmbCharacters.Focus();
             this.cmbCharacters.SelectAll();
