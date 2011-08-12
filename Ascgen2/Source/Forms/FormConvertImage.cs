@@ -186,7 +186,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.versionChecker.ThisIsLatestVersionString = Resource.GetString("This is the latest version");
             this.versionChecker.VersionAvailableString = Resource.GetString("Version {0} is available");
 
-            if (Settings.Default.CheckForNewVersions)
+            if (Variables.CheckForNewVersion)
             {
                 this.versionChecker.Check();
             }
@@ -1225,7 +1225,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// <returns>A value with whether we are closing without saving</returns>
         private bool CheckCloseWithoutSaving()
         {
-            if (this.imageSaved || !this.ImageIsLoaded || !Settings.Default.ConfirmOnClose)
+            if (this.imageSaved || !this.ImageIsLoaded || !Variables.ConfirmOnClose)
             {
                 return true;
             }
@@ -1269,7 +1269,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             {
                 if (strings.Count == 1)
                 {
-                    Settings.Default.TranslationFile = strings[0];
+                    Variables.TranslationFile = strings[0];
                 }
 
                 return;
@@ -1277,14 +1277,14 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             using (FormSelectLanguage formSelectLanguage = new FormSelectLanguage(strings))
             {
-                formSelectLanguage.SelectedItem = Settings.Default.TranslationFile;
+                formSelectLanguage.SelectedItem = Variables.TranslationFile;
 
                 if (formSelectLanguage.ShowDialog() != DialogResult.OK)
                 {
                     return;
                 }
 
-                Settings.Default.TranslationFile = formSelectLanguage.SelectedItem;
+                Variables.TranslationFile = formSelectLanguage.SelectedItem;
             }
         }
 
@@ -1364,15 +1364,15 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             this.values = null;
 
-            this.brightnessContrast.Brightness = Settings.Default.DefaultTextBrightness;
+            this.brightnessContrast.Brightness = Variables.DefaultTextBrightness;
 
-            this.brightnessContrast.Contrast = Settings.Default.DefaultTextContrast;
+            this.brightnessContrast.Contrast = Variables.DefaultTextContrast;
 
-            this.MinimumLevel = this.levels.Minimum = Settings.Default.DefaultMinLevel;
+            this.MinimumLevel = this.levels.Minimum = Variables.DefaultMinLevel;
 
-            this.MedianLevel = this.levels.Median = Settings.Default.DefaultMedianLevel;
+            this.MedianLevel = this.levels.Median = Variables.DefaultMedianLevel;
 
-            this.MaximumLevel = this.levels.Maximum = Settings.Default.DefaultMaxLevel;
+            this.MaximumLevel = this.levels.Maximum = Variables.DefaultMaxLevel;
 
             this.widgetTextSettings.Refresh();
 
@@ -1931,9 +1931,9 @@ namespace JMSoftware.AsciiGeneratorDotNet
                     this.Font = settingsDialog.DefaultFont;
                 }
 
-                Settings.Default.ConfirmOnClose = settingsDialog.ConfirmOnClose;
+                Variables.ConfirmOnClose = settingsDialog.ConfirmOnClose;
 
-                Settings.Default.CheckForNewVersions = settingsDialog.CheckForNewVersions;
+                Variables.CheckForNewVersion = settingsDialog.CheckForNewVersions;
             }
         }
 
@@ -2703,15 +2703,15 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             Variables.DefaultFont = this.Font;
 
-            Settings.Default.DefaultTextBrightness = this.Brightness;
-            Settings.Default.DefaultTextContrast = this.Contrast;
+            Variables.DefaultTextBrightness = this.Brightness;
+            Variables.DefaultTextContrast = this.Contrast;
 
-            Settings.Default.DefaultMinLevel = this.MinimumLevel;
-            Settings.Default.DefaultMedianLevel = this.MedianLevel;
-            Settings.Default.DefaultMaxLevel = this.MaximumLevel;
+            Variables.DefaultMinLevel = this.MinimumLevel;
+            Variables.DefaultMedianLevel = this.MedianLevel;
+            Variables.DefaultMaxLevel = this.MaximumLevel;
 
-            Settings.Default.DefaultDitheringLevel = this.Dithering;
-            Settings.Default.DefaultDitheringRandom = this.DitheringRandom;
+            Variables.DefaultDitheringLevel = this.Dithering;
+            Variables.DefaultDitheringRandom = this.DitheringRandom;
 
             Settings.Default.Stretch = this.Stretch;
             Variables.Sharpen = this.Sharpen;
@@ -2720,14 +2720,14 @@ namespace JMSoftware.AsciiGeneratorDotNet
             Variables.FlipHorizontally = this.FlipHorizontally;
             Variables.FlipVertically = this.FlipVertically;
 
-            Settings.Default.BlackTextOnWhite = this.IsBlackTextOnWhite;
+            Variables.InvertImage = !this.IsBlackTextOnWhite;
 
             string[] ramps = new string[this.cmbRamp.Items.Count];
             this.cmbRamp.Items.CopyTo(ramps, 0);
             Variables.DefaultRamps = ramps;
 
-            Settings.Default.CurrentSelectedRamp = this.cmbRamp.SelectedIndex;
-            Settings.Default.CurrentRamp = this.cmbRamp.SelectedIndex == -1 ? this.cmbRamp.Text : String.Empty;
+            Variables.CurrentSelectedRamp = this.cmbRamp.SelectedIndex;
+            Variables.CurrentRamp = this.cmbRamp.SelectedIndex == -1 ? this.cmbRamp.Text : String.Empty;
 
             Settings.Default.UseGeneratedRamp = this.IsGeneratedRamp;
 
@@ -2735,8 +2735,8 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.cmbCharacters.Items.CopyTo(characters, 0);
             Variables.DefaultValidCharacters = characters;
 
-            Settings.Default.CurrentSelectedValidCharacters = this.cmbCharacters.SelectedIndex;
-            Settings.Default.CurrentCharacters = Settings.Default.CurrentSelectedValidCharacters == -1 ? this.cmbCharacters.Text : String.Empty;
+            Variables.CurrentSelectedValidCharacters = this.cmbCharacters.SelectedIndex;
+            Variables.CurrentCharacters = Variables.CurrentSelectedValidCharacters == -1 ? this.cmbCharacters.Text : String.Empty;
 
             Settings.Default.ShowWidgetText = this.widgetTextSettings.Visible;
 
@@ -2828,7 +2828,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.rtbxConvertedText.DragDrop += new DragEventHandler(this.RtbxConvertedText_DragDrop);
             this.rtbxConvertedText.DragEnter += new DragEventHandler(this.RtbxConvertedText_DragEnter);
 
-            this.toolStripButtonBlackOnWhite.Checked = !Settings.Default.BlackTextOnWhite;
+            this.toolStripButtonBlackOnWhite.Checked = !Variables.InvertImage;
             this.textViewer.BackgroundColor = this.BackgroundColor;
             this.textViewer.TextColor = this.TextColor;
 
@@ -2837,13 +2837,13 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.cmbRamp.Items.Clear();
             this.cmbRamp.Items.AddRange(Variables.DefaultRamps);
 
-            if (Settings.Default.CurrentSelectedRamp == -1)
+            if (Variables.CurrentSelectedRamp == -1)
             {
-                this.cmbRamp.Text = Settings.Default.CurrentRamp;
+                this.cmbRamp.Text = Variables.CurrentRamp;
             }
             else
             {
-                this.cmbRamp.SelectedIndex = Settings.Default.CurrentSelectedRamp;
+                this.cmbRamp.SelectedIndex = Variables.CurrentSelectedRamp;
             }
 
             this.cmbRamp.Select(0, 0);
@@ -2853,13 +2853,13 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.cmbCharacters.Items.Clear();
             this.cmbCharacters.Items.AddRange(Variables.DefaultValidCharacters);
 
-            if (Settings.Default.CurrentSelectedValidCharacters == -1)
+            if (Variables.CurrentSelectedValidCharacters == -1)
             {
-                this.cmbCharacters.Text = Settings.Default.CurrentCharacters;
+                this.cmbCharacters.Text = Variables.CurrentCharacters;
             }
             else
             {
-                this.cmbCharacters.SelectedIndex = Settings.Default.CurrentSelectedValidCharacters;
+                this.cmbCharacters.SelectedIndex = Variables.CurrentSelectedValidCharacters;
             }
 
             this.cmbCharacters.Select(0, 0); // make sure the text isn't selected
@@ -2919,17 +2919,17 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.widgetTextSettings.Enabled = false;
 
             this.brightnessContrast = this.widgetTextSettings;
-            this.brightnessContrast.Brightness = Settings.Default.DefaultTextBrightness;
-            this.brightnessContrast.Contrast = Settings.Default.DefaultTextContrast;
+            this.brightnessContrast.Brightness = Variables.DefaultTextBrightness;
+            this.brightnessContrast.Contrast = Variables.DefaultTextContrast;
 
             this.levels = this.widgetTextSettings;
-            this.levels.Minimum = Settings.Default.DefaultMinLevel;
-            this.levels.Maximum = Settings.Default.DefaultMaxLevel;
-            this.levels.Median = Settings.Default.DefaultMedianLevel;
+            this.levels.Minimum = Variables.DefaultMinLevel;
+            this.levels.Maximum = Variables.DefaultMaxLevel;
+            this.levels.Median = Variables.DefaultMedianLevel;
 
             this.dither = this.widgetTextSettings;
-            this.dither.DitherAmount = Settings.Default.DefaultDitheringLevel;
-            this.dither.DitherRandom = Settings.Default.DefaultDitheringRandom;
+            this.dither.DitherAmount = Variables.DefaultDitheringLevel;
+            this.dither.DitherRandom = Variables.DefaultDitheringRandom;
         }
 
         /// <summary>

@@ -136,7 +136,7 @@ namespace JMSoftware.AsciiConversion
         {
             this.calculateCharacterSize = true;
 
-            this.isBlackTextOnWhite = Settings.Default.BlackTextOnWhite;
+            this.isBlackTextOnWhite = !Variables.InvertImage;
 
             this.isFixedWidth = true;
 
@@ -155,13 +155,13 @@ namespace JMSoftware.AsciiConversion
 
             this.filterChanged = true;
 
-            if (Settings.Default.CurrentSelectedValidCharacters > -1)
+            if (Variables.CurrentSelectedValidCharacters > -1)
             {
-                this.validCharacters = (string)Variables.DefaultValidCharacters[Settings.Default.CurrentSelectedValidCharacters];
+                this.validCharacters = (string)Variables.DefaultValidCharacters[Variables.CurrentSelectedValidCharacters];
             }
             else
             {
-                this.validCharacters = Settings.Default.CurrentCharacters;
+                this.validCharacters = Variables.CurrentCharacters;
             }
 
             this.Size = size;
@@ -169,16 +169,16 @@ namespace JMSoftware.AsciiConversion
             this.Font = font;
 
             // TODO: Move these to ResetVariables and set widgets from events
-            this.brightness = Settings.Default.DefaultTextBrightness;
-            this.contrast = Settings.Default.DefaultTextContrast;
+            this.brightness = Variables.DefaultTextBrightness;
+            this.contrast = Variables.DefaultTextContrast;
 
-            this.dithering = Settings.Default.DefaultDitheringLevel;
-            this.ditheringRandom = Settings.Default.DefaultDitheringRandom;
+            this.dithering = Variables.DefaultDitheringLevel;
+            this.ditheringRandom = Variables.DefaultDitheringRandom;
 
             this.flipHorizontally = Variables.FlipHorizontally;
             this.flipVertically = Variables.FlipVertically;
 
-            this.levels = new LevelsSettings(Settings.Default.DefaultMinLevel, Settings.Default.DefaultMedianLevel, Settings.Default.DefaultMaxLevel);
+            this.levels = new LevelsSettings(Variables.DefaultMinLevel, Variables.DefaultMedianLevel, Variables.DefaultMaxLevel);
         }
 
         #endregion Constructors

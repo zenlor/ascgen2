@@ -25,42 +25,6 @@ namespace JMSoftware.AsciiGeneratorDotNet {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool BlackTextOnWhite {
-            get {
-                return ((bool)(this["BlackTextOnWhite"]));
-            }
-            set {
-                this["BlackTextOnWhite"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool CheckForNewVersions {
-            get {
-                return ((bool)(this["CheckForNewVersions"]));
-            }
-            set {
-                this["CheckForNewVersions"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool ConfirmOnClose {
-            get {
-                return ((bool)(this["ConfirmOnClose"]));
-            }
-            set {
-                this["ConfirmOnClose"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("(Default)")]
         public global::System.Globalization.CultureInfo Culture {
             get {
@@ -68,138 +32,6 @@ namespace JMSoftware.AsciiGeneratorDotNet {
             }
             set {
                 this["Culture"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string CurrentCharacters {
-            get {
-                return ((string)(this["CurrentCharacters"]));
-            }
-            set {
-                this["CurrentCharacters"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string CurrentRamp {
-            get {
-                return ((string)(this["CurrentRamp"]));
-            }
-            set {
-                this["CurrentRamp"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int CurrentSelectedRamp {
-            get {
-                return ((int)(this["CurrentSelectedRamp"]));
-            }
-            set {
-                this["CurrentSelectedRamp"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int CurrentSelectedValidCharacters {
-            get {
-                return ((int)(this["CurrentSelectedValidCharacters"]));
-            }
-            set {
-                this["CurrentSelectedValidCharacters"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("4")]
-        public int DefaultDitheringLevel {
-            get {
-                return ((int)(this["DefaultDitheringLevel"]));
-            }
-            set {
-                this["DefaultDitheringLevel"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("3")]
-        public int DefaultDitheringRandom {
-            get {
-                return ((int)(this["DefaultDitheringRandom"]));
-            }
-            set {
-                this["DefaultDitheringRandom"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("255")]
-        public int DefaultMaxLevel {
-            get {
-                return ((int)(this["DefaultMaxLevel"]));
-            }
-            set {
-                this["DefaultMaxLevel"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0.5")]
-        public float DefaultMedianLevel {
-            get {
-                return ((float)(this["DefaultMedianLevel"]));
-            }
-            set {
-                this["DefaultMedianLevel"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int DefaultMinLevel {
-            get {
-                return ((int)(this["DefaultMinLevel"]));
-            }
-            set {
-                this["DefaultMinLevel"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int DefaultTextBrightness {
-            get {
-                return ((int)(this["DefaultTextBrightness"]));
-            }
-            set {
-                this["DefaultTextBrightness"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int DefaultTextContrast {
-            get {
-                return ((int)(this["DefaultTextContrast"]));
-            }
-            set {
-                this["DefaultTextContrast"] = value;
             }
         }
         
@@ -373,18 +205,6 @@ namespace JMSoftware.AsciiGeneratorDotNet {
             }
             set {
                 this["UpdateWhileSelecting"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string TranslationFile {
-            get {
-                return ((string)(this["TranslationFile"]));
-            }
-            set {
-                this["TranslationFile"] = value;
             }
         }
     }

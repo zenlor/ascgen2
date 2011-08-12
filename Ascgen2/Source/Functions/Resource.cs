@@ -54,7 +54,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
         {
             Location = "AscGenDotNet.Resources.Localization.Localization";
 
-            TranslationFile = Settings.Default.TranslationFile;
+            TranslationFile = Variables.TranslationFile;
         }
 
         #endregion Constructors
@@ -111,7 +111,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
                 XmlDocument doc = new XmlDocument();
 
-                if (TranslationFile.Length == 0)
+                if (TranslationFile == null || TranslationFile.Length == 0)
                 {
                     return translations;
                 }

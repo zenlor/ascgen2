@@ -42,6 +42,26 @@ namespace JMSoftware.AsciiGeneratorDotNet
         #region Fields
 
         /// <summary>
+        /// Check for a new version of the program?
+        /// </summary>
+        private static bool checkForNewVersion = true;
+
+        /// <summary>
+        /// Confirm to save the image on exit?
+        /// </summary>
+        private static bool confirmOnClose = true;
+
+        /// <summary>
+        /// The default dithering level.
+        /// </summary>
+        private static int defaultDitheringLevel = 4;
+
+        /// <summary>
+        /// The default dithering random.
+        /// </summary>
+        private static int defaultDitheringRandom = 3;
+
+        /// <summary>
         /// The default font
         /// </summary>
         private static Font defaultFont = new Font("Lucida Console", 9f);
@@ -52,6 +72,16 @@ namespace JMSoftware.AsciiGeneratorDotNet
         private static int defaultHeight = -1;
 
         /// <summary>
+        /// The default max level
+        /// </summary>
+        private static int defaultMaxLevel = 255;
+
+        /// <summary>
+        /// The default median level.
+        /// </summary>
+        private static float defaultMedianLevel = 0.5f;
+
+        /// <summary>
         /// The default width
         /// </summary>
         private static int defaultWidth = 150;
@@ -59,6 +89,86 @@ namespace JMSoftware.AsciiGeneratorDotNet
         #endregion Fields
 
         #region Properties
+
+        /// <summary>
+        /// Gets or sets a value indicating whether to check for a new version.
+        /// </summary>
+        /// <value><c>true</c> if checking for new versions; otherwise, <c>false</c>.</value>
+        public static bool CheckForNewVersion
+        {
+            get
+            {
+                return checkForNewVersion;
+            }
+
+            set
+            {
+                checkForNewVersion = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether confirm on close with an unsaved image.
+        /// </summary>
+        /// <value><c>true</c> if confirm on close; otherwise, <c>false</c>.</value>
+        public static bool ConfirmOnClose
+        {
+            get
+            {
+                return confirmOnClose;
+            }
+
+            set
+            {
+                confirmOnClose = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the currently selected ramp.
+        /// </summary>
+        /// <value>The currently selected ramp.</value>
+        public static int CurrentSelectedRamp { get; set; }
+
+        /// <summary>
+        /// Gets or sets the currently selected valid characters.
+        /// </summary>
+        /// <value>The currently selected valid characters.</value>
+        public static int CurrentSelectedValidCharacters { get; set; }
+
+        /// <summary>
+        /// Gets or sets the default dithering level.
+        /// </summary>
+        /// <value>The default dithering level.</value>
+        public static int DefaultDitheringLevel
+        {
+            get
+            {
+                return defaultDitheringLevel;
+            }
+
+            set
+            {
+                defaultDitheringLevel = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets 
+        /// </summary>
+        /// <value>The default dithering random.</value>
+        public static int DefaultDitheringRandom
+        {
+            get
+            {
+                return defaultDitheringRandom;
+            }
+
+            set
+            {
+                defaultDitheringRandom = value;
+            }
+        }
 
         /// <summary>
         /// Gets or sets the default font.
@@ -95,6 +205,46 @@ namespace JMSoftware.AsciiGeneratorDotNet
         }
 
         /// <summary>
+        /// Gets or sets the default max level.
+        /// </summary>
+        /// <value>The default max level.</value>
+        public static int DefaultMaxLevel
+        {
+            get
+            {
+                return defaultMaxLevel;
+            }
+
+            set
+            {
+                defaultMaxLevel = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the default median level.
+        /// </summary>
+        /// <value>The default median level.</value>
+        public static float DefaultMedianLevel
+        {
+            get
+            {
+                return defaultMedianLevel;
+            }
+
+            set
+            {
+                defaultMedianLevel = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the default min level.
+        /// </summary>
+        /// <value>The default min level.</value>
+        public static int DefaultMinLevel { get; set; }
+
+        /// <summary>
         /// Gets or sets the default list of ramps
         /// </summary>
         /// <value>The default ramps.</value>
@@ -116,6 +266,18 @@ namespace JMSoftware.AsciiGeneratorDotNet
                 Settings.Default.DefaultRamps.AddRange(value);
             }
         }
+
+        /// <summary>
+        /// Gets or sets the default text brightness.
+        /// </summary>
+        /// <value>The default text brightness.</value>
+        public static int DefaultTextBrightness { get; set; }
+
+        /// <summary>
+        /// Gets or sets the default text contrast.
+        /// </summary>
+        /// <value>The default text contrast.</value>
+        public static int DefaultTextContrast { get; set; }
 
         /// <summary>
         /// Gets or sets the default settings used for all ASCII ramp valid character strings
@@ -180,6 +342,12 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// </summary>
         /// <value>The initial output directory.</value>
         public static string InitialOutputDirectory { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether to invert the output image.
+        /// </summary>
+        /// <value><c>true</c> if inverting image; otherwise, <c>false</c>.</value>
+        public static bool InvertImage { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether the default value for whether brightness and contrast should be loaded from the settings
@@ -263,5 +431,11 @@ namespace JMSoftware.AsciiGeneratorDotNet
             #endregion Public methods
         }
         #endregion Nested classes
+
+        public static string CurrentCharacters { get; set; }
+
+        public static string CurrentRamp { get; set; }
+
+        public static string TranslationFile { get; set; }
     }
 }
