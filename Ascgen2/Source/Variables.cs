@@ -125,6 +125,18 @@ namespace JMSoftware.AsciiGeneratorDotNet
         }
 
         /// <summary>
+        /// Gets or sets the current characters.
+        /// </summary>
+        /// <value>The current characters.</value>
+        public static string CurrentCharacters { get; set; }
+
+        /// <summary>
+        /// Gets or sets the current ramp.
+        /// </summary>
+        /// <value>The current ramp.</value>
+        public static string CurrentRamp { get; set; }
+
+        /// <summary>
         /// Gets or sets the currently selected ramp.
         /// </summary>
         /// <value>The currently selected ramp.</value>
@@ -377,6 +389,12 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// <value><c>true</c> if sharpen; otherwise, <c>false</c>.</value>
         public static bool Sharpen { get; set; }
 
+        /// <summary>
+        /// Gets or sets the translation file.
+        /// </summary>
+        /// <value>The translation file.</value>
+        public static string TranslationFile { get; set; }
+
         #endregion Properties
 
         #region Public methods
@@ -431,11 +449,5 @@ namespace JMSoftware.AsciiGeneratorDotNet
             #endregion Public methods
         }
         #endregion Nested classes
-
-        public static string CurrentCharacters { get; set; }
-
-        public static string CurrentRamp { get; set; }
-
-        public static string TranslationFile { get; set; }
     }
 }
