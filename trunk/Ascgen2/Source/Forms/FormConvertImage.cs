@@ -144,9 +144,9 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             this.AlterInputImageToolStripIsEnabled = false;
 
-            this.InputDirectory = Settings.Default.InitialInputDirectory;
+            this.InputDirectory = Variables.InitialInputDirectory;
 
-            this.OutputDirectory = Settings.Default.InitialOutputDirectory;
+            this.OutputDirectory = Variables.InitialOutputDirectory;
 
             this.clientSize = this.pnlMain.ClientSize;
 
@@ -158,13 +158,13 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             this.SetupWidgets();
 
-            this.dimensionsCalculator = new DimensionsCalculator(this.CurrentImageSection.Size, this.CharacterSize, Settings.Default.DefaultWidth, Settings.Default.DefaultHeight);
+            this.dimensionsCalculator = new DimensionsCalculator(this.CurrentImageSection.Size, this.CharacterSize, Variables.DefaultWidth, Variables.DefaultHeight);
 
             this.dimensionsCalculator.OnOutputSizeChanged += new EventHandler(this.DimensionsCalculator_OnOutputSizeChanged);
 
             this.textSettings.Font = null;
 
-            this.Font = Settings.Default.DefaultFont;
+            this.Font = Variables.DefaultFont;
 
             this.SetupControls();
 
@@ -490,7 +490,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
                 this.textSettings.Font =
                                     this.textViewer.Font =
-                                    Settings.Default.DefaultFont =
+                                    Variables.DefaultFont =
                                     this.dialogChooseFont.Font = value;
 
                 this.toolStripRamp.Visible =
@@ -544,13 +544,12 @@ namespace JMSoftware.AsciiGeneratorDotNet
         {
             get
             {
-                return Settings.Default.InitialInputDirectory;
+                return Variables.InitialInputDirectory;
             }
 
             set
             {
-                this.dialogLoadImage.InitialDirectory =
-                    Settings.Default.InitialInputDirectory = value;
+                this.dialogLoadImage.InitialDirectory = Variables.InitialInputDirectory = value;
             }
         }
 
@@ -772,7 +771,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
         {
             get
             {
-                return Settings.Default.InitialOutputDirectory;
+                return Variables.InitialOutputDirectory;
             }
 
             set
@@ -780,7 +779,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
                 this.dialogSaveImage.InitialDirectory =
                         this.dialogSaveText.InitialDirectory =
                         this.dialogSaveColour.InitialDirectory =
-                        Settings.Default.InitialOutputDirectory = value;
+                        Variables.InitialOutputDirectory = value;
             }
         }
 
@@ -2682,27 +2681,27 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// </summary>
         private void SaveSettings()
         {
-            Settings.Default.DefaultWidth = this.OutputWidth;
-            Settings.Default.DefaultHeight = this.OutputHeight;
+            Variables.DefaultWidth = this.OutputWidth;
+            Variables.DefaultHeight = this.OutputHeight;
 
-            if (Settings.Default.DefaultWidth == -1 && Settings.Default.DefaultHeight == -1)
+            if (Variables.DefaultWidth == -1 && Variables.DefaultHeight == -1)
             {
-                Settings.Default.DefaultWidth = 150;
+                Variables.DefaultWidth = 150;
             }
 
             if (this.dimensionsCalculator.DimensionsAreLocked)
             {
                 if (this.dimensionsCalculator.WidthChangedLast)
                 {
-                    Settings.Default.DefaultHeight = -1;
+                    Variables.DefaultHeight = -1;
                 }
                 else
                 {
-                    Settings.Default.DefaultWidth = -1;
+                    Variables.DefaultWidth = -1;
                 }
             }
 
-            Settings.Default.DefaultFont = this.Font;
+            Variables.DefaultFont = this.Font;
 
             Settings.Default.DefaultTextBrightness = this.Brightness;
             Settings.Default.DefaultTextContrast = this.Contrast;
@@ -2820,7 +2819,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             this.tbxHeight.MaxLength = Settings.Default.MaximumHeight.ToString(Settings.Default.Culture).Length;
 
-            this.cbxLocked.Checked = Settings.Default.DefaultWidth < 1 || Settings.Default.DefaultHeight < 1;
+            this.cbxLocked.Checked = Variables.DefaultWidth < 1 || Variables.DefaultHeight < 1;
 
             this.widgetImage.SelectionBorderColor = Settings.Default.SelectionBorderColor;
             this.widgetImage.SelectionFillColor = Settings.Default.SelectionFillColor;

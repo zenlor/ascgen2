@@ -25,6 +25,8 @@
 //---------------------------------------------------------------------------------------
 namespace JMSoftware.AsciiGeneratorDotNet
 {
+    using System.Drawing;
+
     /// <summary>
     /// Abstract class containing global variables for the program
     /// </summary>
@@ -37,7 +39,60 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
         #endregion Constants
 
+        #region Fields
+
+        /// <summary>
+        /// The default font
+        /// </summary>
+        private static Font defaultFont = new Font("Lucida Console", 9f);
+
+        /// <summary>
+        /// The default height
+        /// </summary>
+        private static int defaultHeight = -1;
+
+        /// <summary>
+        /// The default width
+        /// </summary>
+        private static int defaultWidth = 150;
+
+        #endregion Fields
+
         #region Properties
+
+        /// <summary>
+        /// Gets or sets the default font.
+        /// </summary>
+        /// <value>The default font.</value>
+        public static Font DefaultFont
+        {
+            get
+            {
+                return defaultFont;
+            }
+
+            set
+            {
+                defaultFont = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the default height.
+        /// </summary>
+        /// <value>The default height.</value>
+        public static int DefaultHeight
+        {
+            get
+            {
+                return defaultHeight;
+            }
+
+            set
+            {
+                defaultHeight = value;
+            }
+        }
 
         /// <summary>
         /// Gets or sets the default list of ramps
@@ -86,6 +141,23 @@ namespace JMSoftware.AsciiGeneratorDotNet
         }
 
         /// <summary>
+        /// Gets or sets the default width.
+        /// </summary>
+        /// <value>The default width.</value>
+        public static int DefaultWidth
+        {
+            get
+            {
+                return defaultWidth;
+            }
+
+            set
+            {
+                defaultWidth = value;
+            }
+        }
+
+        /// <summary>
         /// Gets or sets a value indicating whether the default value for whether the output should be flipped horizontally
         /// </summary>
         /// <value><c>true</c> if flipping horizontally; otherwise, <c>false</c>.</value>
@@ -96,6 +168,18 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// </summary>
         /// <value><c>true</c> if flip vertically; otherwise, <c>false</c>.</value>
         public static bool FlipVertically { get; set; }
+
+        /// <summary>
+        /// Gets or sets the initial input directory.
+        /// </summary>
+        /// <value>The initial input directory.</value>
+        public static string InitialInputDirectory { get; set; }
+
+        /// <summary>
+        /// Gets or sets the initial output directory.
+        /// </summary>
+        /// <value>The initial output directory.</value>
+        public static string InitialOutputDirectory { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether the default value for whether brightness and contrast should be loaded from the settings

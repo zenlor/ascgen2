@@ -32,12 +32,6 @@
     <Setting Name="DefaultDitheringRandom" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">3</Value>
     </Setting>
-    <Setting Name="DefaultFont" Type="System.Drawing.Font" Scope="User">
-      <Value Profile="(Default)">Lucida Console, 9pt</Value>
-    </Setting>
-    <Setting Name="DefaultHeight" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">-1</Value>
-    </Setting>
     <Setting Name="DefaultMaxLevel" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">255</Value>
     </Setting>
@@ -53,17 +47,8 @@
     <Setting Name="DefaultTextContrast" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="DefaultWidth" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">150</Value>
-    </Setting>
-    <Setting Name="InitialInputDirectory" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
     <Setting Name="LoadOutputSize" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
-    </Setting>
-    <Setting Name="InitialOutputDirectory" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
     </Setting>
     <Setting Name="MaximumHeight" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">999</Value>
