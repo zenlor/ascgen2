@@ -216,9 +216,9 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// </summary>
         private void ResetSettings()
         {
-            this.tbxInputDirectory.Text = Settings.Default.InitialInputDirectory;
+            this.tbxInputDirectory.Text = Variables.InitialInputDirectory;
 
-            this.tbxOutputDirectory.Text = Settings.Default.InitialOutputDirectory;
+            this.tbxOutputDirectory.Text = Variables.InitialOutputDirectory;
 
             this.cbxConfirmClose.Checked = Settings.Default.ConfirmOnClose;
 

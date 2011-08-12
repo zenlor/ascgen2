@@ -120,7 +120,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             this.textProcessingSettings = new BatchTextProcessingSettings();
 
-            this.OutputDirectory = Settings.Default.InitialOutputDirectory;
+            this.OutputDirectory = Variables.InitialOutputDirectory;
 
             if (this.OutputDirectory == null || this.OutputDirectory.Length == 0)
             {

@@ -114,7 +114,7 @@ namespace JMSoftware.AsciiConversion
         /// Initializes a new instance of the <see cref="TextProcessingSettings"/> class.
         /// </summary>
         public TextProcessingSettings()
-            : this(new Size(Settings.Default.DefaultWidth, Settings.Default.DefaultHeight))
+            : this(new Size(Variables.DefaultWidth, Variables.DefaultHeight))
         {
         }
 
@@ -123,7 +123,7 @@ namespace JMSoftware.AsciiConversion
         /// </summary>
         /// <param name="size">The initial output size.</param>
         public TextProcessingSettings(Size size)
-            : this(size, Settings.Default.DefaultFont)
+            : this(size, Variables.DefaultFont)
         {
         }
 
