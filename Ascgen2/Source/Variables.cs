@@ -86,6 +86,26 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// </summary>
         private static int defaultWidth = 150;
 
+        /// <summary>
+        /// Show the image widget?
+        /// </summary>
+        private static bool showWidgetImage = true;
+
+        /// <summary>
+        /// Show the text settings widget?
+        /// </summary>
+        private static bool showWidgetTextSettings = true;
+
+        /// <summary>
+        /// Stretch the output?
+        /// </summary>
+        private static bool stretch = true;
+
+        /// <summary>
+        /// Use an unsharp mask?
+        /// </summary>
+        private static bool unsharpMask = true;
+
         #endregion Fields
 
         #region Properties
@@ -390,10 +410,78 @@ namespace JMSoftware.AsciiGeneratorDotNet
         public static bool Sharpen { get; set; }
 
         /// <summary>
+        /// Gets or sets a value indicating whether to show the image widget.
+        /// </summary>
+        /// <value><c>true</c> if showing the image widget; otherwise, <c>false</c>.</value>
+        public static bool ShowWidgetImage
+        {
+            get
+            {
+                return showWidgetImage;
+            }
+
+            set
+            {
+                showWidgetImage = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether to show the text settings widget.
+        /// </summary>
+        /// <value><c>true</c> if showing the text settings widget; otherwise, <c>false</c>.</value>
+        public static bool ShowWidgetTextSettings
+        {
+            get
+            {
+                return showWidgetTextSettings;
+            }
+
+            set
+            {
+                showWidgetTextSettings = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether to stretch the output.
+        /// </summary>
+        /// <value><c>true</c> if stretching; otherwise, <c>false</c>.</value>
+        public static bool Stretch
+        {
+            get
+            {
+                return stretch;
+            }
+
+            set
+            {
+                stretch = value;
+            }
+        }
+
+        /// <summary>
         /// Gets or sets the translation file.
         /// </summary>
         /// <value>The translation file.</value>
         public static string TranslationFile { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether to use an unsharp mask.
+        /// </summary>
+        /// <value><c>true</c> if using an unsharp mask; otherwise, <c>false</c>.</value>
+        public static bool UnsharpMask
+        {
+            get
+            {
+                return unsharpMask;
+            }
+
+            set
+            {
+                unsharpMask = value;
+            }
+        }
 
         #endregion Properties
 

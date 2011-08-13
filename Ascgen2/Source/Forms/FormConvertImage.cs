@@ -2713,9 +2713,9 @@ namespace JMSoftware.AsciiGeneratorDotNet
             Variables.DefaultDitheringLevel = this.Dithering;
             Variables.DefaultDitheringRandom = this.DitheringRandom;
 
-            Settings.Default.Stretch = this.Stretch;
+            Variables.Stretch = this.Stretch;
             Variables.Sharpen = this.Sharpen;
-            Settings.Default.UnsharpMask = this.Unsharp;
+            Variables.UnsharpMask = this.Unsharp;
 
             Variables.FlipHorizontally = this.FlipHorizontally;
             Variables.FlipVertically = this.FlipVertically;
@@ -2738,7 +2738,8 @@ namespace JMSoftware.AsciiGeneratorDotNet
             Variables.CurrentSelectedValidCharacters = this.cmbCharacters.SelectedIndex;
             Variables.CurrentCharacters = Variables.CurrentSelectedValidCharacters == -1 ? this.cmbCharacters.Text : String.Empty;
 
-            Settings.Default.ShowWidgetText = this.widgetTextSettings.Visible;
+            Variables.ShowWidgetTextSettings = this.widgetTextSettings.Visible;
+            Variables.ShowWidgetImage = this.widgetImage.Visible;
 
             Settings.Default.SelectionBorderColor = this.widgetImage.SelectionBorderColor;
             Settings.Default.SelectionFillColor = this.widgetImage.SelectionFillColor;
@@ -2970,7 +2971,9 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             this.pnlMain.Controls.AddRange(new Control[] { this.widgetTextSettings, this.widgetImage });
 
-            this.widgetTextSettings.Visible = Settings.Default.ShowWidgetText;
+            this.widgetTextSettings.Visible = Variables.ShowWidgetTextSettings;
+
+            this.widgetImage.Visible = Variables.ShowWidgetImage;
 
             // TODO: This, better
             foreach (Control control in this.pnlMain.Controls)

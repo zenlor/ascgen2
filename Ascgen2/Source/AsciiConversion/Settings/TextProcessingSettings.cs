@@ -147,10 +147,10 @@ namespace JMSoftware.AsciiConversion
             this.sharpen = Variables.Sharpen;
             this.sharpenFilter = new Sharpen();
 
-            this.stretch = Settings.Default.Stretch;
+            this.stretch = Variables.Stretch;
             this.stretchFilter = new Stretch();
 
-            this.unsharp = Settings.Default.UnsharpMask;
+            this.unsharp = Variables.UnsharpMask;
             this.unsharpFilter = new UnsharpMask(3);
 
             this.filterChanged = true;
