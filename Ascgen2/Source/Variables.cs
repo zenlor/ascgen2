@@ -108,6 +108,16 @@ namespace JMSoftware.AsciiGeneratorDotNet
         private static string prefix = "ASCII-";
 
         /// <summary>
+        /// The selection border color.
+        /// </summary>
+        private static Color selectionBorderColor = Color.DarkBlue;
+
+        /// <summary>
+        /// The selection fill color.
+        /// </summary>
+        private static Color selectionFillColor = Color.FromArgb(128, 173, 216, 230);
+
+        /// <summary>
         /// Show the image widget?
         /// </summary>
         private static bool showWidgetImage = true;
@@ -499,6 +509,40 @@ namespace JMSoftware.AsciiGeneratorDotNet
             set
             {
                 prefix = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the color of the selection border.
+        /// </summary>
+        /// <value>The color of the selection border.</value>
+        public static Color SelectionBorderColor
+        {
+            get
+            {
+                return selectionBorderColor;
+            }
+
+            set
+            {
+                selectionBorderColor = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the color of the selection fill.
+        /// </summary>
+        /// <value>The color of the selection fill.</value>
+        public static Color SelectionFillColor
+        {
+            get
+            {
+                return selectionFillColor;
+            }
+
+            set
+            {
+                selectionFillColor = value;
             }
         }
 

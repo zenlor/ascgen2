@@ -2741,8 +2741,8 @@ namespace JMSoftware.AsciiGeneratorDotNet
             Variables.ShowWidgetTextSettings = this.widgetTextSettings.Visible;
             Variables.ShowWidgetImage = this.widgetImage.Visible;
 
-            Settings.Default.SelectionBorderColor = this.widgetImage.SelectionBorderColor;
-            Settings.Default.SelectionFillColor = this.widgetImage.SelectionFillColor;
+            Variables.SelectionBorderColor = this.widgetImage.SelectionBorderColor;
+            Variables.SelectionFillColor = this.widgetImage.SelectionFillColor;
 
             Variables.SaveSettings();
         }
@@ -2822,8 +2822,8 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             this.cbxLocked.Checked = Variables.DefaultWidth < 1 || Variables.DefaultHeight < 1;
 
-            this.widgetImage.SelectionBorderColor = Settings.Default.SelectionBorderColor;
-            this.widgetImage.SelectionFillColor = Settings.Default.SelectionFillColor;
+            this.widgetImage.SelectionBorderColor = Variables.SelectionBorderColor;
+            this.widgetImage.SelectionFillColor = Variables.SelectionFillColor;
 
             this.rtbxConvertedText.AllowDrop = true;
             this.rtbxConvertedText.DragDrop += new DragEventHandler(this.RtbxConvertedText_DragDrop);

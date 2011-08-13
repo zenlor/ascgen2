@@ -2,12 +2,6 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="JMSoftware.AsciiGeneratorDotNet" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="SelectionBorderColor" Type="System.Drawing.Color" Scope="User">
-      <Value Profile="(Default)">DarkBlue</Value>
-    </Setting>
-    <Setting Name="SelectionFillColor" Type="System.Drawing.Color" Scope="User">
-      <Value Profile="(Default)">128, 173, 216, 230</Value>
-    </Setting>
     <Setting Name="DefaultRamps" Type="System.Collections.Specialized.StringCollection" Scope="User">
       <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
