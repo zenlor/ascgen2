@@ -426,7 +426,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             foreach (string filename in files)
             {
-                string extension = Path.GetExtension(filename).ToLower(Settings.Default.Culture);
+                string extension = Path.GetExtension(filename).ToLower(Variables.Culture);
 
                 if (this.validFiletypes.Contains(extension) && !this.fileListbox1.Items.Contains(filename))
                 {
@@ -478,7 +478,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// <param name="filename">The filename of the image.</param>
         private void AddImage(string filename)
         {
-            string extension = Path.GetExtension(filename).ToLower(Settings.Default.Culture);
+            string extension = Path.GetExtension(filename).ToLower(Variables.Culture);
 
             if (!this.validFiletypes.Contains(extension) || this.fileListbox1.Items.Contains(filename))
             {
@@ -601,7 +601,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             this.thread = new Thread(this.DoConversions);
 
-            this.thread.Name = String.Format(Settings.Default.Culture, "BatchConversionThread{0:HHmmss}", DateTime.Now);
+            this.thread.Name = String.Format(Variables.Culture, "BatchConversionThread{0:HHmmss}", DateTime.Now);
 
             this.thread.Start();
         }
@@ -810,33 +810,33 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.AddLogSeparator();
 
             this.AddLogString(String.Format(
-                                    Settings.Default.Culture,
+                                    Variables.Culture,
                                     Resource.GetString("Batch conversion started, {0} file(s) to process"),
                                     this.fileListbox1.Items.Count));
 
             string outputDirectory = this.textBoxOutputDirectory.Text;
 
             this.AddLogString(String.Format(
-                                    Settings.Default.Culture,
+                                    Variables.Culture,
                                     Resource.GetString("Output Size: {0}x{1} characters"),
                                     this.OutputSize.Width == -1 ? "??" : this.OutputSize.Width.ToString(),
                                     this.OutputSize.Height == -1 ? "??" : this.OutputSize.Height.ToString()));
 
             this.AddLogString(String.Format(
-                                    Settings.Default.Culture,
+                                    Variables.Culture,
                                     Resource.GetString("Target Font: {0} {1}pt{2}{3}{4}{5}") + ".",
                                     this.textProcessingSettings.Font.Name,
-                                    this.textProcessingSettings.Font.Size.ToString(Settings.Default.Culture),
+                                    this.textProcessingSettings.Font.Size.ToString(Variables.Culture),
                                     this.textProcessingSettings.Font.Bold ? ", " + Resource.GetString("bold") : String.Empty,
                                     this.textProcessingSettings.Font.Italic ? ", " + Resource.GetString("italic") : String.Empty,
                                     this.textProcessingSettings.Font.Underline ? ", " + Resource.GetString("underline") : String.Empty,
                                     this.textProcessingSettings.Font.Strikeout ? ", " + Resource.GetString("strikeout") : String.Empty));
 
             this.AddLogString(String.Format(
-                                    Settings.Default.Culture,
+                                    Variables.Culture,
                                     Resource.GetString("Target Character Size: {0}x{1} pixels{2}"),
-                                    this.textProcessingSettings.CharacterSize.Width.ToString(Settings.Default.Culture),
-                                    this.textProcessingSettings.CharacterSize.Height.ToString(Settings.Default.Culture),
+                                    this.textProcessingSettings.CharacterSize.Width.ToString(Variables.Culture),
+                                    this.textProcessingSettings.CharacterSize.Height.ToString(Variables.Culture),
                                     (this.textProcessingSettings.CalculateCharacterSize ? " (" + Resource.GetString("automatically calculated") + ")." : ".")));
 
             this.AddLogString(Resource.GetString("Saving output as") + " ." + this.comboBoxOutputFormat.Text + (this.OutputIsImage ? " (" + this.numericUpDownImageScale.Value.ToString() + "%)" : String.Empty));
@@ -873,7 +873,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
                 this.progressBarConversion.Value++;
 
                 this.AddLogString(string.Format(
-                                        Settings.Default.Culture,
+                                        Variables.Culture,
                                         " -> {0} ({1}x{2}), Ok.",
                                         outputFilename,
                                         this.dimensionsCalculator.OutputSize.Width.ToString(),
@@ -887,7 +887,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             this.AddLogSeparator();
 
-            this.AddLogString(String.Format(Settings.Default.Culture, Resource.GetString("{0} file(s) converted, {1} error(s)"), count, errors));
+            this.AddLogString(String.Format(Variables.Culture, Resource.GetString("{0} file(s) converted, {1} error(s)"), count, errors));
 
             this.ControlsEnabled = true;
 
@@ -979,7 +979,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
                     break;
 
                 case BatchTextProcessingSettings.SuffixTypes.DateTime:
-                    suffix = String.Format(Settings.Default.Culture, "-" + Resource.GetString("{0:yyyyMMddHHmmss}"), DateTime.Now);
+                    suffix = String.Format(Variables.Culture, "-" + Resource.GetString("{0:yyyyMMddHHmmss}"), DateTime.Now);
                     break;
 
                 case BatchTextProcessingSettings.SuffixTypes.Random:
@@ -1164,7 +1164,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void SaveLogAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.saveFileDialogLog.FileName = String.Format(Settings.Default.Culture, "Log{0:yyyyMMddHHmmss}", DateTime.Now);
+            this.saveFileDialogLog.FileName = String.Format(Variables.Culture, "Log{0:yyyyMMddHHmmss}", DateTime.Now);
 
             if (this.saveFileDialogLog.ShowDialog() != DialogResult.OK)
             {

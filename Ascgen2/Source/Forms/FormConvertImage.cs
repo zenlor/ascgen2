@@ -2195,7 +2195,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
                 return;
             }
 
-            this.Filename = string.Format(Settings.Default.Culture, "Clipboard{0:yyyyMMddHHmmss}", System.DateTime.Now);
+            this.Filename = string.Format(Variables.Culture, "Clipboard{0:yyyyMMddHHmmss}", System.DateTime.Now);
 
             this.LoadImage((Bitmap)data.GetData(DataFormats.Bitmap, true));
         }
@@ -2527,7 +2527,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             string filename = this.dialogSaveImage.FileName;
 
-            string extension = Path.GetExtension(filename).ToLower(Settings.Default.Culture);
+            string extension = Path.GetExtension(filename).ToLower(Variables.Culture);
 
             switch (this.dialogSaveImage.FilterIndex)
             {
@@ -2729,7 +2729,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             Variables.CurrentSelectedRamp = this.cmbRamp.SelectedIndex;
             Variables.CurrentRamp = this.cmbRamp.SelectedIndex == -1 ? this.cmbRamp.Text : String.Empty;
 
-            Settings.Default.UseGeneratedRamp = this.IsGeneratedRamp;
+            Variables.UseGeneratedRamp = this.IsGeneratedRamp;
 
             string[] characters = new string[this.cmbCharacters.Items.Count];
             this.cmbCharacters.Items.CopyTo(characters, 0);
@@ -2816,9 +2816,9 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// </summary>
         private void SetupControls()
         {
-            this.tbxWidth.MaxLength = Settings.Default.MaximumWidth.ToString(Settings.Default.Culture).Length;
+            this.tbxWidth.MaxLength = Variables.MaximumWidth.ToString(Variables.Culture).Length;
 
-            this.tbxHeight.MaxLength = Settings.Default.MaximumHeight.ToString(Settings.Default.Culture).Length;
+            this.tbxHeight.MaxLength = Variables.MaximumHeight.ToString(Variables.Culture).Length;
 
             this.cbxLocked.Checked = Variables.DefaultWidth < 1 || Variables.DefaultHeight < 1;
 
@@ -2849,7 +2849,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             this.cmbRamp.Select(0, 0);
 
-            this.IsGeneratedRamp = Settings.Default.UseGeneratedRamp;
+            this.IsGeneratedRamp = Variables.UseGeneratedRamp;
 
             this.cmbCharacters.Items.Clear();
             this.cmbCharacters.Items.AddRange(Variables.DefaultValidCharacters);
@@ -3048,7 +3048,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             if (this.formSaveAs.ShowDialog() == DialogResult.OK)
             {
-                string filename = Settings.Default.Prefix + Path.GetFileNameWithoutExtension(this.Filename);
+                string filename = Variables.Prefix + Path.GetFileNameWithoutExtension(this.Filename);
 
                 if (this.formSaveAs.IsText)
                 {
@@ -3084,7 +3084,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             try
             {
-                this.dimensionsCalculator.Height = Convert.ToInt32(this.tbxHeight.Text, Settings.Default.Culture);
+                this.dimensionsCalculator.Height = Convert.ToInt32(this.tbxHeight.Text, Variables.Culture);
             }
             catch (FormatException)
             {
@@ -3106,7 +3106,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             try
             {
-                this.dimensionsCalculator.Width = Convert.ToInt32(this.tbxWidth.Text, Settings.Default.Culture);
+                this.dimensionsCalculator.Width = Convert.ToInt32(this.tbxWidth.Text, Variables.Culture);
             }
             catch (FormatException)
             {
@@ -3555,7 +3555,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void WidgetImage_SelectionChanging(object sender, EventArgs e)
         {
-            if (!Settings.Default.UpdateWhileSelecting)
+            if (!Variables.UpdateWhileSelecting)
             {
                 return;
             }

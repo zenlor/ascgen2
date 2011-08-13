@@ -26,6 +26,7 @@
 namespace JMSoftware.AsciiGeneratorDotNet
 {
     using System.Drawing;
+    using System.Globalization;
 
     /// <summary>
     /// Abstract class containing global variables for the program
@@ -50,6 +51,11 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// Confirm to save the image on exit?
         /// </summary>
         private static bool confirmOnClose = true;
+
+        /// <summary>
+        /// The culture used by the application
+        /// </summary>
+        private static CultureInfo culture = new CultureInfo(string.Empty);
 
         /// <summary>
         /// The default dithering level.
@@ -87,6 +93,21 @@ namespace JMSoftware.AsciiGeneratorDotNet
         private static int defaultWidth = 150;
 
         /// <summary>
+        /// The maximum height for the output.
+        /// </summary>
+        private static int maximumHeight = 999;
+
+        /// <summary>
+        /// The maximum width for the output.
+        /// </summary>
+        private static int maximumWidth = 999;
+
+        /// <summary>
+        /// The filename prefix for output images
+        /// </summary>
+        private static string prefix = "ASCII-";
+
+        /// <summary>
         /// Show the image widget?
         /// </summary>
         private static bool showWidgetImage = true;
@@ -105,6 +126,16 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// Use an unsharp mask?
         /// </summary>
         private static bool unsharpMask = true;
+
+        /// <summary>
+        /// Update the output while selecting an area of the image?
+        /// </summary>
+        private static bool updateWhileSelecting = true;
+
+        /// <summary>
+        /// Use a generated ramp?
+        /// </summary>
+        private static bool useGeneratedRamp = true;
 
         #endregion Fields
 
@@ -141,6 +172,23 @@ namespace JMSoftware.AsciiGeneratorDotNet
             set
             {
                 confirmOnClose = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the culture.
+        /// </summary>
+        /// <value>The culture.</value>
+        public static CultureInfo Culture
+        {
+            get
+            {
+                return culture;
+            }
+
+            set
+            {
+                culture = value;
             }
         }
 
@@ -404,6 +452,57 @@ namespace JMSoftware.AsciiGeneratorDotNet
         public static bool LoadTextBrightnessContrast { get; set; }
 
         /// <summary>
+        /// Gets or sets the maximum height for the output.
+        /// </summary>
+        /// <value>The maximum height.</value>
+        public static int MaximumHeight
+        {
+            get
+            {
+                return maximumHeight;
+            }
+
+            set
+            {
+                maximumHeight = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the maximum width for the output.
+        /// </summary>
+        /// <value>The maximum width.</value>
+        public static int MaximumWidth
+        {
+            get
+            {
+                return maximumWidth;
+            }
+
+            set
+            {
+                maximumWidth = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the filename prefix.
+        /// </summary>
+        /// <value>The prefix.</value>
+        public static string Prefix
+        {
+            get
+            {
+                return prefix;
+            }
+
+            set
+            {
+                prefix = value;
+            }
+        }
+
+        /// <summary>
         /// Gets or sets a value indicating whether the default value for whether the output should be sharpened
         /// </summary>
         /// <value><c>true</c> if sharpen; otherwise, <c>false</c>.</value>
@@ -480,6 +579,42 @@ namespace JMSoftware.AsciiGeneratorDotNet
             set
             {
                 unsharpMask = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether to update the output while selecting an area of the image.
+        /// </summary>
+        /// <value>
+        /// <c>true</c> if update while selecting; otherwise, <c>false</c>.
+        /// </value>
+        public static bool UpdateWhileSelecting
+        {
+            get
+            {
+                return updateWhileSelecting;
+            }
+
+            set
+            {
+                updateWhileSelecting = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether to use a generated ramp.
+        /// </summary>
+        /// <value><c>true</c> if using a generated ramp; otherwise, <c>false</c>.</value>
+        public static bool UseGeneratedRamp
+        {
+            get
+            {
+                return useGeneratedRamp;
+            }
+
+            set
+            {
+                useGeneratedRamp = value;
             }
         }
 

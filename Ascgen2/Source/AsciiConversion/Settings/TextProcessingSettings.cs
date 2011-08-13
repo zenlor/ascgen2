@@ -140,7 +140,7 @@ namespace JMSoftware.AsciiConversion
 
             this.isFixedWidth = true;
 
-            this.IsGeneratedRamp = Settings.Default.UseGeneratedRamp;
+            this.IsGeneratedRamp = Variables.UseGeneratedRamp;
 
             this.ramp = "MMMMMMM@@@@@@@WWWWWWWWWBBBBBBBB000000008888888ZZZZZZZZZaZaaaaaa2222222SSSSSSSXXXXXXXXXXX7777777rrrrrrr;;;;;;;;iiiiiiiii:::::::,:,,,,,,.........       ";
 
