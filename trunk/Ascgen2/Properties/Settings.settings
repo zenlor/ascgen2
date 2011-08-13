@@ -2,26 +2,11 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="JMSoftware.AsciiGeneratorDotNet" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="Culture" Type="System.Globalization.CultureInfo" Scope="User">
-      <Value Profile="(Default)">(Default)</Value>
-    </Setting>
-    <Setting Name="MaximumHeight" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">999</Value>
-    </Setting>
-    <Setting Name="MaximumWidth" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">999</Value>
-    </Setting>
-    <Setting Name="Prefix" Type="System.String" Scope="User">
-      <Value Profile="(Default)">ASCII-</Value>
-    </Setting>
     <Setting Name="SelectionBorderColor" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">DarkBlue</Value>
     </Setting>
     <Setting Name="SelectionFillColor" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">128, 173, 216, 230</Value>
-    </Setting>
-    <Setting Name="UseGeneratedRamp" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="DefaultRamps" Type="System.Collections.Specialized.StringCollection" Scope="User">
       <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
@@ -45,9 +30,6 @@
   &lt;string&gt;@#MBHAGh93X25Sisr;:, &lt;/string&gt;
   &lt;string&gt;█▓▒░ &lt;/string&gt;
 &lt;/ArrayOfString&gt;</Value>
-    </Setting>
-    <Setting Name="UpdateWhileSelecting" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
     </Setting>
   </Settings>
 </SettingsFile>

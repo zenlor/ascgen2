@@ -230,7 +230,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// </summary>
         private void UpdateFont()
         {
-            this.tbxFont.Text = this.defaultFont.Name + String.Format(Settings.Default.Culture, " {0}pt", this.defaultFont.Size) +
+            this.tbxFont.Text = this.defaultFont.Name + String.Format(Variables.Culture, " {0}pt", this.defaultFont.Size) +
                 (this.defaultFont.Bold ? ", bold" : String.Empty) + (this.defaultFont.Italic ? ", italic" : String.Empty) +
                 (this.defaultFont.Underline ? ", underline" : String.Empty) +
                 (this.defaultFont.Strikeout ? ", strikeout" : String.Empty) + ".";

@@ -97,9 +97,9 @@ namespace JMSoftware.AsciiGeneratorDotNet
             {
                 this.characterSize = value;
 
-                this.tbxWidth.Text = this.characterSize.Width.ToString(Settings.Default.Culture);
+                this.tbxWidth.Text = this.characterSize.Width.ToString(Variables.Culture);
 
-                this.tbxHeight.Text = this.characterSize.Height.ToString(Settings.Default.Culture);
+                this.tbxHeight.Text = this.characterSize.Height.ToString(Variables.Culture);
             }
         }
 
@@ -120,8 +120,8 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
                 if (this.chkAuto.Checked)
                 {
-                    this.tbxWidth.Text = this.defaultCharacterSize.Width.ToString(Settings.Default.Culture);
-                    this.tbxHeight.Text = this.defaultCharacterSize.Height.ToString(Settings.Default.Culture);
+                    this.tbxWidth.Text = this.defaultCharacterSize.Width.ToString(Variables.Culture);
+                    this.tbxHeight.Text = this.defaultCharacterSize.Height.ToString(Variables.Culture);
                 }
             }
         }
@@ -149,7 +149,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
         {
             try
             {
-                this.characterSize.Height = Convert.ToInt32(this.tbxHeight.Text, Settings.Default.Culture);
+                this.characterSize.Height = Convert.ToInt32(this.tbxHeight.Text, Variables.Culture);
             }
             catch (FormatException)
             {
@@ -168,7 +168,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
         {
             try
             {
-                this.characterSize.Width = Convert.ToInt32(this.tbxWidth.Text, Settings.Default.Culture);
+                this.characterSize.Width = Convert.ToInt32(this.tbxWidth.Text, Variables.Culture);
             }
             catch (FormatException)
             {
@@ -187,8 +187,8 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             if (this.chkAuto.Checked)
             {
-                this.tbxWidth.Text = this.DefaultCharacterSize.Width.ToString(Settings.Default.Culture);
-                this.tbxHeight.Text = this.DefaultCharacterSize.Height.ToString(Settings.Default.Culture);
+                this.tbxWidth.Text = this.DefaultCharacterSize.Width.ToString(Variables.Culture);
+                this.tbxHeight.Text = this.DefaultCharacterSize.Height.ToString(Variables.Culture);
             }
         }
 

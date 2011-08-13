@@ -25,54 +25,6 @@ namespace JMSoftware.AsciiGeneratorDotNet {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("(Default)")]
-        public global::System.Globalization.CultureInfo Culture {
-            get {
-                return ((global::System.Globalization.CultureInfo)(this["Culture"]));
-            }
-            set {
-                this["Culture"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("999")]
-        public int MaximumHeight {
-            get {
-                return ((int)(this["MaximumHeight"]));
-            }
-            set {
-                this["MaximumHeight"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("999")]
-        public int MaximumWidth {
-            get {
-                return ((int)(this["MaximumWidth"]));
-            }
-            set {
-                this["MaximumWidth"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("ASCII-")]
-        public string Prefix {
-            get {
-                return ((string)(this["Prefix"]));
-            }
-            set {
-                this["Prefix"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("DarkBlue")]
         public global::System.Drawing.Color SelectionBorderColor {
             get {
@@ -92,18 +44,6 @@ namespace JMSoftware.AsciiGeneratorDotNet {
             }
             set {
                 this["SelectionFillColor"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool UseGeneratedRamp {
-            get {
-                return ((bool)(this["UseGeneratedRamp"]));
-            }
-            set {
-                this["UseGeneratedRamp"] = value;
             }
         }
         
@@ -145,18 +85,6 @@ namespace JMSoftware.AsciiGeneratorDotNet {
             }
             set {
                 this["DefaultValidCharacters"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool UpdateWhileSelecting {
-            get {
-                return ((bool)(this["UpdateWhileSelecting"]));
-            }
-            set {
-                this["UpdateWhileSelecting"] = value;
             }
         }
     }

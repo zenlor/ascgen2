@@ -88,7 +88,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             this.UpdateImage();
 
-            this.tbxMagnification.Text = ((int)this.Value).ToString(Settings.Default.Culture);
+            this.tbxMagnification.Text = ((int)this.Value).ToString(Variables.Culture);
         }
 
         #endregion Constructors
@@ -252,7 +252,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             this.UpdateImage();
 
-            this.tbxMagnification.Text = ((int)this.Value).ToString(Settings.Default.Culture);
+            this.tbxMagnification.Text = ((int)this.Value).ToString(Variables.Culture);
 
             this.UpdateOutputSize();
         }
@@ -324,8 +324,8 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.outputSize.Width = (int)(((float)this.InputSize.Width * ratio) + 0.5f);
             this.outputSize.Height = (int)(((float)this.InputSize.Height * ratio) + 0.5f);
 
-            this.tbxOutputWidth.Text = this.outputSize.Width.ToString(Settings.Default.Culture);
-            this.tbxOutputHeight.Text = this.outputSize.Height.ToString(Settings.Default.Culture);
+            this.tbxOutputWidth.Text = this.outputSize.Width.ToString(Variables.Culture);
+            this.tbxOutputHeight.Text = this.outputSize.Height.ToString(Variables.Culture);
 
             this.tbxOutputWidth.Refresh();
             this.tbxOutputHeight.Refresh();
@@ -350,8 +350,8 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.tbxSampleText.Lines = new string[]
                                             {
                                                 text,
-                                                text.ToLower(Settings.Default.Culture),
-                                                text.ToUpper(Settings.Default.Culture)
+                                                text.ToLower(Variables.Culture),
+                                                text.ToUpper(Variables.Culture)
                                             };
         }
 
