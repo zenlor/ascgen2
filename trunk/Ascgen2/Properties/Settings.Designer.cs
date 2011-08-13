@@ -37,18 +37,6 @@ namespace JMSoftware.AsciiGeneratorDotNet {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool LoadOutputSize {
-            get {
-                return ((bool)(this["LoadOutputSize"]));
-            }
-            set {
-                this["LoadOutputSize"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("999")]
         public int MaximumHeight {
             get {
@@ -104,42 +92,6 @@ namespace JMSoftware.AsciiGeneratorDotNet {
             }
             set {
                 this["SelectionFillColor"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool ShowWidgetText {
-            get {
-                return ((bool)(this["ShowWidgetText"]));
-            }
-            set {
-                this["ShowWidgetText"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool Stretch {
-            get {
-                return ((bool)(this["Stretch"]));
-            }
-            set {
-                this["Stretch"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool UnsharpMask {
-            get {
-                return ((bool)(this["UnsharpMask"]));
-            }
-            set {
-                this["UnsharpMask"] = value;
             }
         }
         
