@@ -201,11 +201,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>Settings.settings</DependentUpon>
-    </Compile>
     <Compile Include="Source\AsciiConversion\CharacterValue.cs" />
     <Compile Include="Source\AsciiConversion\DimensionsCalculator.cs" />
     <Compile Include="Source\AsciiConversion\Filters\AscgenMatrixFilter.cs" />
@@ -416,11 +411,6 @@
     <None Include="Resources\magnifier_zoom_in.png" />
     <None Include="Resources\magifier_zoom_out.png" />
     <None Include="Resources\application_split.png" />
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-      <CustomToolNamespace>JMSoftware.AsciiGeneratorDotNet</CustomToolNamespace>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
