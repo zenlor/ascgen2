@@ -218,18 +218,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
         #region Private methods
 
         /// <summary>
-        /// Handles the CheckedChanged event of the cbxForceGreyscale control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void CbxForceGreyscale_CheckedChanged(object sender, System.EventArgs e)
-        {
-            this.updateImage = true;
-
-            this.UpdateImage();
-        }
-
-        /// <summary>
         /// Handles the TextChanged event of the tbxSampleText control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
