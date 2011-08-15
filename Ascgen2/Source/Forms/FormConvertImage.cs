@@ -1156,6 +1156,45 @@ namespace JMSoftware.AsciiGeneratorDotNet
         #region Private methods
 
         /// <summary>
+        /// Checks the executables directory for translation files.
+        /// </summary>
+        private static void CheckForTranslationFiles()
+        {
+            DirectoryInfo dir = new DirectoryInfo(Application.StartupPath);
+
+            FileInfo[] files = dir.GetFiles("translation.*.xml");
+
+            StringCollection strings = new StringCollection();
+
+            foreach (FileInfo file in files)
+            {
+                strings.Add(file.ToString());
+            }
+
+            if (strings.Count < 2)
+            {
+                if (strings.Count == 1)
+                {
+                    Variables.TranslationFile = strings[0];
+                }
+
+                return;
+            }
+
+            using (FormSelectLanguage formSelectLanguage = new FormSelectLanguage(strings))
+            {
+                formSelectLanguage.SelectedItem = Variables.TranslationFile;
+
+                if (formSelectLanguage.ShowDialog() != DialogResult.OK)
+                {
+                    return;
+                }
+
+                Variables.TranslationFile = formSelectLanguage.SelectedItem;
+            }
+        }
+
+        /// <summary>
         /// Handles the drag over.
         /// </summary>
         /// <param name="e">The <see cref="System.Windows.Forms.DragEventArgs"/> instance containing the event data.</param>
@@ -1246,45 +1285,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
                 default:
                 case DialogResult.Cancel:   // don't do anything
                     return false;
-            }
-        }
-
-        /// <summary>
-        /// Checks the executables directory for translation files.
-        /// </summary>
-        private void CheckForTranslationFiles()
-        {
-            DirectoryInfo dir = new DirectoryInfo(Application.StartupPath);
-
-            FileInfo[] files = dir.GetFiles("translation.*.xml");
-
-            StringCollection strings = new StringCollection();
-
-            foreach (FileInfo file in files)
-            {
-                strings.Add(file.ToString());
-            }
-
-            if (strings.Count < 2)
-            {
-                if (strings.Count == 1)
-                {
-                    Variables.TranslationFile = strings[0];
-                }
-
-                return;
-            }
-
-            using (FormSelectLanguage formSelectLanguage = new FormSelectLanguage(strings))
-            {
-                formSelectLanguage.SelectedItem = Variables.TranslationFile;
-
-                if (formSelectLanguage.ShowDialog() != DialogResult.OK)
-                {
-                    return;
-                }
-
-                Variables.TranslationFile = formSelectLanguage.SelectedItem;
             }
         }
 
@@ -3357,7 +3357,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// </summary>
         private void UpdateUI()
         {
-            this.CheckForTranslationFiles();
+            CheckForTranslationFiles();
 
             this.menuFile.Text = Resource.GetString("&File");
             this.menuFileLoad.Text = Resource.GetString("&Load Image") + "...";
