@@ -88,6 +88,34 @@ namespace JMSoftware.AsciiGeneratorDotNet
         private static float defaultMedianLevel = 0.5f;
 
         /// <summary>
+        /// The default list of ramps.
+        /// </summary>
+        private static string[] defaultRamps = new string[]
+        {
+            "MMMMMMM@@@@@@@WWWWWWWWWBBBBBBBB000000008888888ZZZZZZZZZaZaaaaaa2222222SSSSSSSXXXXXXXXXXX7777777rrrrrrr;;;;;;;;iiiiiiiii:::::::,:,,,,,,.........       ",
+            "@@@@@@@######MMMBBHHHAAAA&&GGhh9933XXX222255SSSiiiissssrrrrrrr;;;;;;;;:::::::,,,,,,,........        ",
+            "#WMBRXVYIti+=;:,. ", "##XXxxx+++===---;;,,...    ",
+            "@%#*+=-:. ",
+            "#¥¥®®ØØ$$ø0oo°++=-,.    ",
+            "# ",
+            "01 ",
+            "█▓▒░ "
+        };
+
+        /// <summary>
+        /// The different strings of valid characters.
+        /// </summary>
+        private static string[] defaultValidCharacters = new string[]
+        {
+            " #,.0123456789:;@ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz$",
+            " ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
+            " 1234567890",
+            "M@WB08Za2SX7r;i:;. ",
+            "@#MBHAGh93X25Sisr;:, ",
+            "█▓▒░ "
+        };
+
+        /// <summary>
         /// The default width
         /// </summary>
         private static int defaultWidth = 150;
@@ -342,18 +370,12 @@ namespace JMSoftware.AsciiGeneratorDotNet
         {
             get
             {
-                string[] result = new string[Settings.Default.DefaultRamps.Count];
-
-                Settings.Default.DefaultRamps.CopyTo(result, 0);
-
-                return result;
+                return defaultRamps;
             }
 
             set
             {
-                Settings.Default.DefaultRamps.Clear();
-
-                Settings.Default.DefaultRamps.AddRange(value);
+                defaultRamps = value;
             }
         }
 
@@ -377,18 +399,12 @@ namespace JMSoftware.AsciiGeneratorDotNet
         {
             get
             {
-                string[] result = new string[Settings.Default.DefaultValidCharacters.Count];
-
-                Settings.Default.DefaultValidCharacters.CopyTo(result, 0);
-
-                return result;
+                return defaultValidCharacters;
             }
 
             set
             {
-                Settings.Default.DefaultValidCharacters.Clear();
-
-                Settings.Default.DefaultValidCharacters.AddRange(value);
+                defaultValidCharacters = value;
             }
         }
 
@@ -671,7 +687,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// </summary>
         public static void SaveSettings()
         {
-            Settings.Default.Save();
         }
 
         #endregion Public methods
