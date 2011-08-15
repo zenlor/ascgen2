@@ -73,13 +73,13 @@ namespace JMSoftware.Controls
         #endregion Constructors
 
         /// <summary>Event raised when the dithering value changes</summary>
-        public event EventHandler DitheringChanging = null;
+        public event EventHandler DitheringChanging;
 
         /// <summary>Event raised when the dithering value has changed</summary>
-        public event EventHandler DitheringChanged = null;
+        public event EventHandler DitheringChanged;
 
         /// <summary>Event raised when the random value has changed</summary>
-        public event EventHandler RandomChanged = null;
+        public event EventHandler RandomChanged;
 
         #region Properties
 
