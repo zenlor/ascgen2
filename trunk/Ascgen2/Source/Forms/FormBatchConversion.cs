@@ -944,26 +944,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
         }
 
         /// <summary>
-        /// Creates a random string.
-        /// </summary>
-        /// <param name="length">The length.</param>
-        /// <returns>The random string</returns>
-        private string GetRandomString(int length)
-        {
-            string randomString = String.Empty;
-            string validCharacters = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
-            Random random = new Random();
-
-            while (length-- > 0)
-            {
-                randomString += validCharacters[random.Next(validCharacters.Length - 1)];
-            }
-
-            return randomString;
-        }
-
-        /// <summary>
         /// Gets the currently specified suffix.
         /// </summary>
         /// <returns>The current suffix</returns>
@@ -983,7 +963,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
                     break;
 
                 case BatchTextProcessingSettings.SuffixTypes.Random:
-                    suffix = "-" + this.GetRandomString(6);
+                    suffix = "-" + FontFunctions.GetRandomString(6);
                     break;
             }
 
