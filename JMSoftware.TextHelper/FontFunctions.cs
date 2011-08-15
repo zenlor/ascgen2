@@ -49,6 +49,26 @@ namespace JMSoftware.TextHelper
         }
 
         /// <summary>
+        /// Creates a random string.
+        /// </summary>
+        /// <param name="length">The length.</param>
+        /// <returns>The random string</returns>
+        public static string GetRandomString(int length)
+        {
+            string randomString = String.Empty;
+            string validCharacters = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+            Random random = new Random();
+
+            while (length-- > 0)
+            {
+                randomString += validCharacters[random.Next(validCharacters.Length - 1)];
+            }
+
+            return randomString;
+        }
+
+        /// <summary>
         /// Check if the font has a fixed width
         /// </summary>
         /// <param name="font">The font to be checked.</param>
