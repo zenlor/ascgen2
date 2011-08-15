@@ -74,11 +74,9 @@ namespace JMSoftware.Controls
         {
             this.InitializeComponent();
 
-            this.brightness = 0;
             this.nudBrightness.Minimum = this.trkBrightness.Minimum = this.minimumBrightness = -200;
             this.nudBrightness.Maximum = this.trkBrightness.Maximum = this.maximumBrightness = 200;
 
-            this.contrast = 0;
             this.nudContrast.Minimum = this.trkContrast.Minimum = this.minimumContrast = -100;
             this.nudContrast.Maximum = this.trkContrast.Maximum = this.maximumContrast = 100;
         }

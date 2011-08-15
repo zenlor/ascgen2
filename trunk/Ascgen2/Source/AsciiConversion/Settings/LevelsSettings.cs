@@ -48,7 +48,7 @@ namespace JMSoftware.AsciiConversion.TextSettings
         /// <summary>
         /// The minimum value.
         /// </summary>
-        private int minimum = 0;
+        private int minimum;
 
         #endregion Fields
 

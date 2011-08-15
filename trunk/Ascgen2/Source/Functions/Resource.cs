@@ -41,7 +41,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// <summary>
         /// The translations
         /// </summary>
-        private static Dictionary<string, string> translations = null;
+        private static Dictionary<string, string> translations;
 
         #endregion Fields
 
