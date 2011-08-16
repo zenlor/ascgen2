@@ -1,7 +1,7 @@
 //---------------------------------------------------------------------------------------
 // <copyright file="FormEditSettings.cs" company="Jonathan Mathews Software">
 //     ASCII Generator dotNET - Image to ASCII Art Conversion Program
-//     Copyright (C) 2009 Jonathan Mathews Software. All rights reserved.
+//     Copyright (C) 2011 Jonathan Mathews Software. All rights reserved.
 // </copyright>
 // <author>Jonathan Mathews</author>
 // <email>info@jmsoftware.co.uk</email>
@@ -62,7 +62,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             this.ResetSettings();
 
-            this.directories = new TextBox[] { this.tbxInputDirectory, this.tbxOutputDirectory };
+            this.directories = new TextBox[] { this.textBoxInputDirectory, this.textBoxOutputDirectory };
         }
 
         #endregion Constructors
@@ -77,7 +77,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// </value>
         public bool CheckForNewVersions
         {
-            get { return this.cbxConfirmVersionCheck.Checked; }
+            get { return this.checkBoxConfirmVersionCheck.Checked; }
         }
 
         /// <summary>
@@ -88,7 +88,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// </value>
         public bool ConfirmOnClose
         {
-            get { return this.cbxConfirmClose.Checked; }
+            get { return this.checkBoxConfirmClose.Checked; }
         }
 
         /// <summary>
@@ -116,7 +116,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// <value>The input directory.</value>
         public string InputDirectory
         {
-            get { return this.tbxInputDirectory.Text; }
+            get { return this.textBoxInputDirectory.Text; }
         }
 
         /// <summary>
@@ -125,7 +125,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// <value>The output directory.</value>
         public string OutputDirectory
         {
-            get { return this.tbxOutputDirectory.Text; }
+            get { return this.textBoxOutputDirectory.Text; }
         }
 
         #endregion Properties
@@ -165,11 +165,11 @@ namespace JMSoftware.AsciiGeneratorDotNet
         #region Private methods
 
         /// <summary>
-        /// Handles the Click event of the btnFont control.
+        /// Handles the Click event of the buttonFont control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void BtnFont_Click(object sender, EventArgs e)
+        private void ButtonFont_Click(object sender, EventArgs e)
         {
             this.fontDialog1.Font = this.DefaultFont;
 
@@ -180,34 +180,34 @@ namespace JMSoftware.AsciiGeneratorDotNet
         }
 
         /// <summary>
-        /// Handles the Click event of the btnInputDirectory control.
+        /// Handles the Click event of the buttonInputDirectory control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void BtnInputDirectory_Click(object sender, EventArgs e)
+        private void ButtonInputDirectory_Click(object sender, EventArgs e)
         {
             this.folderBrowserDialog1.Description = Resource.GetString("Input Directory");
-            this.folderBrowserDialog1.SelectedPath = this.tbxInputDirectory.Text;
+            this.folderBrowserDialog1.SelectedPath = this.textBoxInputDirectory.Text;
 
             if (this.folderBrowserDialog1.ShowDialog() == DialogResult.OK)
             {
-                this.tbxInputDirectory.Text = this.folderBrowserDialog1.SelectedPath;
+                this.textBoxInputDirectory.Text = this.folderBrowserDialog1.SelectedPath;
             }
         }
 
         /// <summary>
-        /// Handles the Click event of the btnOutputDirectory control.
+        /// Handles the Click event of the buttonOutputDirectory control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void BtnOutputDirectory_Click(object sender, EventArgs e)
+        private void ButtonOutputDirectory_Click(object sender, EventArgs e)
         {
             this.folderBrowserDialog1.Description = Resource.GetString("Output Directory");
-            this.folderBrowserDialog1.SelectedPath = this.tbxOutputDirectory.Text;
+            this.folderBrowserDialog1.SelectedPath = this.textBoxOutputDirectory.Text;
 
             if (this.folderBrowserDialog1.ShowDialog() == DialogResult.OK)
             {
-                this.tbxOutputDirectory.Text = this.folderBrowserDialog1.SelectedPath;
+                this.textBoxOutputDirectory.Text = this.folderBrowserDialog1.SelectedPath;
             }
         }
 
@@ -216,13 +216,13 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// </summary>
         private void ResetSettings()
         {
-            this.tbxInputDirectory.Text = Variables.InitialInputDirectory;
+            this.textBoxInputDirectory.Text = Variables.InitialInputDirectory;
 
-            this.tbxOutputDirectory.Text = Variables.InitialOutputDirectory;
+            this.textBoxOutputDirectory.Text = Variables.InitialOutputDirectory;
 
-            this.cbxConfirmClose.Checked = Variables.ConfirmOnClose;
+            this.checkBoxConfirmClose.Checked = Variables.ConfirmOnClose;
 
-            this.cbxConfirmVersionCheck.Checked = Variables.CheckForNewVersion;
+            this.checkBoxConfirmVersionCheck.Checked = Variables.CheckForNewVersion;
         }
 
         /// <summary>
@@ -230,7 +230,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// </summary>
         private void UpdateFont()
         {
-            this.tbxFont.Text = this.defaultFont.Name + String.Format(Variables.Culture, " {0}pt", this.defaultFont.Size) +
+            this.textBoxFont.Text = this.defaultFont.Name + String.Format(Variables.Culture, " {0}pt", this.defaultFont.Size) +
                 (this.defaultFont.Bold ? ", bold" : String.Empty) + (this.defaultFont.Italic ? ", italic" : String.Empty) +
                 (this.defaultFont.Underline ? ", underline" : String.Empty) +
                 (this.defaultFont.Strikeout ? ", strikeout" : String.Empty) + ".";
@@ -245,17 +245,18 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             this.pageBasic.Text = Resource.GetString("Basic");
 
-            this.btnOk.Text = Resource.GetString("&Ok");
-            this.btnSave.Text = Resource.GetString("&Save");
-            this.btnCancel.Text = Resource.GetString("&Cancel");
+            this.buttonOk.Text = Resource.GetString("&Ok");
+            this.buttonSave.Text = Resource.GetString("&Save");
+            this.buttonDefault.Text = Resource.GetString("&Default");
+            this.buttonCancel.Text = Resource.GetString("&Cancel");
 
-            this.cbxConfirmClose.Text = Resource.GetString("Confirm close if unsaved");
-            this.cbxConfirmVersionCheck.Text = Resource.GetString("New version check");
+            this.checkBoxConfirmClose.Text = Resource.GetString("Confirm close if unsaved");
+            this.checkBoxConfirmVersionCheck.Text = Resource.GetString("New version check");
 
-            this.lblInputDirectory.Text = Resource.GetString("Input Directory") + ":";
-            this.lblOutputDirectory.Text = Resource.GetString("Output Directory") + ":";
+            this.labelInputDirectory.Text = Resource.GetString("Input Directory") + ":";
+            this.labelOutputDirectory.Text = Resource.GetString("Output Directory") + ":";
 
-            this.btnFont.Text = Resource.GetString("Font") + "...";
+            this.buttonFont.Text = Resource.GetString("Font") + "...";
         }
 
         #endregion Private methods
