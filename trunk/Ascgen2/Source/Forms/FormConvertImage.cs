@@ -2046,16 +2046,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
         }
 
         /// <summary>
-        /// Handles the Click event of the menuEditSaveSettings control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void MenuEditSaveSettings_Click(object sender, System.EventArgs e)
-        {
-            this.SaveSettings();
-        }
-
-        /// <summary>
         /// Handles the Popup event of the menuEditSharpeningMethod control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
@@ -3394,7 +3384,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.menuEditFontsFont.Text = Resource.GetString("Font") + "...";
             this.menuEditFonts.Text = Resource.GetString("Fonts");
             this.menuEditEditSettings.Text = Resource.GetString("Edit Settings") + "...";
-            this.menuEditSaveSettings.Text = Resource.GetString("Save Settings as Default");
 
             this.menuView.Text = Resource.GetString("&View");
             this.menuViewColourPreview.Text = Resource.GetString("Colour Preview") + "...";
