@@ -32,21 +32,21 @@ namespace JMSoftware.AsciiGeneratorDotNet
     {
         #region Fields
 
-        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button buttonCancel;
 
-        private System.Windows.Forms.Button btnFont;
+        private System.Windows.Forms.Button buttonFont;
 
-        private System.Windows.Forms.Button btnInputDirectory;
+        private System.Windows.Forms.Button buttonInputDirectory;
 
-        private System.Windows.Forms.Button btnOk;
+        private System.Windows.Forms.Button buttonOk;
 
-        private System.Windows.Forms.Button btnOutputDirectory;
+        private System.Windows.Forms.Button buttonOutputDirectory;
 
-        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button buttonSave;
 
-        private System.Windows.Forms.CheckBox cbxConfirmClose;
+        private System.Windows.Forms.CheckBox checkBoxConfirmClose;
 
-        private System.Windows.Forms.CheckBox cbxConfirmVersionCheck;
+        private System.Windows.Forms.CheckBox checkBoxConfirmVersionCheck;
 
         /// <summary>
         /// Required designer variable.
@@ -59,19 +59,19 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
         private System.Windows.Forms.FontDialog fontDialog1;
 
-        private System.Windows.Forms.Label lblInputDirectory;
+        private System.Windows.Forms.Label labelInputDirectory;
 
-        private System.Windows.Forms.Label lblOutputDirectory;
+        private System.Windows.Forms.Label labelOutputDirectory;
 
         private System.Windows.Forms.TabPage pageBasic;
 
         private System.Windows.Forms.TabControl tabSettings;
 
-        private System.Windows.Forms.TextBox tbxFont;
+        private System.Windows.Forms.TextBox textBoxFont;
 
-        private System.Windows.Forms.TextBox tbxInputDirectory;
+        private System.Windows.Forms.TextBox textBoxInputDirectory;
 
-        private System.Windows.Forms.TextBox tbxOutputDirectory;
+        private System.Windows.Forms.TextBox textBoxOutputDirectory;
 
         #endregion Fields
 
@@ -102,75 +102,74 @@ namespace JMSoftware.AsciiGeneratorDotNet
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.btnOk = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
+            this.buttonOk = new System.Windows.Forms.Button();
+            this.buttonCancel = new System.Windows.Forms.Button();
+            this.buttonSave = new System.Windows.Forms.Button();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.pageBasic = new System.Windows.Forms.TabPage();
-            this.tbxFont = new System.Windows.Forms.TextBox();
-            this.cbxConfirmVersionCheck = new System.Windows.Forms.CheckBox();
-            this.cbxConfirmClose = new System.Windows.Forms.CheckBox();
-            this.btnFont = new System.Windows.Forms.Button();
-            this.tbxOutputDirectory = new System.Windows.Forms.TextBox();
-            this.tbxInputDirectory = new System.Windows.Forms.TextBox();
-            this.btnOutputDirectory = new System.Windows.Forms.Button();
-            this.lblOutputDirectory = new System.Windows.Forms.Label();
-            this.btnInputDirectory = new System.Windows.Forms.Button();
-            this.lblInputDirectory = new System.Windows.Forms.Label();
+            this.textBoxFont = new System.Windows.Forms.TextBox();
+            this.checkBoxConfirmVersionCheck = new System.Windows.Forms.CheckBox();
+            this.checkBoxConfirmClose = new System.Windows.Forms.CheckBox();
+            this.buttonFont = new System.Windows.Forms.Button();
+            this.textBoxOutputDirectory = new System.Windows.Forms.TextBox();
+            this.textBoxInputDirectory = new System.Windows.Forms.TextBox();
+            this.buttonOutputDirectory = new System.Windows.Forms.Button();
+            this.labelOutputDirectory = new System.Windows.Forms.Label();
+            this.buttonInputDirectory = new System.Windows.Forms.Button();
+            this.labelInputDirectory = new System.Windows.Forms.Label();
             this.tabSettings = new System.Windows.Forms.TabControl();
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.buttonDefault = new System.Windows.Forms.Button();
             this.pageBasic.SuspendLayout();
             this.tabSettings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
-            // btnOk
+            // buttonOk
             // 
-            this.btnOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnOk.Location = new System.Drawing.Point(12, 189);
-            this.btnOk.Name = "btnOk";
-            this.btnOk.Size = new System.Drawing.Size(75, 23);
-            this.btnOk.TabIndex = 1;
-            this.btnOk.Text = "btnOk";
-            this.btnOk.UseVisualStyleBackColor = true;
+            this.buttonOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonOk.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.buttonOk.Location = new System.Drawing.Point(12, 189);
+            this.buttonOk.Name = "buttonOk";
+            this.buttonOk.Size = new System.Drawing.Size(75, 23);
+            this.buttonOk.TabIndex = 1;
+            this.buttonOk.Text = "buttonOk";
+            this.buttonOk.UseVisualStyleBackColor = true;
             // 
-            // btnCancel
+            // buttonCancel
             // 
-            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(266, 189);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 3;
-            this.btnCancel.Text = "btnCancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.buttonCancel.Location = new System.Drawing.Point(266, 189);
+            this.buttonCancel.Name = "buttonCancel";
+            this.buttonCancel.Size = new System.Drawing.Size(75, 23);
+            this.buttonCancel.TabIndex = 3;
+            this.buttonCancel.Text = "buttonCancel";
+            this.buttonCancel.UseVisualStyleBackColor = true;
             // 
-            // btnSave
+            // buttonSave
             // 
-            this.btnSave.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnSave.Enabled = false;
-            this.btnSave.Location = new System.Drawing.Point(139, 189);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 2;
-            this.btnSave.Text = "btnSave";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Visible = false;
+            this.buttonSave.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.buttonSave.Location = new System.Drawing.Point(96, 189);
+            this.buttonSave.Name = "buttonSave";
+            this.buttonSave.Size = new System.Drawing.Size(75, 23);
+            this.buttonSave.TabIndex = 2;
+            this.buttonSave.Text = "buttonSave";
+            this.buttonSave.UseVisualStyleBackColor = true;
             // 
             // pageBasic
             // 
-            this.pageBasic.Controls.Add(this.tbxFont);
-            this.pageBasic.Controls.Add(this.cbxConfirmVersionCheck);
-            this.pageBasic.Controls.Add(this.cbxConfirmClose);
-            this.pageBasic.Controls.Add(this.btnFont);
-            this.pageBasic.Controls.Add(this.tbxOutputDirectory);
-            this.pageBasic.Controls.Add(this.tbxInputDirectory);
-            this.pageBasic.Controls.Add(this.btnOutputDirectory);
-            this.pageBasic.Controls.Add(this.lblOutputDirectory);
-            this.pageBasic.Controls.Add(this.btnInputDirectory);
-            this.pageBasic.Controls.Add(this.lblInputDirectory);
+            this.pageBasic.Controls.Add(this.textBoxFont);
+            this.pageBasic.Controls.Add(this.checkBoxConfirmVersionCheck);
+            this.pageBasic.Controls.Add(this.checkBoxConfirmClose);
+            this.pageBasic.Controls.Add(this.buttonFont);
+            this.pageBasic.Controls.Add(this.textBoxOutputDirectory);
+            this.pageBasic.Controls.Add(this.textBoxInputDirectory);
+            this.pageBasic.Controls.Add(this.buttonOutputDirectory);
+            this.pageBasic.Controls.Add(this.labelOutputDirectory);
+            this.pageBasic.Controls.Add(this.buttonInputDirectory);
+            this.pageBasic.Controls.Add(this.labelInputDirectory);
             this.pageBasic.Location = new System.Drawing.Point(4, 22);
             this.pageBasic.Name = "pageBasic";
             this.pageBasic.Padding = new System.Windows.Forms.Padding(3);
@@ -179,97 +178,97 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.pageBasic.Text = "pageBasic";
             this.pageBasic.UseVisualStyleBackColor = true;
             // 
-            // tbxFont
+            // textBoxFont
             // 
-            this.tbxFont.Location = new System.Drawing.Point(99, 80);
-            this.tbxFont.Name = "tbxFont";
-            this.tbxFont.ReadOnly = true;
-            this.tbxFont.Size = new System.Drawing.Size(216, 20);
-            this.tbxFont.TabIndex = 7;
+            this.textBoxFont.Location = new System.Drawing.Point(99, 80);
+            this.textBoxFont.Name = "textBoxFont";
+            this.textBoxFont.ReadOnly = true;
+            this.textBoxFont.Size = new System.Drawing.Size(216, 20);
+            this.textBoxFont.TabIndex = 7;
             // 
-            // cbxConfirmVersionCheck
+            // checkBoxConfirmVersionCheck
             // 
-            this.cbxConfirmVersionCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbxConfirmVersionCheck.AutoSize = true;
-            this.cbxConfirmVersionCheck.Location = new System.Drawing.Point(168, 122);
-            this.cbxConfirmVersionCheck.Name = "cbxConfirmVersionCheck";
-            this.cbxConfirmVersionCheck.Size = new System.Drawing.Size(144, 17);
-            this.cbxConfirmVersionCheck.TabIndex = 9;
-            this.cbxConfirmVersionCheck.Text = "cbxConfirmVersionCheck";
-            this.cbxConfirmVersionCheck.UseVisualStyleBackColor = true;
+            this.checkBoxConfirmVersionCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkBoxConfirmVersionCheck.AutoSize = true;
+            this.checkBoxConfirmVersionCheck.Location = new System.Drawing.Point(137, 122);
+            this.checkBoxConfirmVersionCheck.Name = "checkBoxConfirmVersionCheck";
+            this.checkBoxConfirmVersionCheck.Size = new System.Drawing.Size(175, 17);
+            this.checkBoxConfirmVersionCheck.TabIndex = 9;
+            this.checkBoxConfirmVersionCheck.Text = "checkBoxConfirmVersionCheck";
+            this.checkBoxConfirmVersionCheck.UseVisualStyleBackColor = true;
             // 
-            // cbxConfirmClose
+            // checkBoxConfirmClose
             // 
-            this.cbxConfirmClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.cbxConfirmClose.AutoSize = true;
-            this.cbxConfirmClose.Location = new System.Drawing.Point(6, 122);
-            this.cbxConfirmClose.Name = "cbxConfirmClose";
-            this.cbxConfirmClose.Size = new System.Drawing.Size(104, 17);
-            this.cbxConfirmClose.TabIndex = 8;
-            this.cbxConfirmClose.Text = "cbxConfirmClose";
-            this.cbxConfirmClose.UseVisualStyleBackColor = true;
+            this.checkBoxConfirmClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.checkBoxConfirmClose.AutoSize = true;
+            this.checkBoxConfirmClose.Location = new System.Drawing.Point(6, 122);
+            this.checkBoxConfirmClose.Name = "checkBoxConfirmClose";
+            this.checkBoxConfirmClose.Size = new System.Drawing.Size(135, 17);
+            this.checkBoxConfirmClose.TabIndex = 8;
+            this.checkBoxConfirmClose.Text = "checkBoxConfirmClose";
+            this.checkBoxConfirmClose.UseVisualStyleBackColor = true;
             // 
-            // btnFont
+            // buttonFont
             // 
-            this.btnFont.Location = new System.Drawing.Point(6, 78);
-            this.btnFont.Name = "btnFont";
-            this.btnFont.Size = new System.Drawing.Size(75, 23);
-            this.btnFont.TabIndex = 6;
-            this.btnFont.Text = "btnFont";
-            this.btnFont.UseVisualStyleBackColor = true;
-            this.btnFont.Click += new System.EventHandler(this.BtnFont_Click);
+            this.buttonFont.Location = new System.Drawing.Point(6, 78);
+            this.buttonFont.Name = "buttonFont";
+            this.buttonFont.Size = new System.Drawing.Size(75, 23);
+            this.buttonFont.TabIndex = 6;
+            this.buttonFont.Text = "buttonFont";
+            this.buttonFont.UseVisualStyleBackColor = true;
+            this.buttonFont.Click += new System.EventHandler(this.ButtonFont_Click);
             // 
-            // tbxOutputDirectory
+            // textBoxOutputDirectory
             // 
-            this.tbxOutputDirectory.Location = new System.Drawing.Point(99, 38);
-            this.tbxOutputDirectory.Name = "tbxOutputDirectory";
-            this.tbxOutputDirectory.Size = new System.Drawing.Size(180, 20);
-            this.tbxOutputDirectory.TabIndex = 4;
+            this.textBoxOutputDirectory.Location = new System.Drawing.Point(99, 38);
+            this.textBoxOutputDirectory.Name = "textBoxOutputDirectory";
+            this.textBoxOutputDirectory.Size = new System.Drawing.Size(180, 20);
+            this.textBoxOutputDirectory.TabIndex = 4;
             // 
-            // tbxInputDirectory
+            // textBoxInputDirectory
             // 
-            this.tbxInputDirectory.Location = new System.Drawing.Point(99, 12);
-            this.tbxInputDirectory.Name = "tbxInputDirectory";
-            this.tbxInputDirectory.Size = new System.Drawing.Size(180, 20);
-            this.tbxInputDirectory.TabIndex = 1;
+            this.textBoxInputDirectory.Location = new System.Drawing.Point(99, 12);
+            this.textBoxInputDirectory.Name = "textBoxInputDirectory";
+            this.textBoxInputDirectory.Size = new System.Drawing.Size(180, 20);
+            this.textBoxInputDirectory.TabIndex = 1;
             // 
-            // btnOutputDirectory
+            // buttonOutputDirectory
             // 
-            this.btnOutputDirectory.Image = global::AscGenDotNet.Properties.Resources.folder;
-            this.btnOutputDirectory.Location = new System.Drawing.Point(285, 36);
-            this.btnOutputDirectory.Name = "btnOutputDirectory";
-            this.btnOutputDirectory.Size = new System.Drawing.Size(30, 23);
-            this.btnOutputDirectory.TabIndex = 5;
-            this.btnOutputDirectory.UseVisualStyleBackColor = true;
-            this.btnOutputDirectory.Click += new System.EventHandler(this.BtnOutputDirectory_Click);
+            this.buttonOutputDirectory.Image = global::AscGenDotNet.Properties.Resources.folder;
+            this.buttonOutputDirectory.Location = new System.Drawing.Point(285, 36);
+            this.buttonOutputDirectory.Name = "buttonOutputDirectory";
+            this.buttonOutputDirectory.Size = new System.Drawing.Size(30, 23);
+            this.buttonOutputDirectory.TabIndex = 5;
+            this.buttonOutputDirectory.UseVisualStyleBackColor = true;
+            this.buttonOutputDirectory.Click += new System.EventHandler(this.ButtonOutputDirectory_Click);
             // 
-            // lblOutputDirectory
+            // labelOutputDirectory
             // 
-            this.lblOutputDirectory.AutoSize = true;
-            this.lblOutputDirectory.Location = new System.Drawing.Point(6, 41);
-            this.lblOutputDirectory.Name = "lblOutputDirectory";
-            this.lblOutputDirectory.Size = new System.Drawing.Size(91, 13);
-            this.lblOutputDirectory.TabIndex = 3;
-            this.lblOutputDirectory.Text = "lblOutputDirectory";
+            this.labelOutputDirectory.AutoSize = true;
+            this.labelOutputDirectory.Location = new System.Drawing.Point(6, 41);
+            this.labelOutputDirectory.Name = "labelOutputDirectory";
+            this.labelOutputDirectory.Size = new System.Drawing.Size(103, 13);
+            this.labelOutputDirectory.TabIndex = 3;
+            this.labelOutputDirectory.Text = "labelOutputDirectory";
             // 
-            // btnInputDirectory
+            // buttonInputDirectory
             // 
-            this.btnInputDirectory.Image = global::AscGenDotNet.Properties.Resources.folder;
-            this.btnInputDirectory.Location = new System.Drawing.Point(285, 10);
-            this.btnInputDirectory.Name = "btnInputDirectory";
-            this.btnInputDirectory.Size = new System.Drawing.Size(30, 23);
-            this.btnInputDirectory.TabIndex = 2;
-            this.btnInputDirectory.UseVisualStyleBackColor = true;
-            this.btnInputDirectory.Click += new System.EventHandler(this.BtnInputDirectory_Click);
+            this.buttonInputDirectory.Image = global::AscGenDotNet.Properties.Resources.folder;
+            this.buttonInputDirectory.Location = new System.Drawing.Point(285, 10);
+            this.buttonInputDirectory.Name = "buttonInputDirectory";
+            this.buttonInputDirectory.Size = new System.Drawing.Size(30, 23);
+            this.buttonInputDirectory.TabIndex = 2;
+            this.buttonInputDirectory.UseVisualStyleBackColor = true;
+            this.buttonInputDirectory.Click += new System.EventHandler(this.ButtonInputDirectory_Click);
             // 
-            // lblInputDirectory
+            // labelInputDirectory
             // 
-            this.lblInputDirectory.AutoSize = true;
-            this.lblInputDirectory.Location = new System.Drawing.Point(6, 15);
-            this.lblInputDirectory.Name = "lblInputDirectory";
-            this.lblInputDirectory.Size = new System.Drawing.Size(83, 13);
-            this.lblInputDirectory.TabIndex = 0;
-            this.lblInputDirectory.Text = "lblInputDirectory";
+            this.labelInputDirectory.AutoSize = true;
+            this.labelInputDirectory.Location = new System.Drawing.Point(6, 15);
+            this.labelInputDirectory.Name = "labelInputDirectory";
+            this.labelInputDirectory.Size = new System.Drawing.Size(95, 13);
+            this.labelInputDirectory.TabIndex = 0;
+            this.labelInputDirectory.Text = "labelInputDirectory";
             // 
             // tabSettings
             // 
@@ -288,17 +287,27 @@ namespace JMSoftware.AsciiGeneratorDotNet
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // buttonDefault
+            // 
+            this.buttonDefault.Location = new System.Drawing.Point(180, 189);
+            this.buttonDefault.Name = "buttonDefault";
+            this.buttonDefault.Size = new System.Drawing.Size(75, 23);
+            this.buttonDefault.TabIndex = 4;
+            this.buttonDefault.Text = "buttonDefault";
+            this.buttonDefault.UseVisualStyleBackColor = true;
+            // 
             // FormEditSettings
             // 
-            this.AcceptButton = this.btnOk;
+            this.AcceptButton = this.buttonOk;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.btnCancel;
+            this.CancelButton = this.buttonCancel;
             this.ClientSize = new System.Drawing.Size(353, 224);
-            this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.buttonDefault);
+            this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.tabSettings);
-            this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnOk);
+            this.Controls.Add(this.buttonCancel);
+            this.Controls.Add(this.buttonOk);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.Name = "FormEditSettings";
@@ -314,5 +323,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
         }
 
         #endregion Private methods
+
+        private System.Windows.Forms.Button buttonDefault;
     }
 }
