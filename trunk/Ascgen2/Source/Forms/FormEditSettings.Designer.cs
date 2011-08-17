@@ -63,9 +63,9 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
         private System.Windows.Forms.Label labelOutputDirectory;
 
-        private System.Windows.Forms.TabPage pageBasic;
+        private System.Windows.Forms.TabPage tabPageBasic;
 
-        private System.Windows.Forms.TabControl tabSettings;
+        private System.Windows.Forms.TabControl tabControlSettings;
 
         private System.Windows.Forms.TextBox textBoxFont;
 
@@ -106,7 +106,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.pageBasic = new System.Windows.Forms.TabPage();
+            this.tabPageBasic = new System.Windows.Forms.TabPage();
             this.textBoxFont = new System.Windows.Forms.TextBox();
             this.checkBoxConfirmVersionCheck = new System.Windows.Forms.CheckBox();
             this.checkBoxConfirmClose = new System.Windows.Forms.CheckBox();
@@ -117,12 +117,12 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.labelOutputDirectory = new System.Windows.Forms.Label();
             this.buttonInputDirectory = new System.Windows.Forms.Button();
             this.labelInputDirectory = new System.Windows.Forms.Label();
-            this.tabSettings = new System.Windows.Forms.TabControl();
+            this.tabControlSettings = new System.Windows.Forms.TabControl();
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.buttonDefault = new System.Windows.Forms.Button();
-            this.pageBasic.SuspendLayout();
-            this.tabSettings.SuspendLayout();
+            this.tabPageBasic.SuspendLayout();
+            this.tabControlSettings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -151,6 +151,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             // buttonSave
             // 
             this.buttonSave.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.buttonSave.Enabled = false;
             this.buttonSave.Location = new System.Drawing.Point(96, 189);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(75, 23);
@@ -158,25 +159,25 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.buttonSave.Text = "buttonSave";
             this.buttonSave.UseVisualStyleBackColor = true;
             // 
-            // pageBasic
+            // tabPageBasic
             // 
-            this.pageBasic.Controls.Add(this.textBoxFont);
-            this.pageBasic.Controls.Add(this.checkBoxConfirmVersionCheck);
-            this.pageBasic.Controls.Add(this.checkBoxConfirmClose);
-            this.pageBasic.Controls.Add(this.buttonFont);
-            this.pageBasic.Controls.Add(this.textBoxOutputDirectory);
-            this.pageBasic.Controls.Add(this.textBoxInputDirectory);
-            this.pageBasic.Controls.Add(this.buttonOutputDirectory);
-            this.pageBasic.Controls.Add(this.labelOutputDirectory);
-            this.pageBasic.Controls.Add(this.buttonInputDirectory);
-            this.pageBasic.Controls.Add(this.labelInputDirectory);
-            this.pageBasic.Location = new System.Drawing.Point(4, 22);
-            this.pageBasic.Name = "pageBasic";
-            this.pageBasic.Padding = new System.Windows.Forms.Padding(3);
-            this.pageBasic.Size = new System.Drawing.Size(321, 145);
-            this.pageBasic.TabIndex = 4;
-            this.pageBasic.Text = "pageBasic";
-            this.pageBasic.UseVisualStyleBackColor = true;
+            this.tabPageBasic.Controls.Add(this.textBoxFont);
+            this.tabPageBasic.Controls.Add(this.checkBoxConfirmVersionCheck);
+            this.tabPageBasic.Controls.Add(this.checkBoxConfirmClose);
+            this.tabPageBasic.Controls.Add(this.buttonFont);
+            this.tabPageBasic.Controls.Add(this.textBoxOutputDirectory);
+            this.tabPageBasic.Controls.Add(this.textBoxInputDirectory);
+            this.tabPageBasic.Controls.Add(this.buttonOutputDirectory);
+            this.tabPageBasic.Controls.Add(this.labelOutputDirectory);
+            this.tabPageBasic.Controls.Add(this.buttonInputDirectory);
+            this.tabPageBasic.Controls.Add(this.labelInputDirectory);
+            this.tabPageBasic.Location = new System.Drawing.Point(4, 22);
+            this.tabPageBasic.Name = "tabPageBasic";
+            this.tabPageBasic.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageBasic.Size = new System.Drawing.Size(321, 145);
+            this.tabPageBasic.TabIndex = 4;
+            this.tabPageBasic.Text = "tabPageBasic";
+            this.tabPageBasic.UseVisualStyleBackColor = true;
             // 
             // textBoxFont
             // 
@@ -270,18 +271,18 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.labelInputDirectory.TabIndex = 0;
             this.labelInputDirectory.Text = "labelInputDirectory";
             // 
-            // tabSettings
+            // tabControlSettings
             // 
-            this.tabSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            this.tabControlSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabSettings.Controls.Add(this.pageBasic);
-            this.tabSettings.HotTrack = true;
-            this.tabSettings.Location = new System.Drawing.Point(12, 12);
-            this.tabSettings.Name = "tabSettings";
-            this.tabSettings.SelectedIndex = 0;
-            this.tabSettings.Size = new System.Drawing.Size(329, 171);
-            this.tabSettings.TabIndex = 0;
+            this.tabControlSettings.Controls.Add(this.tabPageBasic);
+            this.tabControlSettings.HotTrack = true;
+            this.tabControlSettings.Location = new System.Drawing.Point(12, 12);
+            this.tabControlSettings.Name = "tabControlSettings";
+            this.tabControlSettings.SelectedIndex = 0;
+            this.tabControlSettings.Size = new System.Drawing.Size(329, 171);
+            this.tabControlSettings.TabIndex = 0;
             // 
             // errorProvider1
             // 
@@ -289,6 +290,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             // 
             // buttonDefault
             // 
+            this.buttonDefault.Enabled = false;
             this.buttonDefault.Location = new System.Drawing.Point(180, 189);
             this.buttonDefault.Name = "buttonDefault";
             this.buttonDefault.Size = new System.Drawing.Size(75, 23);
@@ -305,7 +307,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.ClientSize = new System.Drawing.Size(353, 224);
             this.Controls.Add(this.buttonDefault);
             this.Controls.Add(this.buttonSave);
-            this.Controls.Add(this.tabSettings);
+            this.Controls.Add(this.tabControlSettings);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonOk);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -314,9 +316,9 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FormEditSettings";
-            this.pageBasic.ResumeLayout(false);
-            this.pageBasic.PerformLayout();
-            this.tabSettings.ResumeLayout(false);
+            this.tabPageBasic.ResumeLayout(false);
+            this.tabPageBasic.PerformLayout();
+            this.tabControlSettings.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
