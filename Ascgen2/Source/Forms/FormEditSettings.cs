@@ -243,7 +243,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
         {
             this.Text = Resource.GetString("Edit Settings");
 
-            this.pageBasic.Text = Resource.GetString("Basic");
+            this.tabPageBasic.Text = Resource.GetString("Basic");
 
             this.buttonOk.Text = Resource.GetString("&Ok");
             this.buttonSave.Text = Resource.GetString("&Save");
