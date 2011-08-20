@@ -117,7 +117,7 @@ namespace JMSoftware.Controls
             this.trkBrightness.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.trkBrightness.AutoSize = false;
-            this.trkBrightness.LargeChange = 10;
+            this.trkBrightness.LargeChange = 20;
             this.trkBrightness.Location = new System.Drawing.Point(-5, 19);
             this.trkBrightness.Maximum = 150;
             this.trkBrightness.Minimum = -150;
@@ -125,8 +125,8 @@ namespace JMSoftware.Controls
             this.trkBrightness.Size = new System.Drawing.Size(131, 24);
             this.trkBrightness.TabIndex = 20;
             this.trkBrightness.TickFrequency = 15;
-            this.trkBrightness.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TrkBrightness_MouseDown);
             this.trkBrightness.Scroll += new System.EventHandler(this.TrkBrightness_Scroll);
+            this.trkBrightness.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TrkBrightness_MouseDown);
             this.trkBrightness.MouseUp += new System.Windows.Forms.MouseEventHandler(this.TrkBrightness_MouseUp);
             // 
             // trkContrast
@@ -142,25 +142,25 @@ namespace JMSoftware.Controls
             this.trkContrast.Size = new System.Drawing.Size(131, 24);
             this.trkContrast.TabIndex = 23;
             this.trkContrast.TickFrequency = 10;
-            this.trkContrast.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TrkContrast_MouseDown);
             this.trkContrast.Scroll += new System.EventHandler(this.TrkContrast_Scroll);
+            this.trkContrast.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TrkContrast_MouseDown);
             this.trkContrast.MouseUp += new System.Windows.Forms.MouseEventHandler(this.TrkContrast_MouseUp);
             // 
-            // udBrightness
+            // nudBrightness
             // 
             this.nudBrightness.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.nudBrightness.Location = new System.Drawing.Point(64, 2);
-            this.nudBrightness.Name = "udBrightness";
+            this.nudBrightness.Name = "nudBrightness";
             this.nudBrightness.Size = new System.Drawing.Size(50, 20);
             this.nudBrightness.TabIndex = 24;
             this.nudBrightness.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.nudBrightness.ValueChanged += new System.EventHandler(this.NudBrightness_ValueChanged);
             // 
-            // udContrast
+            // nudContrast
             // 
             this.nudContrast.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.nudContrast.Location = new System.Drawing.Point(64, 46);
-            this.nudContrast.Name = "udContrast";
+            this.nudContrast.Name = "nudContrast";
             this.nudContrast.Size = new System.Drawing.Size(50, 20);
             this.nudContrast.TabIndex = 25;
             this.nudContrast.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
