@@ -77,7 +77,10 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// </value>
         public bool CheckForNewVersions
         {
-            get { return this.checkBoxConfirmVersionCheck.Checked; }
+            get
+            {
+                return this.checkBoxConfirmVersionCheck.Checked;
+            }
         }
 
         /// <summary>
@@ -88,7 +91,10 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// </value>
         public bool ConfirmOnClose
         {
-            get { return this.checkBoxConfirmClose.Checked; }
+            get
+            {
+                return this.checkBoxConfirmClose.Checked;
+            }
         }
 
         /// <summary>
@@ -116,7 +122,10 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// <value>The input directory.</value>
         public string InputDirectory
         {
-            get { return this.textBoxInputDirectory.Text; }
+            get
+            {
+                return this.textBoxInputDirectory.Text;
+            }
         }
 
         /// <summary>
@@ -125,7 +134,10 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// <value>The output directory.</value>
         public string OutputDirectory
         {
-            get { return this.textBoxOutputDirectory.Text; }
+            get
+            {
+                return this.textBoxOutputDirectory.Text;
+            }
         }
 
         #endregion Properties
