@@ -272,5 +272,15 @@ namespace JMSoftware.AsciiGeneratorDotNet
         }
 
         #endregion Private methods
+
+        /// <summary>
+        /// Handles the Click event of the buttonSave control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void ButtonSave_Click(object sender, EventArgs e)
+        {
+            Variables.SaveSettings();
+        }
     }
 }
