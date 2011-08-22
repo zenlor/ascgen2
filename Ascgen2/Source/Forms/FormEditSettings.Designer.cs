@@ -151,13 +151,13 @@ namespace JMSoftware.AsciiGeneratorDotNet
             // buttonSave
             // 
             this.buttonSave.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.buttonSave.Enabled = false;
             this.buttonSave.Location = new System.Drawing.Point(96, 189);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(75, 23);
             this.buttonSave.TabIndex = 2;
             this.buttonSave.Text = "buttonSave";
             this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.Click += new System.EventHandler(this.ButtonSave_Click);
             // 
             // tabPageBasic
             // 
