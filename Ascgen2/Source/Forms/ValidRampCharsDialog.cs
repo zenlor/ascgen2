@@ -45,7 +45,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.UpdateUI();
 
             this.cmbCharacters.Items.Clear();
-            this.cmbCharacters.Items.AddRange(Variables.DefaultValidCharacters);
+            this.cmbCharacters.Items.AddRange(Variables.Instance.DefaultValidCharacters);
         }
 
         #endregion Constructors
@@ -114,9 +114,9 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void BtnDefault_Click(object sender, System.EventArgs e)
         {
-            this.cmbCharacters.Text = Variables.CurrentSelectedValidCharacters > -1 ?
-                (string)Variables.DefaultValidCharacters[Variables.CurrentSelectedValidCharacters] :
-                Variables.CurrentCharacters;
+            this.cmbCharacters.Text = Variables.Instance.CurrentSelectedValidCharacters > -1 ?
+                (string)Variables.Instance.DefaultValidCharacters[Variables.Instance.CurrentSelectedValidCharacters] :
+                Variables.Instance.CurrentCharacters;
 
             this.cmbCharacters.Focus();
             this.cmbCharacters.SelectAll();

@@ -42,8 +42,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
         private System.Windows.Forms.Button buttonOutputDirectory;
 
-        private System.Windows.Forms.Button buttonSave;
-
         private System.Windows.Forms.CheckBox checkBoxConfirmClose;
 
         private System.Windows.Forms.CheckBox checkBoxConfirmVersionCheck;
@@ -104,7 +102,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.components = new System.ComponentModel.Container();
             this.buttonOk = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
-            this.buttonSave = new System.Windows.Forms.Button();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.tabPageBasic = new System.Windows.Forms.TabPage();
             this.textBoxFont = new System.Windows.Forms.TextBox();
@@ -147,17 +144,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.buttonCancel.TabIndex = 3;
             this.buttonCancel.Text = "buttonCancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
-            // 
-            // buttonSave
-            // 
-            this.buttonSave.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.buttonSave.Location = new System.Drawing.Point(96, 189);
-            this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(75, 23);
-            this.buttonSave.TabIndex = 2;
-            this.buttonSave.Text = "buttonSave";
-            this.buttonSave.UseVisualStyleBackColor = true;
-            this.buttonSave.Click += new System.EventHandler(this.ButtonSave_Click);
             // 
             // tabPageBasic
             // 
@@ -291,7 +277,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             // buttonDefault
             // 
             this.buttonDefault.Enabled = false;
-            this.buttonDefault.Location = new System.Drawing.Point(180, 189);
+            this.buttonDefault.Location = new System.Drawing.Point(139, 189);
             this.buttonDefault.Name = "buttonDefault";
             this.buttonDefault.Size = new System.Drawing.Size(75, 23);
             this.buttonDefault.TabIndex = 4;
@@ -306,7 +292,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.CancelButton = this.buttonCancel;
             this.ClientSize = new System.Drawing.Size(353, 224);
             this.Controls.Add(this.buttonDefault);
-            this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.tabControlSettings);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonOk);

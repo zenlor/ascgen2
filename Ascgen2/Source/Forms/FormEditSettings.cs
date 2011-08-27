@@ -228,13 +228,13 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// </summary>
         private void ResetSettings()
         {
-            this.textBoxInputDirectory.Text = Variables.InitialInputDirectory;
+            this.textBoxInputDirectory.Text = Variables.Instance.InitialInputDirectory;
 
-            this.textBoxOutputDirectory.Text = Variables.InitialOutputDirectory;
+            this.textBoxOutputDirectory.Text = Variables.Instance.InitialOutputDirectory;
 
-            this.checkBoxConfirmClose.Checked = Variables.ConfirmOnClose;
+            this.checkBoxConfirmClose.Checked = Variables.Instance.ConfirmOnClose;
 
-            this.checkBoxConfirmVersionCheck.Checked = Variables.CheckForNewVersion;
+            this.checkBoxConfirmVersionCheck.Checked = Variables.Instance.CheckForNewVersion;
         }
 
         /// <summary>
@@ -242,7 +242,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// </summary>
         private void UpdateFont()
         {
-            this.textBoxFont.Text = this.defaultFont.Name + String.Format(Variables.Culture, " {0}pt", this.defaultFont.Size) +
+            this.textBoxFont.Text = this.defaultFont.Name + String.Format(Variables.Instance.Culture, " {0}pt", this.defaultFont.Size) +
                 (this.defaultFont.Bold ? ", bold" : String.Empty) + (this.defaultFont.Italic ? ", italic" : String.Empty) +
                 (this.defaultFont.Underline ? ", underline" : String.Empty) +
                 (this.defaultFont.Strikeout ? ", strikeout" : String.Empty) + ".";
@@ -258,7 +258,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.tabPageBasic.Text = Resource.GetString("Basic");
 
             this.buttonOk.Text = Resource.GetString("&Ok");
-            this.buttonSave.Text = Resource.GetString("&Save");
             this.buttonDefault.Text = Resource.GetString("&Default");
             this.buttonCancel.Text = Resource.GetString("&Cancel");
 
@@ -272,15 +271,5 @@ namespace JMSoftware.AsciiGeneratorDotNet
         }
 
         #endregion Private methods
-
-        /// <summary>
-        /// Handles the Click event of the buttonSave control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void ButtonSave_Click(object sender, EventArgs e)
-        {
-            Variables.SaveSettings();
-        }
     }
 }
