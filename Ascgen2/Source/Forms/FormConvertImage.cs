@@ -136,7 +136,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             // Required for Windows Form Designer support
             this.InitializeComponent();
 
-            this.Text = Variables.ProgramName + " v" + Variables.Version.GetVersion();
+            this.Text = AscgenVersion.ProgramName + " v" + AscgenVersion.ToString();
 
             this.filename = String.Empty;
 
@@ -177,10 +177,10 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.versionChecker = new VersionChecker(
                                         this,
                                         "http://ascgen2.sourceforge.net/version.xml",
-                                        Variables.Version.Major,
-                                        Variables.Version.Minor,
-                                        Variables.Version.Patch,
-                                        Variables.Version.SuffixNumber);
+                                        AscgenVersion.Major,
+                                        AscgenVersion.Minor,
+                                        AscgenVersion.Patch,
+                                        AscgenVersion.SuffixNumber);
 
             this.versionChecker.OpenDownloadPageString = Resource.GetString("Open the download page") + "?";
             this.versionChecker.ThisIsLatestVersionString = Resource.GetString("This is the latest version");

@@ -110,11 +110,16 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// </summary>
         private void UpdateUI()
         {
-            this.lblVersion.Text = Variables.ProgramName + " " + Resource.GetString("Version") +
-                " " + Variables.Version.GetVersion() + Environment.NewLine +
-                Resource.GetString("Language") + ": " + Resource.GetString("British English");
+            this.lblVersion.Text = string.Format(
+                                                "{0} {1} {2}{3}{4}: {5}",
+                                                AscgenVersion.ProgramName,
+                                                Resource.GetString("Version"),
+                                                AscgenVersion.ToString(),
+                                                Environment.NewLine,
+                                                Resource.GetString("Language"),
+                                                Resource.GetString("British English"));
 
-            this.lblTitle.Text = Variables.ProgramName;
+            this.lblTitle.Text = AscgenVersion.ProgramName;
 
             this.btnOk.Text = Resource.GetString("&Ok");
         }

@@ -146,7 +146,7 @@ namespace JMSoftware.AsciiConversion
             }
 
             builder.Append("<meta name=\"generator\" content=\"Ascgen dotNET ");
-            builder.Append(Variables.Version.GetVersion());
+            builder.Append(AscgenVersion.ToString());
             builder.Append("\" />");
             builder.Append(Environment.NewLine);
 
@@ -315,8 +315,10 @@ namespace JMSoftware.AsciiConversion
                 builder.Append(Environment.NewLine);
             }
 
-            builder.Append(@"{\*\generator Ascgen dotNET ");
-            builder.Append(Variables.Version.GetVersion());
+            builder.Append(@"{\*\generator ");
+            builder.Append(AscgenVersion.ProgramName);
+            builder.Append(" ");
+            builder.Append(AscgenVersion.ToString());
             builder.Append(";}");
 
             // the font settings

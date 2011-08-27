@@ -988,7 +988,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// </summary>
         private void OutputLogHeader()
         {
-            this.AddLogString(Variables.ProgramName + " " + Variables.Version.GetVersion() +
+            this.AddLogString(AscgenVersion.ProgramName + " " + AscgenVersion.ToString() +
                 " " + Resource.GetString("Batch Conversion") + " " + Resource.GetString("Log"));
         }
 
