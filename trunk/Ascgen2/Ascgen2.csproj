@@ -195,6 +195,7 @@
     <None Include="Resources\money.png" />
     <None Include="Resources\picture_save.png" />
     <None Include="Resources\images.png" />
+    <Compile Include="Source\AscgenVersion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>

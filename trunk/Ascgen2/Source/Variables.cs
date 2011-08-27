@@ -33,13 +33,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
     /// </summary>
     public abstract class Variables
     {
-        #region Constants
-
-        /// <summary>The program name</summary>
-        public const string ProgramName = "ASCII Generator";
-
-        #endregion Constants
-
         #region Fields
 
         /// <summary>
@@ -690,46 +683,5 @@ namespace JMSoftware.AsciiGeneratorDotNet
         }
 
         #endregion Public methods
-
-        #region Nested classes
-
-        /// <summary>
-        /// Class Holding the current application version
-        /// </summary>
-        public abstract class Version
-        {
-            #region Constants
-
-            /// <summary>Major version number</summary>
-            public const int Major = 2;
-
-            /// <summary>Minor version number</summary>
-            public const int Minor = 0;
-
-            /// <summary>Patch version number</summary>
-            public const int Patch = 0;
-
-            /// <summary>Version Suffix</summary>
-            public const string Suffix = "dev";
-
-            /// <summary>Version Suffix Number</summary>
-            public const int SuffixNumber = 0;
-
-            #endregion Constants
-
-            #region Public methods
-
-            /// <summary>
-            /// Build and return the current application version
-            /// </summary>
-            /// <returns>The current version as a string</returns>
-            public static string GetVersion()
-            {
-                return Major.ToString() + "." + Minor.ToString() + "." + Patch.ToString() + Suffix;
-            }
-
-            #endregion Public methods
-        }
-        #endregion Nested classes
     }
 }
