@@ -138,15 +138,17 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             this.Text = AscgenVersion.ProgramName + " v" + AscgenVersion.ToString();
 
+            Variables.LoadSettings();
+
             this.filename = String.Empty;
 
             this.doConversion = true;
 
             this.AlterInputImageToolStripIsEnabled = false;
 
-            this.InputDirectory = Variables.InitialInputDirectory;
+            this.InputDirectory = Variables.Instance.InitialInputDirectory;
 
-            this.OutputDirectory = Variables.InitialOutputDirectory;
+            this.OutputDirectory = Variables.Instance.InitialOutputDirectory;
 
             this.clientSize = this.pnlMain.ClientSize;
 
@@ -158,13 +160,13 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             this.SetupWidgets();
 
-            this.dimensionsCalculator = new DimensionsCalculator(this.CurrentImageSection.Size, this.CharacterSize, Variables.DefaultWidth, Variables.DefaultHeight);
+            this.dimensionsCalculator = new DimensionsCalculator(this.CurrentImageSection.Size, this.CharacterSize, Variables.Instance.DefaultWidth, Variables.Instance.DefaultHeight);
 
             this.dimensionsCalculator.OnOutputSizeChanged += new EventHandler(this.DimensionsCalculator_OnOutputSizeChanged);
 
             this.textSettings.Font = null;
 
-            this.Font = Variables.DefaultFont;
+            this.Font = Variables.Instance.DefaultFont;
 
             this.SetupControls();
 
@@ -186,7 +188,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.versionChecker.ThisIsLatestVersionString = Resource.GetString("This is the latest version");
             this.versionChecker.VersionAvailableString = Resource.GetString("Version {0} is available");
 
-            if (Variables.CheckForNewVersion)
+            if (Variables.Instance.CheckForNewVersion)
             {
                 this.versionChecker.Check();
             }
@@ -490,7 +492,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
                 this.textSettings.Font =
                                     this.textViewer.Font =
-                                    Variables.DefaultFont =
+                                    Variables.Instance.DefaultFont =
                                     this.dialogChooseFont.Font = value;
 
                 this.toolStripRamp.Visible =
@@ -544,12 +546,12 @@ namespace JMSoftware.AsciiGeneratorDotNet
         {
             get
             {
-                return Variables.InitialInputDirectory;
+                return Variables.Instance.InitialInputDirectory;
             }
 
             set
             {
-                this.dialogLoadImage.InitialDirectory = Variables.InitialInputDirectory = value;
+                this.dialogLoadImage.InitialDirectory = Variables.Instance.InitialInputDirectory = value;
             }
         }
 
@@ -771,7 +773,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
         {
             get
             {
-                return Variables.InitialOutputDirectory;
+                return Variables.Instance.InitialOutputDirectory;
             }
 
             set
@@ -779,7 +781,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
                 this.dialogSaveImage.InitialDirectory =
                         this.dialogSaveText.InitialDirectory =
                         this.dialogSaveColour.InitialDirectory =
-                        Variables.InitialOutputDirectory = value;
+                        Variables.Instance.InitialOutputDirectory = value;
             }
         }
 
@@ -1175,7 +1177,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             {
                 if (strings.Count == 1)
                 {
-                    Variables.TranslationFile = strings[0];
+                    Variables.Instance.TranslationFile = strings[0];
                 }
 
                 return;
@@ -1183,14 +1185,14 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             using (FormSelectLanguage formSelectLanguage = new FormSelectLanguage(strings))
             {
-                formSelectLanguage.SelectedItem = Variables.TranslationFile;
+                formSelectLanguage.SelectedItem = Variables.Instance.TranslationFile;
 
                 if (formSelectLanguage.ShowDialog() != DialogResult.OK)
                 {
                     return;
                 }
 
-                Variables.TranslationFile = formSelectLanguage.SelectedItem;
+                Variables.Instance.TranslationFile = formSelectLanguage.SelectedItem;
             }
         }
 
@@ -1264,7 +1266,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// <returns>A value with whether we are closing without saving</returns>
         private bool CheckCloseWithoutSaving()
         {
-            if (this.imageSaved || !this.ImageIsLoaded || !Variables.ConfirmOnClose)
+            if (this.imageSaved || !this.ImageIsLoaded || !Variables.Instance.ConfirmOnClose)
             {
                 return true;
             }
@@ -1364,15 +1366,15 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             this.values = null;
 
-            this.brightnessContrast.Brightness = Variables.DefaultTextBrightness;
+            this.brightnessContrast.Brightness = Variables.Instance.DefaultTextBrightness;
 
-            this.brightnessContrast.Contrast = Variables.DefaultTextContrast;
+            this.brightnessContrast.Contrast = Variables.Instance.DefaultTextContrast;
 
-            this.MinimumLevel = this.levels.Minimum = Variables.DefaultMinLevel;
+            this.MinimumLevel = this.levels.Minimum = Variables.Instance.DefaultMinLevel;
 
-            this.MedianLevel = this.levels.Median = Variables.DefaultMedianLevel;
+            this.MedianLevel = this.levels.Median = Variables.Instance.DefaultMedianLevel;
 
-            this.MaximumLevel = this.levels.Maximum = Variables.DefaultMaxLevel;
+            this.MaximumLevel = this.levels.Maximum = Variables.Instance.DefaultMaxLevel;
 
             this.widgetTextSettings.Refresh();
 
@@ -1931,9 +1933,18 @@ namespace JMSoftware.AsciiGeneratorDotNet
                     this.Font = settingsDialog.DefaultFont;
                 }
 
-                Variables.ConfirmOnClose = settingsDialog.ConfirmOnClose;
+                Variables.Instance.ConfirmOnClose = settingsDialog.ConfirmOnClose;
 
-                Variables.CheckForNewVersion = settingsDialog.CheckForNewVersions;
+                Variables.Instance.CheckForNewVersion = settingsDialog.CheckForNewVersions;
+
+                // TODO: Put these in the settings form
+                Variables.Instance.DefaultWidth = 150;
+
+                Variables.Instance.DefaultHeight = -1;
+
+                Variables.Instance.TranslationFile = String.Empty;
+
+                Variables.Instance.SaveSettings();
             }
         }
 
@@ -2185,7 +2196,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
                 return;
             }
 
-            this.Filename = string.Format(Variables.Culture, "Clipboard{0:yyyyMMddHHmmss}", System.DateTime.Now);
+            this.Filename = string.Format(Variables.Instance.Culture, "Clipboard{0:yyyyMMddHHmmss}", System.DateTime.Now);
 
             this.LoadImage((Bitmap)data.GetData(DataFormats.Bitmap, true));
         }
@@ -2517,7 +2528,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             string filename = this.dialogSaveImage.FileName;
 
-            string extension = Path.GetExtension(filename).ToLower(Variables.Culture);
+            string extension = Path.GetExtension(filename).ToLower(Variables.Instance.Culture);
 
             switch (this.dialogSaveImage.FilterIndex)
             {
@@ -2671,70 +2682,70 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// </summary>
         private void SaveSettings()
         {
-            Variables.DefaultWidth = this.OutputWidth;
-            Variables.DefaultHeight = this.OutputHeight;
+            Variables.Instance.DefaultWidth = this.OutputWidth;
+            Variables.Instance.DefaultHeight = this.OutputHeight;
 
-            if (Variables.DefaultWidth == -1 && Variables.DefaultHeight == -1)
+            if (Variables.Instance.DefaultWidth == -1 && Variables.Instance.DefaultHeight == -1)
             {
-                Variables.DefaultWidth = 150;
+                Variables.Instance.DefaultWidth = 150;
             }
 
             if (this.dimensionsCalculator.DimensionsAreLocked)
             {
                 if (this.dimensionsCalculator.WidthChangedLast)
                 {
-                    Variables.DefaultHeight = -1;
+                    Variables.Instance.DefaultHeight = -1;
                 }
                 else
                 {
-                    Variables.DefaultWidth = -1;
+                    Variables.Instance.DefaultWidth = -1;
                 }
             }
 
-            Variables.DefaultFont = this.Font;
+            Variables.Instance.DefaultFont = this.Font;
 
-            Variables.DefaultTextBrightness = this.Brightness;
-            Variables.DefaultTextContrast = this.Contrast;
+            Variables.Instance.DefaultTextBrightness = this.Brightness;
+            Variables.Instance.DefaultTextContrast = this.Contrast;
 
-            Variables.DefaultMinLevel = this.MinimumLevel;
-            Variables.DefaultMedianLevel = this.MedianLevel;
-            Variables.DefaultMaxLevel = this.MaximumLevel;
+            Variables.Instance.DefaultMinLevel = this.MinimumLevel;
+            Variables.Instance.DefaultMedianLevel = this.MedianLevel;
+            Variables.Instance.DefaultMaxLevel = this.MaximumLevel;
 
-            Variables.DefaultDitheringLevel = this.Dithering;
-            Variables.DefaultDitheringRandom = this.DitheringRandom;
+            Variables.Instance.DefaultDitheringLevel = this.Dithering;
+            Variables.Instance.DefaultDitheringRandom = this.DitheringRandom;
 
-            Variables.Stretch = this.Stretch;
-            Variables.Sharpen = this.Sharpen;
-            Variables.UnsharpMask = this.Unsharp;
+            Variables.Instance.Stretch = this.Stretch;
+            Variables.Instance.Sharpen = this.Sharpen;
+            Variables.Instance.UnsharpMask = this.Unsharp;
 
-            Variables.FlipHorizontally = this.FlipHorizontally;
-            Variables.FlipVertically = this.FlipVertically;
+            Variables.Instance.FlipHorizontally = this.FlipHorizontally;
+            Variables.Instance.FlipVertically = this.FlipVertically;
 
-            Variables.InvertImage = !this.IsBlackTextOnWhite;
+            Variables.Instance.InvertImage = !this.IsBlackTextOnWhite;
 
             string[] ramps = new string[this.cmbRamp.Items.Count];
             this.cmbRamp.Items.CopyTo(ramps, 0);
-            Variables.DefaultRamps = ramps;
+            Variables.Instance.DefaultRamps = ramps;
 
-            Variables.CurrentSelectedRamp = this.cmbRamp.SelectedIndex;
-            Variables.CurrentRamp = this.cmbRamp.SelectedIndex == -1 ? this.cmbRamp.Text : String.Empty;
+            Variables.Instance.CurrentSelectedRamp = this.cmbRamp.SelectedIndex;
+            Variables.Instance.CurrentRamp = this.cmbRamp.SelectedIndex == -1 ? this.cmbRamp.Text : String.Empty;
 
-            Variables.UseGeneratedRamp = this.IsGeneratedRamp;
+            Variables.Instance.UseGeneratedRamp = this.IsGeneratedRamp;
 
             string[] characters = new string[this.cmbCharacters.Items.Count];
             this.cmbCharacters.Items.CopyTo(characters, 0);
-            Variables.DefaultValidCharacters = characters;
+            Variables.Instance.DefaultValidCharacters = characters;
 
-            Variables.CurrentSelectedValidCharacters = this.cmbCharacters.SelectedIndex;
-            Variables.CurrentCharacters = Variables.CurrentSelectedValidCharacters == -1 ? this.cmbCharacters.Text : String.Empty;
+            Variables.Instance.CurrentSelectedValidCharacters = this.cmbCharacters.SelectedIndex;
+            Variables.Instance.CurrentCharacters = Variables.Instance.CurrentSelectedValidCharacters == -1 ? this.cmbCharacters.Text : String.Empty;
 
-            Variables.ShowWidgetTextSettings = this.widgetTextSettings.Visible;
-            Variables.ShowWidgetImage = this.widgetImage.Visible;
+            Variables.Instance.ShowWidgetTextSettings = this.widgetTextSettings.Visible;
+            Variables.Instance.ShowWidgetImage = this.widgetImage.Visible;
 
-            Variables.SelectionBorderColor = this.widgetImage.SelectionBorderColor;
-            Variables.SelectionFillColor = this.widgetImage.SelectionFillColor;
+            Variables.Instance.SelectionBorderColor = this.widgetImage.SelectionBorderColor;
+            Variables.Instance.SelectionFillColor = this.widgetImage.SelectionFillColor;
 
-            Variables.SaveSettings();
+            Variables.Instance.SaveSettings();
         }
 
         /// <summary>
@@ -2806,51 +2817,51 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// </summary>
         private void SetupControls()
         {
-            this.tbxWidth.MaxLength = Variables.MaximumWidth.ToString(Variables.Culture).Length;
+            this.tbxWidth.MaxLength = Variables.Instance.MaximumWidth.ToString(Variables.Instance.Culture).Length;
 
-            this.tbxHeight.MaxLength = Variables.MaximumHeight.ToString(Variables.Culture).Length;
+            this.tbxHeight.MaxLength = Variables.Instance.MaximumHeight.ToString(Variables.Instance.Culture).Length;
 
-            this.cbxLocked.Checked = Variables.DefaultWidth < 1 || Variables.DefaultHeight < 1;
+            this.cbxLocked.Checked = Variables.Instance.DefaultWidth < 1 || Variables.Instance.DefaultHeight < 1;
 
-            this.widgetImage.SelectionBorderColor = Variables.SelectionBorderColor;
-            this.widgetImage.SelectionFillColor = Variables.SelectionFillColor;
+            this.widgetImage.SelectionBorderColor = Variables.Instance.SelectionBorderColor;
+            this.widgetImage.SelectionFillColor = Variables.Instance.SelectionFillColor;
 
             this.rtbxConvertedText.AllowDrop = true;
             this.rtbxConvertedText.DragDrop += new DragEventHandler(this.RtbxConvertedText_DragDrop);
             this.rtbxConvertedText.DragEnter += new DragEventHandler(this.RtbxConvertedText_DragEnter);
 
-            this.toolStripButtonBlackOnWhite.Checked = !Variables.InvertImage;
+            this.toolStripButtonBlackOnWhite.Checked = !Variables.Instance.InvertImage;
             this.textViewer.BackgroundColor = this.BackgroundColor;
             this.textViewer.TextColor = this.TextColor;
 
             this.SetupToolstrip();
 
             this.cmbRamp.Items.Clear();
-            this.cmbRamp.Items.AddRange(Variables.DefaultRamps);
+            this.cmbRamp.Items.AddRange(Variables.Instance.DefaultRamps);
 
-            if (Variables.CurrentSelectedRamp == -1)
+            if (Variables.Instance.CurrentSelectedRamp == -1)
             {
-                this.cmbRamp.Text = Variables.CurrentRamp;
+                this.cmbRamp.Text = Variables.Instance.CurrentRamp;
             }
             else
             {
-                this.cmbRamp.SelectedIndex = Variables.CurrentSelectedRamp;
+                this.cmbRamp.SelectedIndex = Variables.Instance.CurrentSelectedRamp;
             }
 
             this.cmbRamp.Select(0, 0);
 
-            this.IsGeneratedRamp = Variables.UseGeneratedRamp;
+            this.IsGeneratedRamp = Variables.Instance.UseGeneratedRamp;
 
             this.cmbCharacters.Items.Clear();
-            this.cmbCharacters.Items.AddRange(Variables.DefaultValidCharacters);
+            this.cmbCharacters.Items.AddRange(Variables.Instance.DefaultValidCharacters);
 
-            if (Variables.CurrentSelectedValidCharacters == -1)
+            if (Variables.Instance.CurrentSelectedValidCharacters == -1)
             {
-                this.cmbCharacters.Text = Variables.CurrentCharacters;
+                this.cmbCharacters.Text = Variables.Instance.CurrentCharacters;
             }
             else
             {
-                this.cmbCharacters.SelectedIndex = Variables.CurrentSelectedValidCharacters;
+                this.cmbCharacters.SelectedIndex = Variables.Instance.CurrentSelectedValidCharacters;
             }
 
             this.cmbCharacters.Select(0, 0); // make sure the text isn't selected
@@ -2910,17 +2921,17 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.widgetTextSettings.Enabled = false;
 
             this.brightnessContrast = this.widgetTextSettings;
-            this.brightnessContrast.Brightness = Variables.DefaultTextBrightness;
-            this.brightnessContrast.Contrast = Variables.DefaultTextContrast;
+            this.brightnessContrast.Brightness = Variables.Instance.DefaultTextBrightness;
+            this.brightnessContrast.Contrast = Variables.Instance.DefaultTextContrast;
 
             this.levels = this.widgetTextSettings;
-            this.levels.Minimum = Variables.DefaultMinLevel;
-            this.levels.Maximum = Variables.DefaultMaxLevel;
-            this.levels.Median = Variables.DefaultMedianLevel;
+            this.levels.Minimum = Variables.Instance.DefaultMinLevel;
+            this.levels.Maximum = Variables.Instance.DefaultMaxLevel;
+            this.levels.Median = Variables.Instance.DefaultMedianLevel;
 
             this.dither = this.widgetTextSettings;
-            this.dither.DitherAmount = Variables.DefaultDitheringLevel;
-            this.dither.DitherRandom = Variables.DefaultDitheringRandom;
+            this.dither.DitherAmount = Variables.Instance.DefaultDitheringLevel;
+            this.dither.DitherRandom = Variables.Instance.DefaultDitheringRandom;
         }
 
         /// <summary>
@@ -2961,9 +2972,9 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             this.pnlMain.Controls.AddRange(new Control[] { this.widgetTextSettings, this.widgetImage });
 
-            this.widgetTextSettings.Visible = Variables.ShowWidgetTextSettings;
+            this.widgetTextSettings.Visible = Variables.Instance.ShowWidgetTextSettings;
 
-            this.widgetImage.Visible = Variables.ShowWidgetImage;
+            this.widgetImage.Visible = Variables.Instance.ShowWidgetImage;
 
             // TODO: This, better
             foreach (Control control in this.pnlMain.Controls)
@@ -3038,7 +3049,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             if (this.formSaveAs.ShowDialog() == DialogResult.OK)
             {
-                string filename = Variables.Prefix + Path.GetFileNameWithoutExtension(this.Filename);
+                string filename = Variables.Instance.Prefix + Path.GetFileNameWithoutExtension(this.Filename);
 
                 if (this.formSaveAs.IsText)
                 {
@@ -3074,7 +3085,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             try
             {
-                this.dimensionsCalculator.Height = Convert.ToInt32(this.tbxHeight.Text, Variables.Culture);
+                this.dimensionsCalculator.Height = Convert.ToInt32(this.tbxHeight.Text, Variables.Instance.Culture);
             }
             catch (FormatException)
             {
@@ -3096,7 +3107,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             try
             {
-                this.dimensionsCalculator.Width = Convert.ToInt32(this.tbxWidth.Text, Variables.Culture);
+                this.dimensionsCalculator.Width = Convert.ToInt32(this.tbxWidth.Text, Variables.Instance.Culture);
             }
             catch (FormatException)
             {
@@ -3544,7 +3555,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void WidgetImage_SelectionChanging(object sender, EventArgs e)
         {
-            if (!Variables.UpdateWhileSelecting)
+            if (!Variables.Instance.UpdateWhileSelecting)
             {
                 return;
             }

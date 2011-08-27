@@ -25,65 +25,118 @@
 //---------------------------------------------------------------------------------------
 namespace JMSoftware.AsciiGeneratorDotNet
 {
+    using System;
     using System.Drawing;
     using System.Globalization;
+    using System.IO;
+    using System.Runtime.Serialization;
+    using System.Runtime.Serialization.Formatters.Binary;
 
     /// <summary>
     /// Abstract class containing global variables for the program
     /// </summary>
-    public abstract class Variables
+    [Serializable]
+    public sealed class Variables
     {
         #region Fields
 
         /// <summary>
+        /// Filename for the settings
+        /// </summary>
+        [NonSerialized()]
+        private static string filename = "settings.dat";
+
+        /// <summary>
+        /// The instance used in the singleton pattern.
+        /// </summary>
+        [NonSerialized()]
+        private static Variables instance = new Variables();
+
+        /// <summary>
         /// Check for a new version of the program?
         /// </summary>
-        private static bool checkForNewVersion = true;
+        private bool checkForNewVersion = true;
 
         /// <summary>
         /// Confirm to save the image on exit?
         /// </summary>
-        private static bool confirmOnClose = true;
+        private bool confirmOnClose = true;
 
         /// <summary>
         /// The culture used by the application
         /// </summary>
-        private static CultureInfo culture = new CultureInfo(string.Empty);
+        [NonSerialized()]
+        private CultureInfo culture = new CultureInfo(string.Empty);
+
+        /// <summary>
+        /// The current characters.
+        /// </summary>
+        [NonSerialized()]
+        private string currentCharacters;
+
+        /// <summary>
+        /// The current ramp.
+        /// </summary>
+        [NonSerialized()]
+        private string currentRamp;
+
+        /// <summary>
+        /// The currently selected ramp.
+        /// </summary>
+        [NonSerialized()]
+        private int currentSelectedRamp;
+
+        /// <summary>
+        /// The currently selected valid characters.
+        /// </summary>
+        [NonSerialized()]
+        private int currentSelectedValidCharacters;
 
         /// <summary>
         /// The default dithering level.
         /// </summary>
-        private static int defaultDitheringLevel = 4;
+        [NonSerialized()]
+        private int defaultDitheringLevel = 4;
 
         /// <summary>
         /// The default dithering random.
         /// </summary>
-        private static int defaultDitheringRandom = 3;
+        [NonSerialized()]
+        private int defaultDitheringRandom = 3;
 
         /// <summary>
         /// The default font
         /// </summary>
-        private static Font defaultFont = new Font("Lucida Console", 9f);
+        private Font defaultFont = new Font("Lucida Console", 9f);
 
         /// <summary>
         /// The default height
         /// </summary>
-        private static int defaultHeight = -1;
+        private int defaultHeight = -1;
 
         /// <summary>
-        /// The default max level
+        /// The default maximum level.
         /// </summary>
-        private static int defaultMaxLevel = 255;
+        [NonSerialized()]
+        private int defaultMaxLevel = 255;
 
         /// <summary>
         /// The default median level.
         /// </summary>
-        private static float defaultMedianLevel = 0.5f;
+        [NonSerialized()]
+        private float defaultMedianLevel = 0.5f;
+
+        /// <summary>
+        /// The default minimum level.
+        /// </summary>
+        [NonSerialized()]
+        private int defaultMinLevel;
 
         /// <summary>
         /// The default list of ramps.
         /// </summary>
-        private static string[] defaultRamps = new string[]
+        [NonSerialized()]
+        private string[] defaultRamps = new string[]
         {
             "MMMMMMM@@@@@@@WWWWWWWWWBBBBBBBB000000008888888ZZZZZZZZZaZaaaaaa2222222SSSSSSSXXXXXXXXXXX7777777rrrrrrr;;;;;;;;iiiiiiiii:::::::,:,,,,,,.........       ",
             "@@@@@@@######MMMBBHHHAAAA&&GGhh9933XXX222255SSSiiiissssrrrrrrr;;;;;;;;:::::::,,,,,,,........        ",
@@ -96,9 +149,22 @@ namespace JMSoftware.AsciiGeneratorDotNet
         };
 
         /// <summary>
+        /// The default text brightness.
+        /// </summary>
+        [NonSerialized()]
+        private int defaultTextBrightness;
+
+        /// <summary>
+        /// The default text contrast.
+        /// </summary>
+        [NonSerialized()]
+        private int defaultTextContrast;
+
+        /// <summary>
         /// The different strings of valid characters.
         /// </summary>
-        private static string[] defaultValidCharacters = new string[]
+        [NonSerialized()]
+        private string[] defaultValidCharacters = new string[]
         {
             " #,.0123456789:;@ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz$",
             " ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
@@ -111,81 +177,146 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// <summary>
         /// The default width
         /// </summary>
-        private static int defaultWidth = 150;
+        private int defaultWidth = 150;
+
+        /// <summary>
+        /// Flip the image horizontally?
+        /// </summary>
+        [NonSerialized()]
+        private bool flipHorizontally;
+
+        /// <summary>
+        /// Flip the image vertically?
+        /// </summary>
+        [NonSerialized()]
+        private bool flipVertically;
+
+        /// <summary>
+        /// Invert the output image?
+        /// </summary>
+        [NonSerialized()]
+        private bool invertImage;
+
+        /// <summary>
+        /// Load brightness/contrast from settings?
+        /// </summary>
+        [NonSerialized()]
+        private bool loadImageBrightnessContrast;
+
+        /// <summary>
+        /// Load levels from settings?
+        /// </summary>
+        [NonSerialized()]
+        private bool loadLevels;
+
+        /// <summary>
+        /// Load image brightness/contrast from settings?
+        /// </summary>
+        [NonSerialized()]
+        private bool loadTextBrightnessContrast;
 
         /// <summary>
         /// The maximum height for the output.
         /// </summary>
-        private static int maximumHeight = 999;
+        [NonSerialized()]
+        private int maximumHeight = 999;
 
         /// <summary>
         /// The maximum width for the output.
         /// </summary>
-        private static int maximumWidth = 999;
+        [NonSerialized()]
+        private int maximumWidth = 999;
 
         /// <summary>
         /// The filename prefix for output images
         /// </summary>
-        private static string prefix = "ASCII-";
+        [NonSerialized()]
+        private string prefix = "ASCII-";
 
         /// <summary>
         /// The selection border color.
         /// </summary>
-        private static Color selectionBorderColor = Color.DarkBlue;
+        [NonSerialized()]
+        private Color selectionBorderColor = Color.DarkBlue;
 
         /// <summary>
         /// The selection fill color.
         /// </summary>
-        private static Color selectionFillColor = Color.FromArgb(128, 173, 216, 230);
+        [NonSerialized()]
+        private Color selectionFillColor = Color.FromArgb(128, 173, 216, 230);
+
+        /// <summary>
+        /// Sharpen the output?
+        /// </summary>
+        [NonSerialized()]
+        private bool sharpen;
 
         /// <summary>
         /// Show the image widget?
         /// </summary>
-        private static bool showWidgetImage = true;
+        [NonSerialized()]
+        private bool showWidgetImage = true;
 
         /// <summary>
         /// Show the text settings widget?
         /// </summary>
-        private static bool showWidgetTextSettings = true;
+        [NonSerialized()]
+        private bool showWidgetTextSettings = true;
 
         /// <summary>
         /// Stretch the output?
         /// </summary>
-        private static bool stretch = true;
+        [NonSerialized()]
+        private bool stretch = true;
 
         /// <summary>
         /// Use an unsharp mask?
         /// </summary>
-        private static bool unsharpMask = true;
+        [NonSerialized()]
+        private bool unsharpMask = true;
 
         /// <summary>
         /// Update the output while selecting an area of the image?
         /// </summary>
-        private static bool updateWhileSelecting = true;
+        [NonSerialized()]
+        private bool updateWhileSelecting = true;
 
         /// <summary>
         /// Use a generated ramp?
         /// </summary>
-        private static bool useGeneratedRamp = true;
+        [NonSerialized()]
+        private bool useGeneratedRamp = true;
 
         #endregion Fields
 
         #region Properties
 
         /// <summary>
-        /// Gets or sets a value indicating whether to check for a new version.
+        /// Gets the singleton Variables instance.
         /// </summary>
-        /// <value><c>true</c> if checking for new versions; otherwise, <c>false</c>.</value>
-        public static bool CheckForNewVersion
+        /// <value>The instance.</value>
+        public static Variables Instance
         {
             get
             {
-                return checkForNewVersion;
+                return instance;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether to check for a new version.
+        /// </summary>
+        /// <value><c>true</c> if checking for new versions; otherwise, <c>false</c>.</value>
+        public bool CheckForNewVersion
+        {
+            get
+            {
+                return this.checkForNewVersion;
             }
 
             set
             {
-                checkForNewVersion = value;
+                this.checkForNewVersion = value;
             }
         }
 
@@ -193,16 +324,16 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// Gets or sets a value indicating whether confirm on close with an unsaved image.
         /// </summary>
         /// <value><c>true</c> if confirm on close; otherwise, <c>false</c>.</value>
-        public static bool ConfirmOnClose
+        public bool ConfirmOnClose
         {
             get
             {
-                return confirmOnClose;
+                return this.confirmOnClose;
             }
 
             set
             {
-                confirmOnClose = value;
+                this.confirmOnClose = value;
             }
         }
 
@@ -210,16 +341,16 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// Gets or sets the culture.
         /// </summary>
         /// <value>The culture.</value>
-        public static CultureInfo Culture
+        public CultureInfo Culture
         {
             get
             {
-                return culture;
+                return this.culture;
             }
 
             set
             {
-                culture = value;
+                this.culture = value;
             }
         }
 
@@ -227,40 +358,84 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// Gets or sets the current characters.
         /// </summary>
         /// <value>The current characters.</value>
-        public static string CurrentCharacters { get; set; }
+        public string CurrentCharacters
+        {
+            get
+            {
+                return this.currentCharacters;
+            }
+
+            set
+            {
+                this.currentCharacters = value;
+            }
+        }
 
         /// <summary>
         /// Gets or sets the current ramp.
         /// </summary>
         /// <value>The current ramp.</value>
-        public static string CurrentRamp { get; set; }
+        public string CurrentRamp
+        {
+            get
+            {
+                return this.currentRamp;
+            }
+
+            set
+            {
+                this.currentRamp = value;
+            }
+        }
 
         /// <summary>
         /// Gets or sets the currently selected ramp.
         /// </summary>
         /// <value>The currently selected ramp.</value>
-        public static int CurrentSelectedRamp { get; set; }
+        public int CurrentSelectedRamp
+        {
+            get
+            {
+                return this.currentSelectedRamp;
+            }
+
+            set
+            {
+                this.currentSelectedRamp = value;
+            }
+        }
 
         /// <summary>
         /// Gets or sets the currently selected valid characters.
         /// </summary>
         /// <value>The currently selected valid characters.</value>
-        public static int CurrentSelectedValidCharacters { get; set; }
+        public int CurrentSelectedValidCharacters
+        {
+            get
+            {
+                return this.currentSelectedValidCharacters;
+            }
+
+            set
+            {
+                this.currentSelectedValidCharacters = value;
+            }
+        }
 
         /// <summary>
         /// Gets or sets the default dithering level.
         /// </summary>
         /// <value>The default dithering level.</value>
-        public static int DefaultDitheringLevel
+        public int DefaultDitheringLevel
         {
             get
             {
-                return defaultDitheringLevel;
+                return this.defaultDitheringLevel;
             }
 
             set
             {
-                defaultDitheringLevel = value;
+                this.defaultDitheringLevel = value;
             }
         }
 
@@ -268,16 +443,16 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// Gets or sets 
         /// </summary>
         /// <value>The default dithering random.</value>
-        public static int DefaultDitheringRandom
+        public int DefaultDitheringRandom
         {
             get
             {
-                return defaultDitheringRandom;
+                return this.defaultDitheringRandom;
             }
 
             set
             {
-                defaultDitheringRandom = value;
+                this.defaultDitheringRandom = value;
             }
         }
 
@@ -285,16 +460,16 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// Gets or sets the default font.
         /// </summary>
         /// <value>The default font.</value>
-        public static Font DefaultFont
+        public Font DefaultFont
         {
             get
             {
-                return defaultFont;
+                return this.defaultFont;
             }
 
             set
             {
-                defaultFont = value;
+                this.defaultFont = value;
             }
         }
 
@@ -302,33 +477,33 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// Gets or sets the default height.
         /// </summary>
         /// <value>The default height.</value>
-        public static int DefaultHeight
+        public int DefaultHeight
         {
             get
             {
-                return defaultHeight;
+                return this.defaultHeight;
             }
 
             set
             {
-                defaultHeight = value;
+                this.defaultHeight = value;
             }
         }
 
         /// <summary>
         /// Gets or sets the default max level.
         /// </summary>
-        /// <value>The default max level.</value>
-        public static int DefaultMaxLevel
+        /// <value>The default maximum level.</value>
+        public int DefaultMaxLevel
         {
             get
             {
-                return defaultMaxLevel;
+                return this.defaultMaxLevel;
             }
 
             set
             {
-                defaultMaxLevel = value;
+                this.defaultMaxLevel = value;
             }
         }
 
@@ -336,39 +511,50 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// Gets or sets the default median level.
         /// </summary>
         /// <value>The default median level.</value>
-        public static float DefaultMedianLevel
+        public float DefaultMedianLevel
         {
             get
             {
-                return defaultMedianLevel;
+                return this.defaultMedianLevel;
             }
 
             set
             {
-                defaultMedianLevel = value;
+                this.defaultMedianLevel = value;
             }
         }
 
         /// <summary>
         /// Gets or sets the default min level.
         /// </summary>
-        /// <value>The default min level.</value>
-        public static int DefaultMinLevel { get; set; }
+        /// <value>The default minimum level.</value>
+        public int DefaultMinLevel
+        {
+            get
+            {
+                return this.defaultMinLevel;
+            }
+
+            set
+            {
+                this.defaultMinLevel = value;
+            }
+        }
 
         /// <summary>
         /// Gets or sets the default list of ramps
         /// </summary>
         /// <value>The default ramps.</value>
-        public static string[] DefaultRamps
+        public string[] DefaultRamps
         {
             get
             {
-                return defaultRamps;
+                return this.defaultRamps;
             }
 
             set
             {
-                defaultRamps = value;
+                this.defaultRamps = value;
             }
         }
 
@@ -376,28 +562,50 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// Gets or sets the default text brightness.
         /// </summary>
         /// <value>The default text brightness.</value>
-        public static int DefaultTextBrightness { get; set; }
+        public int DefaultTextBrightness
+        {
+            get
+            {
+                return this.defaultTextBrightness;
+            }
+
+            set
+            {
+                this.defaultTextBrightness = value;
+            }
+        }
 
         /// <summary>
         /// Gets or sets the default text contrast.
         /// </summary>
         /// <value>The default text contrast.</value>
-        public static int DefaultTextContrast { get; set; }
+        public int DefaultTextContrast
+        {
+            get
+            {
+                return this.defaultTextContrast;
+            }
+
+            set
+            {
+                this.defaultTextContrast = value;
+            }
+        }
 
         /// <summary>
         /// Gets or sets the default settings used for all ASCII ramp valid character strings
         /// </summary>
         /// <value>The default valid characters.</value>
-        public static string[] DefaultValidCharacters
+        public string[] DefaultValidCharacters
         {
             get
             {
-                return defaultValidCharacters;
+                return this.defaultValidCharacters;
             }
 
             set
             {
-                defaultValidCharacters = value;
+                this.defaultValidCharacters = value;
             }
         }
 
@@ -405,16 +613,16 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// Gets or sets the default width.
         /// </summary>
         /// <value>The default width.</value>
-        public static int DefaultWidth
+        public int DefaultWidth
         {
             get
             {
-                return defaultWidth;
+                return this.defaultWidth;
             }
 
             set
             {
-                defaultWidth = value;
+                this.defaultWidth = value;
             }
         }
 
@@ -422,31 +630,64 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// Gets or sets a value indicating whether the default value for whether the output should be flipped horizontally
         /// </summary>
         /// <value><c>true</c> if flipping horizontally; otherwise, <c>false</c>.</value>
-        public static bool FlipHorizontally { get; set; }
+        public bool FlipHorizontally
+        {
+            get
+            {
+                return this.flipHorizontally;
+            }
+
+            set
+            {
+                this.flipHorizontally = value;
+            }
+        }
 
         /// <summary>
         /// Gets or sets a value indicating whether the default value for whether the output should be flipped vertically
         /// </summary>
         /// <value><c>true</c> if flip vertically; otherwise, <c>false</c>.</value>
-        public static bool FlipVertically { get; set; }
+        public bool FlipVertically
+        {
+            get
+            {
+                return this.flipVertically;
+            }
+
+            set
+            {
+                this.flipVertically = value;
+            }
+        }
 
         /// <summary>
         /// Gets or sets the initial input directory.
         /// </summary>
         /// <value>The initial input directory.</value>
-        public static string InitialInputDirectory { get; set; }
+        public string InitialInputDirectory { get; set; }
 
         /// <summary>
         /// Gets or sets the initial output directory.
         /// </summary>
         /// <value>The initial output directory.</value>
-        public static string InitialOutputDirectory { get; set; }
+        public string InitialOutputDirectory { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether to invert the output image.
         /// </summary>
         /// <value><c>true</c> if inverting image; otherwise, <c>false</c>.</value>
-        public static bool InvertImage { get; set; }
+        public bool InvertImage
+        {
+            get
+            {
+                return this.invertImage;
+            }
+
+            set
+            {
+                this.invertImage = value;
+            }
+        }
 
         /// <summary>
         /// Gets or sets a value indicating whether the default value for whether brightness and contrast should be loaded from the settings
@@ -454,13 +695,35 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// <value>
         /// <c>true</c> if loading image brightness contrast; otherwise, <c>false</c>.
         /// </value>
-        public static bool LoadImageBrightnessContrast { get; set; }
+        public bool LoadImageBrightnessContrast
+        {
+            get
+            {
+                return this.loadImageBrightnessContrast;
+            }
+
+            set
+            {
+                this.loadImageBrightnessContrast = value;
+            }
+        }
 
         /// <summary>
         /// Gets or sets a value indicating whether the default value for whether the levels should be loaded from the settings
         /// </summary>
         /// <value><c>true</c> if loading levels; otherwise, <c>false</c>.</value>
-        public static bool LoadLevels { get; set; }
+        public bool LoadLevels
+        {
+            get
+            {
+                return this.loadLevels;
+            }
+
+            set
+            {
+                this.loadLevels = value;
+            }
+        }
 
         /// <summary>
         /// Gets or sets a value indicating whether the default value for whether the text brightness and contrast should be loaded from the settings
@@ -468,22 +731,33 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// <value>
         /// <c>true</c> if loading text brightness contrast; otherwise, <c>false</c>.
         /// </value>
-        public static bool LoadTextBrightnessContrast { get; set; }
+        public bool LoadTextBrightnessContrast
+        {
+            get
+            {
+                return this.loadTextBrightnessContrast;
+            }
+
+            set
+            {
+                this.loadTextBrightnessContrast = value;
+            }
+        }
 
         /// <summary>
         /// Gets or sets the maximum height for the output.
         /// </summary>
         /// <value>The maximum height.</value>
-        public static int MaximumHeight
+        public int MaximumHeight
         {
             get
             {
-                return maximumHeight;
+                return this.maximumHeight;
             }
 
             set
             {
-                maximumHeight = value;
+                this.maximumHeight = value;
             }
         }
 
@@ -491,16 +765,16 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// Gets or sets the maximum width for the output.
         /// </summary>
         /// <value>The maximum width.</value>
-        public static int MaximumWidth
+        public int MaximumWidth
         {
             get
             {
-                return maximumWidth;
+                return this.maximumWidth;
             }
 
             set
             {
-                maximumWidth = value;
+                this.maximumWidth = value;
             }
         }
 
@@ -508,16 +782,16 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// Gets or sets the filename prefix.
         /// </summary>
         /// <value>The prefix.</value>
-        public static string Prefix
+        public string Prefix
         {
             get
             {
-                return prefix;
+                return this.prefix;
             }
 
             set
             {
-                prefix = value;
+                this.prefix = value;
             }
         }
 
@@ -525,16 +799,16 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// Gets or sets the color of the selection border.
         /// </summary>
         /// <value>The color of the selection border.</value>
-        public static Color SelectionBorderColor
+        public Color SelectionBorderColor
         {
             get
             {
-                return selectionBorderColor;
+                return this.selectionBorderColor;
             }
 
             set
             {
-                selectionBorderColor = value;
+                this.selectionBorderColor = value;
             }
         }
 
@@ -542,16 +816,16 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// Gets or sets the color of the selection fill.
         /// </summary>
         /// <value>The color of the selection fill.</value>
-        public static Color SelectionFillColor
+        public Color SelectionFillColor
         {
             get
             {
-                return selectionFillColor;
+                return this.selectionFillColor;
             }
 
             set
             {
-                selectionFillColor = value;
+                this.selectionFillColor = value;
             }
         }
 
@@ -559,22 +833,33 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// Gets or sets a value indicating whether the default value for whether the output should be sharpened
         /// </summary>
         /// <value><c>true</c> if sharpen; otherwise, <c>false</c>.</value>
-        public static bool Sharpen { get; set; }
+        public bool Sharpen
+        {
+            get
+            {
+                return this.sharpen;
+            }
+
+            set
+            {
+                this.sharpen = value;
+            }
+        }
 
         /// <summary>
         /// Gets or sets a value indicating whether to show the image widget.
         /// </summary>
         /// <value><c>true</c> if showing the image widget; otherwise, <c>false</c>.</value>
-        public static bool ShowWidgetImage
+        public bool ShowWidgetImage
         {
             get
             {
-                return showWidgetImage;
+                return this.showWidgetImage;
             }
 
             set
             {
-                showWidgetImage = value;
+                this.showWidgetImage = value;
             }
         }
 
@@ -582,16 +867,16 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// Gets or sets a value indicating whether to show the text settings widget.
         /// </summary>
         /// <value><c>true</c> if showing the text settings widget; otherwise, <c>false</c>.</value>
-        public static bool ShowWidgetTextSettings
+        public bool ShowWidgetTextSettings
         {
             get
             {
-                return showWidgetTextSettings;
+                return this.showWidgetTextSettings;
             }
 
             set
             {
-                showWidgetTextSettings = value;
+                this.showWidgetTextSettings = value;
             }
         }
 
@@ -599,16 +884,16 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// Gets or sets a value indicating whether to stretch the output.
         /// </summary>
         /// <value><c>true</c> if stretching; otherwise, <c>false</c>.</value>
-        public static bool Stretch
+        public bool Stretch
         {
             get
             {
-                return stretch;
+                return this.stretch;
             }
 
             set
             {
-                stretch = value;
+                this.stretch = value;
             }
         }
 
@@ -616,22 +901,22 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// Gets or sets the translation file.
         /// </summary>
         /// <value>The translation file.</value>
-        public static string TranslationFile { get; set; }
+        public string TranslationFile { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether to use an unsharp mask.
         /// </summary>
         /// <value><c>true</c> if using an unsharp mask; otherwise, <c>false</c>.</value>
-        public static bool UnsharpMask
+        public bool UnsharpMask
         {
             get
             {
-                return unsharpMask;
+                return this.unsharpMask;
             }
 
             set
             {
-                unsharpMask = value;
+                this.unsharpMask = value;
             }
         }
 
@@ -641,16 +926,16 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// <value>
         /// <c>true</c> if update while selecting; otherwise, <c>false</c>.
         /// </value>
-        public static bool UpdateWhileSelecting
+        public bool UpdateWhileSelecting
         {
             get
             {
-                return updateWhileSelecting;
+                return this.updateWhileSelecting;
             }
 
             set
             {
-                updateWhileSelecting = value;
+                this.updateWhileSelecting = value;
             }
         }
 
@@ -658,16 +943,16 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// Gets or sets a value indicating whether to use a generated ramp.
         /// </summary>
         /// <value><c>true</c> if using a generated ramp; otherwise, <c>false</c>.</value>
-        public static bool UseGeneratedRamp
+        public bool UseGeneratedRamp
         {
             get
             {
-                return useGeneratedRamp;
+                return this.useGeneratedRamp;
             }
 
             set
             {
-                useGeneratedRamp = value;
+                this.useGeneratedRamp = value;
             }
         }
 
@@ -676,12 +961,107 @@ namespace JMSoftware.AsciiGeneratorDotNet
         #region Public methods
 
         /// <summary>
+        /// Loads the settings.
+        /// </summary>
+        /// <returns>True if settings were loaded, otherwise false</returns>
+        public static bool LoadSettings()
+        {
+            Variables settings = Load(filename);
+
+            if (settings == null)
+            {
+                return false;
+            }
+
+            instance = new Variables();
+
+            // TODO: Validation?
+            instance.DefaultWidth = settings.DefaultWidth;
+            instance.DefaultHeight = settings.DefaultHeight;
+            instance.TranslationFile = settings.TranslationFile;
+            instance.InitialInputDirectory = settings.InitialInputDirectory;
+            instance.InitialOutputDirectory = settings.InitialOutputDirectory;
+            instance.DefaultFont = settings.DefaultFont;
+            instance.ConfirmOnClose = settings.ConfirmOnClose;
+            instance.CheckForNewVersion = settings.CheckForNewVersion;
+
+            return true;
+        }
+
+        /// <summary>
         /// Save the current settings
         /// </summary>
-        public static void SaveSettings()
+        public void SaveSettings()
         {
+            Save(this, filename);
         }
 
         #endregion Public methods
+
+        #region Private methods
+
+        /// <summary>
+        /// Loads the settings from the specified filename.
+        /// </summary>
+        /// <param name="filename">The filename.</param>
+        /// <returns>A Variables object containing the loaded settings, or null</returns>
+        private static Variables Load(string filename)
+        {
+            Stream stream = null;
+
+            Variables variables = null;
+
+            try
+            {
+                stream = new FileStream(filename, FileMode.Open, FileAccess.Read, FileShare.None);
+
+                IFormatter formatter = new BinaryFormatter();
+
+                variables = (Variables)formatter.Deserialize(stream);
+            }
+            catch
+            {
+            }
+            finally
+            {
+                if (stream != null)
+                {
+                    stream.Close();
+                }
+            }
+
+            return variables;
+        }
+
+        /// <summary>
+        /// Saves the specified Variables object to a file.
+        /// </summary>
+        /// <param name="variables">The variables.</param>
+        /// <param name="filename">The filename to use.</param>
+        private static void Save(Variables variables, string filename)
+        {
+            Stream stream = null;
+
+            try
+            {
+                stream = new FileStream(filename, FileMode.Create, FileAccess.Write, FileShare.None);
+
+                IFormatter formatter = new BinaryFormatter();
+
+                formatter.Serialize(stream, variables);
+            }
+            catch
+            {
+            }
+            finally
+            {
+                if (stream != null)
+                {
+                    stream.Close();
+                }
+            }
+        }
+
+        #endregion Private methods
     }
 }

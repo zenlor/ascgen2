@@ -114,7 +114,7 @@ namespace JMSoftware.AsciiConversion
         /// Initializes a new instance of the <see cref="TextProcessingSettings"/> class.
         /// </summary>
         public TextProcessingSettings()
-            : this(new Size(Variables.DefaultWidth, Variables.DefaultHeight))
+            : this(new Size(Variables.Instance.DefaultWidth, Variables.Instance.DefaultHeight))
         {
         }
 
@@ -123,7 +123,7 @@ namespace JMSoftware.AsciiConversion
         /// </summary>
         /// <param name="size">The initial output size.</param>
         public TextProcessingSettings(Size size)
-            : this(size, Variables.DefaultFont)
+            : this(size, Variables.Instance.DefaultFont)
         {
         }
 
@@ -136,32 +136,32 @@ namespace JMSoftware.AsciiConversion
         {
             this.calculateCharacterSize = true;
 
-            this.isBlackTextOnWhite = !Variables.InvertImage;
+            this.isBlackTextOnWhite = !Variables.Instance.InvertImage;
 
             this.isFixedWidth = true;
 
-            this.IsGeneratedRamp = Variables.UseGeneratedRamp;
+            this.IsGeneratedRamp = Variables.Instance.UseGeneratedRamp;
 
             this.ramp = "MMMMMMM@@@@@@@WWWWWWWWWBBBBBBBB000000008888888ZZZZZZZZZaZaaaaaa2222222SSSSSSSXXXXXXXXXXX7777777rrrrrrr;;;;;;;;iiiiiiiii:::::::,:,,,,,,.........       ";
 
-            this.sharpen = Variables.Sharpen;
+            this.sharpen = Variables.Instance.Sharpen;
             this.sharpenFilter = new Sharpen();
 
-            this.stretch = Variables.Stretch;
+            this.stretch = Variables.Instance.Stretch;
             this.stretchFilter = new Stretch();
 
-            this.unsharp = Variables.UnsharpMask;
+            this.unsharp = Variables.Instance.UnsharpMask;
             this.unsharpFilter = new UnsharpMask(3);
 
             this.filterChanged = true;
 
-            if (Variables.CurrentSelectedValidCharacters > -1)
+            if (Variables.Instance.CurrentSelectedValidCharacters > -1)
             {
-                this.validCharacters = (string)Variables.DefaultValidCharacters[Variables.CurrentSelectedValidCharacters];
+                this.validCharacters = (string)Variables.Instance.DefaultValidCharacters[Variables.Instance.CurrentSelectedValidCharacters];
             }
             else
             {
-                this.validCharacters = Variables.CurrentCharacters;
+                this.validCharacters = Variables.Instance.CurrentCharacters;
             }
 
             this.Size = size;
@@ -169,16 +169,16 @@ namespace JMSoftware.AsciiConversion
             this.Font = font;
 
             // TODO: Move these to ResetVariables and set widgets from events
-            this.brightness = Variables.DefaultTextBrightness;
-            this.contrast = Variables.DefaultTextContrast;
+            this.brightness = Variables.Instance.DefaultTextBrightness;
+            this.contrast = Variables.Instance.DefaultTextContrast;
 
-            this.dithering = Variables.DefaultDitheringLevel;
-            this.ditheringRandom = Variables.DefaultDitheringRandom;
+            this.dithering = Variables.Instance.DefaultDitheringLevel;
+            this.ditheringRandom = Variables.Instance.DefaultDitheringRandom;
 
-            this.flipHorizontally = Variables.FlipHorizontally;
-            this.flipVertically = Variables.FlipVertically;
+            this.flipHorizontally = Variables.Instance.FlipHorizontally;
+            this.flipVertically = Variables.Instance.FlipVertically;
 
-            this.levels = new LevelsSettings(Variables.DefaultMinLevel, Variables.DefaultMedianLevel, Variables.DefaultMaxLevel);
+            this.levels = new LevelsSettings(Variables.Instance.DefaultMinLevel, Variables.Instance.DefaultMedianLevel, Variables.Instance.DefaultMaxLevel);
         }
 
         #endregion Constructors

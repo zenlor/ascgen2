@@ -469,9 +469,9 @@ namespace JMSoftware.Widgets
         /// </summary>
         private void UpdateLevelsContextMenu()
         {
-            this.cmenuMinimum.Text = Resource.GetString("Minimum") + ": " + this.Minimum.ToString(Variables.Culture);
-            this.cmenuMedian.Text = Resource.GetString("Median") + ": " + Math.Round(this.Median, 2).ToString(Variables.Culture);
-            this.cmenuMaximum.Text = Resource.GetString("Maximum") + ": " + this.Maximum.ToString(Variables.Culture);
+            this.cmenuMinimum.Text = Resource.GetString("Minimum") + ": " + this.Minimum.ToString(Variables.Instance.Culture);
+            this.cmenuMedian.Text = Resource.GetString("Median") + ": " + Math.Round(this.Median, 2).ToString(Variables.Instance.Culture);
+            this.cmenuMaximum.Text = Resource.GetString("Maximum") + ": " + this.Maximum.ToString(Variables.Instance.Culture);
         }
 
         #endregion Private methods

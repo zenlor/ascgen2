@@ -54,7 +54,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
         {
             Location = "AscGenDotNet.Resources.Localization.Localization";
 
-            TranslationFile = Variables.TranslationFile;
+            TranslationFile = Variables.Instance.TranslationFile;
         }
 
         #endregion Constructors
@@ -173,7 +173,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
                 return Translations[key];
             }
 
-            string value = resourceManager.GetString(key, Variables.Culture);
+            string value = resourceManager.GetString(key, Variables.Instance.Culture);
 
             if (value == null || value.Length == 0)
             {
