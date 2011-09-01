@@ -556,28 +556,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
         }
 
         /// <summary>
-        /// Gets the size of the input image.
-        /// </summary>
-        /// <value>The size of the input.</value>
-        private Size InputSize
-        {
-            get
-            {
-                if (!this.ImageIsLoaded)
-                {
-                    return new Size(0, 0);
-                }
-
-                if (this.AreaIsSelected)
-                {
-                    return this.widgetImage.SelectedArea.Size;
-                }
-
-                return this.widgetImage.Image.Size;
-            }
-        }
-
-        /// <summary>
         /// Gets or sets a value indicating whether the output is black text on a white background.
         /// </summary>
         /// <value>
@@ -1923,7 +1901,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
                 settingsDialog.OutputSize = new System.Drawing.Size(Variables.Instance.DefaultWidth, Variables.Instance.DefaultHeight);
 
-                settingsDialog.DefaultFont = this.Font;
+                settingsDialog.DefaultFont = Variables.Instance.DefaultFont;
 
                 settingsDialog.ConfirmOnClose = Variables.Instance.ConfirmOnClose;
 
@@ -1942,17 +1920,14 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
                 Variables.Instance.DefaultHeight = settingsDialog.OutputSize.Height;
 
-                if (this.Font != settingsDialog.DefaultFont)
-                {
-                    Variables.Instance.DefaultFont = this.Font = settingsDialog.DefaultFont;
-                }
+                Variables.Instance.DefaultFont = settingsDialog.DefaultFont;
 
                 Variables.Instance.ConfirmOnClose = settingsDialog.ConfirmOnClose;
 
                 Variables.Instance.CheckForNewVersion = settingsDialog.CheckForNewVersions;
-
-                Variables.Instance.SaveSettings();
             }
+
+            Variables.Instance.SaveSettings();
         }
 
         /// <summary>
@@ -2685,77 +2660,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
         }
 
         /// <summary>
-        /// Save the current settings as XML
-        /// </summary>
-        private void SaveSettings()
-        {
-            Variables.Instance.DefaultWidth = this.OutputWidth;
-            Variables.Instance.DefaultHeight = this.OutputHeight;
-
-            if (Variables.Instance.DefaultWidth == -1 && Variables.Instance.DefaultHeight == -1)
-            {
-                Variables.Instance.DefaultWidth = 150;
-            }
-
-            if (this.dimensionsCalculator.DimensionsAreLocked)
-            {
-                if (this.dimensionsCalculator.WidthChangedLast)
-                {
-                    Variables.Instance.DefaultHeight = -1;
-                }
-                else
-                {
-                    Variables.Instance.DefaultWidth = -1;
-                }
-            }
-
-            Variables.Instance.DefaultFont = this.Font;
-
-            Variables.Instance.DefaultTextBrightness = this.Brightness;
-            Variables.Instance.DefaultTextContrast = this.Contrast;
-
-            Variables.Instance.DefaultMinLevel = this.MinimumLevel;
-            Variables.Instance.DefaultMedianLevel = this.MedianLevel;
-            Variables.Instance.DefaultMaxLevel = this.MaximumLevel;
-
-            Variables.Instance.DefaultDitheringLevel = this.Dithering;
-            Variables.Instance.DefaultDitheringRandom = this.DitheringRandom;
-
-            Variables.Instance.Stretch = this.Stretch;
-            Variables.Instance.Sharpen = this.Sharpen;
-            Variables.Instance.UnsharpMask = this.Unsharp;
-
-            Variables.Instance.FlipHorizontally = this.FlipHorizontally;
-            Variables.Instance.FlipVertically = this.FlipVertically;
-
-            Variables.Instance.InvertImage = !this.IsBlackTextOnWhite;
-
-            string[] ramps = new string[this.cmbRamp.Items.Count];
-            this.cmbRamp.Items.CopyTo(ramps, 0);
-            Variables.Instance.DefaultRamps = ramps;
-
-            Variables.Instance.CurrentSelectedRamp = this.cmbRamp.SelectedIndex;
-            Variables.Instance.CurrentRamp = this.cmbRamp.SelectedIndex == -1 ? this.cmbRamp.Text : String.Empty;
-
-            Variables.Instance.UseGeneratedRamp = this.IsGeneratedRamp;
-
-            string[] characters = new string[this.cmbCharacters.Items.Count];
-            this.cmbCharacters.Items.CopyTo(characters, 0);
-            Variables.Instance.DefaultValidCharacters = characters;
-
-            Variables.Instance.CurrentSelectedValidCharacters = this.cmbCharacters.SelectedIndex;
-            Variables.Instance.CurrentCharacters = Variables.Instance.CurrentSelectedValidCharacters == -1 ? this.cmbCharacters.Text : String.Empty;
-
-            Variables.Instance.ShowWidgetTextSettings = this.widgetTextSettings.Visible;
-            Variables.Instance.ShowWidgetImage = this.widgetImage.Visible;
-
-            Variables.Instance.SelectionBorderColor = this.widgetImage.SelectionBorderColor;
-            Variables.Instance.SelectionFillColor = this.widgetImage.SelectionFillColor;
-
-            Variables.Instance.SaveSettings();
-        }
-
-        /// <summary>
         /// Show and process the dialog to save as text
         /// </summary>
         /// <param name="filename">Default filename for the output</param>
@@ -2871,7 +2775,8 @@ namespace JMSoftware.AsciiGeneratorDotNet
                 this.cmbCharacters.SelectedIndex = Variables.Instance.CurrentSelectedValidCharacters;
             }
 
-            this.cmbCharacters.Select(0, 0); // make sure the text isn't selected
+            // make sure the text isn't selected
+            this.cmbCharacters.Select(0, 0);
 
             this.UpdateUI();
 
