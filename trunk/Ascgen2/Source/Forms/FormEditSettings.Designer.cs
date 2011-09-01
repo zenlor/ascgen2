@@ -168,6 +168,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.checkBoxLockRatio.Text = "X";
             this.checkBoxLockRatio.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.checkBoxLockRatio.UseVisualStyleBackColor = true;
+            this.checkBoxLockRatio.CheckedChanged += new System.EventHandler(this.CheckBoxLockRatio_CheckedChanged);
             // 
             // textBoxHeight
             // 
@@ -177,6 +178,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.textBoxHeight.Size = new System.Drawing.Size(36, 20);
             this.textBoxHeight.TabIndex = 9;
             this.textBoxHeight.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxHeight.Leave += new System.EventHandler(this.TextBoxHeight_Leave);
             // 
             // textBoxWidth
             // 
@@ -186,6 +188,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.textBoxWidth.Size = new System.Drawing.Size(36, 20);
             this.textBoxWidth.TabIndex = 7;
             this.textBoxWidth.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxWidth.Leave += new System.EventHandler(this.TextBoxWidth_Leave);
             // 
             // labelOutputSize
             // 
@@ -212,6 +215,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.buttonFont.TabIndex = 10;
             this.buttonFont.Text = "buttonFont";
             this.buttonFont.UseVisualStyleBackColor = true;
+            this.buttonFont.Click += new System.EventHandler(this.ButtonFont_Click);
             // 
             // textBoxOutputDirectory
             // 
@@ -235,6 +239,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.buttonOutputDirectory.Size = new System.Drawing.Size(30, 23);
             this.buttonOutputDirectory.TabIndex = 5;
             this.buttonOutputDirectory.UseVisualStyleBackColor = true;
+            this.buttonOutputDirectory.Click += new System.EventHandler(this.ButtonOutputDirectory_Click);
             // 
             // labelOutputDirectory
             // 
@@ -253,6 +258,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.buttonInputDirectory.Size = new System.Drawing.Size(30, 23);
             this.buttonInputDirectory.TabIndex = 2;
             this.buttonInputDirectory.UseVisualStyleBackColor = true;
+            this.buttonInputDirectory.Click += new System.EventHandler(this.ButtonInputDirectory_Click);
             // 
             // labelInputDirectory
             // 
