@@ -449,8 +449,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
         {
             this.Text = Resource.GetString("Edit Settings");
 
-            this.tabPageBasic.Text = Resource.GetString("Basic");
-
             this.buttonOk.Text = Resource.GetString("&Ok");
             this.buttonDefault.Text = Resource.GetString("&Default");
             this.buttonCancel.Text = Resource.GetString("&Cancel");

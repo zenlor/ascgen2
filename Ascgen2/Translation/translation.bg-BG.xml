@@ -75,9 +75,6 @@
 	<data name="automatically calculated">
 		<value>автоматично пресметнато(изчислено)</value>
 	</data>
-	<data name="Basic">
-		<value>Основни</value>
-	</data>
 	<data name="Batch Conversion">
 		<value>Пакетно преобразуване</value>
 	</data>
