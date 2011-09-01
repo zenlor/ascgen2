@@ -1917,7 +1917,17 @@ namespace JMSoftware.AsciiGeneratorDotNet
         {
             using (FormEditSettings settingsDialog = new FormEditSettings())
             {
+                settingsDialog.InputDirectory = Variables.Instance.InitialInputDirectory;
+
+                settingsDialog.OutputDirectory = Variables.Instance.InitialOutputDirectory;
+
+                settingsDialog.OutputSize = new System.Drawing.Size(Variables.Instance.DefaultWidth, Variables.Instance.DefaultHeight);
+
                 settingsDialog.DefaultFont = this.Font;
+
+                settingsDialog.ConfirmOnClose = Variables.Instance.ConfirmOnClose;
+
+                settingsDialog.CheckForNewVersions = Variables.Instance.CheckForNewVersion;
 
                 if (settingsDialog.ShowDialog() != DialogResult.OK)
                 {
@@ -1928,21 +1938,18 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
                 this.OutputDirectory = settingsDialog.OutputDirectory;
 
+                Variables.Instance.DefaultWidth = settingsDialog.OutputSize.Width;
+
+                Variables.Instance.DefaultHeight = settingsDialog.OutputSize.Height;
+
                 if (this.Font != settingsDialog.DefaultFont)
                 {
-                    this.Font = settingsDialog.DefaultFont;
+                    Variables.Instance.DefaultFont = this.Font = settingsDialog.DefaultFont;
                 }
 
                 Variables.Instance.ConfirmOnClose = settingsDialog.ConfirmOnClose;
 
                 Variables.Instance.CheckForNewVersion = settingsDialog.CheckForNewVersions;
-
-                // TODO: Put these in the settings form
-                Variables.Instance.DefaultWidth = 150;
-
-                Variables.Instance.DefaultHeight = -1;
-
-                Variables.Instance.TranslationFile = String.Empty;
 
                 Variables.Instance.SaveSettings();
             }
