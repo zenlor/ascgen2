@@ -28,6 +28,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
     using System;
     using System.ComponentModel;
     using System.Drawing;
+    using System.IO;
     using System.Windows.Forms;
 
     /// <summary>
@@ -132,9 +133,12 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             set
             {
-                this.defaultFont = value;
+                if (this.defaultFont != value)
+                {
+                    this.defaultFont = value;
 
-                this.UpdateFont();
+                    this.UpdateFont();
+                }
             }
         }
 
@@ -151,8 +155,10 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             set
             {
-                // TODO: Make sure this directory exists
-                this.textBoxInputDirectory.Text = value;
+                if (Directory.Exists(value))
+                {
+                    this.textBoxInputDirectory.Text = value;
+                }
             }
         }
 
@@ -169,8 +175,10 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             set
             {
-                // TODO: Make sure this directory exists
-                this.textBoxOutputDirectory.Text = value;
+                if (Directory.Exists(value))
+                {
+                    this.textBoxOutputDirectory.Text = value;
+                }
             }
         }
 
