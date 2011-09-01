@@ -47,6 +47,16 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// </summary>
         private TextBox[] directories;
 
+        /// <summary>
+        /// The size of the output
+        /// </summary>
+        private Size outputSize;
+
+        /// <summary>
+        /// The dimension which has not been set
+        /// </summary>
+        private TextBox textBoxOtherDimension;
+
         #endregion Fields
 
         #region Constructors
@@ -60,9 +70,11 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             this.UpdateUI();
 
-            this.ResetSettings();
-
             this.directories = new TextBox[] { this.textBoxInputDirectory, this.textBoxOutputDirectory };
+
+            this.textBoxOtherDimension = this.textBoxHeight;
+
+            this.ResetSettings();
         }
 
         #endregion Constructors
@@ -70,7 +82,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
         #region Properties
 
         /// <summary>
-        /// Gets a value indicating whether to check for new versions.
+        /// Gets or sets a value indicating whether to check for new versions.
         /// </summary>
         /// <value>
         /// <c>true</c> if checking for new versions; otherwise, <c>false</c>.
@@ -81,10 +93,15 @@ namespace JMSoftware.AsciiGeneratorDotNet
             {
                 return this.checkBoxConfirmVersionCheck.Checked;
             }
+
+            set
+            {
+                this.checkBoxConfirmVersionCheck.Checked = value;
+            }
         }
 
         /// <summary>
-        /// Gets a value indicating whether to confirm on close.
+        /// Gets or sets a value indicating whether to confirm on close.
         /// </summary>
         /// <value>
         /// <c>true</c> if confirm on close; otherwise, <c>false</c>.
@@ -94,6 +111,11 @@ namespace JMSoftware.AsciiGeneratorDotNet
             get
             {
                 return this.checkBoxConfirmClose.Checked;
+            }
+
+            set
+            {
+                this.checkBoxConfirmClose.Checked = value;
             }
         }
 
@@ -117,7 +139,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
         }
 
         /// <summary>
-        /// Gets the input directory.
+        /// Gets or sets the input directory.
         /// </summary>
         /// <value>The input directory.</value>
         public string InputDirectory
@@ -126,10 +148,16 @@ namespace JMSoftware.AsciiGeneratorDotNet
             {
                 return this.textBoxInputDirectory.Text;
             }
+
+            set
+            {
+                // TODO: Make sure this directory exists
+                this.textBoxInputDirectory.Text = value;
+            }
         }
 
         /// <summary>
-        /// Gets the output directory.
+        /// Gets or sets the output directory.
         /// </summary>
         /// <value>The output directory.</value>
         public string OutputDirectory
@@ -137,6 +165,42 @@ namespace JMSoftware.AsciiGeneratorDotNet
             get
             {
                 return this.textBoxOutputDirectory.Text;
+            }
+
+            set
+            {
+                // TODO: Make sure this directory exists
+                this.textBoxOutputDirectory.Text = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the size of the output.
+        /// </summary>
+        /// <value>The size of the output.</value>
+        public Size OutputSize
+        {
+            get
+            {
+                // Width and Height specified
+                if (!this.checkBoxLockRatio.Checked)
+                {
+                    return this.outputSize;
+                }
+
+                // Width specified
+                if (this.textBoxOtherDimension == this.textBoxHeight)
+                {
+                    return new Size(this.outputSize.Width, -1);
+                }
+
+                // Height specified
+                return new Size(-1, this.outputSize.Height);
+            }
+
+            set
+            {
+                this.outputSize = value;
             }
         }
 
@@ -170,11 +234,65 @@ namespace JMSoftware.AsciiGeneratorDotNet
                     e.Cancel = true;
                 }
             }
+
+            int width;
+
+            if (this.textBoxWidth.Text.Length > 0)
+            {
+                if (!int.TryParse(this.textBoxWidth.Text, out width) || width < 1)
+                {
+                    this.errorProvider1.SetError(this.textBoxHeight, Resource.GetString("Invalid Output Size"));
+
+                    e.Cancel = true;
+                }
+            }
+            else
+            {
+                width = -1;
+            }
+
+            int height;
+
+            if (this.textBoxHeight.Text.Length > 0)
+            {
+                if (!int.TryParse(this.textBoxHeight.Text, out height) || height < 1)
+                {
+                    this.errorProvider1.SetError(this.textBoxHeight, Resource.GetString("Invalid Output Size"));
+
+                    e.Cancel = true;
+                }
+            }
+            else
+            {
+                height = -1;
+            }
+
+            if (width == -1 && height == -1)
+            {
+                this.errorProvider1.SetError(this.textBoxHeight, Resource.GetString("Invalid Output Size"));
+
+                e.Cancel = true;
+            }
+
+            if (!e.Cancel)
+            {
+                this.OutputSize = new Size(width, height);
+            }
         }
 
         #endregion Protected methods
 
         #region Private methods
+
+        /// <summary>
+        /// Handles the Click event of the buttonDefault control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void ButtonDefault_Click(object sender, EventArgs e)
+        {
+            this.ResetSettings();
+        }
 
         /// <summary>
         /// Handles the Click event of the buttonFont control.
@@ -224,17 +342,93 @@ namespace JMSoftware.AsciiGeneratorDotNet
         }
 
         /// <summary>
-        /// Resets the settings.
+        /// Handles the CheckedChanged event of the checkBoxLockRatio control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void CheckBoxLockRatio_CheckedChanged(object sender, EventArgs e)
+        {
+            this.textBoxOtherDimension.Enabled = !this.checkBoxLockRatio.Checked;
+        }
+
+        /// <summary>
+        /// Handles the Load event of the FormEditSettings control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void FormEditSettings_Load(object sender, EventArgs e)
+        {
+            this.textBoxWidth.Text = this.outputSize.Width.ToString();
+            this.textBoxHeight.Text = this.outputSize.Height.ToString();
+
+            this.checkBoxLockRatio.Checked = false;
+
+            if (this.outputSize.Height > -1 && this.outputSize.Width > -1)
+            {
+                this.textBoxOtherDimension = this.textBoxHeight;
+                return;
+            }
+
+            if (this.outputSize.Height == -1)
+            {
+                this.textBoxOtherDimension = this.textBoxHeight;
+            }
+
+            if (this.outputSize.Width == -1)
+            {
+                this.textBoxOtherDimension = this.textBoxWidth;
+            }
+
+            this.textBoxOtherDimension.Text = String.Empty;
+            this.checkBoxLockRatio.Checked = true;
+        }
+
+        /// <summary>
+        /// Resets the settings to the defaults.
         /// </summary>
         private void ResetSettings()
         {
-            this.textBoxInputDirectory.Text = Variables.Instance.InitialInputDirectory;
+            this.InputDirectory = String.Empty;
 
-            this.textBoxOutputDirectory.Text = Variables.Instance.InitialOutputDirectory;
+            this.OutputDirectory = String.Empty;
 
-            this.checkBoxConfirmClose.Checked = Variables.Instance.ConfirmOnClose;
+            this.OutputSize = new Size(150, -1);
 
-            this.checkBoxConfirmVersionCheck.Checked = Variables.Instance.CheckForNewVersion;
+            this.textBoxWidth.Text = "150";
+
+            this.textBoxHeight.Text = String.Empty;
+
+            this.textBoxHeight.Enabled = false;
+
+            this.checkBoxLockRatio.Checked = true;
+
+            this.textBoxOtherDimension = this.textBoxHeight;
+
+            this.DefaultFont = new Font("Lucida Console", 9f);
+
+            this.ConfirmOnClose = true;
+
+            this.CheckForNewVersions = true;
+        }
+
+        /// <summary>
+        /// Handles the Leave event of the textBoxHeight control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void TextBoxHeight_Leave(object sender, EventArgs e)
+        {
+            this.textBoxOtherDimension = this.textBoxWidth;
+        }
+
+        /// <summary>
+        /// Handles the Leave event of the textBoxWidth control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void TextBoxWidth_Leave(object sender, EventArgs e)
+        {
+            this.textBoxOtherDimension = this.textBoxHeight;
         }
 
         /// <summary>
@@ -266,6 +460,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             this.labelInputDirectory.Text = Resource.GetString("Input Directory") + ":";
             this.labelOutputDirectory.Text = Resource.GetString("Output Directory") + ":";
+            this.labelOutputSize.Text = Resource.GetString("Output Size") + ":";
 
             this.buttonFont.Text = Resource.GetString("Font") + "...";
         }

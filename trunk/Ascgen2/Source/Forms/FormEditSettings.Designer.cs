@@ -42,10 +42,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
         private System.Windows.Forms.Button buttonOutputDirectory;
 
-        private System.Windows.Forms.CheckBox checkBoxConfirmClose;
-
-        private System.Windows.Forms.CheckBox checkBoxConfirmVersionCheck;
-
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -104,9 +100,11 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.buttonCancel = new System.Windows.Forms.Button();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.tabPageBasic = new System.Windows.Forms.TabPage();
+            this.checkBoxLockRatio = new System.Windows.Forms.CheckBox();
+            this.textBoxHeight = new System.Windows.Forms.TextBox();
+            this.textBoxWidth = new System.Windows.Forms.TextBox();
+            this.labelOutputSize = new System.Windows.Forms.Label();
             this.textBoxFont = new System.Windows.Forms.TextBox();
-            this.checkBoxConfirmVersionCheck = new System.Windows.Forms.CheckBox();
-            this.checkBoxConfirmClose = new System.Windows.Forms.CheckBox();
             this.buttonFont = new System.Windows.Forms.Button();
             this.textBoxOutputDirectory = new System.Windows.Forms.TextBox();
             this.textBoxInputDirectory = new System.Windows.Forms.TextBox();
@@ -118,6 +116,8 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.buttonDefault = new System.Windows.Forms.Button();
+            this.checkBoxConfirmVersionCheck = new System.Windows.Forms.CheckBox();
+            this.checkBoxConfirmClose = new System.Windows.Forms.CheckBox();
             this.tabPageBasic.SuspendLayout();
             this.tabControlSettings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
@@ -127,7 +127,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             // 
             this.buttonOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.buttonOk.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.buttonOk.Location = new System.Drawing.Point(12, 189);
+            this.buttonOk.Location = new System.Drawing.Point(12, 217);
             this.buttonOk.Name = "buttonOk";
             this.buttonOk.Size = new System.Drawing.Size(75, 23);
             this.buttonOk.TabIndex = 1;
@@ -138,7 +138,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             // 
             this.buttonCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonCancel.Location = new System.Drawing.Point(266, 189);
+            this.buttonCancel.Location = new System.Drawing.Point(266, 217);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 23);
             this.buttonCancel.TabIndex = 3;
@@ -147,9 +147,13 @@ namespace JMSoftware.AsciiGeneratorDotNet
             // 
             // tabPageBasic
             // 
-            this.tabPageBasic.Controls.Add(this.textBoxFont);
             this.tabPageBasic.Controls.Add(this.checkBoxConfirmVersionCheck);
             this.tabPageBasic.Controls.Add(this.checkBoxConfirmClose);
+            this.tabPageBasic.Controls.Add(this.checkBoxLockRatio);
+            this.tabPageBasic.Controls.Add(this.textBoxHeight);
+            this.tabPageBasic.Controls.Add(this.textBoxWidth);
+            this.tabPageBasic.Controls.Add(this.labelOutputSize);
+            this.tabPageBasic.Controls.Add(this.textBoxFont);
             this.tabPageBasic.Controls.Add(this.buttonFont);
             this.tabPageBasic.Controls.Add(this.textBoxOutputDirectory);
             this.tabPageBasic.Controls.Add(this.textBoxInputDirectory);
@@ -160,44 +164,63 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.tabPageBasic.Location = new System.Drawing.Point(4, 22);
             this.tabPageBasic.Name = "tabPageBasic";
             this.tabPageBasic.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageBasic.Size = new System.Drawing.Size(321, 145);
+            this.tabPageBasic.Size = new System.Drawing.Size(321, 173);
             this.tabPageBasic.TabIndex = 4;
             this.tabPageBasic.Text = "tabPageBasic";
             this.tabPageBasic.UseVisualStyleBackColor = true;
             // 
+            // checkBoxLockRatio
+            // 
+            this.checkBoxLockRatio.Appearance = System.Windows.Forms.Appearance.Button;
+            this.checkBoxLockRatio.Location = new System.Drawing.Point(141, 73);
+            this.checkBoxLockRatio.Name = "checkBoxLockRatio";
+            this.checkBoxLockRatio.Size = new System.Drawing.Size(24, 24);
+            this.checkBoxLockRatio.TabIndex = 10;
+            this.checkBoxLockRatio.Text = "X";
+            this.checkBoxLockRatio.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.checkBoxLockRatio.UseVisualStyleBackColor = true;
+            this.checkBoxLockRatio.CheckedChanged += new System.EventHandler(this.CheckBoxLockRatio_CheckedChanged);
+            // 
+            // textBoxHeight
+            // 
+            this.textBoxHeight.Location = new System.Drawing.Point(171, 75);
+            this.textBoxHeight.MaxLength = 4;
+            this.textBoxHeight.Name = "textBoxHeight";
+            this.textBoxHeight.Size = new System.Drawing.Size(36, 20);
+            this.textBoxHeight.TabIndex = 11;
+            this.textBoxHeight.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxHeight.Leave += new System.EventHandler(this.TextBoxHeight_Leave);
+            // 
+            // textBoxWidth
+            // 
+            this.textBoxWidth.Location = new System.Drawing.Point(99, 75);
+            this.textBoxWidth.MaxLength = 4;
+            this.textBoxWidth.Name = "textBoxWidth";
+            this.textBoxWidth.Size = new System.Drawing.Size(36, 20);
+            this.textBoxWidth.TabIndex = 9;
+            this.textBoxWidth.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxWidth.Leave += new System.EventHandler(this.TextBoxWidth_Leave);
+            // 
+            // labelOutputSize
+            // 
+            this.labelOutputSize.AutoSize = true;
+            this.labelOutputSize.Location = new System.Drawing.Point(6, 78);
+            this.labelOutputSize.Name = "labelOutputSize";
+            this.labelOutputSize.Size = new System.Drawing.Size(81, 13);
+            this.labelOutputSize.TabIndex = 8;
+            this.labelOutputSize.Text = "labelOutputSize";
+            // 
             // textBoxFont
             // 
-            this.textBoxFont.Location = new System.Drawing.Point(99, 80);
+            this.textBoxFont.Location = new System.Drawing.Point(99, 111);
             this.textBoxFont.Name = "textBoxFont";
             this.textBoxFont.ReadOnly = true;
             this.textBoxFont.Size = new System.Drawing.Size(216, 20);
             this.textBoxFont.TabIndex = 7;
             // 
-            // checkBoxConfirmVersionCheck
-            // 
-            this.checkBoxConfirmVersionCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.checkBoxConfirmVersionCheck.AutoSize = true;
-            this.checkBoxConfirmVersionCheck.Location = new System.Drawing.Point(137, 122);
-            this.checkBoxConfirmVersionCheck.Name = "checkBoxConfirmVersionCheck";
-            this.checkBoxConfirmVersionCheck.Size = new System.Drawing.Size(175, 17);
-            this.checkBoxConfirmVersionCheck.TabIndex = 9;
-            this.checkBoxConfirmVersionCheck.Text = "checkBoxConfirmVersionCheck";
-            this.checkBoxConfirmVersionCheck.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxConfirmClose
-            // 
-            this.checkBoxConfirmClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.checkBoxConfirmClose.AutoSize = true;
-            this.checkBoxConfirmClose.Location = new System.Drawing.Point(6, 122);
-            this.checkBoxConfirmClose.Name = "checkBoxConfirmClose";
-            this.checkBoxConfirmClose.Size = new System.Drawing.Size(135, 17);
-            this.checkBoxConfirmClose.TabIndex = 8;
-            this.checkBoxConfirmClose.Text = "checkBoxConfirmClose";
-            this.checkBoxConfirmClose.UseVisualStyleBackColor = true;
-            // 
             // buttonFont
             // 
-            this.buttonFont.Location = new System.Drawing.Point(6, 78);
+            this.buttonFont.Location = new System.Drawing.Point(6, 109);
             this.buttonFont.Name = "buttonFont";
             this.buttonFont.Size = new System.Drawing.Size(75, 23);
             this.buttonFont.TabIndex = 6;
@@ -207,14 +230,14 @@ namespace JMSoftware.AsciiGeneratorDotNet
             // 
             // textBoxOutputDirectory
             // 
-            this.textBoxOutputDirectory.Location = new System.Drawing.Point(99, 38);
+            this.textBoxOutputDirectory.Location = new System.Drawing.Point(99, 40);
             this.textBoxOutputDirectory.Name = "textBoxOutputDirectory";
             this.textBoxOutputDirectory.Size = new System.Drawing.Size(180, 20);
             this.textBoxOutputDirectory.TabIndex = 4;
             // 
             // textBoxInputDirectory
             // 
-            this.textBoxInputDirectory.Location = new System.Drawing.Point(99, 12);
+            this.textBoxInputDirectory.Location = new System.Drawing.Point(99, 14);
             this.textBoxInputDirectory.Name = "textBoxInputDirectory";
             this.textBoxInputDirectory.Size = new System.Drawing.Size(180, 20);
             this.textBoxInputDirectory.TabIndex = 1;
@@ -222,7 +245,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             // buttonOutputDirectory
             // 
             this.buttonOutputDirectory.Image = global::AscGenDotNet.Properties.Resources.folder;
-            this.buttonOutputDirectory.Location = new System.Drawing.Point(285, 36);
+            this.buttonOutputDirectory.Location = new System.Drawing.Point(285, 38);
             this.buttonOutputDirectory.Name = "buttonOutputDirectory";
             this.buttonOutputDirectory.Size = new System.Drawing.Size(30, 23);
             this.buttonOutputDirectory.TabIndex = 5;
@@ -232,7 +255,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             // labelOutputDirectory
             // 
             this.labelOutputDirectory.AutoSize = true;
-            this.labelOutputDirectory.Location = new System.Drawing.Point(6, 41);
+            this.labelOutputDirectory.Location = new System.Drawing.Point(6, 43);
             this.labelOutputDirectory.Name = "labelOutputDirectory";
             this.labelOutputDirectory.Size = new System.Drawing.Size(103, 13);
             this.labelOutputDirectory.TabIndex = 3;
@@ -241,7 +264,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             // buttonInputDirectory
             // 
             this.buttonInputDirectory.Image = global::AscGenDotNet.Properties.Resources.folder;
-            this.buttonInputDirectory.Location = new System.Drawing.Point(285, 10);
+            this.buttonInputDirectory.Location = new System.Drawing.Point(285, 12);
             this.buttonInputDirectory.Name = "buttonInputDirectory";
             this.buttonInputDirectory.Size = new System.Drawing.Size(30, 23);
             this.buttonInputDirectory.TabIndex = 2;
@@ -251,7 +274,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             // labelInputDirectory
             // 
             this.labelInputDirectory.AutoSize = true;
-            this.labelInputDirectory.Location = new System.Drawing.Point(6, 15);
+            this.labelInputDirectory.Location = new System.Drawing.Point(6, 17);
             this.labelInputDirectory.Name = "labelInputDirectory";
             this.labelInputDirectory.Size = new System.Drawing.Size(95, 13);
             this.labelInputDirectory.TabIndex = 0;
@@ -267,7 +290,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.tabControlSettings.Location = new System.Drawing.Point(12, 12);
             this.tabControlSettings.Name = "tabControlSettings";
             this.tabControlSettings.SelectedIndex = 0;
-            this.tabControlSettings.Size = new System.Drawing.Size(329, 171);
+            this.tabControlSettings.Size = new System.Drawing.Size(329, 199);
             this.tabControlSettings.TabIndex = 0;
             // 
             // errorProvider1
@@ -276,13 +299,36 @@ namespace JMSoftware.AsciiGeneratorDotNet
             // 
             // buttonDefault
             // 
-            this.buttonDefault.Enabled = false;
-            this.buttonDefault.Location = new System.Drawing.Point(139, 189);
+            this.buttonDefault.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.buttonDefault.Location = new System.Drawing.Point(139, 217);
             this.buttonDefault.Name = "buttonDefault";
             this.buttonDefault.Size = new System.Drawing.Size(75, 23);
             this.buttonDefault.TabIndex = 4;
             this.buttonDefault.Text = "buttonDefault";
             this.buttonDefault.UseVisualStyleBackColor = true;
+            this.buttonDefault.Click += new System.EventHandler(this.ButtonDefault_Click);
+            // 
+            // checkBoxConfirmVersionCheck
+            // 
+            this.checkBoxConfirmVersionCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkBoxConfirmVersionCheck.AutoSize = true;
+            this.checkBoxConfirmVersionCheck.Location = new System.Drawing.Point(143, 146);
+            this.checkBoxConfirmVersionCheck.Name = "checkBoxConfirmVersionCheck";
+            this.checkBoxConfirmVersionCheck.Size = new System.Drawing.Size(175, 17);
+            this.checkBoxConfirmVersionCheck.TabIndex = 13;
+            this.checkBoxConfirmVersionCheck.Text = "checkBoxConfirmVersionCheck";
+            this.checkBoxConfirmVersionCheck.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxConfirmClose
+            // 
+            this.checkBoxConfirmClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.checkBoxConfirmClose.AutoSize = true;
+            this.checkBoxConfirmClose.Location = new System.Drawing.Point(9, 146);
+            this.checkBoxConfirmClose.Name = "checkBoxConfirmClose";
+            this.checkBoxConfirmClose.Size = new System.Drawing.Size(135, 17);
+            this.checkBoxConfirmClose.TabIndex = 12;
+            this.checkBoxConfirmClose.Text = "checkBoxConfirmClose";
+            this.checkBoxConfirmClose.UseVisualStyleBackColor = true;
             // 
             // FormEditSettings
             // 
@@ -290,7 +336,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.buttonCancel;
-            this.ClientSize = new System.Drawing.Size(353, 224);
+            this.ClientSize = new System.Drawing.Size(353, 248);
             this.Controls.Add(this.buttonDefault);
             this.Controls.Add(this.tabControlSettings);
             this.Controls.Add(this.buttonCancel);
@@ -301,6 +347,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FormEditSettings";
+            this.Load += new System.EventHandler(this.FormEditSettings_Load);
             this.tabPageBasic.ResumeLayout(false);
             this.tabPageBasic.PerformLayout();
             this.tabControlSettings.ResumeLayout(false);
@@ -312,5 +359,11 @@ namespace JMSoftware.AsciiGeneratorDotNet
         #endregion Private methods
 
         private System.Windows.Forms.Button buttonDefault;
+        private System.Windows.Forms.CheckBox checkBoxLockRatio;
+        private System.Windows.Forms.TextBox textBoxHeight;
+        private System.Windows.Forms.TextBox textBoxWidth;
+        private System.Windows.Forms.Label labelOutputSize;
+        private System.Windows.Forms.CheckBox checkBoxConfirmVersionCheck;
+        private System.Windows.Forms.CheckBox checkBoxConfirmClose;
     }
 }
