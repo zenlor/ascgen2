@@ -543,9 +543,6 @@
   <data name="Language" xml:space="preserve">
     <value>Language</value>
   </data>
-  <data name="Basic" xml:space="preserve">
-    <value>Basic</value>
-  </data>
   <data name="Confirm close if unsaved" xml:space="preserve">
     <value>Confirm close if unsaved</value>
   </data>

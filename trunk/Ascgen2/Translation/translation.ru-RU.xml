@@ -75,9 +75,6 @@
 	<data name="automatically calculated">
 		<value>автоматически обсчитанный</value>
 	</data>
-	<data name="Basic">
-		<value>Основные параметры</value>
-	</data>
 	<data name="Batch Conversion">
 		<value>Пакетное превращение</value>
 	</data>
