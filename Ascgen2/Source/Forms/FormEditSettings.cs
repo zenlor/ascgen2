@@ -133,12 +133,9 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             set
             {
-                if (this.defaultFont != value)
-                {
-                    this.defaultFont = value;
+                this.defaultFont = value;
 
-                    this.UpdateFont();
-                }
+                this.UpdateFont();
             }
         }
 
