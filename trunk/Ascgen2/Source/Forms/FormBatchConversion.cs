@@ -127,13 +127,37 @@ namespace JMSoftware.AsciiGeneratorDotNet
                 this.OutputDirectory = Directory.GetCurrentDirectory();
             }
 
-            this.OutputSize = new Size(150, 150);
+            Size newSize = new Size(-1, -1);
 
-            this.textBoxWidth.Text = this.textBoxHeight.Text = this.OutputSize.Width.ToString();
-
+            this.checkBoxLockRatio.Checked = false;
             this.textBoxOtherDimension = this.textBoxHeight;
 
-            this.checkBoxLockRatio.Checked = true;
+            if (Variables.Instance.DefaultHeight > -1)
+            {
+                newSize.Height = Variables.Instance.DefaultHeight;
+                this.textBoxOtherDimension = this.textBoxWidth;
+            }
+
+            if (Variables.Instance.DefaultWidth > -1)
+            {
+                newSize.Width = Variables.Instance.DefaultWidth;
+            }
+
+            if (newSize.Width == -1 && newSize.Height == -1)
+            {
+                newSize.Width = 150;
+            }
+
+            this.OutputSize = newSize;
+
+            this.textBoxWidth.Text = this.OutputSize.Width.ToString();
+            this.textBoxHeight.Text = this.OutputSize.Height.ToString();
+
+            if (this.OutputSize.Width == -1 || this.OutputSize.Height == -1)
+            {
+                this.textBoxOtherDimension.Text = "150";
+                this.checkBoxLockRatio.Checked = true;
+            }
 
             this.removeFileAfterConversionToolStripMenuItem.Checked = true;
 
