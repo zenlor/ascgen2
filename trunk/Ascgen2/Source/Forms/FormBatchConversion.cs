@@ -127,37 +127,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
                 this.OutputDirectory = Directory.GetCurrentDirectory();
             }
 
-            Size newSize = new Size(-1, -1);
-
-            this.checkBoxLockRatio.Checked = false;
-            this.textBoxOtherDimension = this.textBoxHeight;
-
-            if (Variables.Instance.DefaultHeight > -1)
-            {
-                newSize.Height = Variables.Instance.DefaultHeight;
-                this.textBoxOtherDimension = this.textBoxWidth;
-            }
-
-            if (Variables.Instance.DefaultWidth > -1)
-            {
-                newSize.Width = Variables.Instance.DefaultWidth;
-            }
-
-            if (newSize.Width == -1 && newSize.Height == -1)
-            {
-                newSize.Width = 150;
-            }
-
-            this.OutputSize = newSize;
-
-            this.textBoxWidth.Text = this.OutputSize.Width.ToString();
-            this.textBoxHeight.Text = this.OutputSize.Height.ToString();
-
-            if (this.OutputSize.Width == -1 || this.OutputSize.Height == -1)
-            {
-                this.textBoxOtherDimension.Text = "150";
-                this.checkBoxLockRatio.Checked = true;
-            }
+            this.SetupOutputSize();
 
             this.removeFileAfterConversionToolStripMenuItem.Checked = true;
 
@@ -276,18 +246,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
         }
 
         /// <summary>
-        /// Gets a value indicating whether the output format is RTF.
-        /// </summary>
-        /// <value><c>true</c> if output is RTF; otherwise, <c>false</c>.</value>
-        private bool OutputIsRtf
-        {
-            get
-            {
-                return this.OutputIsText && this.comboBoxOutputFormat.SelectedIndex == 2;
-            }
-        }
-
-        /// <summary>
         /// Gets a value indicating whether the output type is image files.
         /// </summary>
         /// <value><c>true</c> if output is image; otherwise, <c>false</c>.</value>
@@ -296,6 +254,18 @@ namespace JMSoftware.AsciiGeneratorDotNet
             get
             {
                 return this.comboBoxOutputType.SelectedIndex == 1;
+            }
+        }
+
+        /// <summary>
+        /// Gets a value indicating whether the output format is RTF.
+        /// </summary>
+        /// <value><c>true</c> if output is RTF; otherwise, <c>false</c>.</value>
+        private bool OutputIsRtf
+        {
+            get
+            {
+                return this.OutputIsText && this.comboBoxOutputFormat.SelectedIndex == 2;
             }
         }
 
@@ -1231,6 +1201,44 @@ namespace JMSoftware.AsciiGeneratorDotNet
         private void SelectNoneToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.fileListbox1.ClearSelected();
+        }
+
+        /// <summary>
+        /// Sets up the size of the output from the defaults.
+        /// </summary>
+        private void SetupOutputSize()
+        {
+            Size newSize = new Size(-1, -1);
+
+            this.checkBoxLockRatio.Checked = false;
+            this.textBoxOtherDimension = this.textBoxHeight;
+
+            if (Variables.Instance.DefaultHeight > -1)
+            {
+                newSize.Height = Variables.Instance.DefaultHeight;
+                this.textBoxOtherDimension = this.textBoxWidth;
+            }
+
+            if (Variables.Instance.DefaultWidth > -1)
+            {
+                newSize.Width = Variables.Instance.DefaultWidth;
+            }
+
+            if (newSize.Width == -1 && newSize.Height == -1)
+            {
+                newSize.Width = 150;
+            }
+
+            this.OutputSize = newSize;
+
+            this.textBoxWidth.Text = this.OutputSize.Width.ToString();
+            this.textBoxHeight.Text = this.OutputSize.Height.ToString();
+
+            if (this.OutputSize.Width == -1 || this.OutputSize.Height == -1)
+            {
+                this.textBoxOtherDimension.Text = "150";
+                this.checkBoxLockRatio.Checked = true;
+            }
         }
 
         /// <summary>
