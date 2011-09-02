@@ -570,6 +570,8 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             set
             {
+                this.toolStripButtonBlackOnWhite.Checked = !value;
+
                 if (this.textSettings.IsBlackTextOnWhite == value)
                 {
                     return;
@@ -2741,7 +2743,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.rtbxConvertedText.DragDrop += new DragEventHandler(this.RtbxConvertedText_DragDrop);
             this.rtbxConvertedText.DragEnter += new DragEventHandler(this.RtbxConvertedText_DragEnter);
 
-            this.toolStripButtonBlackOnWhite.Checked = !Variables.Instance.InvertImage;
             this.textViewer.BackgroundColor = this.BackgroundColor;
             this.textViewer.TextColor = this.TextColor;
 
@@ -3344,6 +3345,8 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.cmenuTextFont.Text = Resource.GetString("Font") + "...";
             this.cmenuTextVertical.Text = Resource.GetString("Flip Vertically");
             this.cmenuTextHorizontal.Text = Resource.GetString("Flip Horizontally");
+            this.toolStripButtonShowTextWidget.ToolTipText = Resource.GetString("Text Settings");
+            this.toolStripButtonShowImageWidget.ToolTipText = Resource.GetString("Input Image");
 
             this.toolStripButtonLoad.ToolTipText = Resource.GetString("&Load Image").Replace("&", String.Empty);
             this.toolStripButtonSave.ToolTipText = Resource.GetString("Save");
