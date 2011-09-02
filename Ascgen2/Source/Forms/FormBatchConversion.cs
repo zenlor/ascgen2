@@ -120,6 +120,10 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             this.textProcessingSettings = new BatchTextProcessingSettings();
 
+            this.textProcessingSettings.Font = Variables.Instance.DefaultFont;
+
+            this.folderBrowserDialogInput.SelectedPath = this.openFileDialogInput.InitialDirectory = Variables.Instance.InitialInputDirectory;
+
             this.OutputDirectory = Variables.Instance.InitialOutputDirectory;
 
             if (this.OutputDirectory == null || this.OutputDirectory.Length == 0)
