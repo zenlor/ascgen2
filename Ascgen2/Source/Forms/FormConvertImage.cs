@@ -492,7 +492,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
                 this.textSettings.Font =
                                     this.textViewer.Font =
-                                    Variables.Instance.DefaultFont =
                                     this.dialogChooseFont.Font = value;
 
                 this.toolStripRamp.Visible =
