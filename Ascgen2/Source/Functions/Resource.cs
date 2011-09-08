@@ -41,9 +41,19 @@ namespace JMSoftware.AsciiGeneratorDotNet
         #region Fields
 
         /// <summary>
+        /// The root location of the localization resources.
+        /// </summary>
+        private static string location = "AscGenDotNet.Resources.Localization.Localization";
+
+        /// <summary>
         /// The translation file.
         /// </summary>
         private static string translationFile;
+
+        /// <summary>
+        /// Have we attempted to load the resource file?
+        /// </summary>
+        private static bool translationFileChecked;
 
         /// <summary>
         /// The translations
@@ -52,28 +62,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
         #endregion Fields
 
-        #region Constructors
-
-        /// <summary>
-        /// Initializes static members of the <see cref="Resource"/> class.
-        /// </summary>
-        static Resource()
-        {
-            Location = "AscGenDotNet.Resources.Localization.Localization";
-        }
-
-        #endregion Constructors
-
         #region Properties
-
-        /// <summary>
-        /// Gets or sets the root location of the localization resources
-        /// </summary>
-        public static string Location
-        {
-            get;
-            set;
-        }
 
         /// <summary>
         /// Gets the translation file.
@@ -128,18 +117,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
             }
         }
 
-        /// <summary>
-        /// Gets or sets a value indicating whether we have attempted to load the resource file.
-        /// </summary>
-        /// <value>
-        /// <c>true</c> if translation file has been checked; otherwise, <c>false</c>.
-        /// </value>
-        public static bool TranslationFileChecked
-        {
-            get;
-            set;
-        }
-
         /// <summary>Gets the translated strings</summary>
         public static Dictionary<string, string> Translations
         {
@@ -152,7 +129,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
                 translations = new Dictionary<string, string>();
 
-                if (TranslationFileChecked)
+                if (translationFileChecked)
                 {
                     return translations;
                 }
@@ -194,7 +171,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
                 }
                 finally
                 {
-                    TranslationFileChecked = true;
+                    translationFileChecked = true;
                 }
 
                 return translations;
@@ -212,14 +189,14 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// <returns>Specified string value from the resource file</returns>
         public static string GetString(string key)
         {
-            ResourceManager resourceManager = new ResourceManager(
-                                                        Location,
-                                                        System.Reflection.Assembly.GetExecutingAssembly());
-
             if (Translations.ContainsKey(key))
             {
                 return Translations[key];
             }
+
+            ResourceManager resourceManager = new ResourceManager(
+                                            location,
+                                            System.Reflection.Assembly.GetExecutingAssembly());
 
             string value = resourceManager.GetString(key, Variables.Instance.Culture);
 
