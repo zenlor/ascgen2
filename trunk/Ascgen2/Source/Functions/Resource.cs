@@ -1,7 +1,7 @@
 //---------------------------------------------------------------------------------------
 // <copyright file="Resource.cs" company="Jonathan Mathews Software">
 //     ASCII Generator dotNET - Image to ASCII Art Conversion Program
-//     Copyright (C) 2009 Jonathan Mathews Software. All rights reserved.
+//     Copyright (C) 2011 Jonathan Mathews Software. All rights reserved.
 // </copyright>
 // <author>Jonathan Mathews</author>
 // <email>info@jmsoftware.co.uk</email>
@@ -41,6 +41,11 @@ namespace JMSoftware.AsciiGeneratorDotNet
         #region Fields
 
         /// <summary>
+        /// The translation file.
+        /// </summary>
+        private static string translationFile;
+
+        /// <summary>
         /// The translations
         /// </summary>
         private static Dictionary<string, string> translations;
@@ -55,10 +60,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
         static Resource()
         {
             Location = "AscGenDotNet.Resources.Localization.Localization";
-
-            CheckForTranslationFiles();
-
-            TranslationFile = Variables.Instance.TranslationFile;
         }
 
         #endregion Constructors
@@ -75,13 +76,56 @@ namespace JMSoftware.AsciiGeneratorDotNet
         }
 
         /// <summary>
-        /// Gets or sets the translation file.
+        /// Gets the translation file.
         /// </summary>
         /// <value>The translation file.</value>
         public static string TranslationFile
         {
-            get;
-            set;
+            get
+            {
+                if (translationFile != null)
+                {
+                    return translationFile;
+                }
+
+                DirectoryInfo dir = new DirectoryInfo(Application.StartupPath);
+
+                FileInfo[] files = dir.GetFiles("translation.*.xml");
+
+                StringCollection strings = new StringCollection();
+
+                foreach (FileInfo file in files)
+                {
+                    strings.Add(file.ToString());
+                }
+
+                translationFile = String.Empty;
+
+                switch (strings.Count)
+                {
+                    case 0:
+                        break;
+
+                    case 1:
+                        translationFile = strings[0];
+                        break;
+
+                    default:
+                        using (FormSelectLanguage formSelectLanguage = new FormSelectLanguage(strings))
+                        {
+                            formSelectLanguage.SelectedItem = Variables.Instance.TranslationFile;
+
+                            if (formSelectLanguage.ShowDialog() == DialogResult.OK)
+                            {
+                                translationFile = formSelectLanguage.SelectedItem;
+                            }
+                        }
+
+                        break;
+                }
+
+                return translationFile;
+            }
         }
 
         /// <summary>
@@ -115,7 +159,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
                 XmlDocument doc = new XmlDocument();
 
-                if (TranslationFile == null || TranslationFile.Length == 0)
+                if (TranslationFile.Length == 0)
                 {
                     return translations;
                 }
@@ -189,48 +233,5 @@ namespace JMSoftware.AsciiGeneratorDotNet
         }
 
         #endregion Public methods
-
-        #region Private methods
-
-        /// <summary>
-        /// Checks the executables directory for translation files.
-        /// </summary>
-        private static void CheckForTranslationFiles()
-        {
-            DirectoryInfo dir = new DirectoryInfo(Application.StartupPath);
-
-            FileInfo[] files = dir.GetFiles("translation.*.xml");
-
-            StringCollection strings = new StringCollection();
-
-            foreach (FileInfo file in files)
-            {
-                strings.Add(file.ToString());
-            }
-
-            if (strings.Count < 2)
-            {
-                if (strings.Count == 1)
-                {
-                    Variables.Instance.TranslationFile = strings[0];
-                }
-
-                return;
-            }
-
-            using (FormSelectLanguage formSelectLanguage = new FormSelectLanguage(strings))
-            {
-                formSelectLanguage.SelectedItem = Variables.Instance.TranslationFile;
-
-                if (formSelectLanguage.ShowDialog() != DialogResult.OK)
-                {
-                    return;
-                }
-
-                Variables.Instance.TranslationFile = formSelectLanguage.SelectedItem;
-            }
-        }
-
-        #endregion Private methods
     }
 }
