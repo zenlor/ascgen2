@@ -27,6 +27,8 @@ namespace JMSoftware.AsciiGeneratorDotNet
 {
     using System;
     using System.Collections.Generic;
+    using System.Collections.Specialized;
+    using System.IO;
     using System.Resources;
     using System.Windows.Forms;
     using System.Xml;
@@ -53,6 +55,8 @@ namespace JMSoftware.AsciiGeneratorDotNet
         static Resource()
         {
             Location = "AscGenDotNet.Resources.Localization.Localization";
+
+            CheckForTranslationFiles();
 
             TranslationFile = Variables.Instance.TranslationFile;
         }
@@ -185,5 +189,48 @@ namespace JMSoftware.AsciiGeneratorDotNet
         }
 
         #endregion Public methods
+
+        #region Private methods
+
+        /// <summary>
+        /// Checks the executables directory for translation files.
+        /// </summary>
+        private static void CheckForTranslationFiles()
+        {
+            DirectoryInfo dir = new DirectoryInfo(Application.StartupPath);
+
+            FileInfo[] files = dir.GetFiles("translation.*.xml");
+
+            StringCollection strings = new StringCollection();
+
+            foreach (FileInfo file in files)
+            {
+                strings.Add(file.ToString());
+            }
+
+            if (strings.Count < 2)
+            {
+                if (strings.Count == 1)
+                {
+                    Variables.Instance.TranslationFile = strings[0];
+                }
+
+                return;
+            }
+
+            using (FormSelectLanguage formSelectLanguage = new FormSelectLanguage(strings))
+            {
+                formSelectLanguage.SelectedItem = Variables.Instance.TranslationFile;
+
+                if (formSelectLanguage.ShowDialog() != DialogResult.OK)
+                {
+                    return;
+                }
+
+                Variables.Instance.TranslationFile = formSelectLanguage.SelectedItem;
+            }
+        }
+
+        #endregion Private methods
     }
 }
