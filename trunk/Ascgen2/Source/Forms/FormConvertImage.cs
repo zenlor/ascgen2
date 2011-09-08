@@ -146,9 +146,9 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             this.AlterInputImageToolStripIsEnabled = false;
 
-            this.InputDirectory = Variables.Instance.InitialInputDirectory;
-
-            this.OutputDirectory = Variables.Instance.InitialOutputDirectory;
+            this.dialogSaveImage.InitialDirectory =
+                        this.dialogSaveText.InitialDirectory =
+                        this.dialogSaveColour.InitialDirectory = Variables.Instance.InitialOutputDirectory;
 
             this.clientSize = this.pnlMain.ClientSize;
 
@@ -539,23 +539,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
         }
 
         /// <summary>
-        /// Gets or sets the the directory for the input images
-        /// </summary>
-        /// <value>The input directory.</value>
-        private string InputDirectory
-        {
-            get
-            {
-                return Variables.Instance.InitialInputDirectory;
-            }
-
-            set
-            {
-                this.dialogLoadImage.InitialDirectory = Variables.Instance.InitialInputDirectory = value;
-            }
-        }
-
-        /// <summary>
         /// Gets or sets a value indicating whether the output is black text on a white background.
         /// </summary>
         /// <value>
@@ -742,26 +725,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
             set
             {
                 this.textSettings.MinimumLevel = value;
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets the directory for the output images
-        /// </summary>
-        /// <value>The output directory.</value>
-        private string OutputDirectory
-        {
-            get
-            {
-                return Variables.Instance.InitialOutputDirectory;
-            }
-
-            set
-            {
-                this.dialogSaveImage.InitialDirectory =
-                        this.dialogSaveText.InitialDirectory =
-                        this.dialogSaveColour.InitialDirectory =
-                        Variables.Instance.InitialOutputDirectory = value;
             }
         }
 
@@ -1914,9 +1877,9 @@ namespace JMSoftware.AsciiGeneratorDotNet
                     return;
                 }
 
-                this.InputDirectory = settingsDialog.InputDirectory;
+                Variables.Instance.InitialInputDirectory = settingsDialog.InputDirectory;
 
-                this.OutputDirectory = settingsDialog.OutputDirectory;
+                Variables.Instance.InitialOutputDirectory = settingsDialog.OutputDirectory;
 
                 Variables.Instance.DefaultWidth = settingsDialog.OutputSize.Width;
 
@@ -2583,8 +2546,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
                 return false;
             }
 
-            this.OutputDirectory = Path.GetDirectoryName(this.dialogSaveImage.FileName);
-
             return true;
         }
 
@@ -2656,8 +2617,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             this.imageSaved = true;
 
-            this.OutputDirectory = Path.GetDirectoryName(this.dialogSaveColour.FileName);
-
             return true;
         }
 
@@ -2719,8 +2678,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
             }
 
             this.imageSaved = true;
-
-            this.OutputDirectory = Path.GetDirectoryName(this.dialogSaveText.FileName);
 
             return true;
         }
