@@ -43,7 +43,7 @@ namespace JMSoftware.AsciiConversion
         /// <summary>
         /// Does the output image have to have the same aspect ratio as the input image?
         /// </summary>
-        private bool dimensionsAreLocked;
+        private bool dimensionsAreLocked = true;
 
         /// <summary>
         /// Size of the input image in pixels
@@ -53,12 +53,12 @@ namespace JMSoftware.AsciiConversion
         /// <summary>
         /// Size of the output image in characters
         /// </summary>
-        private Size outputSize;
+        private Size outputSize = new Size(150, 0);
 
         /// <summary>
         /// Was the width the last value to be changed?
         /// </summary>
-        private bool widthChangedLast;
+        private bool widthChangedLast = true;
 
         #endregion Fields
 
@@ -77,28 +77,7 @@ namespace JMSoftware.AsciiConversion
 
             this.characterSize = characterSize;
 
-            if (width > 0 && height > 0)
-            {
-                this.outputSize = new Size(width, height);
-
-                return;
-            }
-
-            this.dimensionsAreLocked = true;
-
-            if (width < 1 && height < 1)
-            {
-                width = 150;
-            }
-
-            if (width < 1)
-            {
-                this.Height = height;
-            }
-            else
-            {
-                this.Width = width;
-            }
+            this.OutputSize = new Size(width, height);
         }
 
         #endregion Constructors
@@ -244,7 +223,7 @@ namespace JMSoftware.AsciiConversion
         }
 
         /// <summary>
-        /// Gets the size of the output.
+        /// Gets or sets the size of the output.
         /// </summary>
         /// <value>The size of the output.</value>
         public Size OutputSize
@@ -252,6 +231,35 @@ namespace JMSoftware.AsciiConversion
             get
             {
                 return this.outputSize;
+            }
+
+            set
+            {
+                if (value.Width < 1 && value.Height < 1)
+                {
+                    return;
+                }
+
+                this.dimensionsAreLocked = value.Width < 0 || value.Height < 0;
+
+                this.outputSize = new Size(-1, -1);
+
+                if (this.dimensionsAreLocked)
+                {
+                    if (value.Height < 0)
+                    {
+                        this.Width = value.Width;
+                    }
+                    else
+                    {
+                        this.Height = value.Height;
+                    }
+                }
+                else
+                {
+                    this.Height = value.Height;
+                    this.Width = value.Width;
+                }
             }
         }
 
