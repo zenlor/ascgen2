@@ -185,7 +185,7 @@ namespace JMSoftware.AsciiConversion
             // the corresponding character position for every output pixel
             int[] pixelToCharacterPosition = new int[targetWidth + this.maximumCharacterWidth];
 
-            for (int characterPosition = 0, pixelPosition = 0; characterPosition < numberOfColumns + 1; characterPosition++)
+            for (int characterPosition = 0, pixelPosition = 0; characterPosition < numberOfColumns; characterPosition++)
             {
                 for (int i = 0; i < CharacterWidth; i++)
                 {
