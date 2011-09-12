@@ -491,10 +491,10 @@ namespace JMSoftware.AsciiGeneratorDotNet
         }
 
         /// <summary>
-        /// Gets or sets the default max level.
+        /// Gets or sets the default maximum level.
         /// </summary>
         /// <value>The default maximum level.</value>
-        public int DefaultMaxLevel
+        public int DefaultMaximumLevel
         {
             get
             {
@@ -525,10 +525,10 @@ namespace JMSoftware.AsciiGeneratorDotNet
         }
 
         /// <summary>
-        /// Gets or sets the default min level.
+        /// Gets or sets the default minimum level.
         /// </summary>
         /// <value>The default minimum level.</value>
-        public int DefaultMinLevel
+        public int DefaultMinimumLevel
         {
             get
             {

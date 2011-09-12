@@ -1276,11 +1276,11 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             this.brightnessContrast.Contrast = Variables.Instance.DefaultTextContrast;
 
-            this.MinimumLevel = this.levels.Minimum = Variables.Instance.DefaultMinLevel;
+            this.MinimumLevel = this.levels.Minimum = Variables.Instance.DefaultMinimumLevel;
 
             this.MedianLevel = this.levels.Median = Variables.Instance.DefaultMedianLevel;
 
-            this.MaximumLevel = this.levels.Maximum = Variables.Instance.DefaultMaxLevel;
+            this.MaximumLevel = this.levels.Maximum = Variables.Instance.DefaultMaximumLevel;
 
             this.widgetTextSettings.Refresh();
 
@@ -2758,8 +2758,8 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.brightnessContrast.Contrast = Variables.Instance.DefaultTextContrast;
 
             this.levels = this.widgetTextSettings;
-            this.levels.Minimum = Variables.Instance.DefaultMinLevel;
-            this.levels.Maximum = Variables.Instance.DefaultMaxLevel;
+            this.levels.Minimum = Variables.Instance.DefaultMinimumLevel;
+            this.levels.Maximum = Variables.Instance.DefaultMaximumLevel;
             this.levels.Median = Variables.Instance.DefaultMedianLevel;
 
             this.dither = this.widgetTextSettings;

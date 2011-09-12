@@ -178,7 +178,7 @@ namespace JMSoftware.AsciiConversion
             this.flipHorizontally = Variables.Instance.FlipHorizontally;
             this.flipVertically = Variables.Instance.FlipVertically;
 
-            this.levels = new LevelsSettings(Variables.Instance.DefaultMinLevel, Variables.Instance.DefaultMedianLevel, Variables.Instance.DefaultMaxLevel);
+            this.levels = new LevelsSettings(Variables.Instance.DefaultMinimumLevel, Variables.Instance.DefaultMedianLevel, Variables.Instance.DefaultMaximumLevel);
         }
 
         #endregion Constructors
