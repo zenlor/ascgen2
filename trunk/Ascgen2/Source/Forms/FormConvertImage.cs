@@ -978,6 +978,10 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             this.dimensionsCalculator.ImageSize = image.Size;
 
+            this.dimensionsCalculator.OutputSize = new Size(Variables.Instance.DefaultWidth, Variables.Instance.DefaultHeight);
+
+            this.cbxLocked.Checked = this.dimensionsCalculator.DimensionsAreLocked;
+
             this.UpdateTextSizeControls();
 
             this.inputChanged = true;
