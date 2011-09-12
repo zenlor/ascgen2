@@ -211,12 +211,10 @@ namespace JMSoftware.AsciiConversion
 
                 this.imageSize = value;
 
-                if (!this.DimensionsAreLocked)
+                if (this.DimensionsAreLocked)
                 {
-                    return;
+                    this.CalculateOtherDimension();
                 }
-
-                this.CalculateOtherDimension();
 
                 this.UpdateEvents();
             }
