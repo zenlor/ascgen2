@@ -156,7 +156,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.showNoNewVersionMessage = showNoNewVersionMessage;
 
             this.versionCheckThread = new Thread(this.CheckForNewVersion);
-            this.versionCheckThread.Name = String.Format("VersionCheckThread{0:HHmmss}", DateTime.Now);
+            this.versionCheckThread.Name = String.Format("VersionCheckThread{0:HHmmssfff}", DateTime.Now);
             this.versionCheckThread.Start();
         }
 
@@ -171,28 +171,23 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// <returns>A string containing the reponse from the server</returns>
         private static string ReadHtml(string url)
         {
-            byte[] buffer;
+            string result;
 
             using (WebClient webClient = new WebClient())
             {
+                webClient.Proxy = null;
+
                 try
                 {
-                    buffer = webClient.DownloadData(url);
+                    result = webClient.DownloadString(url);
                 }
                 catch (System.Net.WebException)
                 {
-                    buffer = null;
+                    result = null;
                 }
             }
 
-            if (buffer == null)
-            {
-                return null;
-            }
-
-            UTF8Encoding utf8 = new UTF8Encoding();
-
-            return utf8.GetString(buffer);
+            return result;
         }
 
         /// <summary>
