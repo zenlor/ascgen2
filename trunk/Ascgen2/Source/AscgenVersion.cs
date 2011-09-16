@@ -50,6 +50,9 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// <summary>Version Suffix Number.</summary>
         public const int SuffixNumber = 0;
 
+        /// <summary>The url of the remote xml file containing the latest version.</summary>
+        public const string VersionUrl = "http://ascgen2.sourceforge.net/version.xml";
+
         #endregion Constants
 
         #region Public methods
