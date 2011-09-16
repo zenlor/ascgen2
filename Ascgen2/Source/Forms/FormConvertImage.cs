@@ -177,7 +177,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             this.versionChecker = new VersionChecker(
                                         this,
-                                        "http://ascgen2.sourceforge.net/version.xml",
+                                        AscgenVersion.VersionUrl,
                                         AscgenVersion.Major,
                                         AscgenVersion.Minor,
                                         AscgenVersion.Patch,
