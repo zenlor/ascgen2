@@ -12,7 +12,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JMSoftware.Controls", "JMSo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JMSoftware.ImageHelper", "JMSoftware.ImageHelper\JMSoftware.ImageHelper.csproj", "{052DA6A8-6309-4589-922A-28407F8A0DD0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JMSoftware.VersionChecker", "JMSoftware.VersionChecker\JMSoftware.VersionChecker.csproj", "{4A100A8B-4510-42AF-901E-A72D840D2A91}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JMSoftware.VersionChecking", "JMSoftware.VersionChecking\JMSoftware.VersionChecking.csproj", "{4A100A8B-4510-42AF-901E-A72D840D2A91}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
