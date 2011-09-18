@@ -75,22 +75,22 @@ namespace JMSoftware.AsciiConversion
         /// <summary>
         /// Initializes a new instance of the <see cref="OutputCreator"/> class.
         /// </summary>
-        /// <param name="strings">The strings containing the ASCII image.</param>
+        /// <param name="imageArray">The strings containing the ASCII image.</param>
         /// <param name="textProcessingSettings">The text processing settings.</param>
-        public OutputCreator(string[] strings, TextProcessingSettings textProcessingSettings)
-            : this(strings, textProcessingSettings, null)
+        public OutputCreator(string[] imageArray, TextProcessingSettings textProcessingSettings)
+            : this(imageArray, textProcessingSettings, null)
         {
         }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="OutputCreator"/> class.
         /// </summary>
-        /// <param name="strings">The strings containing the ASCII image.</param>
+        /// <param name="imageArray">The strings containing the ASCII image.</param>
         /// <param name="textProcessingSettings">The text processing settings.</param>
         /// <param name="colors">The 2d array of colors.</param>
-        public OutputCreator(string[] strings, TextProcessingSettings textProcessingSettings, Color[][] colors)
+        public OutputCreator(string[] imageArray, TextProcessingSettings textProcessingSettings, Color[][] colors)
         {
-            this.strings = strings;
+            this.strings = imageArray;
 
             this.textProcessingSettings = textProcessingSettings;
 
@@ -122,7 +122,7 @@ namespace JMSoftware.AsciiConversion
         /// Creates the HTML.
         /// </summary>
         /// <returns>A string containing the HTML file.</returns>
-        public string CreateHTML()
+        public string CreateHtml()
         {
             Color backgroundColor = this.textProcessingSettings.IsBlackTextOnWhite ? Color.White : Color.Black;
 
@@ -285,7 +285,7 @@ namespace JMSoftware.AsciiConversion
         /// Creates the RTF.
         /// </summary>
         /// <returns>a string containing the RTF file.</returns>
-        public string CreateRTF()
+        public string CreateRtf()
         {
             StringBuilder builder = new StringBuilder();
 

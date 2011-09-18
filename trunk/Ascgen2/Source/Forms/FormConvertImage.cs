@@ -2556,7 +2556,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             {
                 case 2: // rtf 256 color
                 case 4: // rtf 24-bit
-                    output = outputCreator.CreateRTF();
+                    output = outputCreator.CreateRtf();
 
                     encoding = System.Text.Encoding.ASCII;
 
@@ -2567,7 +2567,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
                 default:
                     outputCreator.Title = Path.GetFileNameWithoutExtension(this.Filename);
 
-                    output = outputCreator.CreateHTML();
+                    output = outputCreator.CreateHtml();
 
                     encoding = System.Text.Encoding.UTF8;
 
@@ -2629,7 +2629,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
                         outputCreator.Title = Path.GetFileNameWithoutExtension(this.Filename);
 
-                        writer.Write(outputCreator.CreateHTML());
+                        writer.Write(outputCreator.CreateHtml());
                     }
 
                     saved = true;
