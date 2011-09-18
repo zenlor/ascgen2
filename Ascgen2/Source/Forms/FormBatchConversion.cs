@@ -1114,7 +1114,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
                     outputCreator.Title = Path.GetFileNameWithoutExtension(outputFilename);
 
-                    writer.Write(this.OutputIsHtml ? outputCreator.CreateHTML() : outputCreator.CreateRTF());
+                    writer.Write(this.OutputIsHtml ? outputCreator.CreateHtml() : outputCreator.CreateRtf());
                 }
                 else
                 {
