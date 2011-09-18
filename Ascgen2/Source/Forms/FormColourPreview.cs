@@ -93,28 +93,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
         #region Private methods
 
         /// <summary>
-        /// Handles the CloseForm event of the Widget control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        public void Widget_CloseForm(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        /// <summary>
-        /// Handles the zoomChanged event of the Widget control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        public void Widget_zoomChanged(object sender, EventArgs e)
-        {
-            this.UpdateImageSize();
-
-            this.UpdateTitle();
-        }
-
-        /// <summary>
         /// Handles the SizeChanged event of the pnlImage control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
@@ -167,6 +145,28 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.widget.CloseText = Resource.GetString("Close");
             this.widget.ZoomInText = Resource.GetString("Zoom In");
             this.widget.ZoomOutText = Resource.GetString("Zoom Out");
+        }
+
+        /// <summary>
+        /// Handles the CloseForm event of the Widget control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void Widget_CloseForm(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        /// <summary>
+        /// Handles the zoomChanged event of the Widget control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void Widget_zoomChanged(object sender, EventArgs e)
+        {
+            this.UpdateImageSize();
+
+            this.UpdateTitle();
         }
 
         #endregion Private methods
