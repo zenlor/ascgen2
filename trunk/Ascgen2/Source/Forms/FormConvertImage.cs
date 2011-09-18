@@ -1,7 +1,7 @@
 //---------------------------------------------------------------------------------------
 // <copyright file="FormConvertImage.cs" company="Jonathan Mathews Software">
 //     ASCII Generator dotNET - Image to ASCII Art Conversion Program
-//     Copyright (C) 2009 Jonathan Mathews Software. All rights reserved.
+//     Copyright (C) 2011 Jonathan Mathews Software. All rights reserved.
 // </copyright>
 // <author>Jonathan Mathews</author>
 // <email>info@jmsoftware.co.uk</email>
@@ -36,7 +36,9 @@ namespace JMSoftware.AsciiGeneratorDotNet
     using JMSoftware.ImageHelper;
     using JMSoftware.Interfaces;
     using JMSoftware.TextHelper;
+    using JMSoftware.VersionChecking;
     using JMSoftware.Widgets;
+    using Version = JMSoftware.VersionChecking.Version;
 
     /// <summary>
     /// Main form for the program
@@ -175,21 +177,13 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             CheckForIllegalCrossThreadCalls = false;
 
-            this.versionChecker = new VersionChecker(
-                                        this,
-                                        AscgenVersion.VersionUrl,
-                                        AscgenVersion.Major,
-                                        AscgenVersion.Minor,
-                                        AscgenVersion.Patch,
-                                        AscgenVersion.SuffixNumber);
+            this.versionChecker = new VersionChecker();
 
-            this.versionChecker.OpenDownloadPageString = Resource.GetString("Open the download page") + "?";
-            this.versionChecker.ThisIsLatestVersionString = Resource.GetString("This is the latest version");
-            this.versionChecker.VersionAvailableString = Resource.GetString("Version {0} is available");
+            this.versionChecker.ReadAsyncCompletedEventHandler += new EventHandler(this.VersionReadAsyncCompletedEventHandler);
 
             if (Variables.Instance.CheckForNewVersion)
             {
-                this.versionChecker.Check();
+                this.versionChecker.ReadAsync(AscgenVersion.VersionUrl);
             }
 
             // load a filename if one was passed
@@ -2222,7 +2216,14 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void MenuHelpCheckForNewVersionToolStrip_Click(object sender, EventArgs e)
         {
-            this.versionChecker.Check(true);
+            if (!this.versionChecker.Read(AscgenVersion.VersionUrl))
+            {
+                MessageBox.Show(Resource.GetString("Error"));
+
+                return;
+            }
+
+            this.ShowNewVersionDialog(true);
         }
 
         /// <summary>
@@ -2865,6 +2866,41 @@ namespace JMSoftware.AsciiGeneratorDotNet
         }
 
         /// <summary>
+        /// Shows the new version dialog.
+        /// </summary>
+        /// <param name="showVersionUpToDateDialog">if set to <c>true</c>, shows the version is up to date dialog.</param>
+        private void ShowNewVersionDialog(bool showVersionUpToDateDialog)
+        {
+            Version latest = this.versionChecker.Version;
+
+            if (latest == null)
+            {
+                return;
+            }
+
+            Version current = new Version(
+                                        AscgenVersion.Major,
+                                        AscgenVersion.Minor,
+                                        AscgenVersion.Patch,
+                                        AscgenVersion.SuffixNumber,
+                                        AscgenVersion.Suffix);
+
+            if (latest > current)
+            {
+                string text = string.Format(Resource.GetString("Version {0} is available"), this.versionChecker.Version.ToString());
+
+                if (MessageBox.Show(Resource.GetString("Open the download page") + "?", text, MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
+                {
+                    System.Diagnostics.Process.Start(latest.DownloadUrl);
+                }
+            }
+            else if (showVersionUpToDateDialog)
+            {
+                MessageBox.Show(Resource.GetString("This is the latest version"), String.Empty, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        /// <summary>
         /// Shows the save dialog.
         /// </summary>
         /// <returns>Did we save the image?</returns>
@@ -3325,6 +3361,16 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.widgetImage.UpdateUI();
 
             this.formSaveAs.UpdateUI();
+        }
+
+        /// <summary>
+        /// Called when the asynchronous version read has completed.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void VersionReadAsyncCompletedEventHandler(object sender, EventArgs e)
+        {
+            this.ShowNewVersionDialog(false);
         }
 
         /// <summary>

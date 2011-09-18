@@ -23,13 +23,12 @@
 //    along with this program.  If not, see http://www.gnu.org/licenses/.
 // </license>
 //---------------------------------------------------------------------------------------
-namespace JMSoftware.AsciiGeneratorDotNet
+namespace JMSoftware.VersionChecking
 {
     using System;
+    using System.Collections.Generic;
     using System.Net;
     using System.Text;
-    using System.Threading;
-    using System.Windows.Forms;
     using System.Xml;
 
     /// <summary>
@@ -40,44 +39,14 @@ namespace JMSoftware.AsciiGeneratorDotNet
         #region Fields
 
         /// <summary>
-        /// The current major version.
+        /// The last version that was read.
         /// </summary>
-        private int majorVersion;
+        private Version version;
 
         /// <summary>
-        /// The current minor version.
+        /// WebClient used to access the remote files.
         /// </summary>
-        private int minorVersion;
-
-        /// <summary>
-        /// Window to show the dialog
-        /// </summary>
-        private IWin32Window owner;
-
-        /// <summary>
-        /// The current patch version.
-        /// </summary>
-        private int patchVersion;
-
-        /// <summary>
-        /// Show a message if there is no new version?
-        /// </summary>
-        private bool showNoNewVersionMessage;
-
-        /// <summary>
-        /// The current suffix version.
-        /// </summary>
-        private int suffixVersion;
-
-        /// <summary>
-        /// The URL of the xml file containing the version.
-        /// </summary>
-        private string url;
-
-        /// <summary>
-        /// Thread used for the version checking
-        /// </summary>
-        private Thread versionCheckThread;
+        private WebClient webClient;
 
         #endregion Fields
 
@@ -86,78 +55,122 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// <summary>
         /// Initializes a new instance of the <see cref="VersionChecker"/> class.
         /// </summary>
-        /// <param name="owner">The owner of the dialog.</param>
-        /// <param name="url">The URL of the xml file containing the version.</param>
-        /// <param name="currentMajor">The current major version.</param>
-        /// <param name="currentMinor">The current minor version.</param>
-        /// <param name="currentPatch">The current patch version.</param>
-        /// <param name="currentSuffix">The current suffix version.</param>
-        public VersionChecker(IWin32Window owner, string url, int currentMajor, int currentMinor, int currentPatch, int currentSuffix)
+        public VersionChecker()
         {
-            this.owner = owner;
+            this.webClient = new WebClient();
 
-            this.url = url;
+            this.webClient.Proxy = null;
 
-            this.majorVersion = currentMajor;
-
-            this.minorVersion = currentMinor;
-
-            this.patchVersion = currentPatch;
-
-            this.suffixVersion = currentSuffix;
-
-            this.VersionAvailableString = "Version {0} is available";
-
-            this.OpenDownloadPageString = "Open the download page?";
-
-            this.ThisIsLatestVersionString = "This is the latest version";
+            this.webClient.DownloadStringCompleted += new DownloadStringCompletedEventHandler(this.DownloadStringCompleted);
         }
 
         #endregion Constructors
 
+        #region Events / Delegates
+
+        /// <summary>
+        /// Occurs when the version has been asynchronously read.
+        /// </summary>
+        public event EventHandler ReadAsyncCompletedEventHandler;
+
+        /// <summary>
+        /// Occurs when the asynchronous read has failed.
+        /// </summary>
+        public event EventHandler ReadAsyncFailedEventHandler;
+
+        #endregion Events / Delegates
+
         #region Properties
 
         /// <summary>
-        /// Gets or sets the open download page string.
+        /// Gets the version that has been read.
         /// </summary>
-        /// <value>The open download page string.</value>
-        public string OpenDownloadPageString { get; set; }
-
-        /// <summary>
-        /// Gets or sets the this is latest version string.
-        /// </summary>
-        /// <value>The this is latest version string.</value>
-        public string ThisIsLatestVersionString { get; set; }
-
-        /// <summary>
-        /// Gets or sets the version available string.
-        /// </summary>
-        /// <value>The version available string.</value>
-        public string VersionAvailableString { get; set; }
+        /// <value>The version.</value>
+        /// <remarks>Equals null if not read or the read failed.</remarks>
+        public Version Version
+        {
+            get
+            {
+                return this.version;
+            }
+        }
 
         #endregion Properties
 
         #region Public methods
 
         /// <summary>
-        /// Checks for a new version.
+        /// Reads the specified URL into this.Latest.
         /// </summary>
-        public void Check()
+        /// <param name="uri">The Uri object.</param>
+        /// <returns>Did the url load successfully?</returns>
+        public bool Read(Uri uri)
         {
-            this.Check(false);
+            string result;
+
+            try
+            {
+                result = this.webClient.DownloadString(uri);
+            }
+            catch (System.Net.WebException)
+            {
+                result = null;
+            }
+            catch (System.NotSupportedException)
+            {
+                result = null;
+            }
+
+            this.version = ProcessXml(result);
+
+            return this.Version != null;
         }
 
         /// <summary>
-        /// Checks for a new version.
+        /// Reads the specified URL into this.Latest.
         /// </summary>
-        /// <param name="showNoNewVersionMessage">if set to <c>true</c> the show a message if no new version.</param>
-        public void Check(bool showNoNewVersionMessage)
+        /// <param name="url">The URL to read.</param>
+        /// <returns>Did the url load successfully?</returns>
+        public bool Read(string url)
         {
-            this.showNoNewVersionMessage = showNoNewVersionMessage;
+            if (url == null || url.Length == 0)
+            {
+                return false;
+            }
 
-            this.versionCheckThread = new Thread(this.CheckForNewVersion);
-            this.versionCheckThread.Name = String.Format("VersionCheckThread{0:HHmmssfff}", DateTime.Now);
-            this.versionCheckThread.Start();
+            return this.Read(new Uri(url));
+        }
+
+        /// <summary>
+        /// Reads the specified URL into this.Latest.
+        /// </summary>
+        /// <param name="uri">The Uri object.</param>
+        public void ReadAsync(Uri uri)
+        {
+            if (this.webClient.IsBusy)
+            {
+                this.webClient.CancelAsync();
+            }
+
+            try
+            {
+                this.webClient.DownloadStringAsync(uri);
+            }
+            catch (System.Net.WebException)
+            {
+            }
+        }
+
+        /// <summary>
+        /// Reads the specified URL into this.Latest asynchronously, triggering VersionReadOkEventHandler if successful.
+        /// </summary>
+        /// <param name="url">The URL to read.</param>
+        public void ReadAsync(string url)
+        {
+            if (url != null && url.Length > 0)
+            {
+                this.ReadAsync(new Uri(url));
+            }
         }
 
         #endregion Public methods
@@ -165,130 +178,80 @@ namespace JMSoftware.AsciiGeneratorDotNet
         #region Private methods
 
         /// <summary>
-        /// Reads from the passed url as a string.
+        /// Processes the XML from the string into a new Version object.
         /// </summary>
-        /// <param name="url">The URL to be read.</param>
-        /// <returns>A string containing the reponse from the server</returns>
-        private static string ReadHtml(string url)
+        /// <param name="html">A string containing the HTML.</param>
+        /// <returns>The version details taken from the html, or null.</returns>
+        private static Version ProcessXml(string html)
         {
-            string result;
-
-            using (WebClient webClient = new WebClient())
-            {
-                webClient.Proxy = null;
-
-                try
-                {
-                    result = webClient.DownloadString(url);
-                }
-                catch (System.Net.WebException)
-                {
-                    result = null;
-                }
-            }
-
-            return result;
-        }
-
-        /// <summary>
-        /// Check if a new version of the program is available
-        /// </summary>
-        private void CheckForNewVersion()
-        {
-            XmlDocument doc = new XmlDocument();
-
-            string html = ReadHtml(this.url);
-
             if (html == null)
             {
-                return;
+                return null;
             }
 
-            doc.LoadXml(html);
-
-            int latestMajor;
-            int latestMinor;
-            int latestPatch;
-            int latestSuffix;
-            string suffixString;
-            string downloadUrl;
+            XmlDocument document = new XmlDocument();
 
             try
             {
-                latestMajor = XmlProcessor.ReadNode(doc.SelectSingleNode("version/major"), 0, 100, 0);
-                latestMinor = XmlProcessor.ReadNode(doc.SelectSingleNode("version/minor"), 0, 100, 0);
-                latestPatch = XmlProcessor.ReadNode(doc.SelectSingleNode("version/patch"), 0, 100, 0);
-                latestSuffix = XmlProcessor.ReadNode(doc.SelectSingleNode("version/suffixnum"), 0, 100, 0);
-                suffixString = XmlProcessor.ReadNode(doc.SelectSingleNode("version/suffix"), String.Empty, true);
-                downloadUrl = XmlProcessor.ReadNode(doc.SelectSingleNode("version/url"), String.Empty, true);
+                document.LoadXml(html);
+
+                return new Version(
+                        XmlProcessor.ReadNode(document.SelectSingleNode("version/major"), 0, 100, 0),
+                        XmlProcessor.ReadNode(document.SelectSingleNode("version/minor"), 0, 100, 0),
+                        XmlProcessor.ReadNode(document.SelectSingleNode("version/patch"), 0, 100, 0),
+                        XmlProcessor.ReadNode(document.SelectSingleNode("version/suffixnum"), 0, 100, 0),
+                        XmlProcessor.ReadNode(document.SelectSingleNode("version/suffix"), String.Empty, true),
+                        XmlProcessor.ReadNode(document.SelectSingleNode("version/url"), String.Empty, true));
             }
             catch (System.Xml.XmlException)
             {
-                return;
-            }
-
-            bool newVersionAvailable = false;
-
-            if (latestMajor > this.majorVersion)
-            {
-                newVersionAvailable = true;
-            }
-            else if (latestMajor == this.majorVersion)
-            {
-                if (latestMinor > this.minorVersion)
-                {
-                    newVersionAvailable = true;
-                }
-                else if (latestMinor == this.minorVersion)
-                {
-                    if (latestPatch > this.patchVersion)
-                    {
-                        newVersionAvailable = true;
-                    }
-                    else if (latestPatch == this.patchVersion)
-                    {
-                        newVersionAvailable = latestSuffix > this.suffixVersion;
-                    }
-                }
-            }
-
-            if (newVersionAvailable)
-            {
-                this.NewVersionDialog(string.Format("{0}.{1}.{2}{3}", latestMajor, latestMinor, latestPatch, suffixString), downloadUrl);
-            }
-            else
-            {
-                if (this.showNoNewVersionMessage)
-                {
-                    MessageBox.Show(
-                                this.owner,
-                                this.ThisIsLatestVersionString,
-                                string.Empty,
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Information);
-                }
+                return null;
             }
         }
 
         /// <summary>
-        /// Shows the new version dialog.
+        /// Triggered when the string has been downloaded.
         /// </summary>
-        /// <param name="version">The new version.</param>
-        /// <param name="url">The URL to the new version.</param>
-        private void NewVersionDialog(string version, string url)
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="System.Net.DownloadStringCompletedEventArgs"/> instance containing the event data.</param>
+        private void DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
         {
-            string text = string.Format(this.VersionAvailableString, version);
+            if (e.Cancelled || e.Error != null)
+            {
+                this.DownloadStringFailed(sender, e);
 
-            if (url.Length > 0)
-            {
-                if (MessageBox.Show(this.owner, this.OpenDownloadPageString, text, MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
-                {
-                    System.Diagnostics.Process.Start(url);
-                }
+                return;
             }
-            else
+
+            string result = e.Result.ToString();
+
+            if (result.Length == 0 || !result.Substring(0, 13).Equals("<?xml version"))
             {
-                MessageBox.Show(this.owner, text, String.Empty, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.DownloadStringFailed(sender, e);
+
+                return;
+            }
+
+            this.version = ProcessXml(result);
+
+            if (this.ReadAsyncCompletedEventHandler != null)
+            {
+                this.ReadAsyncCompletedEventHandler(sender, e);
+            }
+        }
+
+        /// <summary>
+        /// Called when the async download string failed.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="System.Net.DownloadStringCompletedEventArgs"/> instance containing the event data.</param>
+        private void DownloadStringFailed(object sender, DownloadStringCompletedEventArgs e)
+        {
+            this.version = null;
+
+            if (this.ReadAsyncFailedEventHandler != null)
+            {
+                this.ReadAsyncFailedEventHandler(sender, e);
             }
         }
 

@@ -23,7 +23,7 @@
 //    along with this program.  If not, see http://www.gnu.org/licenses/.
 // </license>
 //---------------------------------------------------------------------------------------
-namespace JMSoftware.AsciiGeneratorDotNet
+namespace JMSoftware.VersionChecking
 {
     using System.Drawing;
     using System.Xml;
