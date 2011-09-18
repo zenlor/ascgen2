@@ -382,7 +382,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.printDocument = new System.Drawing.Printing.PrintDocument();
             this.printDialog = new System.Windows.Forms.PrintDialog();
             this.printPreviewDialog = new System.Windows.Forms.PrintPreviewDialog();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.contextMenuText.SuspendLayout();
             this.mainMenu1.SuspendLayout();
             this.pnlMain.SuspendLayout();
@@ -732,7 +731,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.menuEditFontsFont,
             this.menuEditFontsSpecifyCharSize});
             this.menuEditFonts.Name = "menuEditFonts";
-            this.menuEditFonts.Size = new System.Drawing.Size(191, 22);
+            this.menuEditFonts.Size = new System.Drawing.Size(187, 22);
             this.menuEditFonts.Text = "menuEditFonts";
             // 
             // menuEditFontsFont
@@ -758,7 +757,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.menuEditRampsValidChars,
             this.menuEditRampsCopyRamp});
             this.menuEditRamps.Name = "menuEditRamps";
-            this.menuEditRamps.Size = new System.Drawing.Size(191, 22);
+            this.menuEditRamps.Size = new System.Drawing.Size(187, 22);
             this.menuEditRamps.Text = "menuEditRamps";
             this.menuEditRamps.DropDownOpening += new System.EventHandler(this.MenuEditRamps_DropDownOpening);
             // 
@@ -789,7 +788,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.menuEditInputFlipHorizontal,
             this.menuEditInputFlipVertical});
             this.menuEditInput.Name = "menuEditInput";
-            this.menuEditInput.Size = new System.Drawing.Size(191, 22);
+            this.menuEditInput.Size = new System.Drawing.Size(187, 22);
             this.menuEditInput.Text = "menuEditInput";
             this.menuEditInput.DropDownOpening += new System.EventHandler(this.MenuEditInput_DropDownOpening);
             // 
@@ -848,7 +847,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.menuEditFlipVertical});
             this.menuEditOutput.MergeIndex = 3;
             this.menuEditOutput.Name = "menuEditOutput";
-            this.menuEditOutput.Size = new System.Drawing.Size(191, 22);
+            this.menuEditOutput.Size = new System.Drawing.Size(187, 22);
             this.menuEditOutput.Text = "menuEditOutput";
             this.menuEditOutput.DropDownOpening += new System.EventHandler(this.MenuEditOutput_Popup);
             // 
@@ -940,12 +939,12 @@ namespace JMSoftware.AsciiGeneratorDotNet
             // menuEditSep2
             // 
             this.menuEditSep2.Name = "menuEditSep2";
-            this.menuEditSep2.Size = new System.Drawing.Size(188, 6);
+            this.menuEditSep2.Size = new System.Drawing.Size(184, 6);
             // 
             // menuEditEditSettings
             // 
             this.menuEditEditSettings.Name = "menuEditEditSettings";
-            this.menuEditEditSettings.Size = new System.Drawing.Size(191, 22);
+            this.menuEditEditSettings.Size = new System.Drawing.Size(187, 22);
             this.menuEditEditSettings.Text = "menuEditEditSettings";
             this.menuEditEditSettings.Click += new System.EventHandler(this.MenuEditEditSettings_Click);
             // 
@@ -1214,10 +1213,10 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStripRotateFlip);
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStripFont);
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStripWidgets);
+            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStripCharacters);
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStripFile);
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStripRamp);
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStripDisplay);
-            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStripCharacters);
             // 
             // toolStripRotateFlip
             // 
@@ -1341,7 +1340,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.toolStripFile.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButtonLoad,
             this.toolStripButtonSave});
-            this.toolStripFile.Location = new System.Drawing.Point(3, 124);
+            this.toolStripFile.Location = new System.Drawing.Point(3, 149);
             this.toolStripFile.Name = "toolStripFile";
             this.toolStripFile.Size = new System.Drawing.Size(58, 25);
             this.toolStripFile.TabIndex = 7;
@@ -1371,7 +1370,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.lblRamp,
             this.cmbRamp,
             this.chkGenerate});
-            this.toolStripRamp.Location = new System.Drawing.Point(61, 124);
+            this.toolStripRamp.Location = new System.Drawing.Point(3, 99);
             this.toolStripRamp.Name = "toolStripRamp";
             this.toolStripRamp.Size = new System.Drawing.Size(263, 25);
             this.toolStripRamp.TabIndex = 2;
@@ -1408,7 +1407,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.toolStripDisplay.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButtonPreview,
             this.toolStripButtonFullScreen});
-            this.toolStripDisplay.Location = new System.Drawing.Point(3, 149);
+            this.toolStripDisplay.Location = new System.Drawing.Point(3, 124);
             this.toolStripDisplay.Name = "toolStripDisplay";
             this.toolStripDisplay.Size = new System.Drawing.Size(58, 25);
             this.toolStripDisplay.TabIndex = 6;
@@ -1439,7 +1438,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.toolStripCharacters.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lblCharacters,
             this.cmbCharacters});
-            this.toolStripCharacters.Location = new System.Drawing.Point(3, 99);
+            this.toolStripCharacters.Location = new System.Drawing.Point(61, 149);
             this.toolStripCharacters.Name = "toolStripCharacters";
             this.toolStripCharacters.Size = new System.Drawing.Size(211, 25);
             this.toolStripCharacters.TabIndex = 3;
@@ -1526,7 +1525,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
         #endregion Private methods
 
-        private ToolTip toolTip1;
         private ToolStripMenuItem toolStripMenuItemInvertOutput;
         private ToolStripSeparator toolStripSeparator2;
         private ToolStrip toolStripDisplay;
