@@ -232,6 +232,8 @@ namespace JMSoftware.Widgets
 
             this.selectionAreaFillColourToolStripMenuItem.Text = Resource.GetString("Selection Area Fill Colour") + "...";
             this.selectionAreaBorderColourToolStripMenuItem.Text = Resource.GetString("Selection Area Border Colour") + "...";
+
+            this.updateWhileSelectionChangesToolStripMenuItem.Text = Resource.GetString("Update while Selection Changes");
         }
 
         #endregion Public methods
@@ -276,6 +278,8 @@ namespace JMSoftware.Widgets
             this.lockSelectedAreaToolStripMenuItem.Checked = this.jmSelectablePictureBox1.SelectionLocked;
 
             this.fillSelectedAreaToolStripMenuItem.Checked = this.jmSelectablePictureBox1.FillSelectionRectangle;
+
+            this.updateWhileSelectionChangesToolStripMenuItem.Checked = Variables.Instance.UpdateWhileSelecting;
         }
 
         /// <summary>
@@ -468,6 +472,16 @@ namespace JMSoftware.Widgets
             }
 
             this.jmSelectablePictureBox1.SelectionFillColor = this.colorDialog1.Color;
+        }
+
+        /// <summary>
+        /// Handles the Click event of the updateWhileSelectionChangesToolStripMenuItem control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void UpdateWhileSelectionChangesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Variables.Instance.UpdateWhileSelecting = !Variables.Instance.UpdateWhileSelecting;
         }
 
         /// <summary>
