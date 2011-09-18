@@ -152,14 +152,13 @@ namespace JMSoftware.Controls
                 builder.Append(Path.GetExtension(filename));
             }
 
-            Brush brush = File.Exists(filename) ? Brushes.Black : Brushes.Red;
-
-            e.Graphics.DrawString(
-                            builder.ToString(),
-                            e.Font,
-                            brush,
-                            e.Bounds,
-                            StringFormat.GenericDefault);
+            TextRenderer.DrawText(
+                                e.Graphics,
+                                builder.ToString(),
+                                e.Font,
+                                e.Bounds,
+                                File.Exists(filename) ? Color.Black : Color.Red,
+                                TextFormatFlags.Left);
 
             e.DrawFocusRectangle();
         }
