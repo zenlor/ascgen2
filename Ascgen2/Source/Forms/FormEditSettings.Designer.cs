@@ -1,7 +1,7 @@
 //---------------------------------------------------------------------------------------
 // <copyright file="FormEditSettings.Designer.cs" company="Jonathan Mathews Software">
 //     ASCII Generator dotNET - Image to ASCII Art Conversion Program
-//     Copyright (C) 2009 Jonathan Mathews Software. All rights reserved.
+//     Copyright (C) 2011 Jonathan Mathews Software. All rights reserved.
 // </copyright>
 // <author>Jonathan Mathews</author>
 // <email>info@jmsoftware.co.uk</email>
