@@ -26,6 +26,7 @@
 namespace JMSoftware.AsciiGeneratorDotNet
 {
     using System;
+    using System.Collections.Generic;
     using System.Drawing;
     using System.Drawing.Imaging;
     using System.Drawing.Printing;
@@ -43,7 +44,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
     /// <summary>
     /// Main form for the program
     /// </summary>
-    public partial class FormConvertImage : Form
+    public partial class FormConvertImage
     {
         #region Fields
 
@@ -132,7 +133,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// Initializes a new instance of the <see cref="FormConvertImage"/> class.
         /// </summary>
         /// <param name="arguments">The arguments.</param>
-        public FormConvertImage(string[] arguments)
+        public FormConvertImage(IList<string> arguments)
         {
             // Required for Windows Form Designer support
             this.InitializeComponent();
@@ -163,7 +164,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             this.dimensionsCalculator = new DimensionsCalculator(this.CurrentImageSection.Size, this.CharacterSize, Variables.Instance.DefaultWidth, Variables.Instance.DefaultHeight);
 
-            this.dimensionsCalculator.OnOutputSizeChanged += new EventHandler(this.DimensionsCalculator_OnOutputSizeChanged);
+            this.dimensionsCalculator.OnOutputSizeChanged += this.DimensionsCalculator_OnOutputSizeChanged;
 
             this.textSettings.Font = null;
 
@@ -179,7 +180,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             this.versionChecker = new VersionChecker();
 
-            this.versionChecker.ReadAsyncCompletedEventHandler += new EventHandler(this.VersionReadAsyncCompletedEventHandler);
+            this.versionChecker.ReadAsyncCompletedEventHandler += this.VersionReadAsyncCompletedEventHandler;
 
             if (Variables.Instance.CheckForNewVersion)
             {
@@ -187,7 +188,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             }
 
             // load a filename if one was passed
-            if (arguments != null && arguments.Length == 1)
+            if (arguments != null && arguments.Count == 1)
             {
                 this.LoadImage(arguments[0]);
             }
@@ -396,12 +397,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
         {
             get
             {
-                if (!this.ImageIsLoaded)
-                {
-                    return String.Empty;
-                }
-
-                return this.filename;
+                return this.ImageIsLoaded ? this.filename : String.Empty;
             }
 
             set
@@ -1110,6 +1106,16 @@ namespace JMSoftware.AsciiGeneratorDotNet
             {
                 e.Effect = DragDropEffects.None;
             }
+        }
+
+        /// <summary>
+        /// Handles the DragEnter event of the rtbxConvertedText control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.Windows.Forms.DragEventArgs"/> instance containing the event data.</param>
+        private static void RtbxConvertedText_DragEnter(object sender, DragEventArgs e)
+        {
+            HandleDragOver(e);
         }
 
         /// <summary>
@@ -2090,12 +2096,15 @@ namespace JMSoftware.AsciiGeneratorDotNet
         {
             IDataObject data = Clipboard.GetDataObject();
 
-            if (!data.GetDataPresent(DataFormats.Bitmap) || !this.CloseImage())
+            if (data == null || !data.GetDataPresent(DataFormats.Bitmap) || !this.CloseImage())
             {
                 return;
             }
 
-            this.Filename = string.Format(Variables.Instance.Culture, "Clipboard{0:yyyyMMddHHmmss}", System.DateTime.Now);
+            this.Filename = string.Format(
+                                            Variables.Instance.Culture,
+                                            "Clipboard{0:yyyyMMddHHmmss}",
+                                            System.DateTime.Now);
 
             this.LoadImage((Bitmap)data.GetData(DataFormats.Bitmap, true));
         }
@@ -2384,16 +2393,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
         }
 
         /// <summary>
-        /// Handles the DragEnter event of the rtbxConvertedText control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="System.Windows.Forms.DragEventArgs"/> instance containing the event data.</param>
-        private void RtbxConvertedText_DragEnter(object sender, DragEventArgs e)
-        {
-            HandleDragOver(e);
-        }
-
-        /// <summary>
         /// Show and process the dialog to save as an image
         /// </summary>
         /// <param name="file">Default filename for the output</param>
@@ -2500,12 +2499,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
                                     true);
             }
 
-            if (!this.imageSaved)
-            {
-                return false;
-            }
-
-            return true;
+            return this.imageSaved;
         }
 
         /// <summary>
@@ -2656,8 +2650,8 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.widgetImage.SelectionFillColor = Variables.Instance.SelectionFillColor;
 
             this.rtbxConvertedText.AllowDrop = true;
-            this.rtbxConvertedText.DragDrop += new DragEventHandler(this.RtbxConvertedText_DragDrop);
-            this.rtbxConvertedText.DragEnter += new DragEventHandler(this.RtbxConvertedText_DragEnter);
+            this.rtbxConvertedText.DragDrop += this.RtbxConvertedText_DragDrop;
+            this.rtbxConvertedText.DragEnter += RtbxConvertedText_DragEnter;
 
             this.textViewer.BackgroundColor = this.BackgroundColor;
             this.textViewer.TextColor = this.TextColor;
@@ -2710,17 +2704,17 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.widgetImage.Left = this.pnlMain.Width - this.widgetImage.Width - 4;
             this.widgetImage.Top = this.pnlMain.Height - this.widgetImage.Height - 4;
 
-            this.widgetImage.SelectionChanging += new EventHandler(this.WidgetImage_SelectionChanging);
+            this.widgetImage.SelectionChanging += this.WidgetImage_SelectionChanging;
 
-            this.widgetImage.SelectionChanged += new EventHandler(this.WidgetImage_SelectionChanged);
+            this.widgetImage.SelectionChanged += this.WidgetImage_SelectionChanged;
 
-            this.widgetImage.DoubleClick += new EventHandler(this.WidgetImage_DoubleClick);
+            this.widgetImage.DoubleClick += this.WidgetImage_DoubleClick;
 
-            this.widgetImage.OnDragDrop += new DragEventHandler(this.WidgetImage_OnDragDrop);
+            this.widgetImage.OnDragDrop += this.WidgetImage_OnDragDrop;
 
-            this.widgetImage.LoadImage += new EventHandler(this.WidgetImage_LoadImage);
+            this.widgetImage.LoadImage += this.WidgetImage_LoadImage;
 
-            this.widgetImage.ImageUpdated += new EventHandler(this.WidgetImage_ImageUpdated);
+            this.widgetImage.ImageUpdated += this.WidgetImage_ImageUpdated;
         }
 
         /// <summary>
@@ -2730,14 +2724,14 @@ namespace JMSoftware.AsciiGeneratorDotNet
         {
             this.widgetTextSettings = new WidgetTextSettings();
 
-            this.widgetTextSettings.ValueChanging += new EventHandler(this.ApplyTextBrightnessContrast);
-            this.widgetTextSettings.ValueChanged += new EventHandler(this.ApplyTextBrightnessContrast);
+            this.widgetTextSettings.ValueChanging += this.ApplyTextBrightnessContrast;
+            this.widgetTextSettings.ValueChanged += this.ApplyTextBrightnessContrast;
 
-            this.widgetTextSettings.LevelsChanged += new EventHandler(this.LevelsChanged);
+            this.widgetTextSettings.LevelsChanged += this.LevelsChanged;
 
-            this.widgetTextSettings.DitheringChanging += new EventHandler(this.DitheringChanging);
-            this.widgetTextSettings.DitheringChanged += new EventHandler(this.DitheringChanging);
-            this.widgetTextSettings.DitheringRandomChanged += new EventHandler(this.DitheringRandomChanged);
+            this.widgetTextSettings.DitheringChanging += this.DitheringChanging;
+            this.widgetTextSettings.DitheringChanged += this.DitheringChanging;
+            this.widgetTextSettings.DitheringRandomChanged += this.DitheringRandomChanged;
 
             this.widgetTextSettings.MaximumBrightness = 200;
             this.widgetTextSettings.MinimumBrightness = -200;
@@ -2813,23 +2807,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
         }
 
         /// <summary>
-        /// Shows the color selection dialog.
-        /// </summary>
-        /// <param name="color">The current color.</param>
-        /// <returns>The newly selected color</returns>
-        private Color ShowColorDialog(Color color)
-        {
-            this.dialogSelectionColor.Color = color;
-
-            if (this.dialogSelectionColor.ShowDialog() != DialogResult.OK)
-            {
-                return color;
-            }
-
-            return this.dialogSelectionColor.Color;
-        }
-
-        /// <summary>
         /// Shows the colour preview.
         /// </summary>
         private void ShowColourPreview()
@@ -2882,7 +2859,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             if (latest > current)
             {
-                string text = string.Format(Resource.GetString("Version {0} is available"), this.versionChecker.Version.ToString());
+                string text = string.Format(Resource.GetString("Version {0} is available"), this.versionChecker.Version);
 
                 if (MessageBox.Show(Resource.GetString("Open the download page") + "?", text, MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
                 {
@@ -3157,7 +3134,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
                 return;
             }
 
-            byte[][] values = this.values;
+            byte[][] bytes = this.values;
 
             if (this.Brightness != 0 || this.Contrast != 0)
             {
@@ -3165,13 +3142,13 @@ namespace JMSoftware.AsciiGeneratorDotNet
                     this.IsBlackTextOnWhite ? this.Brightness : -this.Brightness,
                     this.IsBlackTextOnWhite ? this.Contrast : -this.Contrast);
 
-                values = filter.Apply(this.values);
+                bytes = filter.Apply(this.values);
             }
 
             if (this.Stretch)
             {
                 Stretch filter = new Stretch();
-                values = filter.Apply(values);
+                bytes = filter.Apply(bytes);
             }
 
             // Update the levels graph
@@ -3181,7 +3158,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             {
                 for (int x = 0; x < this.OutputWidth; x++)
                 {
-                    levels[(int)values[y][x]]++;
+                    levels[(int)bytes[y][x]]++;
                 }
             }
 
