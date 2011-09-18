@@ -1019,7 +1019,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
                 variables = (Variables)formatter.Deserialize(stream);
             }
-            catch
+            catch (Exception)
             {
             }
             finally
@@ -1050,7 +1050,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
                 formatter.Serialize(stream, variables);
             }
-            catch
+            catch (Exception)
             {
             }
             finally

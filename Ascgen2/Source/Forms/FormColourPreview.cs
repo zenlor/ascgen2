@@ -62,8 +62,8 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.widget.Top = 4;
             this.widget.Left = 4;
             this.widget.BringToFront();
-            this.widget.CloseForm += new EventHandler(this.Widget_CloseForm);
-            this.widget.ZoomChanged += new EventHandler(this.Widget_zoomChanged);
+            this.widget.CloseForm += this.Widget_CloseForm;
+            this.widget.ZoomChanged += this.Widget_zoomChanged;
 
             this.UpdateUI();
         }

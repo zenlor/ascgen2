@@ -200,7 +200,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             string value = resourceManager.GetString(key, Variables.Instance.Culture);
 
-            if (value == null || value.Length == 0)
+            if (string.IsNullOrEmpty(value))
             {
                 // TODO: Log the missing value
                 value = key;

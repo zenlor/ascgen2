@@ -238,7 +238,6 @@ namespace JMSoftware.AsciiConversion
                             if (spanIsOpen)
                             {
                                 builder.Append("</span>");
-                                spanIsOpen = false;
                             }
 
                             builder.Append("<span class=\"c");
