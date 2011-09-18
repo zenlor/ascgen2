@@ -8,8 +8,8 @@
     <ProjectGuid>{4A100A8B-4510-42AF-901E-A72D840D2A91}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>JMSoftware.VersionChecker</RootNamespace>
-    <AssemblyName>JMSoftware.VersionChecker</AssemblyName>
+    <RootNamespace>JMSoftware.VersionChecking</RootNamespace>
+    <AssemblyName>JMSoftware.VersionChecking</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
