@@ -1005,7 +1005,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
                 {
                     Size size;
 
-                    if (loadedImage.GetType() == typeof(Metafile))
+                    if (loadedImage is Metafile)
                     {
                         size = new Size(1000, (int)((1000f * ((float)loadedImage.Height / (float)loadedImage.Width)) + 0.5f));
                     }
@@ -1989,18 +1989,13 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
                 if (this.IsFixedWidth)
                 {
-                    if (this.CalculatingCharacterSize)
-                    {
-                        characterDialog.DefaultCharacterSize = this.CharacterSize;
-                    }
-                    else
-                    {
-                        characterDialog.DefaultCharacterSize = FontFunctions.GetFixedPitchFontSize(this.Font);
-                    }
+                    characterDialog.DefaultCharacterSize = this.CalculatingCharacterSize ? this.CharacterSize : FontFunctions.GetFixedPitchFontSize(this.Font);
                 }
                 else
                 {
-                    characterDialog.DefaultCharacterSize = new Size(ValuesToVariableWidthTextConverter.CharacterWidth, FontFunctions.MeasureText("W", this.Font).Height);
+                    characterDialog.DefaultCharacterSize = new Size(
+                                                            ValuesToVariableWidthTextConverter.CharacterWidth,
+                                                            FontFunctions.MeasureText("W", this.Font).Height);
                 }
 
                 if (characterDialog.ShowDialog() != DialogResult.OK)

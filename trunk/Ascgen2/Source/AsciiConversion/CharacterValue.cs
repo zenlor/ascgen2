@@ -83,9 +83,9 @@ namespace JMSoftware.AsciiConversion
         public void CalculateValues(Font font)
         {
             // size of the shrunken character to use for the calculation
-            int width = 4;
-            int height = 4;
-            float area = 16f;
+            const int width = 4;
+            const int height = 4;
+            const float area = 16f;
 
             using (Bitmap bitmap = TextToImage.Convert(this.Character.ToString(), font))
             {

@@ -26,9 +26,7 @@
 namespace JMSoftware.VersionChecking
 {
     using System;
-    using System.Collections.Generic;
     using System.Net;
-    using System.Text;
     using System.Xml;
 
     /// <summary>
@@ -57,11 +55,9 @@ namespace JMSoftware.VersionChecking
         /// </summary>
         public VersionChecker()
         {
-            this.webClient = new WebClient();
+            this.webClient = new WebClient { Proxy = null };
 
-            this.webClient.Proxy = null;
-
-            this.webClient.DownloadStringCompleted += new DownloadStringCompletedEventHandler(this.DownloadStringCompleted);
+            this.webClient.DownloadStringCompleted += this.DownloadStringCompleted;
         }
 
         #endregion Constructors
@@ -112,11 +108,11 @@ namespace JMSoftware.VersionChecking
             {
                 result = this.webClient.DownloadString(uri);
             }
-            catch (System.Net.WebException)
+            catch (WebException)
             {
                 result = null;
             }
-            catch (System.NotSupportedException)
+            catch (NotSupportedException)
             {
                 result = null;
             }
@@ -133,7 +129,7 @@ namespace JMSoftware.VersionChecking
         /// <returns>Did the url load successfully?</returns>
         public bool Read(string url)
         {
-            if (url == null || url.Length == 0)
+            if (string.IsNullOrEmpty(url))
             {
                 return false;
             }
@@ -156,7 +152,7 @@ namespace JMSoftware.VersionChecking
             {
                 this.webClient.DownloadStringAsync(uri);
             }
-            catch (System.Net.WebException)
+            catch (WebException)
             {
             }
         }
@@ -167,7 +163,7 @@ namespace JMSoftware.VersionChecking
         /// <param name="url">The URL to read.</param>
         public void ReadAsync(string url)
         {
-            if (url != null && url.Length > 0)
+            if (!string.IsNullOrEmpty(url))
             {
                 this.ReadAsync(new Uri(url));
             }
@@ -203,7 +199,7 @@ namespace JMSoftware.VersionChecking
                         XmlProcessor.ReadNode(document.SelectSingleNode("version/suffix"), String.Empty, true),
                         XmlProcessor.ReadNode(document.SelectSingleNode("version/url"), String.Empty, true));
             }
-            catch (System.Xml.XmlException)
+            catch (XmlException)
             {
                 return null;
             }
@@ -223,7 +219,7 @@ namespace JMSoftware.VersionChecking
                 return;
             }
 
-            string result = e.Result.ToString();
+            string result = e.Result;
 
             if (result.Length == 0 || !result.Substring(0, 13).Equals("<?xml version"))
             {

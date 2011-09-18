@@ -74,7 +74,7 @@ namespace JMSoftware.AsciiConversion
 
             set
             {
-                if (value == null || value.Length < 1 || this.ramp == value)
+                if (string.IsNullOrEmpty(value) || this.ramp == value)
                 {
                     return;
                 }

@@ -38,7 +38,6 @@ namespace JMSoftware.AsciiConversion
         /// Initializes a new instance of the <see cref="BatchTextProcessingSettings"/> class.
         /// </summary>
         public BatchTextProcessingSettings()
-            : base()
         {
             this.Prefix = "ASCII-";
         }

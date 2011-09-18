@@ -115,8 +115,8 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.numericUpDownImageScale.Enabled = false;
 
             this.fileListbox1.AllowDrop = true;
-            this.fileListbox1.DragEnter += new DragEventHandler(this.FileListbox1_DragEnter);
-            this.fileListbox1.DragDrop += new DragEventHandler(this.FileListbox1_DragDrop);
+            this.fileListbox1.DragEnter += this.FileListbox1_DragEnter;
+            this.fileListbox1.DragDrop += this.FileListbox1_DragDrop;
 
             this.textProcessingSettings = new BatchTextProcessingSettings();
 
@@ -126,7 +126,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             this.OutputDirectory = Variables.Instance.InitialOutputDirectory;
 
-            if (this.OutputDirectory == null || this.OutputDirectory.Length == 0)
+            if (string.IsNullOrEmpty(this.OutputDirectory))
             {
                 this.OutputDirectory = Directory.GetCurrentDirectory();
             }
@@ -715,7 +715,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// <returns>Was the conversion successful?</returns>
         private bool Convert(string filename, string outputFilename)
         {
-            string[] convertedText = null;
+            string[] convertedText;
 
             Color[][] colors = null;
 
@@ -723,11 +723,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
             {
                 using (Image image = Image.FromFile(filename))
                 {
-                    if (image == null)
-                    {
-                        return false;
-                    }
-
                     this.dimensionsCalculator.ImageSize = image.Size;
 
                     this.textProcessingSettings.Size = this.dimensionsCalculator.OutputSize;
@@ -921,14 +916,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// <param name="e">The <see cref="System.Windows.Forms.DragEventArgs"/> instance containing the event data.</param>
         private void FileListbox1_DragEnter(object sender, DragEventArgs e)
         {
-            if (e.Data.GetDataPresent(DataFormats.FileDrop))
-            {
-                e.Effect = DragDropEffects.Copy;
-            }
-            else
-            {
-                e.Effect = DragDropEffects.None;
-            }
+            e.Effect = e.Data.GetDataPresent(DataFormats.FileDrop) ? DragDropEffects.Copy : DragDropEffects.None;
         }
 
         /// <summary>

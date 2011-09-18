@@ -44,7 +44,7 @@ namespace JMSoftware.AsciiConversion
         /// <returns>A new ASCII ramp</returns>
         public static string CreateRamp(System.Drawing.Font font, string characters)
         {
-            if (characters == null || characters.Length < 1)
+            if (string.IsNullOrEmpty(characters))
             {
                 return null;
             }
@@ -57,7 +57,7 @@ namespace JMSoftware.AsciiConversion
             string characterString = String.Empty;
 
             // Remove duplicate characters
-            foreach (char c in characters.ToCharArray())
+            foreach (char c in characters)
             {
                 if (characterString.IndexOf(c) == -1)
                 {
@@ -76,7 +76,7 @@ namespace JMSoftware.AsciiConversion
 
                 if (list.ContainsKey(characterValue.Value))
                 {
-                    if (characterValue.Score < ((CharacterValue)list[characterValue.Value]).Score)
+                    if (characterValue.Score < list[characterValue.Value].Score)
                     {
                         list[characterValue.Value] = characterValue;
                     }
