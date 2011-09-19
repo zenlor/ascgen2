@@ -77,8 +77,8 @@ namespace JMSoftware.Controls.Levels
             this.sliders = new JMLevelsSliderContainer();
             this.levelsGraph = new JMLevelsGraph();
 
-            this.sliders.OnRefresh += new RefreshEventHandler(this.Refresh);
-            this.sliders.OnValueChanged += new ValueChangedEventHandler(this.SlidersValueChanged);
+            this.sliders.OnRefresh += this.Refresh;
+            this.sliders.OnValueChanged += this.SlidersValueChanged;
         }
 
         #endregion Constructors

@@ -31,19 +31,8 @@ namespace JMSoftware.TextHelper
     /// <summary>
     /// Class to handle text to color image conversions
     /// </summary>
-    public sealed class TextToColorImage
+    public static class TextToColorImage
     {
-        #region Constructors
-
-        /// <summary>
-        /// Prevents a default instance of the <see cref="TextToColorImage"/> class from being created.
-        /// </summary>
-        private TextToColorImage()
-        {
-        }
-
-        #endregion Constructors
-
         #region Public methods
 
         /// <summary>

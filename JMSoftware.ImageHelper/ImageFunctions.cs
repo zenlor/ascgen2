@@ -61,10 +61,7 @@ namespace JMSoftware.ImageHelper
                 case ".tiff":
                     result = ImageFormat.Tiff.Guid;
                     break;
-                case ".bmp":
-                case ".rle":
-                case ".dib":
-                default:
+                default: // bmp, rle, dib
                     result = ImageFormat.Bmp.Guid;
                     break;
             }

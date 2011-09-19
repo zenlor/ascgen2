@@ -46,7 +46,7 @@ namespace JMSoftware.ImageHelper
         /// <returns>An outputSize array of Colors</returns>
         public static Color[][] Convert(Image image, Size outputSize, bool reduceColors)
         {
-            if (image == null || outputSize == null)
+            if (image == null)
             {
                 return null;
             }
@@ -93,7 +93,7 @@ namespace JMSoftware.ImageHelper
                     string temporaryFilename = Path.GetTempFileName();
 
                     // Save as a 256 color gif file
-                    resizedImage.Save(temporaryFilename, System.Drawing.Imaging.ImageFormat.Gif);
+                    resizedImage.Save(temporaryFilename, ImageFormat.Gif);
 
                     // load into an image
                     using (Bitmap gifImage = (Bitmap)Image.FromFile(temporaryFilename))

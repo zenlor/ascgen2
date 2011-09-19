@@ -34,19 +34,8 @@ namespace JMSoftware.TextHelper
     /// <summary>
     /// Class to handle text to image conversion
     /// </summary>
-    public sealed class TextToImage
+    public static class TextToImage
     {
-        #region Constructors
-
-        /// <summary>
-        /// Prevents a default instance of the <see cref="TextToImage"/> class from being created.
-        /// </summary>
-        private TextToImage()
-        {
-        }
-
-        #endregion Constructors
-
         #region Public methods
 
         /// <summary>
@@ -202,10 +191,7 @@ namespace JMSoftware.TextHelper
                 case ".TIFF":
                     result = ImageFormat.Tiff.Guid;
                     break;
-                case ".BMP":
-                case ".RLE":
-                case ".DIB":
-                default:
+                default: // bmp, rle, dib
                     result = ImageFormat.Bmp.Guid;
                     break;
             }

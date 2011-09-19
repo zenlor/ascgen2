@@ -25,7 +25,6 @@
 //---------------------------------------------------------------------------------------
 namespace JMSoftware
 {
-    using System;
     using System.Drawing.Imaging;
 
     /// <summary>
