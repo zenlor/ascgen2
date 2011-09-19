@@ -465,6 +465,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="version.xml" />
     <None Include="Resources\folder_add.png" />
     <None Include="Resources\image_add.png" />
     <None Include="Resources\image_delete.png" />
