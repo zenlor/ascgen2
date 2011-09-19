@@ -26,8 +26,6 @@
 namespace JMSoftware.AsciiConversion.Filters
 {
     using System;
-    using System.Collections.Generic;
-    using System.Text;
     using JMSoftware.Interfaces;
 
     /// <summary>

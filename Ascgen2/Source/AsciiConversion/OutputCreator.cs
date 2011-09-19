@@ -77,18 +77,8 @@ namespace JMSoftware.AsciiConversion
         /// </summary>
         /// <param name="imageArray">The strings containing the ASCII image.</param>
         /// <param name="textProcessingSettings">The text processing settings.</param>
-        public OutputCreator(string[] imageArray, TextProcessingSettings textProcessingSettings)
-            : this(imageArray, textProcessingSettings, null)
-        {
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="OutputCreator"/> class.
-        /// </summary>
-        /// <param name="imageArray">The strings containing the ASCII image.</param>
-        /// <param name="textProcessingSettings">The text processing settings.</param>
         /// <param name="colors">The 2d array of colors.</param>
-        public OutputCreator(string[] imageArray, TextProcessingSettings textProcessingSettings, Color[][] colors)
+        public OutputCreator(string[] imageArray, TextProcessingSettings textProcessingSettings, Color[][] colors = null)
         {
             this.strings = imageArray;
 

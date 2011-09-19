@@ -30,33 +30,13 @@ namespace JMSoftware.AsciiConversion.Filters
     /// </summary>
     public abstract class AscgenMatrixFilter : IAscgenFilter
     {
-        #region Fields
-
-        /// <summary>
-        /// The ConvolutionMatrix to be applied to the values
-        /// </summary>
-        private ConvolutionMatrix matrix;
-
-        #endregion Fields
-
         #region Properties
 
         /// <summary>
         /// Gets or sets the ConvolutionMatrix to be applied to the values
         /// </summary>
         /// <value>The matrix.</value>
-        public ConvolutionMatrix Matrix
-        {
-            get
-            {
-                return this.matrix;
-            }
-
-            set
-            {
-                this.matrix = value;
-            }
-        }
+        protected ConvolutionMatrix Matrix { get; set; }
 
         #endregion Properties
 
@@ -69,12 +49,7 @@ namespace JMSoftware.AsciiConversion.Filters
         /// <returns>Output values</returns>
         public byte[][] Apply(byte[][] values)
         {
-            if (values == null)
-            {
-                return null;
-            }
-
-            return this.Matrix.Apply(values);
+            return values == null ? null : this.Matrix.Apply(values);
         }
 
         #endregion Public methods

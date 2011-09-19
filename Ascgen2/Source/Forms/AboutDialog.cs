@@ -32,7 +32,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
     /// <summary>
     /// The about form
     /// </summary>
-    public partial class AboutDialog : Form
+    public partial class AboutDialog
     {
         #region Constructors
 

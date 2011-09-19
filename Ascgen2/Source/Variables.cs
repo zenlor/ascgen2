@@ -38,13 +38,17 @@ namespace JMSoftware.AsciiGeneratorDotNet
     [Serializable]
     public sealed class Variables
     {
-        #region Fields
+        #region Constants
 
         /// <summary>
         /// Filename for the settings
         /// </summary>
         [NonSerialized]
-        private static string filename = "settings.dat";
+        private const string Filename = "settings.dat";
+
+        #endregion Constants
+
+        #region Fields
 
         /// <summary>
         /// The instance used in the singleton pattern.
@@ -966,7 +970,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// <returns>True if settings were loaded, otherwise false</returns>
         public static bool LoadSettings()
         {
-            Variables settings = Load(filename);
+            Variables settings = Load(Filename);
 
             if (settings == null)
             {
@@ -993,7 +997,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// </summary>
         public void SaveSettings()
         {
-            Save(this, filename);
+            Save(this, Filename);
         }
 
         #endregion Public methods

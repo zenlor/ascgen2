@@ -118,9 +118,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.fileListbox1.DragEnter += this.FileListbox1_DragEnter;
             this.fileListbox1.DragDrop += this.FileListbox1_DragDrop;
 
-            this.textProcessingSettings = new BatchTextProcessingSettings();
-
-            this.textProcessingSettings.Font = Variables.Instance.DefaultFont;
+            this.textProcessingSettings = new BatchTextProcessingSettings { Font = Variables.Instance.DefaultFont };
 
             this.folderBrowserDialogInput.SelectedPath = this.openFileDialogInput.InitialDirectory = Variables.Instance.InitialInputDirectory;
 
@@ -347,11 +345,11 @@ namespace JMSoftware.AsciiGeneratorDotNet
                 Resource.GetString("Windows Metafile Images") + " (*.emf, *.wmf)|*.emf;*.wmf|" +
                 Resource.GetString("Image Files") + " (*.*)|*.*";
 
-            int borderSize = 6;
+            const int BorderSize = 6;
 
             this.labelOutputDirectory.Text = Resource.GetString("Output Directory") + ":";
-            this.textBoxOutputDirectory.Left = this.labelOutputDirectory.Right + borderSize;
-            this.textBoxOutputDirectory.Width = this.buttonOutputDirectory.Left - borderSize - this.textBoxOutputDirectory.Left;
+            this.textBoxOutputDirectory.Left = this.labelOutputDirectory.Right + BorderSize;
+            this.textBoxOutputDirectory.Width = this.buttonOutputDirectory.Left - BorderSize - this.textBoxOutputDirectory.Left;
 
             this.buttonFont.Text = Resource.GetString("Font") + "...";
 
@@ -359,7 +357,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.folderBrowserDialogOutput.Description = Resource.GetString("Select the directory in which to save the converted images");
 
             this.labelOutputAs.Text = Resource.GetString("Output as");
-            this.comboBoxOutputType.Left = this.labelOutputAs.Right + borderSize;
+            this.comboBoxOutputType.Left = this.labelOutputAs.Right + BorderSize;
             this.comboBoxOutputType.DataSource = new List<string>(new string[] { Resource.GetString("Text"), Resource.GetString("Image") });
 
             int maximumOutputSizeSize = 0;
@@ -376,15 +374,15 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             this.comboBoxOutputType.Width = maximumOutputSizeSize + 24;
 
-            this.comboBoxOutputFormat.Left = this.comboBoxOutputType.Right + borderSize;
+            this.comboBoxOutputFormat.Left = this.comboBoxOutputType.Right + BorderSize;
 
-            this.checkBoxColour.Left = this.comboBoxOutputFormat.Right + borderSize;
+            this.checkBoxColour.Left = this.comboBoxOutputFormat.Right + BorderSize;
             this.checkBoxColour.Text = Resource.GetString("Colour");
 
             this.labelOutputSize.Text = Resource.GetString("Output Size") + ":";
-            this.textBoxWidth.Left = this.labelOutputSize.Right + borderSize;
-            this.checkBoxLockRatio.Left = this.textBoxWidth.Right + borderSize;
-            this.textBoxHeight.Left = this.checkBoxLockRatio.Right + borderSize;
+            this.textBoxWidth.Left = this.labelOutputSize.Right + BorderSize;
+            this.checkBoxLockRatio.Left = this.textBoxWidth.Right + BorderSize;
+            this.textBoxHeight.Left = this.checkBoxLockRatio.Right + BorderSize;
 
             this.clearToolStripMenuItem.Text = Resource.GetString("Clear");
             this.saveLogAsToolStripMenuItem.Text = Resource.GetString("Save Log As") + "...";
@@ -597,9 +595,10 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             this.tabControlMain.SelectedTab = this.tabPageLog;
 
-            this.thread = new Thread(this.DoConversions);
-
-            this.thread.Name = string.Format(Variables.Instance.Culture, "BatchConversionThread{0:HHmmss}", DateTime.Now);
+            this.thread = new Thread(this.DoConversions)
+                {
+                    Name = string.Format(Variables.Instance.Culture, "BatchConversionThread{0:HHmmss}", DateTime.Now)
+                };
 
             this.thread.Start();
         }
@@ -939,7 +938,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             switch (this.textProcessingSettings.SuffixType)
             {
-                case BatchTextProcessingSettings.SuffixTypes.Custom:
                 default:
                     suffix = this.textProcessingSettings.Suffix;
                     break;
@@ -1062,22 +1060,20 @@ namespace JMSoftware.AsciiGeneratorDotNet
                                     imageScale,
                                     true);
             }
-            else
-            {
-                using (Image outputimage = TextToColorImage.Convert(
-                                    convertedText,
-                                    this.textProcessingSettings.Font,
-                                    colors,
-                                    this.textProcessingSettings.IsBlackTextOnWhite ? Color.White : Color.Black,
-                                    imageScale))
-                {
-                    outputimage.Save(
-                                outputFilename,
-                                ImageFunctions.GetImageFormat(Path.GetExtension(outputFilename).ToLower()));
-                }
 
-                return true;
+            using (Image outputimage = TextToColorImage.Convert(
+                convertedText,
+                this.textProcessingSettings.Font,
+                colors,
+                this.textProcessingSettings.IsBlackTextOnWhite ? Color.White : Color.Black,
+                imageScale))
+            {
+                outputimage.Save(
+                    outputFilename,
+                    ImageFunctions.GetImageFormat(Path.GetExtension(outputFilename).ToLower()));
             }
+
+            return true;
         }
 
         /// <summary>
@@ -1098,9 +1094,10 @@ namespace JMSoftware.AsciiGeneratorDotNet
             {
                 if (this.OutputIsHtml || this.OutputIsRtf)
                 {
-                    OutputCreator outputCreator = new OutputCreator(convertedText, this.textProcessingSettings, colors);
-
-                    outputCreator.Title = Path.GetFileNameWithoutExtension(outputFilename);
+                    OutputCreator outputCreator = new OutputCreator(convertedText, this.textProcessingSettings, colors)
+                        {
+                            Title = Path.GetFileNameWithoutExtension(outputFilename)
+                        };
 
                     writer.Write(this.OutputIsHtml ? outputCreator.CreateHtml() : outputCreator.CreateRtf());
                 }

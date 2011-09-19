@@ -1157,7 +1157,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
                     return true;
 
                 default:
-                case DialogResult.Cancel:   // don't do anything
                     return false;
             }
         }
@@ -2497,9 +2496,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
                     break;
 
-                case 1: // html 256 color
-                case 3: // html 24-bit
-                default:
+                default: // html 24-bit /  256 color
                     outputCreator.Title = Path.GetFileNameWithoutExtension(this.Filename);
 
                     output = outputCreator.CreateHtml();
@@ -2560,9 +2557,10 @@ namespace JMSoftware.AsciiGeneratorDotNet
                 case 5: // XHTML
                     using (StreamWriter writer = new StreamWriter(this.dialogSaveText.FileName))
                     {
-                        OutputCreator outputCreator = new OutputCreator(this.textViewer.Lines, this.textSettings);
-
-                        outputCreator.Title = Path.GetFileNameWithoutExtension(this.Filename);
+                        OutputCreator outputCreator = new OutputCreator(this.textViewer.Lines, this.textSettings)
+                            {
+                                Title = Path.GetFileNameWithoutExtension(this.Filename)
+                            };
 
                         writer.Write(outputCreator.CreateHtml());
                     }

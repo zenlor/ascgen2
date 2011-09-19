@@ -33,16 +33,9 @@ namespace JMSoftware.AsciiConversion
     /// <summary>
     /// Static class with methods for Image to Text conversion
     /// </summary>
-    public sealed class AscgenConverter
+    public static class AscgenConverter
     {
         #region Constructors
-
-        /// <summary>
-        /// Prevents a default instance of the <see cref="AscgenConverter"/> class from being created.
-        /// </summary>
-        private AscgenConverter()
-        {
-        }
 
         #endregion Constructors
 

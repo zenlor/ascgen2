@@ -25,8 +25,6 @@
 //---------------------------------------------------------------------------------------
 namespace JMSoftware.AsciiConversion.Filters
 {
-    using System;
-
     /// <summary>
     /// Filter to run a unsharp mask over the values
     /// </summary>

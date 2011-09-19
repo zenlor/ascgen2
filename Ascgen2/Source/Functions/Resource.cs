@@ -38,12 +38,16 @@ namespace JMSoftware.AsciiGeneratorDotNet
     /// </summary>
     public abstract class Resource
     {
-        #region Fields
+        #region Constants
 
         /// <summary>
         /// The root location of the localization resources.
         /// </summary>
-        private static string location = "AscGenDotNet.Resources.Localization.Localization";
+        private const string Location = "AscGenDotNet.Resources.Localization.Localization";
+
+        #endregion Constants
+
+        #region Fields
 
         /// <summary>
         /// The translation file.
@@ -195,7 +199,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             }
 
             ResourceManager resourceManager = new ResourceManager(
-                                            location,
+                                            Location,
                                             System.Reflection.Assembly.GetExecutingAssembly());
 
             string value = resourceManager.GetString(key, Variables.Instance.Culture);
