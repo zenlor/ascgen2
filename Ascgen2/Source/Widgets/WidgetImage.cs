@@ -196,23 +196,6 @@ namespace JMSoftware.Widgets
         }
 
         /// <summary>
-        /// Rotates the image.
-        /// </summary>
-        /// <param name="type">The rotation type.</param>
-        public void RotateImage(RotateFlipType type)
-        {
-            this.jmSelectablePictureBox1.RotateImage(type);
-        }
-
-        /// <summary>
-        /// Selects the nothing.
-        /// </summary>
-        public void SelectNothing()
-        {
-            this.jmSelectablePictureBox1.SelectNothing();
-        }
-
-        /// <summary>
         /// Updates the UI from the resource file.
         /// </summary>
         public void UpdateUI()
