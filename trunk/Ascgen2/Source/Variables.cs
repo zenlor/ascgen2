@@ -977,17 +977,18 @@ namespace JMSoftware.AsciiGeneratorDotNet
                 return false;
             }
 
-            instance = new Variables();
-
             // TODO: Validation?
-            instance.DefaultWidth = settings.DefaultWidth;
-            instance.DefaultHeight = settings.DefaultHeight;
-            instance.TranslationFile = settings.TranslationFile;
-            instance.InitialInputDirectory = settings.InitialInputDirectory;
-            instance.InitialOutputDirectory = settings.InitialOutputDirectory;
-            instance.DefaultFont = settings.DefaultFont;
-            instance.ConfirmOnClose = settings.ConfirmOnClose;
-            instance.CheckForNewVersion = settings.CheckForNewVersion;
+            instance = new Variables
+                {
+                    DefaultWidth = settings.DefaultWidth,
+                    DefaultHeight = settings.DefaultHeight,
+                    TranslationFile = settings.TranslationFile,
+                    InitialInputDirectory = settings.InitialInputDirectory,
+                    InitialOutputDirectory = settings.InitialOutputDirectory,
+                    DefaultFont = settings.DefaultFont,
+                    ConfirmOnClose = settings.ConfirmOnClose,
+                    CheckForNewVersion = settings.CheckForNewVersion
+                };
 
             return true;
         }
