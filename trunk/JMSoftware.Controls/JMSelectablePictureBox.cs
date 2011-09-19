@@ -231,14 +231,7 @@ namespace JMSoftware.Controls
 
             set
             {
-                if (value.A < 255)
-                {
-                    this.selectionFillColor = value;
-                }
-                else
-                {
-                    this.selectionFillColor = Color.FromArgb(128, value.R, value.G, value.B);
-                }
+                this.selectionFillColor = value.A < 255 ? value : Color.FromArgb(128, value.R, value.G, value.B);
 
                 this.Refresh();
             }
@@ -354,7 +347,7 @@ namespace JMSoftware.Controls
         /// Raises the System.Windows.Forms.Control.MouseDown event.
         /// </summary>
         /// <param name="e">A System.Windows.Forms.MouseEventArgs that contains the event data.</param>
-        protected override void OnMouseDown(System.Windows.Forms.MouseEventArgs e)
+        protected override void OnMouseDown(MouseEventArgs e)
         {
             base.OnMouseDown(e);
 
@@ -423,7 +416,7 @@ namespace JMSoftware.Controls
         /// Raises the System.Windows.Forms.Control.MouseMove event.
         /// </summary>
         /// <param name="e">A System.Windows.Forms.MouseEventArgs that contains the event data.</param>
-        protected override void OnMouseMove(System.Windows.Forms.MouseEventArgs e)
+        protected override void OnMouseMove(MouseEventArgs e)
         {
             base.OnMouseMove(e);
 
@@ -454,7 +447,7 @@ namespace JMSoftware.Controls
         /// Raises the System.Windows.Forms.Control.MouseUp event.
         /// </summary>
         /// <param name="e">A System.Windows.Forms.MouseEventArgs that contains the event data.</param>
-        protected override void OnMouseUp(System.Windows.Forms.MouseEventArgs e)
+        protected override void OnMouseUp(MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left && Image != null)
             {
@@ -470,7 +463,7 @@ namespace JMSoftware.Controls
         /// Handle painting the control
         /// </summary>
         /// <param name="e">Provides data for the Paint event</param>
-        protected override void OnPaint(System.Windows.Forms.PaintEventArgs e)
+        protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
 
@@ -801,15 +794,7 @@ namespace JMSoftware.Controls
                     break;
 
                 default:
-                    if (this.selectedArea.Contains(this.ConvertToImageCoordinates(location)))
-                    {
-                        this.Cursor = Cursors.Hand;
-                    }
-                    else
-                    {
-                        this.Cursor = Cursors.Default;
-                    }
-
+                    this.Cursor = this.selectedArea.Contains(this.ConvertToImageCoordinates(location)) ? Cursors.Hand : Cursors.Default;
                     break;
             }
 

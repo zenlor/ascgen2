@@ -79,8 +79,8 @@ namespace JMSoftware.Controls.Levels
             this.RightMargin = 5;
 
             this.levelsDisplay = new JMLevelsDisplay();
-            this.levelsDisplay.OnRefresh += new RefreshEventHandler(this.LevelsDisplay_OnRefresh);
-            this.levelsDisplay.OnValueChanged += new ValueChangedEventHandler(this.DisplayValueChanged);
+            this.levelsDisplay.OnRefresh += this.LevelsDisplay_OnRefresh;
+            this.levelsDisplay.OnValueChanged += this.DisplayValueChanged;
         }
 
         #endregion Constructors

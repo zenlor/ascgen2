@@ -37,14 +37,14 @@ namespace JMSoftware.VersionChecking
         #region Fields
 
         /// <summary>
+        /// WebClient used to access the remote files.
+        /// </summary>
+        private readonly WebClient webClient;
+
+        /// <summary>
         /// The last version that was read.
         /// </summary>
         private Version version;
-
-        /// <summary>
-        /// WebClient used to access the remote files.
-        /// </summary>
-        private WebClient webClient;
 
         #endregion Fields
 

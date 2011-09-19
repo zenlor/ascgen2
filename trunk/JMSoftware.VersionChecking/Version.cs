@@ -25,8 +25,6 @@
 //---------------------------------------------------------------------------------------
 namespace JMSoftware.VersionChecking
 {
-    using System;
-
     /// <summary>
     /// Class used to store the version number
     /// </summary>

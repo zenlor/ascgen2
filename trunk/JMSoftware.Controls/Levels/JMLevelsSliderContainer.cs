@@ -91,26 +91,17 @@ namespace JMSoftware.Controls.Levels
 
             this.size = new Size();
 
-            this.minimumSlider = new JMLevelsSlider(Color.Black, 0, this);
-            this.minimumSlider.MinimumValue = 0;
-            this.minimumSlider.MaximumValue = 253;
-            this.minimumSlider.OnRefresh += new RefreshEventHandler(this.Refresh);
-            this.minimumSlider.OnSliderMoved +=
-                new JMLevelsSlider.SliderMovedEventHandler(this.MinimumSliderMoved);
+            this.minimumSlider = new JMLevelsSlider(Color.Black, 0, this) { MinimumValue = 0, MaximumValue = 253 };
+            this.minimumSlider.OnRefresh += this.Refresh;
+            this.minimumSlider.OnSliderMoved += this.MinimumSliderMoved;
 
-            this.maximumSlider = new JMLevelsSlider(Color.White, 255, this);
-            this.maximumSlider.MinimumValue = 2;
-            this.maximumSlider.MaximumValue = 255;
-            this.maximumSlider.OnRefresh += new RefreshEventHandler(this.Refresh);
-            this.maximumSlider.OnSliderMoved +=
-                new JMLevelsSlider.SliderMovedEventHandler(this.MaximumSliderMoved);
+            this.maximumSlider = new JMLevelsSlider(Color.White, 255, this) { MinimumValue = 2, MaximumValue = 255 };
+            this.maximumSlider.OnRefresh += this.Refresh;
+            this.maximumSlider.OnSliderMoved += this.MaximumSliderMoved;
 
-            this.medianSlider = new JMLevelsSlider(Color.LightGray, 128, this);
-            this.medianSlider.MinimumValue = 1;
-            this.medianSlider.MaximumValue = 254;
-            this.medianSlider.OnRefresh += new RefreshEventHandler(this.Refresh);
-            this.medianSlider.OnSliderMoved +=
-                new JMLevelsSlider.SliderMovedEventHandler(this.MedianSliderMoved);
+            this.medianSlider = new JMLevelsSlider(Color.LightGray, 128, this) { MinimumValue = 1, MaximumValue = 254 };
+            this.medianSlider.OnRefresh += this.Refresh;
+            this.medianSlider.OnSliderMoved += this.MedianSliderMoved;
 
             this.sliders = new JMLevelsSlider[] { this.minimumSlider, this.maximumSlider, this.medianSlider };
         }
@@ -237,14 +228,7 @@ namespace JMSoftware.Controls.Levels
 
             set
             {
-                if (value.Height == Height)
-                {
-                    this.size = value;
-                }
-                else
-                {
-                    this.size = new Size(value.Width, Height);
-                }
+                this.size = value.Height == Height ? value : new Size(value.Width, Height);
             }
         }
 

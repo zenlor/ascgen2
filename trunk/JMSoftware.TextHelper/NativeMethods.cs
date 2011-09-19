@@ -32,7 +32,7 @@ namespace JMSoftware.TextHelper
     /// <summary>
     /// Class encapsulating system specific calls (Windows Version)
     /// </summary>
-    public sealed class NativeMethods
+    public static class NativeMethods
     {
         #region Constants
 
@@ -42,17 +42,6 @@ namespace JMSoftware.TextHelper
         private const int TMPF_FIXED_PITCH = 1;
 
         #endregion Constants
-
-        #region Constructors
-
-        /// <summary>
-        /// Prevents a default instance of the <see cref="NativeMethods"/> class from being created.
-        /// </summary>
-        private NativeMethods()
-        {
-        }
-
-        #endregion Constructors
 
         #region Public methods
 
@@ -83,7 +72,7 @@ namespace JMSoftware.TextHelper
 
                     TextMetric metric = new TextMetric();
 
-                    NativeMethods.GetTextMetrics(hdc, ref metric);
+                    GetTextMetrics(hdc, ref metric);
 
                     result = (metric.tmPitchAndFamily & TMPF_FIXED_PITCH) == 0;
 

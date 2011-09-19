@@ -53,7 +53,7 @@ namespace JMSoftware.Controls.Levels
         /// <summary>
         /// The size of the graph
         /// </summary>
-        private Size size = new Size();
+        private Size size;
 
         #endregion Fields
 
@@ -209,18 +209,13 @@ namespace JMSoftware.Controls.Levels
 
                 float ratio = 255f / (float)graphSize;
 
-                float total;
-                float startPoint;
-                float endPoint;
-                float difference;
-
                 for (int x = 0; x < graphSize; x++)
                 {
-                    startPoint = x * ratio;
-                    endPoint = startPoint + ratio;
+                    float startPoint = x * ratio;
+                    float endPoint = startPoint + ratio;
 
-                    difference = 1f - (startPoint - (float)((int)startPoint));
-                    total = (float)this.Array[(int)startPoint] * difference;
+                    float difference = 1f - (startPoint - (float)((int)startPoint));
+                    float total = (float)this.Array[(int)startPoint] * difference;
 
                     for (int i = (int)startPoint + 1; i < (int)endPoint; i++)
                     {

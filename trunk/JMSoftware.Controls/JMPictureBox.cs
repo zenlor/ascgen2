@@ -57,9 +57,6 @@ namespace JMSoftware.Controls
         /// <summary>Are we drawing the image?</summary>
         private bool imageIsBeingDrawn;
 
-        /// <summary>The size and position of the image on the control</summary>
-        private Rectangle imageLocation;
-
         /// <summary>InterpolationMode to use when drawing the image</summary>
         private InterpolationMode interpolationMode;
 
@@ -268,18 +265,7 @@ namespace JMSoftware.Controls
         /// Gets or sets the location of the image on the control.
         /// </summary>
         /// <value>The image location.</value>
-        public Rectangle ImageLocation
-        {
-            get
-            {
-                return this.imageLocation;
-            }
-
-            set
-            {
-                this.imageLocation = value;
-            }
-        }
+        public Rectangle ImageLocation { get; set; }
 
         /// <summary>
         /// Gets a value indicating whether the image is smaller then the drawing area.
@@ -312,14 +298,7 @@ namespace JMSoftware.Controls
                     return;
                 }
 
-                if (value != InterpolationMode.Invalid)
-                {
-                    this.interpolationMode = value;
-                }
-                else
-                {
-                    this.interpolationMode = InterpolationMode.Default;
-                }
+                this.interpolationMode = value != InterpolationMode.Invalid ? value : InterpolationMode.Default;
 
                 // repaint the control
                 this.Refresh();
@@ -546,7 +525,6 @@ namespace JMSoftware.Controls
                     break;
 
                 default:
-                case JMPictureBoxSizeMode.Normal:
                     this.ImageLocation = new Rectangle(
                                                 0,
                                                 0,
@@ -604,7 +582,7 @@ namespace JMSoftware.Controls
             {
                 using (ImageAttributes ia = new ImageAttributes())
                 {
-                    ia.SetColorMatrix(JMSoftware.Matrices.BrightnessContrast(this.brightness, this.contrast));
+                    ia.SetColorMatrix(Matrices.BrightnessContrast(this.brightness, this.contrast));
 
                     g.DrawImage(
                             this.image,
@@ -649,7 +627,7 @@ namespace JMSoftware.Controls
             {
                 using (ImageAttributes ia = new ImageAttributes())
                 {
-                    ia.SetColorMatrix(JMSoftware.Matrices.BrightnessContrast(this.brightness, this.contrast));
+                    ia.SetColorMatrix(Matrices.BrightnessContrast(this.brightness, this.contrast));
 
                     g.DrawImage(
                             this.resizedImage,
