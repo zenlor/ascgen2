@@ -49,25 +49,6 @@ namespace JMSoftware.AsciiConversion
         #region Public methods
 
         /// <summary>
-        /// Convert the image into an array of strings using the passed size
-        /// </summary>
-        /// <remarks>Uses the default TextProcessingSettings</remarks>
-        /// <param name="image">image to convert</param>
-        /// <param name="size">size of the output text image</param>
-        /// <returns>the converted text image</returns>
-        public static string[] Convert(Image image, Size size)
-        {
-            if (image == null || size.Width < 1 || size.Height < 1)
-            {
-                return null;
-            }
-
-            TextProcessingSettings settings = new TextProcessingSettings(size);
-
-            return Convert(image, settings);
-        }
-
-        /// <summary>
         /// Convert the image into an array of strings using the passed settings
         /// </summary>
         /// <param name="image">image to convert</param>

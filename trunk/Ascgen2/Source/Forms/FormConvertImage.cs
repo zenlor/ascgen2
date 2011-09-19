@@ -1046,30 +1046,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
             }
         }
 
-        /// <summary>
-        /// Display the font dialog and process the result
-        /// </summary>
-        public void ShowFontDialog()
-        {
-            try
-            {
-                if (this.dialogChooseFont.ShowDialog() == DialogResult.OK)
-                {
-                    this.Font = this.dialogChooseFont.Font;
-                }
-            }
-            catch (System.ArgumentException)
-            {
-                MessageBox.Show(
-                            Resource.GetString("Unable to select this font"),
-                            Resource.GetString("Error"),
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Error,
-                            MessageBoxDefaultButton.Button1,
-                            MessageBoxOptions.ServiceNotification);
-            }
-        }
-
         #endregion Public methods
 
         #region Protected methods
@@ -1154,16 +1130,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
         private void CbxLocked_CheckedChanged(object sender, System.EventArgs e)
         {
             this.dimensionsCalculator.DimensionsAreLocked = this.cbxLocked.Checked;
-        }
-
-        /// <summary>
-        /// Handles the Click event of the checkBoxFullScreen control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void CheckBoxFullScreen_Click(object sender, EventArgs e)
-        {
-            this.IsFullScreen = !this.IsFullScreen;
         }
 
         /// <summary>
@@ -1371,16 +1337,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
         }
 
         /// <summary>
-        /// Handles the SelectionChangeCommitted event of the cmbSharpening control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void CmbSharpening_SelectionChangeCommitted(object sender, System.EventArgs e)
-        {
-            this.ApplyTextEffects();
-        }
-
-        /// <summary>
         /// Handles the Click event of the cmenuCopy control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
@@ -1388,16 +1344,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
         private void CmenuCopy_Click(object sender, System.EventArgs e)
         {
             this.textViewer.Copy();
-        }
-
-        /// <summary>
-        /// Handles the Click event of the cmenuLoad control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void CmenuLoad_Click(object sender, System.EventArgs e)
-        {
-            this.ShowLoadImageDialog();
         }
 
         /// <summary>
@@ -2821,6 +2767,30 @@ namespace JMSoftware.AsciiGeneratorDotNet
                 preview.Image = this.CreateColourImage(100);
 
                 preview.ShowDialog(this);
+            }
+        }
+
+        /// <summary>
+        /// Display the font dialog and process the result
+        /// </summary>
+        private void ShowFontDialog()
+        {
+            try
+            {
+                if (this.dialogChooseFont.ShowDialog() == DialogResult.OK)
+                {
+                    this.Font = this.dialogChooseFont.Font;
+                }
+            }
+            catch (System.ArgumentException)
+            {
+                MessageBox.Show(
+                            Resource.GetString("Unable to select this font"),
+                            Resource.GetString("Error"),
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error,
+                            MessageBoxDefaultButton.Button1,
+                            MessageBoxOptions.ServiceNotification);
             }
         }
 
