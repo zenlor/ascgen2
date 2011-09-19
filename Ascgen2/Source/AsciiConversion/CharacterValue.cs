@@ -83,13 +83,13 @@ namespace JMSoftware.AsciiConversion
         public void CalculateValues(Font font)
         {
             // size of the shrunken character to use for the calculation
-            const int width = 4;
-            const int height = 4;
-            const float area = 16f;
+            const int Width = 4;
+            const int Height = 4;
+            const float Area = 16f;
 
             using (Bitmap bitmap = TextToImage.Convert(this.Character.ToString(), font))
             {
-                using (Bitmap shrunk = new Bitmap(width, height))
+                using (Bitmap shrunk = new Bitmap(Width, Height))
                 {
                     using (Graphics g = Graphics.FromImage(shrunk))
                     {
@@ -97,7 +97,7 @@ namespace JMSoftware.AsciiConversion
 
                         g.Clear(Color.White);
 
-                        g.DrawImage(bitmap, 0, 0, width, height);
+                        g.DrawImage(bitmap, 0, 0, Width, Height);
                     }
 
                     unsafe
@@ -126,7 +126,7 @@ namespace JMSoftware.AsciiConversion
                         }
 
                         // store the average value
-                        this.Value = (int)(((float)totalValue / area) + 0.5);
+                        this.Value = (int)(((float)totalValue / Area) + 0.5);
 
                         int totalDifference = 0;
 
@@ -146,7 +146,7 @@ namespace JMSoftware.AsciiConversion
                         }
 
                         // store the score for this character
-                        this.Score = (int)(((float)totalDifference / area) + 0.5);
+                        this.Score = (int)(((float)totalDifference / Area) + 0.5);
 
                         shrunk.UnlockBits(data);
                     }

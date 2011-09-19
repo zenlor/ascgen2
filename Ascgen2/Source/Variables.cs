@@ -43,13 +43,13 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// <summary>
         /// Filename for the settings
         /// </summary>
-        [NonSerialized()]
+        [NonSerialized]
         private static string filename = "settings.dat";
 
         /// <summary>
         /// The instance used in the singleton pattern.
         /// </summary>
-        [NonSerialized()]
+        [NonSerialized]
         private static Variables instance = new Variables();
 
         /// <summary>
@@ -65,43 +65,43 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// <summary>
         /// The culture used by the application
         /// </summary>
-        [NonSerialized()]
+        [NonSerialized]
         private CultureInfo culture = new CultureInfo(string.Empty);
 
         /// <summary>
         /// The current characters.
         /// </summary>
-        [NonSerialized()]
+        [NonSerialized]
         private string currentCharacters;
 
         /// <summary>
         /// The current ramp.
         /// </summary>
-        [NonSerialized()]
+        [NonSerialized]
         private string currentRamp;
 
         /// <summary>
         /// The currently selected ramp.
         /// </summary>
-        [NonSerialized()]
+        [NonSerialized]
         private int currentSelectedRamp;
 
         /// <summary>
         /// The currently selected valid characters.
         /// </summary>
-        [NonSerialized()]
+        [NonSerialized]
         private int currentSelectedValidCharacters;
 
         /// <summary>
         /// The default dithering level.
         /// </summary>
-        [NonSerialized()]
+        [NonSerialized]
         private int defaultDitheringLevel = 4;
 
         /// <summary>
         /// The default dithering random.
         /// </summary>
-        [NonSerialized()]
+        [NonSerialized]
         private int defaultDitheringRandom = 3;
 
         /// <summary>
@@ -117,25 +117,25 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// <summary>
         /// The default maximum level.
         /// </summary>
-        [NonSerialized()]
+        [NonSerialized]
         private int defaultMaxLevel = 255;
 
         /// <summary>
         /// The default median level.
         /// </summary>
-        [NonSerialized()]
+        [NonSerialized]
         private float defaultMedianLevel = 0.5f;
 
         /// <summary>
         /// The default minimum level.
         /// </summary>
-        [NonSerialized()]
+        [NonSerialized]
         private int defaultMinLevel;
 
         /// <summary>
         /// The default list of ramps.
         /// </summary>
-        [NonSerialized()]
+        [NonSerialized]
         private string[] defaultRamps = new string[]
         {
             "MMMMMMM@@@@@@@WWWWWWWWWBBBBBBBB000000008888888ZZZZZZZZZaZaaaaaa2222222SSSSSSSXXXXXXXXXXX7777777rrrrrrr;;;;;;;;iiiiiiiii:::::::,:,,,,,,.........       ",
@@ -151,19 +151,19 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// <summary>
         /// The default text brightness.
         /// </summary>
-        [NonSerialized()]
+        [NonSerialized]
         private int defaultTextBrightness;
 
         /// <summary>
         /// The default text contrast.
         /// </summary>
-        [NonSerialized()]
+        [NonSerialized]
         private int defaultTextContrast;
 
         /// <summary>
         /// The different strings of valid characters.
         /// </summary>
-        [NonSerialized()]
+        [NonSerialized]
         private string[] defaultValidCharacters = new string[]
         {
             " #,.0123456789:;@ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz$",
@@ -182,109 +182,109 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// <summary>
         /// Flip the image horizontally?
         /// </summary>
-        [NonSerialized()]
+        [NonSerialized]
         private bool flipHorizontally;
 
         /// <summary>
         /// Flip the image vertically?
         /// </summary>
-        [NonSerialized()]
+        [NonSerialized]
         private bool flipVertically;
 
         /// <summary>
         /// Invert the output image?
         /// </summary>
-        [NonSerialized()]
+        [NonSerialized]
         private bool invertImage;
 
         /// <summary>
         /// Load brightness/contrast from settings?
         /// </summary>
-        [NonSerialized()]
+        [NonSerialized]
         private bool loadImageBrightnessContrast;
 
         /// <summary>
         /// Load levels from settings?
         /// </summary>
-        [NonSerialized()]
+        [NonSerialized]
         private bool loadLevels;
 
         /// <summary>
         /// Load image brightness/contrast from settings?
         /// </summary>
-        [NonSerialized()]
+        [NonSerialized]
         private bool loadTextBrightnessContrast;
 
         /// <summary>
         /// The maximum height for the output.
         /// </summary>
-        [NonSerialized()]
+        [NonSerialized]
         private int maximumHeight = 999;
 
         /// <summary>
         /// The maximum width for the output.
         /// </summary>
-        [NonSerialized()]
+        [NonSerialized]
         private int maximumWidth = 999;
 
         /// <summary>
         /// The filename prefix for output images
         /// </summary>
-        [NonSerialized()]
+        [NonSerialized]
         private string prefix = "ASCII-";
 
         /// <summary>
         /// The selection border color.
         /// </summary>
-        [NonSerialized()]
+        [NonSerialized]
         private Color selectionBorderColor = Color.DarkBlue;
 
         /// <summary>
         /// The selection fill color.
         /// </summary>
-        [NonSerialized()]
+        [NonSerialized]
         private Color selectionFillColor = Color.FromArgb(128, 173, 216, 230);
 
         /// <summary>
         /// Sharpen the output?
         /// </summary>
-        [NonSerialized()]
+        [NonSerialized]
         private bool sharpen;
 
         /// <summary>
         /// Show the image widget?
         /// </summary>
-        [NonSerialized()]
+        [NonSerialized]
         private bool showWidgetImage = true;
 
         /// <summary>
         /// Show the text settings widget?
         /// </summary>
-        [NonSerialized()]
+        [NonSerialized]
         private bool showWidgetTextSettings = true;
 
         /// <summary>
         /// Stretch the output?
         /// </summary>
-        [NonSerialized()]
+        [NonSerialized]
         private bool stretch = true;
 
         /// <summary>
         /// Use an unsharp mask?
         /// </summary>
-        [NonSerialized()]
+        [NonSerialized]
         private bool unsharpMask = true;
 
         /// <summary>
         /// Update the output while selecting an area of the image?
         /// </summary>
-        [NonSerialized()]
+        [NonSerialized]
         private bool updateWhileSelecting = true;
 
         /// <summary>
         /// Use a generated ramp?
         /// </summary>
-        [NonSerialized()]
+        [NonSerialized]
         private bool useGeneratedRamp = true;
 
         #endregion Fields

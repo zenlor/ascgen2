@@ -142,7 +142,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             Variables.LoadSettings();
 
-            this.filename = String.Empty;
+            this.filename = string.Empty;
 
             this.doConversion = true;
 
@@ -397,7 +397,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
         {
             get
             {
-                return this.ImageIsLoaded ? this.filename : String.Empty;
+                return this.ImageIsLoaded ? this.filename : string.Empty;
             }
 
             set
@@ -2838,7 +2838,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             }
             else if (showVersionUpToDateDialog)
             {
-                MessageBox.Show(Resource.GetString("This is the latest version"), String.Empty, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(Resource.GetString("This is the latest version"), string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -3244,7 +3244,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.toolStripButtonShowTextWidget.ToolTipText = Resource.GetString("Text Settings");
             this.toolStripButtonShowImageWidget.ToolTipText = Resource.GetString("Input Image");
 
-            this.toolStripButtonLoad.ToolTipText = Resource.GetString("&Load Image").Replace("&", String.Empty);
+            this.toolStripButtonLoad.ToolTipText = Resource.GetString("&Load Image").Replace("&", string.Empty);
             this.toolStripButtonSave.ToolTipText = Resource.GetString("Save");
 
             this.tsbFont.ToolTipText = Resource.GetString("Choose the Font");

@@ -26,7 +26,7 @@
 using System.Reflection;
 using System.Security.Permissions;
 
-[assembly:System.CLSCompliant(true)]
+[assembly: System.CLSCompliant(true)]
 
 // TODO: Sort out security properly
 [assembly: EnvironmentPermissionAttribute(SecurityAction.RequestMinimum, Read = "USERNAME")]

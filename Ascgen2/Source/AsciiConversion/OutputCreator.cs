@@ -131,9 +131,9 @@ namespace JMSoftware.AsciiConversion
             builder.AppendLine("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
             builder.AppendLine("<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.1//EN\" \"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd\">");
             builder.AppendLine("<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\">");
-            builder.AppendLine(String.Empty);
+            builder.AppendLine(string.Empty);
             builder.AppendLine("<head>");
-            builder.AppendLine(String.Empty);
+            builder.AppendLine(string.Empty);
 
             if (this.Title.Length > 0)
             {
@@ -142,7 +142,7 @@ namespace JMSoftware.AsciiConversion
                 builder.Append("</title>");
                 builder.Append(Environment.NewLine);
 
-                builder.AppendLine(String.Empty);
+                builder.AppendLine(string.Empty);
             }
 
             builder.Append("<meta name=\"generator\" content=\"Ascgen dotNET ");
@@ -150,7 +150,7 @@ namespace JMSoftware.AsciiConversion
             builder.Append("\" />");
             builder.Append(Environment.NewLine);
 
-            builder.AppendLine(String.Empty);
+            builder.AppendLine(string.Empty);
 
             builder.AppendLine("<style type=\"text/css\">");
             builder.AppendLine("<!--");
@@ -216,11 +216,11 @@ namespace JMSoftware.AsciiConversion
 
             builder.AppendLine("-->");
             builder.AppendLine("</style>");
-            builder.AppendLine(String.Empty);
+            builder.AppendLine(string.Empty);
             builder.AppendLine("</head>");
-            builder.AppendLine(String.Empty);
+            builder.AppendLine(string.Empty);
             builder.AppendLine("<body>");
-            builder.AppendLine(String.Empty);
+            builder.AppendLine(string.Empty);
             builder.AppendLine("<div id=\"ascgen-image\">");
             builder.Append("<pre>");
 
@@ -272,9 +272,9 @@ namespace JMSoftware.AsciiConversion
             builder.Append("</pre>");
             builder.Append(Environment.NewLine);
             builder.AppendLine("</div>");
-            builder.AppendLine(String.Empty);
+            builder.AppendLine(string.Empty);
             builder.AppendLine("</body>");
-            builder.AppendLine(String.Empty);
+            builder.AppendLine(string.Empty);
             builder.Append("</html>");
 
             return builder.ToString();
