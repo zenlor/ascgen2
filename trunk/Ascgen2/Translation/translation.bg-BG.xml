@@ -264,9 +264,6 @@
 	<data name="Input Image">
 		<value>Входно изображение</value>
 	</data>
-	<data name="Input Image Position">
-		<value>Позиция на входното изображение</value>
-	</data>
 	<data name="Input Text Sample">
 		<value>Образец на входящ текст</value>
 	</data>
@@ -449,9 +446,6 @@
 	</data>
 	<data name="Save Log As">
 		<value>Запис на хода на действията като</value>
-	</data>
-	<data name="Save Settings as Default">
-		<value>Запис на настройките като стандартни</value>
 	</data>
 	<data name="Save the output before closing">
 		<value>Запис на изходния резултат преди затваряне</value>

@@ -270,9 +270,6 @@
 	<data name="Input Image">
 		<value>Input Image</value>
 	</data>
-	<data name="Input Image Position">
-		<value>Input Image Position</value>
-	</data>
 	<data name="Input Text Sample">
 		<value>Input Text Sample</value>
 	</data>
@@ -455,9 +452,6 @@
 	</data>
 	<data name="Save Log As">
 		<value>Save Log As</value>
-	</data>
-	<data name="Save Settings as Default">
-		<value>Save Settings as Default</value>
 	</data>
 	<data name="Save the output before closing">
 		<value>Save the output before closing</value>

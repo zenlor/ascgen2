@@ -358,9 +358,6 @@
     <None Include="Resources\chart_curve.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\lightbulb.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\textfield.png" />
   </ItemGroup>
   <ItemGroup>
@@ -412,7 +409,6 @@
     <None Include="Resources\arrow_rotate_anticlockwise.png" />
     <None Include="Resources\magnifier_zoom_in.png" />
     <None Include="Resources\magifier_zoom_out.png" />
-    <None Include="Resources\application_split.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

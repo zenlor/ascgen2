@@ -264,9 +264,6 @@
 <data name="Input Image">
 	<value>Εισαγωγή Εικόνας</value>
 </data>
-<data name="Input Image Position">
-	<value>Εισαγωγή θέσης εικόνας</value>
-</data>
 <data name="Input Text Sample">
 	<value>Εισαγωγή δοκιμαστικού κειμένου</value>
 </data>
@@ -449,9 +446,6 @@
 </data>
 <data name="Save Log As">
 	<value>Αποθήκευση αρχείου καταγραφής ώς</value>
-</data>
-<data name="Save Settings as Default">
-	<value>Αποθήκευση ρυθμίσεων ως προεπιλογή</value>
 </data>
 <data name="Save the output before closing">
 	<value>Αποθήκευση προορισμού πρίν το κλείσιμο</value>

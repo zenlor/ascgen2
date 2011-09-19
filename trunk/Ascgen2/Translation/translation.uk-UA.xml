@@ -264,9 +264,6 @@
 	<data name="Input Image">
 		<value>Початкове зображення</value>
 	</data>
-	<data name="Input Image Position">
-		<value>Позиція початкового зображення</value>
-	</data>
 	<data name="Input Text Sample">
 		<value>Приклад початкового тексту</value>
 	</data>
@@ -449,9 +446,6 @@
 	</data>
 	<data name="Save Log As">
 		<value>Зберегти лог як</value>
-	</data>
-	<data name="Save Settings as Default">
-		<value>Запам'ятати параметри</value>
 	</data>
 	<data name="Save the output before closing">
 		<value>Зберегти зображення перед виходом</value>
