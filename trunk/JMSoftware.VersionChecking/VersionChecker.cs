@@ -196,8 +196,8 @@ namespace JMSoftware.VersionChecking
                         XmlProcessor.ReadNode(document.SelectSingleNode("version/minor"), 0, 100, 0),
                         XmlProcessor.ReadNode(document.SelectSingleNode("version/patch"), 0, 100, 0),
                         XmlProcessor.ReadNode(document.SelectSingleNode("version/suffixnum"), 0, 100, 0),
-                        XmlProcessor.ReadNode(document.SelectSingleNode("version/suffix"), String.Empty, true),
-                        XmlProcessor.ReadNode(document.SelectSingleNode("version/url"), String.Empty, true));
+                        XmlProcessor.ReadNode(document.SelectSingleNode("version/suffix"), string.Empty, true),
+                        XmlProcessor.ReadNode(document.SelectSingleNode("version/url"), string.Empty, true));
             }
             catch (XmlException)
             {

@@ -88,7 +88,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
                     strings.Add(file.ToString());
                 }
 
-                translationFile = String.Empty;
+                translationFile = string.Empty;
 
                 switch (strings.Count)
                 {

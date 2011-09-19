@@ -24,6 +24,7 @@
 // </license>
 //---------------------------------------------------------------------------------------
 [assembly: System.CLSCompliant(true)]
+
 namespace JMSoftware.TextHelper
 {
     using System;
@@ -55,14 +56,14 @@ namespace JMSoftware.TextHelper
         /// <returns>The random string</returns>
         public static string GetRandomString(int length)
         {
-            string randomString = String.Empty;
-            string validCharacters = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            string randomString = string.Empty;
+            const string ValidCharacters = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
             Random random = new Random();
 
             while (length-- > 0)
             {
-                randomString += validCharacters[random.Next(validCharacters.Length - 1)];
+                randomString += ValidCharacters[random.Next(ValidCharacters.Length - 1)];
             }
 
             return randomString;
@@ -88,7 +89,7 @@ namespace JMSoftware.TextHelper
         /// <returns>The size of the text</returns>
         public static Size MeasureText(string text, Font font)
         {
-            if (String.IsNullOrEmpty(text) || font == null)
+            if (string.IsNullOrEmpty(text) || font == null)
             {
                 return Size.Empty;
             }
@@ -135,7 +136,7 @@ namespace JMSoftware.TextHelper
         {
             if (array == null)
             {
-                return String.Empty;
+                return string.Empty;
             }
 
             StringBuilder result = new StringBuilder();

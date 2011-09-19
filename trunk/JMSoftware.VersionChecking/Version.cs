@@ -39,7 +39,7 @@ namespace JMSoftware.VersionChecking
         /// </summary>
         public Version()
         {
-            this.SuffixString = String.Empty;
+            this.SuffixString = string.Empty;
 
             this.DownloadUrl = string.Empty;
         }
@@ -53,7 +53,7 @@ namespace JMSoftware.VersionChecking
         /// <param name="suffix">The suffix version number.</param>
         /// <param name="suffixText">The suffix string.</param>
         public Version(int major, int minor, int patch, int suffix, string suffixText)
-            : this(major, minor, patch, suffix, suffixText, String.Empty)
+            : this(major, minor, patch, suffix, suffixText, string.Empty)
         {
         }
 
@@ -258,7 +258,7 @@ namespace JMSoftware.VersionChecking
         /// </returns>
         public override string ToString()
         {
-            return String.Format("{0}.{1}.{2}{3}", this.Major, this.Minor, this.Patch, this.SuffixString);
+            return string.Format("{0}.{1}.{2}{3}", this.Major, this.Minor, this.Patch, this.SuffixString);
         }
 
         #endregion Public methods

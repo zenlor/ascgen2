@@ -207,6 +207,7 @@
     <Compile Include="Source\AsciiConversion\Filters\AscgenMatrixFilter.cs" />
     <Compile Include="Source\AsciiConversion\Filters\Blur.cs" />
     <Compile Include="Source\AsciiConversion\Filters\Dither.cs" />
+    <Compile Include="Source\AsciiConversion\Filters\IFlip.cs" />
     <Compile Include="Source\AsciiConversion\Filters\Sharpen.cs" />
     <Compile Include="Source\AsciiConversion\Filters\UnsharpMask.cs" />
     <Compile Include="Source\AsciiConversion\OutputCreator.cs" />
@@ -322,7 +323,7 @@
     <Compile Include="Source\AsciiConversion\ValuesToTextConverter.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Source\Main.cs">
+    <Compile Include="Source\Ascgen2.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Source\Variables.cs">

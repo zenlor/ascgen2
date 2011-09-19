@@ -224,7 +224,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
                 if (!Directory.Exists(this.outputDirectory))
                 {
-                    this.outputDirectory = String.Empty;
+                    this.outputDirectory = string.Empty;
                     return;
                 }
 
@@ -599,7 +599,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             this.thread = new Thread(this.DoConversions);
 
-            this.thread.Name = String.Format(Variables.Instance.Culture, "BatchConversionThread{0:HHmmss}", DateTime.Now);
+            this.thread.Name = string.Format(Variables.Instance.Culture, "BatchConversionThread{0:HHmmss}", DateTime.Now);
 
             this.thread.Start();
         }
@@ -798,41 +798,41 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.progressBarConversion.Value = 0;
             this.progressBarConversion.Maximum = this.fileListbox1.Items.Count;
 
-            this.AddLogString(String.Empty);
+            this.AddLogString(string.Empty);
 
             this.AddLogSeparator();
 
-            this.AddLogString(String.Format(
+            this.AddLogString(string.Format(
                                     Variables.Instance.Culture,
                                     Resource.GetString("Batch conversion started, {0} file(s) to process"),
                                     this.fileListbox1.Items.Count));
 
             string outputDirectory = this.textBoxOutputDirectory.Text;
 
-            this.AddLogString(String.Format(
+            this.AddLogString(string.Format(
                                     Variables.Instance.Culture,
                                     Resource.GetString("Output Size: {0}x{1} characters"),
                                     this.OutputSize.Width == -1 ? "??" : this.OutputSize.Width.ToString(),
                                     this.OutputSize.Height == -1 ? "??" : this.OutputSize.Height.ToString()));
 
-            this.AddLogString(String.Format(
+            this.AddLogString(string.Format(
                                     Variables.Instance.Culture,
                                     Resource.GetString("Target Font: {0} {1}pt{2}{3}{4}{5}") + ".",
                                     this.textProcessingSettings.Font.Name,
                                     this.textProcessingSettings.Font.Size.ToString(Variables.Instance.Culture),
-                                    this.textProcessingSettings.Font.Bold ? ", " + Resource.GetString("bold") : String.Empty,
-                                    this.textProcessingSettings.Font.Italic ? ", " + Resource.GetString("italic") : String.Empty,
-                                    this.textProcessingSettings.Font.Underline ? ", " + Resource.GetString("underline") : String.Empty,
-                                    this.textProcessingSettings.Font.Strikeout ? ", " + Resource.GetString("strikeout") : String.Empty));
+                                    this.textProcessingSettings.Font.Bold ? ", " + Resource.GetString("bold") : string.Empty,
+                                    this.textProcessingSettings.Font.Italic ? ", " + Resource.GetString("italic") : string.Empty,
+                                    this.textProcessingSettings.Font.Underline ? ", " + Resource.GetString("underline") : string.Empty,
+                                    this.textProcessingSettings.Font.Strikeout ? ", " + Resource.GetString("strikeout") : string.Empty));
 
-            this.AddLogString(String.Format(
+            this.AddLogString(string.Format(
                                     Variables.Instance.Culture,
                                     Resource.GetString("Target Character Size: {0}x{1} pixels{2}"),
                                     this.textProcessingSettings.CharacterSize.Width.ToString(Variables.Instance.Culture),
                                     this.textProcessingSettings.CharacterSize.Height.ToString(Variables.Instance.Culture),
                                     (this.textProcessingSettings.CalculateCharacterSize ? " (" + Resource.GetString("automatically calculated") + ")." : ".")));
 
-            this.AddLogString(Resource.GetString("Saving output as") + " ." + this.comboBoxOutputFormat.Text + (this.OutputIsImage ? " (" + this.numericUpDownImageScale.Value.ToString() + "%)" : String.Empty));
+            this.AddLogString(Resource.GetString("Saving output as") + " ." + this.comboBoxOutputFormat.Text + (this.OutputIsImage ? " (" + this.numericUpDownImageScale.Value.ToString() + "%)" : string.Empty));
 
             this.AddLogString(Resource.GetString("Output Directory") + ": " + outputDirectory);
 
@@ -880,7 +880,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             this.AddLogSeparator();
 
-            this.AddLogString(String.Format(Variables.Instance.Culture, Resource.GetString("{0} file(s) converted, {1} error(s)"), count, errors));
+            this.AddLogString(string.Format(Variables.Instance.Culture, Resource.GetString("{0} file(s) converted, {1} error(s)"), count, errors));
 
             this.ControlsEnabled = true;
 
@@ -945,7 +945,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
                     break;
 
                 case BatchTextProcessingSettings.SuffixTypes.DateTime:
-                    suffix = String.Format(Variables.Instance.Culture, "-" + Resource.GetString("{0:yyyyMMddHHmmss}"), DateTime.Now);
+                    suffix = string.Format(Variables.Instance.Culture, "-" + Resource.GetString("{0:yyyyMMddHHmmss}"), DateTime.Now);
                     break;
 
                 case BatchTextProcessingSettings.SuffixTypes.Random:
@@ -1130,7 +1130,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void SaveLogAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.saveFileDialogLog.FileName = String.Format(Variables.Instance.Culture, "Log{0:yyyyMMddHHmmss}", DateTime.Now);
+            this.saveFileDialogLog.FileName = string.Format(Variables.Instance.Culture, "Log{0:yyyyMMddHHmmss}", DateTime.Now);
 
             if (this.saveFileDialogLog.ShowDialog() != DialogResult.OK)
             {

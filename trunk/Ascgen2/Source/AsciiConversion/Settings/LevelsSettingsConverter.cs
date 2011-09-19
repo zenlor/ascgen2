@@ -122,7 +122,7 @@ namespace JMSoftware.AsciiConversion.TextSettings
 
             LevelsSettings settings = value as LevelsSettings;
 
-            return String.Format("{0}, {1}, {2}", settings.Minimum, settings.Median, settings.Maximum);
+            return string.Format("{0}, {1}, {2}", settings.Minimum, settings.Median, settings.Maximum);
         }
 
         /// <summary>

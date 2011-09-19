@@ -1,5 +1,5 @@
 //---------------------------------------------------------------------------------------
-// <copyright file="Main.cs" company="Jonathan Mathews Software">
+// <copyright file="Ascgen2.cs" company="Jonathan Mathews Software">
 //     ASCII Generator dotNET - Image to ASCII Art Conversion Program
 //     Copyright (C) 2011 Jonathan Mathews Software. All rights reserved.
 // </copyright>
@@ -31,16 +31,9 @@ namespace JMSoftware.AsciiGeneratorDotNet
     /// <summary>
     /// Main application class
     /// </summary>
-    public sealed class Ascgen2
+    public static class Ascgen2
     {
         #region Constructors
-
-        /// <summary>
-        /// Prevents a default instance of the <see cref="Ascgen2"/> class from being created.
-        /// </summary>
-        private Ascgen2()
-        {
-        }
 
         #endregion Constructors
 

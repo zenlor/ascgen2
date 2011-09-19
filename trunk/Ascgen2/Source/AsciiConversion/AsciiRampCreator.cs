@@ -54,7 +54,7 @@ namespace JMSoftware.AsciiConversion
                 return characters;
             }
 
-            string characterString = String.Empty;
+            string characterString = string.Empty;
 
             // Remove duplicate characters
             foreach (char c in characters)

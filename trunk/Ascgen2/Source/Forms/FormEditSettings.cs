@@ -384,7 +384,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
                 this.textBoxOtherDimension = this.textBoxWidth;
             }
 
-            this.textBoxOtherDimension.Text = String.Empty;
+            this.textBoxOtherDimension.Text = string.Empty;
             this.checkBoxLockRatio.Checked = true;
         }
 
@@ -393,15 +393,15 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// </summary>
         private void ResetSettings()
         {
-            this.InputDirectory = String.Empty;
+            this.InputDirectory = string.Empty;
 
-            this.OutputDirectory = String.Empty;
+            this.OutputDirectory = string.Empty;
 
             this.OutputSize = new Size(150, -1);
 
             this.textBoxWidth.Text = "150";
 
-            this.textBoxHeight.Text = String.Empty;
+            this.textBoxHeight.Text = string.Empty;
 
             this.textBoxHeight.Enabled = false;
 
@@ -441,10 +441,10 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// </summary>
         private void UpdateFont()
         {
-            this.textBoxFont.Text = this.defaultFont.Name + String.Format(Variables.Instance.Culture, " {0}pt", this.defaultFont.Size) +
-                (this.defaultFont.Bold ? ", bold" : String.Empty) + (this.defaultFont.Italic ? ", italic" : String.Empty) +
-                (this.defaultFont.Underline ? ", underline" : String.Empty) +
-                (this.defaultFont.Strikeout ? ", strikeout" : String.Empty) + ".";
+            this.textBoxFont.Text = this.defaultFont.Name + string.Format(Variables.Instance.Culture, " {0}pt", this.defaultFont.Size) +
+                (this.defaultFont.Bold ? ", bold" : string.Empty) + (this.defaultFont.Italic ? ", italic" : string.Empty) +
+                (this.defaultFont.Underline ? ", underline" : string.Empty) +
+                (this.defaultFont.Strikeout ? ", strikeout" : string.Empty) + ".";
         }
 
         /// <summary>

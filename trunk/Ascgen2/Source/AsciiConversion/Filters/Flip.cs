@@ -26,22 +26,6 @@
 namespace JMSoftware.AsciiConversion.Filters
 {
     /// <summary>
-    /// Interface for flipping the values
-    /// </summary>
-    public interface IFlip : IAscgenFilter
-    {
-        #region Properties
-
-        /// <summary>Gets or sets a value indicating whether to flip Horizontally</summary>
-        bool Horizontal { get; set; }
-
-        /// <summary>Gets or sets a value indicating whether to flip Vertically</summary>
-        bool Vertical { get; set; }
-
-        #endregion Properties
-    }
-
-    /// <summary>
     /// Filter to flip the values Horizontally and/or Vertically
     /// </summary>
     public class Flip : IFlip
