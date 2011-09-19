@@ -264,9 +264,6 @@
 <data name="Input Image">
 	<value>Image source</value>
 </data>
-<data name="Input Image Position">
-	<value>Changer la position de l'image source</value>
-</data>
 <data name="Input Text Sample">
 	<value>Exemple de texte source</value>
 </data>
@@ -449,9 +446,6 @@
 </data>
 <data name="Save Log As">
 	<value>Sauver le Log sous</value>
-</data>
-<data name="Save Settings as Default">
-	<value>Faire des réglages actuels ceux par défaut</value>
 </data>
 <data name="Save the output before closing">
 	<value>Sauver la destination avant de fermer</value>

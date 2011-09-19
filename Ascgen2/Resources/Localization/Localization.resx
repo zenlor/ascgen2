@@ -447,9 +447,6 @@
   <data name="DefaultWidth and/or DefaultHeight must be &gt; 0" xml:space="preserve">
     <value>DefaultWidth and/or DefaultHeight must be &gt; 0</value>
   </data>
-  <data name="Save Settings as Default" xml:space="preserve">
-    <value>Save Settings as Default</value>
-  </data>
   <data name="Invalid settings file. Please delete it or save a new one" xml:space="preserve">
     <value>Invalid settings file. Please delete it or save a new one</value>
   </data>
@@ -698,9 +695,6 @@
   </data>
   <data name="Zoom Out" xml:space="preserve">
     <value>Zoom Out</value>
-  </data>
-  <data name="Input Image Position" xml:space="preserve">
-    <value>Input Image Position</value>
   </data>
   <data name="Show Log" xml:space="preserve">
     <value>Show Log</value>
