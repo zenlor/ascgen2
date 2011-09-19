@@ -176,8 +176,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             this.dialogChooseTextZoom = new TextImageMagnificationDialog(this.Font);
 
-            CheckForIllegalCrossThreadCalls = false;
-
             this.versionChecker = new VersionChecker();
 
             this.versionChecker.ReadAsyncCompletedEventHandler += this.VersionReadAsyncCompletedEventHandler;
