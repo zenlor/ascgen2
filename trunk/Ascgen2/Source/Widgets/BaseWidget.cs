@@ -30,7 +30,7 @@ namespace JMSoftware.Widgets
     /// <summary>
     /// Base class for the widgets
     /// </summary>
-    public partial class BaseWidget : Form
+    public partial class BaseWidget
     {
         #region Fields
 

@@ -113,11 +113,9 @@ namespace JMSoftware.AsciiConversion
 
             string[] result = new string[numberOfRows];
 
-            StringBuilder builder;
-
             for (int y = 0; y < numberOfRows; y++)
             {
-                builder = new StringBuilder();
+                StringBuilder builder = new StringBuilder();
 
                 for (int x = 0; x < numberOfColumns; x++)
                 {

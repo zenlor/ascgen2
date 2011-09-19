@@ -31,7 +31,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
     /// <summary>
     /// Form to display and change the ramp
     /// </summary>
-    public partial class ValidRampCharsDialog : System.Windows.Forms.Form
+    public partial class ValidRampCharsDialog
     {
         #region Constructors
 

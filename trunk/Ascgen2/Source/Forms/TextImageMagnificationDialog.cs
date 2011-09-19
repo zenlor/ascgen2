@@ -27,13 +27,12 @@ namespace JMSoftware.AsciiGeneratorDotNet
 {
     using System.Drawing;
     using System.Drawing.Imaging;
-    using JMSoftware.AsciiConversion;
     using JMSoftware.TextHelper;
 
     /// <summary>
     /// Form to get the text magnification level
     /// </summary>
-    public partial class TextImageMagnificationDialog : System.Windows.Forms.Form
+    public partial class TextImageMagnificationDialog
     {
         #region Fields
 

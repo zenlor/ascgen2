@@ -45,7 +45,7 @@ namespace JMSoftware.AsciiConversion.TextSettings
         /// </returns>
         public override bool CanConvertFrom(ITypeDescriptorContext context, System.Type sourceType)
         {
-            return sourceType == typeof(string) ? true : base.CanConvertFrom(context, sourceType);
+            return sourceType == typeof(string) || base.CanConvertFrom(context, sourceType);
         }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace JMSoftware.AsciiConversion.TextSettings
         /// </returns>
         public override bool CanConvertTo(ITypeDescriptorContext context, Type destinationType)
         {
-            return destinationType == typeof(LevelsSettings) ? true : base.CanConvertTo(context, destinationType);
+            return destinationType == typeof(LevelsSettings) || base.CanConvertTo(context, destinationType);
         }
 
         /// <summary>

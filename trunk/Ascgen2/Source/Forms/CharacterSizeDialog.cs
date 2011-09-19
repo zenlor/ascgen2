@@ -31,7 +31,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
     /// <summary>
     /// Dialog used to specify the size of one character in the font
     /// </summary>
-    public partial class CharacterSizeDialog : System.Windows.Forms.Form
+    public partial class CharacterSizeDialog
     {
         #region Fields
 
