@@ -2180,7 +2180,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void MenuHelpDonate_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=wardog1uk%40gmail%2ecom&item_name=Ascii%20Generator%20%2eNET&no_shipping=2&no_note=1&tax=0&currency_code=GBP&bn=PP%2dDonationsBF&charset=UTF%2d8");
+            System.Diagnostics.Process.Start("https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=58GBZPNY3YYHA&lc=GB&item_name=Ascii%20Generator%20Tip%20Jar&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHostedGuest");
         }
 
         /// <summary>
