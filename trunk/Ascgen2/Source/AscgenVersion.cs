@@ -45,10 +45,10 @@ namespace JMSoftware.AsciiGeneratorDotNet
         public const string ProgramName = "ASCII Generator";
 
         /// <summary>Version Suffix.</summary>
-        public const string Suffix = "dev";
+        public const string Suffix = "";
 
         /// <summary>Version Suffix Number.</summary>
-        public const int SuffixNumber = 0;
+        public const int SuffixNumber = 1;
 
         /// <summary>The url of the remote xml file containing the latest version.</summary>
         public const string VersionUrl = "http://ascgen2.sourceforge.net/version.xml";

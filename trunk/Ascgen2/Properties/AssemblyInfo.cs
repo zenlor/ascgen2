@@ -29,11 +29,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Ascii Generator dotNET (Ascgen 2.0)")]
+[assembly: AssemblyTitle("Ascii Generator 2")]
 [assembly: AssemblyDescription("http://ascgendotnet.jmsoftware.co.uk/")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Jonathan Mathews Software")]
-[assembly: AssemblyProduct("Ascii Generator dotNET")]
+[assembly: AssemblyProduct("Ascii Generator 2")]
 [assembly: AssemblyCopyright("Jonathan Mathews")]
 [assembly: AssemblyTrademark("Ascgen")]
 [assembly: AssemblyCulture("")]
@@ -53,4 +53,4 @@ using System.Runtime.InteropServices;
 //      Build Number
 //      Revision
 [assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("0.9.7.0")]
+[assembly: AssemblyFileVersion("2.0.0.1")]
