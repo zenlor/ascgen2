@@ -345,6 +345,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.dialogSaveImage = new System.Windows.Forms.SaveFileDialog();
             this.dialogChooseFont = new System.Windows.Forms.FontDialog();
             this.pnlMain = new System.Windows.Forms.Panel();
+            this.rtbxConvertedText = new JMSoftware.Controls.TextViewerRichTextBox();
             this.toolStripOutputSize = new System.Windows.Forms.ToolStrip();
             this.toolStripLabelSize = new System.Windows.Forms.ToolStripLabel();
             this.tbxWidth = new System.Windows.Forms.ToolStripTextBox();
@@ -367,12 +368,12 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.lblRamp = new System.Windows.Forms.ToolStripLabel();
             this.cmbRamp = new System.Windows.Forms.ToolStripComboBox();
             this.chkGenerate = new System.Windows.Forms.ToolStripButton();
-            this.toolStripFile = new System.Windows.Forms.ToolStrip();
-            this.toolStripButtonLoad = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonSave = new System.Windows.Forms.ToolStripButton();
             this.toolStripDisplay = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonPreview = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonFullScreen = new System.Windows.Forms.ToolStripButton();
+            this.toolStripFile = new System.Windows.Forms.ToolStrip();
+            this.toolStripButtonLoad = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonSave = new System.Windows.Forms.ToolStripButton();
             this.toolStripCharacters = new System.Windows.Forms.ToolStrip();
             this.lblCharacters = new System.Windows.Forms.ToolStripLabel();
             this.cmbCharacters = new System.Windows.Forms.ToolStripComboBox();
@@ -381,7 +382,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.printDocument = new System.Drawing.Printing.PrintDocument();
             this.printDialog = new System.Windows.Forms.PrintDialog();
             this.printPreviewDialog = new System.Windows.Forms.PrintPreviewDialog();
-            this.rtbxConvertedText = new JMSoftware.Controls.TextViewerRichTextBox();
             this.contextMenuText.SuspendLayout();
             this.mainMenu1.SuspendLayout();
             this.pnlMain.SuspendLayout();
@@ -393,8 +393,8 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.toolStripFont.SuspendLayout();
             this.toolStripWidgets.SuspendLayout();
             this.toolStripRamp.SuspendLayout();
-            this.toolStripFile.SuspendLayout();
             this.toolStripDisplay.SuspendLayout();
+            this.toolStripFile.SuspendLayout();
             this.toolStripCharacters.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -1105,14 +1105,37 @@ namespace JMSoftware.AsciiGeneratorDotNet
             // 
             // pnlMain
             // 
-            this.pnlMain.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.pnlMain.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.pnlMain.Controls.Add(this.rtbxConvertedText);
             this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlMain.Location = new System.Drawing.Point(0, 0);
             this.pnlMain.Name = "pnlMain";
             this.pnlMain.Size = new System.Drawing.Size(624, 428);
             this.pnlMain.TabIndex = 1;
+            this.pnlMain.DragDrop += new System.Windows.Forms.DragEventHandler(this.PnlMain_DragDrop);
+            this.pnlMain.DragEnter += new System.Windows.Forms.DragEventHandler(this.PnlMain_DragEnter);
             this.pnlMain.Resize += new System.EventHandler(this.PnlMain_Resize);
+            // 
+            // rtbxConvertedText
+            // 
+            this.rtbxConvertedText.BackColor = System.Drawing.Color.White;
+            this.rtbxConvertedText.BackgroundColor = System.Drawing.Color.White;
+            this.rtbxConvertedText.ContextMenuStrip = this.contextMenuText;
+            this.rtbxConvertedText.DetectUrls = false;
+            this.rtbxConvertedText.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rtbxConvertedText.EnableAutoDragDrop = true;
+            this.rtbxConvertedText.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.rtbxConvertedText.Location = new System.Drawing.Point(0, 0);
+            this.rtbxConvertedText.Margin = new System.Windows.Forms.Padding(0);
+            this.rtbxConvertedText.Name = "rtbxConvertedText";
+            this.rtbxConvertedText.ReadOnly = true;
+            this.rtbxConvertedText.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth;
+            this.rtbxConvertedText.ShowSelectionMargin = true;
+            this.rtbxConvertedText.Size = new System.Drawing.Size(624, 428);
+            this.rtbxConvertedText.TabIndex = 0;
+            this.rtbxConvertedText.Text = "";
+            this.rtbxConvertedText.TextColor = System.Drawing.SystemColors.WindowText;
+            this.rtbxConvertedText.WordWrap = false;
             // 
             // toolStripOutputSize
             // 
@@ -1192,10 +1215,10 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStripRotateFlip);
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStripFont);
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStripWidgets);
-            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStripCharacters);
-            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStripFile);
-            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStripRamp);
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStripDisplay);
+            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStripRamp);
+            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStripFile);
+            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStripCharacters);
             // 
             // toolStripRotateFlip
             // 
@@ -1351,42 +1374,13 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.chkGenerate.ToolTipText = "Automatically Generate a Ramp";
             this.chkGenerate.CheckedChanged += new System.EventHandler(this.ChkGenerate_CheckedChanged);
             // 
-            // toolStripFile
-            // 
-            this.toolStripFile.Dock = System.Windows.Forms.DockStyle.None;
-            this.toolStripFile.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButtonLoad,
-            this.toolStripButtonSave});
-            this.toolStripFile.Location = new System.Drawing.Point(3, 124);
-            this.toolStripFile.Name = "toolStripFile";
-            this.toolStripFile.Size = new System.Drawing.Size(58, 25);
-            this.toolStripFile.TabIndex = 7;
-            // 
-            // toolStripButtonLoad
-            // 
-            this.toolStripButtonLoad.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonLoad.Image = global::AscGenDotNet.Properties.Resources.folder;
-            this.toolStripButtonLoad.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonLoad.Name = "toolStripButtonLoad";
-            this.toolStripButtonLoad.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButtonLoad.Click += new System.EventHandler(this.ToolStripButtonLoad_Click);
-            // 
-            // toolStripButtonSave
-            // 
-            this.toolStripButtonSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonSave.Image = global::AscGenDotNet.Properties.Resources.disk;
-            this.toolStripButtonSave.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonSave.Name = "toolStripButtonSave";
-            this.toolStripButtonSave.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButtonSave.Click += new System.EventHandler(this.ToolStripButtonSave_Click);
-            // 
             // toolStripDisplay
             // 
             this.toolStripDisplay.Dock = System.Windows.Forms.DockStyle.None;
             this.toolStripDisplay.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButtonPreview,
             this.toolStripButtonFullScreen});
-            this.toolStripDisplay.Location = new System.Drawing.Point(3, 149);
+            this.toolStripDisplay.Location = new System.Drawing.Point(3, 124);
             this.toolStripDisplay.Name = "toolStripDisplay";
             this.toolStripDisplay.Size = new System.Drawing.Size(58, 25);
             this.toolStripDisplay.TabIndex = 6;
@@ -1410,6 +1404,35 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.toolStripButtonFullScreen.Size = new System.Drawing.Size(23, 22);
             this.toolStripButtonFullScreen.Text = "toolStripButtonFullScreen";
             this.toolStripButtonFullScreen.Click += new System.EventHandler(this.ToolStripButtonFullScreen_Click);
+            // 
+            // toolStripFile
+            // 
+            this.toolStripFile.Dock = System.Windows.Forms.DockStyle.None;
+            this.toolStripFile.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButtonLoad,
+            this.toolStripButtonSave});
+            this.toolStripFile.Location = new System.Drawing.Point(3, 149);
+            this.toolStripFile.Name = "toolStripFile";
+            this.toolStripFile.Size = new System.Drawing.Size(58, 25);
+            this.toolStripFile.TabIndex = 7;
+            // 
+            // toolStripButtonLoad
+            // 
+            this.toolStripButtonLoad.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonLoad.Image = global::AscGenDotNet.Properties.Resources.folder;
+            this.toolStripButtonLoad.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonLoad.Name = "toolStripButtonLoad";
+            this.toolStripButtonLoad.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButtonLoad.Click += new System.EventHandler(this.ToolStripButtonLoad_Click);
+            // 
+            // toolStripButtonSave
+            // 
+            this.toolStripButtonSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonSave.Image = global::AscGenDotNet.Properties.Resources.disk;
+            this.toolStripButtonSave.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonSave.Name = "toolStripButtonSave";
+            this.toolStripButtonSave.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButtonSave.Click += new System.EventHandler(this.ToolStripButtonSave_Click);
             // 
             // toolStripCharacters
             // 
@@ -1461,27 +1484,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.printPreviewDialog.ShowIcon = false;
             this.printPreviewDialog.Visible = false;
             // 
-            // rtbxConvertedText
-            // 
-            this.rtbxConvertedText.BackColor = System.Drawing.Color.White;
-            this.rtbxConvertedText.BackgroundColor = System.Drawing.Color.White;
-            this.rtbxConvertedText.ContextMenuStrip = this.contextMenuText;
-            this.rtbxConvertedText.DetectUrls = false;
-            this.rtbxConvertedText.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rtbxConvertedText.EnableAutoDragDrop = true;
-            this.rtbxConvertedText.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.rtbxConvertedText.Location = new System.Drawing.Point(0, 0);
-            this.rtbxConvertedText.Margin = new System.Windows.Forms.Padding(0);
-            this.rtbxConvertedText.Name = "rtbxConvertedText";
-            this.rtbxConvertedText.ReadOnly = true;
-            this.rtbxConvertedText.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth;
-            this.rtbxConvertedText.ShowSelectionMargin = true;
-            this.rtbxConvertedText.Size = new System.Drawing.Size(624, 428);
-            this.rtbxConvertedText.TabIndex = 0;
-            this.rtbxConvertedText.Text = "";
-            this.rtbxConvertedText.TextColor = System.Drawing.SystemColors.WindowText;
-            this.rtbxConvertedText.WordWrap = false;
-            // 
             // FormConvertImage
             // 
             this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
@@ -1514,10 +1516,10 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.toolStripWidgets.PerformLayout();
             this.toolStripRamp.ResumeLayout(false);
             this.toolStripRamp.PerformLayout();
-            this.toolStripFile.ResumeLayout(false);
-            this.toolStripFile.PerformLayout();
             this.toolStripDisplay.ResumeLayout(false);
             this.toolStripDisplay.PerformLayout();
+            this.toolStripFile.ResumeLayout(false);
+            this.toolStripFile.PerformLayout();
             this.toolStripCharacters.ResumeLayout(false);
             this.toolStripCharacters.PerformLayout();
             this.ResumeLayout(false);

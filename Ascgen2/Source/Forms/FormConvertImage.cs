@@ -972,6 +972,8 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             this.UpdateTextSizeControls();
 
+            this.rtbxConvertedText.Visible = true;
+
             this.inputChanged = true;
 
             this.doConversion = true;
@@ -1230,6 +1232,8 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.widgetImage.Image = null;
 
             this.Filename = string.Empty;
+
+            this.rtbxConvertedText.Visible = false;
 
             this.textViewer.Clear();
 
@@ -2258,6 +2262,26 @@ namespace JMSoftware.AsciiGeneratorDotNet
         }
 
         /// <summary>
+        /// Handles the DragDrop event of the pnlMain control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.Windows.Forms.DragEventArgs"/> instance containing the event data.</param>
+        private void PnlMain_DragDrop(object sender, DragEventArgs e)
+        {
+            this.HandleDragDrop(e);
+        }
+
+        /// <summary>
+        /// Handles the DragEnter event of the PnlMain control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.Windows.Forms.DragEventArgs"/> instance containing the event data.</param>
+        private void PnlMain_DragEnter(object sender, DragEventArgs e)
+        {
+            HandleDragOver(e);
+        }
+
+        /// <summary>
         /// Handles the Resize event of the pnlMain control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
@@ -2594,6 +2618,10 @@ namespace JMSoftware.AsciiGeneratorDotNet
             this.rtbxConvertedText.AllowDrop = true;
             this.rtbxConvertedText.DragDrop += this.RtbxConvertedText_DragDrop;
             this.rtbxConvertedText.DragEnter += RtbxConvertedText_DragEnter;
+
+            this.rtbxConvertedText.Visible = false;
+
+            this.pnlMain.AllowDrop = true;
 
             this.textViewer.BackgroundColor = this.BackgroundColor;
             this.textViewer.TextColor = this.TextColor;
