@@ -761,6 +761,11 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             set
             {
+                if (this.textSettings.Ramp == value)
+                {
+                    return;
+                }
+
                 this.textSettings.Ramp = value;
 
                 this.ApplyTextEffects();
