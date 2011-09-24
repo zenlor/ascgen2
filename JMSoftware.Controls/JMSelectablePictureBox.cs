@@ -37,11 +37,20 @@ namespace JMSoftware.Controls
     {
         #region Fields
 
+        /// <summary>Are we calling the selection events?</summary>
+        private bool callSelectionEvents;
+
         /// <summary>The end point of the selection in picturebox coordinates</summary>
         private Point endPoint;
 
         /// <summary>Fill the selection rectangle with a Color?</summary>
         private bool fillSelectionRectangle;
+
+        /// <summary>Is the X dimension protected from changing?</summary>
+        private bool isXLocked;
+
+        /// <summary>Is the X dimension protected from changing?</summary>
+        private bool isYLocked;
 
         /// <summary>Size and positions of the selection area modifying handles in picturebox coordinates</summary>
         private Rectangle[] modifiers;
@@ -76,12 +85,6 @@ namespace JMSoftware.Controls
         /// <summary>The point at which the left mouse button was pressed down in picturebox coordinates</summary>
         private Point startPoint;
 
-        /// <summary>Is the X dimension protected from changing?</summary>
-        private bool isXLocked;
-
-        /// <summary>Is the X dimension protected from changing?</summary>
-        private bool isYLocked;
-
         #endregion Fields
 
         #region Constructors
@@ -105,6 +108,8 @@ namespace JMSoftware.Controls
                                     new Rectangle(0, 0, 7, 7),
                                     new Rectangle(0, 0, 7, 7)
                                 };
+
+            this.callSelectionEvents = true;
         }
 
         #endregion Constructors
@@ -265,9 +270,13 @@ namespace JMSoftware.Controls
         /// <param name="type">The type of rotation/flip.</param>
         public override void RotateImage(RotateFlipType type)
         {
-            base.RotateImage(type);
+            this.callSelectionEvents = false;
 
             this.SelectNothing();
+
+            base.RotateImage(type);
+
+            this.callSelectionEvents = true;
         }
 
         /// <summary>
@@ -634,6 +643,11 @@ namespace JMSoftware.Controls
         /// </summary>
         private void NotifySelectionChange()
         {
+            if (!this.callSelectionEvents)
+            {
+                return;
+            }
+
             if (this.selecting || this.movingRectangle)
             {
                 if (this.SelectionChanging != null)
