@@ -2331,7 +2331,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             foreach (Control control in this.pnlMain.Controls)
             {
-                if (control.GetType().BaseType != typeof(BaseWidget))
+                if (control as BaseWidget == null)
                 {
                     continue;
                 }
