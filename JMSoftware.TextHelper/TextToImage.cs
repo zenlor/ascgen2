@@ -206,13 +206,13 @@ namespace JMSoftware.TextHelper
         private static ColorMatrix Grayscale()
         {
             return new ColorMatrix(
-                            new float[][]
+                            new[]
                             {
-                                new float[] { 0.299f,  0.299f,  0.299f,  0, 0 },
-                                new float[] { 0.587f, 0.587f, 0.587f, 0, 0 },
-                                new float[] { 0.114f, 0.114f, 0.114f, 0, 0 },
-                                new float[] { 0, 0, 0, 1, 0 },
-                                new float[] { 0, 0, 0, 0, 1 }
+                                new[] { 0.299f,  0.299f,  0.299f,  0f, 0f },
+                                new[] { 0.587f, 0.587f, 0.587f, 0f, 0f },
+                                new[] { 0.114f, 0.114f, 0.114f, 0f, 0f },
+                                new[] { 0f, 0f, 0f, 1f, 0f },
+                                new[] { 0f, 0f, 0f, 0f, 1f }
                             });
         }
 

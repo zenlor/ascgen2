@@ -152,7 +152,7 @@ namespace JMSoftware.Controls
                 this.DisposeIfOnlyOneReference(this.brightnessContrastImage);
                 this.brightnessContrastImage = null;
 
-                this.DisposeIfOnlyOneReference((Bitmap)this.canvas);
+                this.DisposeIfOnlyOneReference(this.canvas);
                 this.canvas = null;
 
                 this.Refresh();
@@ -670,7 +670,7 @@ namespace JMSoftware.Controls
 
             int count = 0;
 
-            if (bitmap == (Bitmap)this.image)
+            if (bitmap == this.image)
             {
                 count++;
             }
