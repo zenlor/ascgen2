@@ -41,6 +41,11 @@ namespace JMSoftware.Controls.Levels
         private static Size sliderSize = new Size(11, JMLevelsSliderContainer.Height - 1);
 
         /// <summary>
+        /// Brush used to paint the slider
+        /// </summary>
+        private SolidBrush brush;
+
+        /// <summary>
         /// The sliders container
         /// </summary>
         private JMLevelsSliderContainer container;
@@ -79,11 +84,9 @@ namespace JMSoftware.Controls.Levels
         {
             this.maximumValue = 255;
 
-            this.Enabled = true;
+            this.Enabled = this.AcceptMouseInput = true;
 
-            this.AcceptMouseInput = true;
-
-            this.Color = color;
+            this.brush = new SolidBrush(color);
 
             this.Value = value;
 
@@ -137,9 +140,6 @@ namespace JMSoftware.Controls.Levels
         /// </summary>
         /// <value><c>true</c> if enabled; otherwise, <c>false</c>.</value>
         public bool Enabled { get; set; }
-
-        /// <summary>Gets or sets the fill color</summary>
-        public Color Color { get; set; }
 
         /// <summary>Gets or sets the highest allowed value</summary>
         public int MaximumValue
@@ -270,22 +270,6 @@ namespace JMSoftware.Controls.Levels
         }
 
         /// <summary>
-        /// Process mouse button being released
-        /// </summary>
-        public void MouseUp()
-        {
-            if (!this.Enabled)
-            {
-                return;
-            }
-
-            if (this.dragging && this.AcceptMouseInput)
-            {
-                this.container.DraggingSlider = this.dragging = false;
-            }
-        }
-
-        /// <summary>
         /// Process the mouse moving
         /// </summary>
         /// <param name="e">The <see cref="System.Windows.Forms.MouseEventArgs"/> instance containing the event data.</param>
@@ -309,13 +293,18 @@ namespace JMSoftware.Controls.Levels
         }
 
         /// <summary>
-        /// Refreshes this instance.
+        /// Process mouse button being released
         /// </summary>
-        public void Refresh()
+        public void MouseUp()
         {
-            if (this.OnRefresh != null)
+            if (!this.Enabled)
             {
-                this.OnRefresh();
+                return;
+            }
+
+            if (this.dragging && this.AcceptMouseInput)
+            {
+                this.container.DraggingSlider = this.dragging = false;
             }
         }
 
@@ -338,12 +327,20 @@ namespace JMSoftware.Controls.Levels
                             new Point(rect.X + (rect.Width / 2), rect.Y)
                         };
 
-            using (SolidBrush brush = new SolidBrush(Color))
-            {
-                e.Graphics.FillPolygon(brush, points);
-            }
+            e.Graphics.FillPolygon(this.brush, points);
 
             e.Graphics.DrawLines(this.Enabled ? SystemPens.ControlText : SystemPens.GrayText, points);
+        }
+
+        /// <summary>
+        /// Refreshes this instance.
+        /// </summary>
+        public void Refresh()
+        {
+            if (this.OnRefresh != null)
+            {
+                this.OnRefresh();
+            }
         }
 
         /// <summary>
@@ -354,7 +351,7 @@ namespace JMSoftware.Controls.Levels
         {
             this.Value = (int)(((255f / (float)this.container.Size.Width) * (x - this.container.Location.X)) + 0.5);
         }
-    }
 
         #endregion Public methods
+    }
 }
