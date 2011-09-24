@@ -977,13 +977,12 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             this.UpdateTextSizeControls();
 
-            this.rtbxConvertedText.Visible = true;
-
             this.inputChanged = true;
 
             this.doConversion = true;
 
-            return this.DoConvert();
+            // Do the conversion first then show the textbox
+            return this.rtbxConvertedText.Visible = this.DoConvert();
         }
 
         /// <summary>
@@ -1234,13 +1233,13 @@ namespace JMSoftware.AsciiGeneratorDotNet
                 return false;
             }
 
-            this.widgetImage.Image = null;
-
-            this.Filename = string.Empty;
-
             this.rtbxConvertedText.Visible = false;
 
             this.textViewer.Clear();
+
+            this.widgetImage.Image = null;
+
+            this.Filename = string.Empty;
 
             this.values = null;
 
