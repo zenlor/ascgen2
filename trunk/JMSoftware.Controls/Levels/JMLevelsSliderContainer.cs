@@ -165,6 +165,11 @@ namespace JMSoftware.Controls.Levels
             set
             {
                 this.maximumSlider.Value = value;
+
+                this.minimumSlider.MaximumValue = value - 2;
+                this.medianSlider.MaximumValue = value - 1;
+
+                this.UpdateMedianSlider();
             }
         }
 
@@ -212,6 +217,11 @@ namespace JMSoftware.Controls.Levels
             set
             {
                 this.minimumSlider.Value = value;
+
+                this.maximumSlider.MinimumValue = value + 2;
+                this.medianSlider.MinimumValue = value + 1;
+
+                this.UpdateMedianSlider();
             }
         }
 
