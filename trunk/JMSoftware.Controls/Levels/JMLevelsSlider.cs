@@ -317,7 +317,7 @@ namespace JMSoftware.Controls.Levels
             Rectangle rect = this.Rectangle;
 
             Point[] points =
-                        new Point[]
+                        new[]
                         {
                             new Point(rect.X + (rect.Width / 2), rect.Y),
                             new Point(rect.X + rect.Width - 1, rect.Y + (rect.Height / 2)),

@@ -139,7 +139,7 @@ namespace JMSoftware.Controls
             {
                 string directory = Path.GetDirectoryName(filename);
 
-                if (directory.Length > 0)
+                if (!string.IsNullOrEmpty(directory))
                 {
                     builder.Append(directory + Path.DirectorySeparatorChar.ToString());
                 }

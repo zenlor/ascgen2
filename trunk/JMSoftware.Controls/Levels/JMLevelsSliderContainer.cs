@@ -103,7 +103,7 @@ namespace JMSoftware.Controls.Levels
             this.medianSlider.OnRefresh += this.Refresh;
             this.medianSlider.OnSliderMoved += this.MedianSliderMoved;
 
-            this.sliders = new JMLevelsSlider[] { this.minimumSlider, this.maximumSlider, this.medianSlider };
+            this.sliders = new[] { this.minimumSlider, this.maximumSlider, this.medianSlider };
         }
 
         #endregion Constructors
@@ -252,9 +252,9 @@ namespace JMSoftware.Controls.Levels
         /// <param name="slider">slider to move</param>
         public void BringToFront(JMLevelsSlider slider)
         {
-            JMLevelsSlider[] sliders = new JMLevelsSlider[this.sliders.Length];
+            JMLevelsSlider[] levelsSliders = new JMLevelsSlider[this.sliders.Length];
 
-            sliders[0] = slider;
+            levelsSliders[0] = slider;
 
             int pos = 1;
 
@@ -262,12 +262,12 @@ namespace JMSoftware.Controls.Levels
             {
                 if (this.sliders[x] != slider)
                 {
-                    sliders[pos] = this.sliders[x];
+                    levelsSliders[pos] = this.sliders[x];
                     pos++;
                 }
             }
 
-            this.sliders = sliders;
+            this.sliders = levelsSliders;
         }
 
         /// <summary>
