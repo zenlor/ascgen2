@@ -38,11 +38,11 @@ namespace JMSoftware.AsciiConversion.Filters
         public Sharpen()
         {
             this.Matrix = new ConvolutionMatrix(
-                                                new int[][]
+                                                new[]
                                                 {
-                                                    new int[] { 0, -2, 0 },
-                                                    new int[] { -2, 11, -2 },
-                                                    new int[] { 0, -2, 0 }
+                                                    new[] { 0, -2, 0 },
+                                                    new[] { -2, 11, -2 },
+                                                    new[] { 0, -2, 0 }
                                                 },
                                                 3);
         }

@@ -140,7 +140,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// The default list of ramps.
         /// </summary>
         [NonSerialized]
-        private string[] defaultRamps = new string[]
+        private string[] defaultRamps = new[]
         {
             "MMMMMMM@@@@@@@WWWWWWWWWBBBBBBBB000000008888888ZZZZZZZZZaZaaaaaa2222222SSSSSSSXXXXXXXXXXX7777777rrrrrrr;;;;;;;;iiiiiiiii:::::::,:,,,,,,.........       ",
             "@@@@@@@######MMMBBHHHAAAA&&GGhh9933XXX222255SSSiiiissssrrrrrrr;;;;;;;;:::::::,,,,,,,........        ",
@@ -168,7 +168,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// The different strings of valid characters.
         /// </summary>
         [NonSerialized]
-        private string[] defaultValidCharacters = new string[]
+        private string[] defaultValidCharacters = new[]
         {
             " #,.0123456789:;@ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz$",
             " ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",

@@ -78,7 +78,7 @@ namespace JMSoftware.AsciiConversion.TextSettings
                 return base.ConvertFrom(context, culture, value);
             }
 
-            string[] values = (value as string).Split(new char[] { ',' });
+            string[] values = (value as string).Split(new[] { ',' });
 
             if (values.Length != 3)
             {
@@ -136,7 +136,7 @@ namespace JMSoftware.AsciiConversion.TextSettings
         /// </returns>
         public override PropertyDescriptorCollection GetProperties(ITypeDescriptorContext context, object value, Attribute[] attributes)
         {
-            return base.GetProperties(context, value, attributes).Sort(new string[] { "Minimum", "Median", "Maximum" });
+            return base.GetProperties(context, value, attributes).Sort(new[] { "Minimum", "Median", "Maximum" });
         }
 
         #endregion Public methods
