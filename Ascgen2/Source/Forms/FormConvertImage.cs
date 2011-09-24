@@ -988,9 +988,9 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// <summary>
         /// Load the specified image into the picturebox, and setup the form etc.
         /// </summary>
-        /// <param name="filename">Path to the image</param>
+        /// <param name="imagePath">Path to the image</param>
         /// <returns>Did the image load correctly?</returns>
-        public bool LoadImage(string filename)
+        public bool LoadImage(string imagePath)
         {
             if (!this.CloseImage())
             {
@@ -1001,7 +1001,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             {
                 Image image;
 
-                using (Image loadedImage = Image.FromFile(filename))
+                using (Image loadedImage = Image.FromFile(imagePath))
                 {
                     Size size;
 
@@ -1024,7 +1024,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
                     }
                 }
 
-                this.dialogLoadImage.FileName = this.Filename = filename;
+                this.dialogLoadImage.FileName = this.Filename = imagePath;
 
                 return this.LoadImage(image);
             }
@@ -1485,7 +1485,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
         private Image CreateColourImage(float zoom)
         {
             Color[][] colors = ImageToColors.Convert(
-                                    (Bitmap)this.widgetImage.Image,
+                                    this.widgetImage.Image,
                                     new Size(this.OutputWidth, this.OutputHeight),
                                     this.CurrentImageSection,
                                     (this.dialogSaveColour.FilterIndex == 1 || this.dialogSaveColour.FilterIndex == 2));
@@ -1564,7 +1564,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             // convert the image into values
             this.values = ImageToValues.Convert(
-                              (Bitmap)this.widgetImage.Image,
+                              this.widgetImage.Image,
                               new Size(this.OutputWidth, this.OutputHeight),
                               JMSoftware.Matrices.Identity(),
                               this.CurrentImageSection);
@@ -1613,7 +1613,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
             if (this.printColour)
             {
                 Color[][] colors = ImageToColors.Convert(
-                                    (Bitmap)this.widgetImage.Image,
+                                    this.widgetImage.Image,
                                     new Size(this.OutputWidth, this.OutputHeight),
                                     this.CurrentImageSection,
                                     false);
@@ -2499,7 +2499,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             // create the array of Colors
             Color[][] colors = ImageToColors.Convert(
-                                (Bitmap)this.widgetImage.Image,
+                                this.widgetImage.Image,
                                 new Size(this.OutputWidth, this.OutputHeight),
                                 this.CurrentImageSection,
                                 (this.dialogSaveColour.FilterIndex == 1 || this.dialogSaveColour.FilterIndex == 2));

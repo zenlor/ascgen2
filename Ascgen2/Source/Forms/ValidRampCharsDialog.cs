@@ -115,7 +115,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
         private void BtnDefault_Click(object sender, System.EventArgs e)
         {
             this.cmbCharacters.Text = Variables.Instance.CurrentSelectedValidCharacters > -1 ?
-                (string)Variables.Instance.DefaultValidCharacters[Variables.Instance.CurrentSelectedValidCharacters] :
+                Variables.Instance.DefaultValidCharacters[Variables.Instance.CurrentSelectedValidCharacters] :
                 Variables.Instance.CurrentCharacters;
 
             this.cmbCharacters.Focus();

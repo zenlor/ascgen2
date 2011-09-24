@@ -334,7 +334,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             string text = Resource.GetString("For The Best Effect This Text Should Be Readable");
 
-            this.tbxSampleText.Lines = new string[]
+            this.tbxSampleText.Lines = new[]
                                             {
                                                 text,
                                                 text.ToLower(Variables.Instance.Culture),

@@ -108,7 +108,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             this.OutputLogHeader();
 
-            this.validFiletypes = new List<string>(new string[] { ".bmp", ".rle", ".dib", ".exif", ".gif", ".jpg", ".jpeg", ".jpe", ".png", ".tif", ".tiff", ".wmf", ".emf" });
+            this.validFiletypes = new List<string>(new[] { ".bmp", ".rle", ".dib", ".exif", ".gif", ".jpg", ".jpeg", ".jpe", ".png", ".tif", ".tiff", ".wmf", ".emf" });
 
             this.comboBoxOutputFormat.DataSource = Enum.GetValues(typeof(TextTypes));
 
@@ -358,7 +358,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             this.labelOutputAs.Text = Resource.GetString("Output as");
             this.comboBoxOutputType.Left = this.labelOutputAs.Right + BorderSize;
-            this.comboBoxOutputType.DataSource = new List<string>(new string[] { Resource.GetString("Text"), Resource.GetString("Image") });
+            this.comboBoxOutputType.DataSource = new List<string>(new[] { Resource.GetString("Text"), Resource.GetString("Image") });
 
             int maximumOutputSizeSize = 0;
 

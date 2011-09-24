@@ -33,7 +33,7 @@ namespace JMSoftware.Widgets
     /// <summary>
     /// Widget class to display the text adjustment controls
     /// </summary>
-    public partial class WidgetTextSettings : BaseWidget, IBrightnessContrast, ILevels, IDither
+    public partial class WidgetTextSettings : IBrightnessContrast, ILevels, IDither
     {
         #region Fields
 

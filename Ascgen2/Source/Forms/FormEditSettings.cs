@@ -71,7 +71,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             this.UpdateUI();
 
-            this.directories = new TextBox[] { this.textBoxInputDirectory, this.textBoxOutputDirectory };
+            this.directories = new[] { this.textBoxInputDirectory, this.textBoxOutputDirectory };
 
             this.textBoxOtherDimension = this.textBoxHeight;
 
