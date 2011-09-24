@@ -561,12 +561,12 @@ namespace JMSoftware.AsciiConversion
 
                 this.isBlackTextOnWhite = value;
 
-                if (this.ValuesToText.GetType() == typeof(ValuesToFixedWidthTextConverter))
+                if (this.ValuesToText is ValuesToFixedWidthTextConverter)
                 {
                     ((ValuesToFixedWidthTextConverter)this.ValuesToText).Ramp =
                         this.IsBlackTextOnWhite ? this.Ramp : FontFunctions.Reverse(this.Ramp);
                 }
-                else if (this.ValuesToText.GetType() == typeof(ValuesToVariableWidthTextConverter))
+                else if (this.ValuesToText is ValuesToVariableWidthTextConverter)
                 {
                     ((ValuesToVariableWidthTextConverter)this.ValuesToText).InvertOutput = !this.isBlackTextOnWhite;
                 }
@@ -718,7 +718,7 @@ namespace JMSoftware.AsciiConversion
 
                 this.ramp = value;
 
-                if (this.ValuesToText.GetType() == typeof(ValuesToFixedWidthTextConverter))
+                if (this.ValuesToText is ValuesToFixedWidthTextConverter)
                 {
                     ((ValuesToFixedWidthTextConverter)this.ValuesToText).Ramp =
                         this.IsBlackTextOnWhite ? this.ramp : FontFunctions.Reverse(this.ramp);
@@ -848,7 +848,7 @@ namespace JMSoftware.AsciiConversion
 
                 this.validCharacters = value;
 
-                if (this.ValuesToText.GetType() == typeof(ValuesToVariableWidthTextConverter))
+                if (this.ValuesToText is ValuesToVariableWidthTextConverter)
                 {
                     ((ValuesToVariableWidthTextConverter)this.ValuesToText).ValidCharacters = this.validCharacters;
                 }
