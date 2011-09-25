@@ -954,8 +954,7 @@ namespace JMSoftware.AsciiGeneratorDotNet
                 this.widgetImage.Size = new Size((int)(((float)(height - 34) * ratio) + 0.5f) + 16, height);
             }
 
-            this.widgetImage.Left = this.pnlMain.Width - this.widgetImage.Width - 4;
-            this.widgetImage.Top = this.pnlMain.Height - this.widgetImage.Height - 4;
+            this.PositionImageWidget();
 
             this.widgetImage.Show();
 
@@ -2296,6 +2295,26 @@ namespace JMSoftware.AsciiGeneratorDotNet
         }
 
         /// <summary>
+        /// Positions the image widget.
+        /// </summary>
+        private void PositionImageWidget()
+        {
+            this.widgetImage.Top = this.pnlMain.Height - this.widgetImage.Height - 10;
+
+            this.widgetImage.Left = this.pnlMain.Width - this.widgetImage.Width - 10;
+        }
+
+        /// <summary>
+        /// Positions the text widget.
+        /// </summary>
+        private void PositionTextWidget()
+        {
+            this.widgetTextSettings.Top = this.pnlMain.Height - this.widgetTextSettings.Height - 10;
+
+            this.widgetTextSettings.Left = 4;
+        }
+
+        /// <summary>
         /// Updates the selection area if needed.
         /// </summary>
         private void ProcessSelectionAreaChange()
@@ -2669,69 +2688,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
         }
 
         /// <summary>
-        /// Sets up the image widget.
-        /// </summary>
-        private void SetupImageWidget()
-        {
-            this.widgetImage = new WidgetImage();
-
-            this.widgetImage.Left = this.pnlMain.Width - this.widgetImage.Width - 4;
-            this.widgetImage.Top = this.pnlMain.Height - this.widgetImage.Height - 4;
-
-            this.widgetImage.SelectionChanging += this.WidgetImage_SelectionChanging;
-
-            this.widgetImage.SelectionChanged += this.WidgetImage_SelectionChanged;
-
-            this.widgetImage.DoubleClick += this.WidgetImage_DoubleClick;
-
-            this.widgetImage.OnDragDrop += this.WidgetImage_OnDragDrop;
-
-            this.widgetImage.LoadImage += this.WidgetImage_LoadImage;
-
-            this.widgetImage.ImageUpdated += this.WidgetImage_ImageUpdated;
-        }
-
-        /// <summary>
-        /// Setup the text widget.
-        /// </summary>
-        private void SetupTextWidget()
-        {
-            this.widgetTextSettings = new WidgetTextSettings();
-
-            this.widgetTextSettings.ValueChanging += this.ApplyTextBrightnessContrast;
-            this.widgetTextSettings.ValueChanged += this.ApplyTextBrightnessContrast;
-
-            this.widgetTextSettings.LevelsChanged += this.LevelsChanged;
-
-            this.widgetTextSettings.DitheringChanging += this.DitheringChanging;
-            this.widgetTextSettings.DitheringChanged += this.DitheringChanging;
-            this.widgetTextSettings.DitheringRandomChanged += this.DitheringRandomChanged;
-
-            this.widgetTextSettings.MaximumBrightness = 200;
-            this.widgetTextSettings.MinimumBrightness = -200;
-            this.widgetTextSettings.MaximumContrast = 100;
-            this.widgetTextSettings.MinimumContrast = -100;
-
-            this.widgetTextSettings.Left = 4;
-            this.widgetTextSettings.Top = this.pnlMain.Height - this.widgetTextSettings.Height - 4;
-            this.widgetTextSettings.BringToFront();
-            this.widgetTextSettings.Enabled = false;
-
-            this.brightnessContrast = this.widgetTextSettings;
-            this.brightnessContrast.Brightness = Variables.Instance.DefaultTextBrightness;
-            this.brightnessContrast.Contrast = Variables.Instance.DefaultTextContrast;
-
-            this.levels = this.widgetTextSettings;
-            this.levels.Minimum = Variables.Instance.DefaultMinimumLevel;
-            this.levels.Maximum = Variables.Instance.DefaultMaximumLevel;
-            this.levels.Median = Variables.Instance.DefaultMedianLevel;
-
-            this.dither = this.widgetTextSettings;
-            this.dither.DitherAmount = Variables.Instance.DefaultDitheringLevel;
-            this.dither.DitherRandom = Variables.Instance.DefaultDitheringRandom;
-        }
-
-        /// <summary>
         /// Empties and readds the toolstrips to get the desired layout (it adds from the bottom up).
         /// </summary>
         private void SetupToolstrip()
@@ -2763,20 +2719,67 @@ namespace JMSoftware.AsciiGeneratorDotNet
         /// </summary>
         private void SetupWidgets()
         {
-            this.SetupTextWidget();
+            this.widgetTextSettings = new WidgetTextSettings
+                {
+                    MaximumBrightness = 200,
+                    MinimumBrightness = -200,
+                    MaximumContrast = 100,
+                    MinimumContrast = -100,
+                    Brightness = Variables.Instance.DefaultTextBrightness,
+                    Contrast = Variables.Instance.DefaultTextContrast,
+                    Minimum = Variables.Instance.DefaultMinimumLevel,
+                    Maximum = Variables.Instance.DefaultMaximumLevel,
+                    Median = Variables.Instance.DefaultMedianLevel,
+                    DitherAmount = Variables.Instance.DefaultDitheringLevel,
+                    DitherRandom = Variables.Instance.DefaultDitheringRandom,
+                    Enabled = false,
+                    Visible = Variables.Instance.ShowWidgetTextSettings
+                };
 
-            this.SetupImageWidget();
+            this.PositionTextWidget();
+
+            this.widgetTextSettings.ValueChanging += this.ApplyTextBrightnessContrast;
+
+            this.widgetTextSettings.ValueChanged += this.ApplyTextBrightnessContrast;
+
+            this.widgetTextSettings.LevelsChanged += this.LevelsChanged;
+
+            this.widgetTextSettings.DitheringChanging += this.DitheringChanging;
+
+            this.widgetTextSettings.DitheringChanged += this.DitheringChanging;
+
+            this.widgetTextSettings.DitheringRandomChanged += this.DitheringRandomChanged;
+
+            this.brightnessContrast = this.widgetTextSettings;
+
+            this.levels = this.widgetTextSettings;
+
+            this.dither = this.widgetTextSettings;
+
+            this.widgetImage = new WidgetImage { Visible = Variables.Instance.ShowWidgetImage };
+
+            this.PositionImageWidget();
+
+            this.widgetImage.SelectionChanging += this.WidgetImage_SelectionChanging;
+
+            this.widgetImage.SelectionChanged += this.WidgetImage_SelectionChanged;
+
+            this.widgetImage.DoubleClick += this.WidgetImage_DoubleClick;
+
+            this.widgetImage.OnDragDrop += this.WidgetImage_OnDragDrop;
+
+            this.widgetImage.LoadImage += this.WidgetImage_LoadImage;
+
+            this.widgetImage.ImageUpdated += this.WidgetImage_ImageUpdated;
 
             this.pnlMain.Controls.AddRange(new Control[] { this.widgetTextSettings, this.widgetImage });
 
-            this.widgetTextSettings.Visible = Variables.Instance.ShowWidgetTextSettings;
-
-            this.widgetImage.Visible = Variables.Instance.ShowWidgetImage;
-
-            // TODO: This, better
             foreach (Control control in this.pnlMain.Controls)
             {
-                control.BringToFront();
+                if (control is BaseWidget)
+                {
+                    control.BringToFront();
+                }
             }
         }
 
