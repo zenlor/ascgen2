@@ -2635,9 +2635,6 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             this.cbxLocked.Checked = Variables.Instance.DefaultWidth < 1 || Variables.Instance.DefaultHeight < 1;
 
-            this.widgetImage.SelectionBorderColor = Variables.Instance.SelectionBorderColor;
-            this.widgetImage.SelectionFillColor = Variables.Instance.SelectionFillColor;
-
             this.rtbxConvertedText.AllowDrop = true;
             this.rtbxConvertedText.DragDrop += this.RtbxConvertedText_DragDrop;
             this.rtbxConvertedText.DragEnter += RtbxConvertedText_DragEnter;
@@ -2756,7 +2753,12 @@ namespace JMSoftware.AsciiGeneratorDotNet
 
             this.dither = this.widgetTextSettings;
 
-            this.widgetImage = new WidgetImage { Visible = Variables.Instance.ShowWidgetImage };
+            this.widgetImage = new WidgetImage
+                {
+                    Visible = Variables.Instance.ShowWidgetImage,
+                    SelectionBorderColor = Variables.Instance.SelectionBorderColor,
+                    SelectionFillColor = Variables.Instance.SelectionFillColor
+                };
 
             this.PositionImageWidget();
 
