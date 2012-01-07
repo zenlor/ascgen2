@@ -21,10 +21,10 @@
 	<data name="&amp;Donate">
 		<value>&amp;Donate</value>
 	</data>
-  <data name="FAQ">
-    <value>FAQ</value>
-  </data>
-  <data name="&amp;File">
+	<data name="FAQ">
+		<value>FAQ</value>
+	</data>
+	<data name="&amp;File">
 		<value>&amp;File</value>
 	</data>
 	<data name="&amp;Full Screen">
@@ -63,10 +63,10 @@
 	<data name="Adjust Levels">
 		<value>Adjust Levels</value>
 	</data>
-  <data name="Advanced">
-    <value>Advanced</value>
-  </data>
-  <data name="All Files">
+	<data name="Advanced">
+		<value>Advanced</value>
+	</data>
+	<data name="All Files">
 		<value>All Files</value>
 	</data>
 	<data name="already exists">
@@ -504,10 +504,10 @@
 	<data name="Show Full Path">
 		<value>Show Full Path</value>
 	</data>
-  <data name="Show Log">
-    <value>Show Log</value>
-  </data>
-  <data name="shrunk to {0}%">
+	<data name="Show Log">
+		<value>Show Log</value>
+	</data>
+	<data name="shrunk to {0}%">
 		<value>shrunk to {0}%</value>
 	</data>
 	<data name="Size">
@@ -564,10 +564,10 @@
 	<data name="Unknown or Unsupported File">
 		<value>Unknown or Unsupported File</value>
 	</data>
-  <data name="Update while Selection Changes">
-    <value>Update while Selection Changes</value>
-  </data>
-  <data name="Unsharp Mask">
+	<data name="Update while Selection Changes">
+		<value>Update while Selection Changes</value>
+	</data>
+	<data name="Unsharp Mask">
 		<value>Unsharp Mask</value>
 	</data>
 	<data name="Valid Characters">
