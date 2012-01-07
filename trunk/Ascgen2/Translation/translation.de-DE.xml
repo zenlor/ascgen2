@@ -1,0 +1,597 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<data name="&amp;About">
+		<value>&amp;Über</value>
+	</data>
+	<data name="&amp;Add File">
+		<value>&amp;Datei hinzufügen</value>
+	</data>
+	<data name="&amp;Cancel">
+		<value>&amp;Abbrechen</value>
+	</data>
+	<data name="&amp;Close">
+		<value>&amp;Schließen</value>
+	</data>
+	<data name="&amp;Convert">
+		<value>&amp;Konvertieren</value>
+	</data>
+	<data name="&amp;Default">
+		<value>&amp;Standard</value>
+	</data>
+	<data name="&amp;Donate">
+		<value>&amp;Spenden</value>
+	</data>
+	<data name="&amp;File">
+		<value>&amp;Datei</value>
+	</data>
+	<data name="&amp;Full Screen">
+		<value>&amp;Vollbild</value>
+	</data>
+	<data name="&amp;Help">
+		<value>&amp;Hilfe</value>
+	</data>
+	<data name="&amp;Load Image">
+		<value>&amp;Datei öffnen</value>
+	</data>
+	<data name="&amp;Ok">
+		<value>&amp;Ok</value>
+	</data>
+	<data name="&amp;Remove">
+		<value>&amp;Entfernen</value>
+	</data>
+	<data name="&amp;Save">
+		<value>&amp;Speichern</value>
+	</data>
+	<data name="&amp;Settings">
+		<value>&amp;Einstellungen</value>
+	</data>
+	<data name="&amp;View">
+		<value>&amp;Ansicht</value>
+	</data>
+	<data name="{0:yyyyMMddHHmmss}">
+		<value>{0:yyyyMMddHHmmss}</value>
+	</data>
+	<data name="{0} file(s) converted, {1} error(s)">
+		<value>{0} Datei(en) konvertiert, {1} Fehler</value>
+	</data>
+	<data name="Add &amp;Directory">
+		<value>Verzeichnis &amp;hinzufügen</value>
+	</data>
+	<data name="Adjust Levels">
+		<value>Histogramm-Level anpassen</value>
+	</data>
+	<data name="All Files">
+		<value>Alle Dateien</value>
+	</data>
+	<data name="already exists">
+		<value>bereits vorhanden</value>
+	</data>
+	<data name="ASCII Ramp">
+		<value>ASCII Rampe</value>
+	</data>
+	<data name="Auto">
+		<value>Auto</value>
+	</data>
+	<data name="automatically calculated">
+		<value>automatisch berechnet</value>
+	</data>
+	<data name="Basic">
+		<value>AABasic</value>
+	</data>
+	<data name="Batch Conversion">
+		<value>Batchkonvertierung</value>
+	</data>
+	<data name="Batch conversion cancelled">
+		<value>Batchkonvertierung abgebrochen</value>
+	</data>
+	<data name="Batch conversion started, {0} file(s) to process">
+		<value>Batchkonvertierung gestartet, {0} Datei(en) zu verarbeiten</value>
+	</data>
+	<data name="Batch finished">
+		<value>Batchlauf beendet</value>
+	</data>
+	<data name="Bitmap Images">
+		<value>Bitmapgrafiken</value>
+	</data>
+	<data name="Black and White">
+		<value>Schwarz/Weiß</value>
+	</data>
+	<data name="Black Text on White">
+		<value>Schwarzer Text auf Weiß</value>
+	</data>
+	<data name="Black Text on White Background">
+		<value>Schwarzer Text auf weißem Grund</value>
+	</data>
+	<data name="bold">
+		<value>fett</value>
+	</data>
+	<data name="Brightness">
+		<value>Helligkeit</value>
+	</data>
+	<data name="British English">
+		<value>Deutsch by JJ</value>
+	</data>
+	<data name="C&amp;lose">
+		<value>S&amp;chlißen</value>
+	</data>
+	<data name="Character Size">
+		<value>Schriftgröße</value>
+	</data>
+	<data name="Characters">
+		<value>Zeichen</value>
+	</data>
+	<data name="Check for a New Version">
+		<value>Auf Update prüfen</value>
+	</data>
+	<data name="Choose the Font">
+		<value>Schriftart auswählen</value>
+	</data>
+	<data name="Choose the Magnification Level">
+		<value>Vergrößerungsfaktor auswählen</value>
+	</data>
+	<data name="Clear">
+		<value>AAALöschen</value>
+	</data>
+	<data name="Click and drag on an image to select an area">
+		<value>Klicken und ziehen, um einen Bildbereich auszuwählen</value>
+	</data>
+	<data name="Colour">
+		<value>Farbe</value>
+	</data>
+	<data name="Colour Preview">
+		<value>Vorschau Farbe</value>
+	</data>
+	<data name="Colour Print Preview">
+		<value>Druckvorschau Farbe</value>
+	</data>
+	<data name="Confirm close if unsaved">
+		<value>Schließen vor Speichern bestät.</value>
+	</data>
+	<data name="Contrast">
+		<value>Kontrast</value>
+	</data>
+	<data name="Controls">
+		<value>AASteuerung</value>
+	</data>
+	<data name="Converting">
+		<value>Konvertierung</value>
+	</data>
+	<data name="Copy">
+		<value>Kopieren</value>
+	</data>
+	<data name="Copy Ramp to Clipboard">
+		<value>ASCII-Rampe in Zwischenablage kopieren</value>
+	</data>
+	<data name="Could not load translation file '{0}'">
+		<value>Übersetzungsdatei kann nicht geöffnet werden '{0}'</value>
+	</data>
+	<data name="Date/Time">
+		<value>Datum/Zeit</value>
+	</data>
+	<data name="DefaultWidth and/or DefaultHeight must be &gt; 0"> 		
+		<value>Defaultwerte für Breite und Höhe müssen übereinstimmen mit &gt; 0</value>
+	</data>
+	<data name="Dither">
+		<value>Dither</value>
+	</data>
+	<data name="Dithering Amount">
+		<value>Dithering Wert</value>
+	</data>
+	<data name="Doubleclick to load an image, or drag and drop here.">
+		<value>Doppelklick oder Bild hierher ziehen und ablegen.</value>
+	</data>
+	<data name="E&amp;xit">
+		<value>&amp;Beenden</value>
+	</data>
+	<data name="Edit">
+		<value>Bearbeiten</value>
+	</data>
+	<data name="Edit Settings">
+		<value>Einstellungen bearbeiten</value>
+	</data>
+	<data name="Effects">
+		<value>Effekte</value>
+	</data>
+	<data name="Enter the characters to be used for generating the ramp">
+		<value>Zeichen zur Erstellung der ASCII-Rampe eingeben </value>
+	</data>
+	<data name="Error">
+		<value>Fehler</value>
+	</data>
+	<data name="Error converting the image">
+		<value>Fehler während der Bildkonvertierung</value>
+	</data>
+	<data name="Error saving to {0}">
+		<value>Fehler beim Speichern in {0}</value>
+	</data>
+	<data name="Error with settings file '{0}'">
+		<value>Fehler beim Speichern der Einstellungen '{0}'</value>
+	</data>
+	<data name="Exchangeable Image Files">
+		<value>EXIF-Datei (Exchangeable Image File)</value>
+	</data>
+	<data name="File Not Found">
+		<value>Datei nicht gefunden</value>
+	</data>
+	<data name="Files to be converted">
+		<value>Zu konvertierende Dateien</value>
+	</data>
+	<data name="Fill Selected Area">
+		<value>Ausgewählten Bereich füllen</value>
+	</data>
+	<data name="Flip Horizontally">
+		<value>Horizontal spiegeln</value>
+	</data>
+	<data name="Flip Vertically">
+		<value>Vertikal spiegeln</value>
+	</data>
+	<data name="Flipped Horizontally">
+		<value>Horizontal gespiegelt</value>
+	</data>
+	<data name="Flipped Vertically">
+		<value>Vertikal gespiegelt</value>
+	</data>
+	<data name="Font">
+		<value>Schriftart</value>
+	</data>
+	<data name="Fonts">
+		<value>Schrift</value>
+	</data>
+	<data name="For The Best Effect This Text Should Be Readable">
+		<value>Für einen optimalen Effekt sollte dieser Text lesbar sein</value>
+	</data>
+	<data name="Full Screen">
+		<value>Vollbild</value>
+	</data>
+	<data name="Generated">
+		<value>Erstellt</value>
+	</data>
+	<data name="GIF Images">
+		<value>GIF-Dateien</value>
+	</data>
+	<data name="I&amp;mport from Clipboard">
+		<value>I&amp;mportieren aus der Zwischenablage</value>
+	</data>
+	<data name="Image">
+		<value>Bild</value>
+	</data>
+	<data name="Image Files">
+		<value>Bilddateien</value>
+	</data>
+	<data name="Input">
+		<value>Quelldatei</value>
+	</data>
+	<data name="Input Directory">
+		<value>Quellverzeichnis</value>
+	</data>
+	<data name="Input Image">
+		<value>Miniaturansicht Quelldatei</value>
+	</data>
+	<data name="Input Image Position">
+		<value>Position der Quelldatei</value>
+	</data>
+	<data name="Input Text Sample">
+		<value>AATextbeispiel</value>
+	</data>
+	<data name="Invalid ASCII Ramp">
+		<value>Ungültige ASCII-Rampe</value>
+	</data>
+	<data name="Invalid Directory">
+		<value>Ungültiges Verzeichnis</value>
+	</data>
+	<data name="Invalid or unsupported file">
+		<value>Ungültige Datei oder nicht unterstütztes Dateiformat</value>
+	</data>
+	<data name="Invalid Output Directory">
+		<value>Ungütlgies Ausgabeverzeichnis</value>
+	</data>
+	<data name="Invalid Output Size">
+		<value>Ungültige Ausgabegröße</value>
+	</data>
+	<data name="Invalid settings file. Please delete it or save a new one">
+		<value>Ungültige Einstellungsdatei. Bitte löschen oder neu erstellen</value>
+	</data>
+	<data name="Invert Selection">
+		<value>Auswahl invertieren</value>
+	</data>
+	<data name="Invert the Output">
+		<value>Invertieren</value>
+	</data>
+	<data name="italic">
+		<value>kursiv</value>
+	</data>
+	<data name="JPEG Images">
+		<value>JPEG-Datei</value>
+	</data>
+	<data name="Language">
+		<value>Sprache</value>
+	</data>
+	<data name="Levels">
+		<value>Histogramm-Level</value>
+	</data>
+	<data name="Levels Adjustment">
+		<value>Level Anpassung</value>
+	</data>
+	<data name="Lock Selected Area">
+		<value>Ausgewählten Bereich sperren</value>
+	</data>
+	<data name="Log">
+		<value>Log-Datei</value>
+	</data>
+	<data name="Magnification">
+		<value>Zoom</value>
+	</data>
+	<data name="Max">
+		<value>Max</value>
+	</data>
+	<data name="Maximum">
+		<value>Maximum</value>
+	</data>
+	<data name="Med">
+		<value>Mittel</value>
+	</data>
+	<data name="Median">
+		<value>Median</value>
+	</data>
+	<data name="Min">
+		<value>Min</value>
+	</data>
+	<data name="Minimum">
+		<value>Minimum</value>
+	</data>
+	<data name="New version check">
+		<value>Auf neue Version prüfen</value>
+	</data>
+	<data name="None">
+		<value>Keine</value>
+	</data>
+	<data name="Open the download page">
+		<value>Homepage öffnen</value>
+	</data>
+	<data name="Out of Memory, Could not convert the image">
+		<value>Speicher voll, Bild kann nicht konvertiert werden</value>
+	</data>
+	<data name="Output">
+		<value>Ausgabe</value>
+	</data>
+	<data name="Output as">
+		<value>Ausgabe als</value>
+	</data>
+	<data name="Output Directory">
+		<value>Zielverzeichnis</value>
+	</data>
+	<data name="Output Filenames">
+		<value>Zieldateiname</value>
+	</data>
+	<data name="Output Image Sample">
+		<value>Beispielbild der Ausgabe</value>
+	</data>
+	<data name="Output Levels - Minimum: {0}, Median: {1}, Maximum: {2}">
+		<value>Histogramm Ausgabelevel - Minimum: {0}, Mittel: {1}, Maximum: {2}</value>
+	</data>
+	<data name="Output Size">
+		<value>Ausgabegröße</value>
+	</data>
+	<data name="Output Size: {0}x{1} characters">
+		<value>Ausgabegröße : {0}x{1} Zeichen</value>
+	</data>
+	<data name="Page Setup">
+		<value>Seite einrichten</value>
+	</data>
+	<data name="pixels">
+		<value>Pixel</value>
+	</data>
+	<data name="Plain Text">
+		<value>AAText</value>
+	</data>
+	<data name="Please enter an output directory">
+		<value>Bitte Zielverzeichnis eingeben</value>
+	</data>
+	<data name="Portable Network Graphics Images">
+		<value>PNG-Datei (Portable Network Graphics)</value>
+	</data>
+	<data name="Prefix">
+		<value>Prefix</value>
+	</data>
+	<data name="Print">
+		<value>Drucken S/W</value>
+	</data>
+	<data name="Print Colour">
+		<value>Drucken Farbe</value>
+	</data>
+	<data name="Print Error">
+		<value>Fehler beim Drucken</value>
+	</data>
+	<data name="Print Preview">
+		<value>Druckvorschau S/W</value>
+	</data>
+	<data name="Ramp">
+		<value>ASCII-Rampe</value>
+	</data>
+	<data name="Ramps">
+		<value>ASCII-Rampen</value>
+	</data>
+	<data name="Random">
+		<value>Zufall</value>
+	</data>
+	<data name="Remove All">
+		<value>Alles löschen</value>
+	</data>
+	<data name="Remove File After Conversion">
+		<value>Datei nach Konvertierung löschen</value>
+	</data>
+	<data name="Remove Selection">
+		<value>Auswahl löschen</value>
+	</data>
+	<data name="Report a Bug">
+		<value>Programmfehler melden</value>
+	</data>
+	<data name="Request a Feature">
+		<value>Neue Programmfunktion anfragen</value>
+	</data>
+	<data name="Reset">
+		<value>Reset</value>
+	</data>
+	<data name="Rich Text">
+		<value>Richt Text Format (RTF)</value>
+	</data>
+	<data name="Rotate">
+		<value>Drehen</value>
+	</data>
+	<data name="Rotate Clockwise">
+		<value>Rotation im Uhrzeigersinn</value>
+	</data>
+	<data name="Rotate Anticlockwise">
+		<value>Rotation gegen den Uhrzeigersinn</value>
+	</data>
+	<data name="Save">
+		<value>Datei speichern</value>
+	</data>
+	<data name="Save As">
+		<value>Speichern unter</value>
+	</data>
+	<data name="Save Log As">
+		<value>Log-Datei speichern unter</value>
+	</data>
+	<data name="Save Settings as Default">
+		<value>Einstellungen als Defaultwerte speichern</value>
+	</data>
+	<data name="Save the output before closing">
+		<value>Ausgabedatei vor dem Schließen speichern</value>
+	</data>
+	<data name="Save to a Text File">
+		<value>Als Textdatei speichern</value>
+	</data>
+	<data name="saved">
+		<value>gespeichert</value>
+	</data>
+	<data name="Saving">
+		<value>Speichern</value>
+	</data>
+	<data name="Saving output as">
+		<value>Ausgabedatei wird gespeichert als</value>
+	</data>
+	<data name="Select a directory from which to import image files">
+		<value>Verzeichnis zum Importieren auswählen</value>
+	</data>
+	<data name="Select All">
+		<value>Alles auswählen</value>
+	</data>
+	<data name="Select None">
+		<value>Auswahl aufheben</value>
+	</data>
+	<data name="Select the directory in which to save the converted images">
+		<value>Zielverzeichnis auswählen</value>
+	</data>
+	<data name="Selection Area Border Colour">
+		<value>Randfarbe des ausgewählten Bereichs</value>
+	</data>
+	<data name="Selection Area Fill Colour">
+		<value>Füllfarbe des ausgewählten Bereichs</value>
+	</data>
+	<data name="Sharpen">
+		<value>Schärfen</value>
+	</data>
+	<data name="Sharpened">
+		<value>geschärft</value>
+	</data>
+	<data name="Sharpening Mask">
+		<value>Masken zum Schärfen</value>
+	</data>
+	<data name="Sharpening Method">
+		<value>Methode zum Schärfen</value>
+	</data>
+	<data name="Show Extension">
+		<value>AAErweiterungen anzeigen</value>
+	</data>
+	<data name="Show Full Path">
+		<value>Vollständigen Pfad anzeigen</value>
+	</data>
+	<data name="shrunk to {0}%">
+		<value>verkleinert um {0}%</value>
+	</data>
+	<data name="Size">
+		<value>Größe</value>
+	</data>
+	<data name="Some characters may not make it in to the ramp">
+		<value>Es können evtl. nicht alle Zeichen übernommen werden</value>
+	</data>
+	<data name="Specify Character Size">
+		<value>Schriftgröße</value>
+	</data>
+	<data name="Stretch">
+		<value>Strecken</value>
+	</data>
+	<data name="Stretched">
+		<value>gestreckt</value>
+	</data>
+	<data name="strikeout">
+		<value>AAstrikeout</value>
+	</data>
+	<data name="Suffix">
+		<value>Suffix</value>
+	</data>
+	<data name="Target Character Size: {0}x{1} pixels{2}">
+		<value>Zielschriftgröße: {0}x{1} Pixel{2}</value>
+	</data>
+	<data name="Target Font: {0} {1}pt{2}{3}{4}{5}">
+		<value>Zielschriftart: {0} {1}pt{2}{3}{4}{5}</value>
+	</data>
+	<data name="Text">
+		<value>Text</value>
+	</data>
+	<data name="Text Brightness: {0}, Text Contrast: {1}">
+		<value>Texthelligkeit: {0}, Textkontrast: {1}</value>
+	</data>
+	<data name="Text Settings">
+		<value>Fenster Texteinstellungen</value>
+	</data>
+	<data name="This is the latest version">
+		<value>Sie nutzen die aktuelle Programmversion.</value>
+	</data>
+	<data name="TIF Images">
+		<value>TIF-Datei</value>
+	</data>
+	<data name="Tutorials">
+		<value>Anleitung</value>
+	</data>
+	<data name="Unable to select this font">
+		<value>Schriftart kann nicht ausgewählt werden</value>
+	</data>
+	<data name="underline">
+		<value>unterstrichen</value>
+	</data>
+	<data name="Unknown or Unsupported File">
+		<value>Unbekanntes oder nicht unterstüztes Dateiformat</value>
+	</data>
+	<data name="Update while Selection Changes">
+		<value>Aktualisierung während der Änderung der Auswahl</value>
+	</data>
+	<data name="Unsharp Mask">
+		<value>Unschärfemaske</value>
+	</data>
+	<data name="Valid Characters">
+		<value>Zulässige Zeichen</value>
+	</data>
+	<data name="Version">
+		<value>Version</value>
+	</data>
+	<data name="Version {0} is available">
+		<value>Die Version {0} ist verfügbar</value>
+	</data>
+	<data name="Warning">
+		<value>Achtung</value>
+	</data>
+	<data name="White Text on Black Background">
+		<value>Weißer Text auf schwarzem Grund</value>
+	</data>
+	<data name="Windows Metafile Images">
+		<value>WMF-Datei (Windows Metafile)</value>
+	</data>
+	<data name="Zoom In">
+		<value>Zoom +</value>
+	</data>
+	<data name="Zoom Out">
+		<value>Zoom -</value>
+	</data>
+</root>
