@@ -1,0 +1,597 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<data name="&amp;About">
+		<value>&amp;Om</value>
+	</data>
+	<data name="Add File">
+		<value>Legg Til Fil</value>
+	</data>
+	<data name="&amp;Cancel">
+		<value>&amp;Avslutt</value>
+	</data>
+	<data name="&amp;Close">
+		<value>&amp;Lukk</value>
+	</data>
+	<data name="Convert">
+		<value>Konverter</value>
+	</data>
+	<data name="&amp;Default">
+		<value>&amp;Standard</value>
+	</data>
+	<data name="&amp;Donate">
+		<value>&amp;Doner</value>
+	</data>
+	<data name="FAQ">
+		<value>FAQ</value>
+	</data>
+	<data name="&amp;File">
+		<value>&amp;Fil</value>
+	</data>
+	<data name="&amp;Full Screen">
+		<value>&amp;Full Skjerm</value>
+	</data>
+	<data name="&amp;Help">
+		<value>&amp;Hjelp</value>
+	</data>
+	<data name="&amp;Load Image">
+		<value>&amp;Last Bilde</value>
+	</data>
+	<data name="&amp;Ok">
+		<value>&amp;Ok</value>
+	</data>
+	<data name="Remove">
+		<value>Fjern</value>
+	</data>
+	<data name="&amp;Save">
+		<value>&amp;Lagre</value>
+	</data>
+	<data name="&amp;Settings">
+		<value>&amp;Innstillinger</value>
+	</data>
+	<data name="&amp;View">
+		<value>&amp;Vis</value>
+	</data>
+	<data name="{0:yyyyMMddHHmmss}">
+		<value>{0:yyyyMMddHHmmss}</value>
+	</data>
+	<data name="{0} file(s) converted, {1} error(s)">
+		<value>{0} fil(er) konvertert, {1} feil</value>
+	</data>
+	<data name="Add Directory">
+		<value>Legg til Katalog</value>
+	</data>
+	<data name="Adjust Levels">
+		<value>Juster Nivå</value>
+	</data>
+	<data name="Advanced">
+		<value>Avansert</value>
+	</data>
+	<data name="All Files">
+		<value>Alle Filene</value>
+	</data>
+	<data name="already exists">
+		<value>eksisterer allerede</value>
+	</data>
+	<data name="ASCII Ramp">
+		<value>ASCII Rampe</value>
+	</data>
+	<data name="Auto">
+		<value>Automatisk</value>
+	</data>
+	<data name="automatically calculated">
+		<value>beregnet automatiskt</value>
+	</data>
+	<data name="Batch Conversion">
+		<value>Batch Konvertering</value>
+	</data>
+	<data name="Batch conversion cancelled">
+		<value>Batch konvertering avbrutt</value>
+	</data>
+	<data name="Batch conversion started, {0} file(s) to process">
+		<value>Batch konvertering startet, {0} fil(er) å bearbeide</value>
+	</data>
+	<data name="Batch finished">
+		<value>Batch ferdig</value>
+	</data>
+	<data name="Bitmap Images">
+		<value>Bitmap Bilder</value>
+	</data>
+	<data name="Black and White">
+		<value>Sort og Hvitt</value>
+	</data>
+	<data name="Black Text on White">
+		<value>Sort Tekst på Hvitt</value>
+	</data>
+	<data name="Black Text on White Background">
+		<value>Sort Tekst på Hvit Bakgrund</value>
+	</data>
+	<data name="bold">
+		<value>fet</value>
+	</data>
+	<data name="Brightness">
+		<value>Lysstyrke</value>
+	</data>
+	<data name="British English">
+		<value>Norsk Bokmål</value>
+	</data>
+	<data name="C&amp;lose">
+		<value>L&amp;ukk</value>
+	</data>
+	<data name="Character Size">
+		<value>Tegnstørrelse</value>
+	</data>
+	<data name="Characters">
+		<value>Tegn</value>
+	</data>
+	<data name="Check for a New Version">
+		<value>Sjekk for en Ny Versjon</value>
+	</data>
+	<data name="Choose the Font">
+		<value>Velg fonttype</value>
+	</data>
+	<data name="Choose the Magnification Level">
+		<value>Velg Forstørrelsenivået</value>
+	</data>
+	<data name="Clear">
+		<value>Slett</value>
+	</data>
+	<data name="Click and drag on an image to select an area">
+		<value>Klikk og dra på et bilde for å merke et område</value>
+	</data>
+	<data name="Colour">
+		<value>Farge</value>
+	</data>
+	<data name="Colour Preview">
+		<value>Forhåndsvis Farge</value>
+	</data>
+	<data name="Colour Print Preview">
+		<value>Forhåndsvis Fargeutskrift</value>
+	</data>
+	<data name="Confirm close if unsaved">
+		<value>Bekreft lukking hvis ikke lagret</value>
+	</data>
+	<data name="Contrast">
+		<value>Kontrast</value>
+	</data>
+	<data name="Controls">
+		<value>Kontroller</value>
+	</data>
+	<data name="Converting">
+		<value>Konverting</value>
+	</data>
+	<data name="Copy">
+		<value>Kopiere</value>
+	</data>
+	<data name="Copy Ramp to Clipboard">
+		<value>Kopiere Ramp til Utklippstavlen</value>
+	</data>
+	<data name="Could not load translation file '{0}'">
+		<value>Kunne ikke åpne oversettelses fil '{0}'</value>
+	</data>
+	<data name="Date/Time">
+		<value>Dato/Tid</value>
+	</data>
+	<data name="DefaultWidth and/or DefaultHeight must be &gt; 0">
+		<value>Standardbredde og/eller Standardhøyde må være &gt; 0</value>
+	</data>
+	<data name="Dither">
+		<value>Punktblanding</value>
+	</data>
+	<data name="Dithering Amount">
+		<value>Punktblandingsmengde</value>
+	</data>
+	<data name="Doubleclick to load an image, or drag and drop here.">
+		<value>Dobbeltklikk for å laste et bilde, eller dra og slipp her.</value>
+	</data>
+	<data name="E&amp;xit">
+		<value>A&amp;vslutt</value>
+	</data>
+	<data name="Edit">
+		<value>Redigere</value>
+	</data>
+	<data name="Edit Settings">
+		<value>Redigerings innstillinger</value>
+	</data>
+	<data name="Effects">
+		<value>Effekter</value>
+	</data>
+	<data name="Enter the characters to be used for generating the ramp">
+		<value>Skriv inn tegnene som skal brukes til å generere Rampen</value>
+	</data>
+	<data name="Error">
+		<value>Feil</value>
+	</data>
+	<data name="Error converting the image">
+		<value>Feil med konvertering av bildet</value>
+	</data>
+	<data name="Error saving to {0}">
+		<value>Feil med å lagre til {0}</value>
+	</data>
+	<data name="Error with settings file '{0}'">
+		<value>Feil med innstilling av fil '{0}'</value>
+	</data>
+	<data name="Exchangeable Image Files">
+		<value>Forandringsbare Billedfiler</value>
+	</data>
+	<data name="File Not Found">
+		<value>Fil Ikke Funnet</value>
+	</data>
+	<data name="Files to be converted">
+		<value>Filer til å bli konvertert</value>
+	</data>
+	<data name="Fill Selected Area">
+		<value>Fyll Valgte Område</value>
+	</data>
+	<data name="Flip Horizontally">
+		<value>Snu Horisontalt</value>
+	</data>
+	<data name="Flip Vertically">
+		<value>Snu Vertikalt</value>
+	</data>
+	<data name="Flipped Horizontally">
+		<value>Snudd Horisontalt</value>
+	</data>
+	<data name="Flipped Vertically">
+		<value>Snudd Vertikalt</value>
+	</data>
+	<data name="Font">
+		<value>Font</value>
+	</data>
+	<data name="Fonts">
+		<value>Fonter</value>
+	</data>
+	<data name="For The Best Effect This Text Should Be Readable">
+		<value>For Den Beste Effekten Burde Denne Teksten Være Lesbar</value>
+	</data>
+	<data name="Full Screen">
+		<value>Full Skjerm</value>
+	</data>
+	<data name="Generated">
+		<value>Generert</value>
+	</data>
+	<data name="GIF Images">
+		<value>GIF Bilder</value>
+	</data>
+	<data name="I&amp;mport from Clipboard">
+		<value>H&amp;entet fra Utklippstavlen</value>
+	</data>
+	<data name="Image">
+		<value>Bilde</value>
+	</data>
+	<data name="Image Files">
+		<value>Billedfiler</value>
+	</data>
+	<data name="Input">
+		<value>Indata</value>
+	</data>
+	<data name="Input Directory">
+		<value>Indata Katalog</value>
+	</data>
+	<data name="Input Image">
+		<value>Inndata Bilde</value>
+	</data>
+	<data name="Input Text Sample">
+		<value>Inndata Tekst Eksempel</value>
+	</data>
+	<data name="Invalid ASCII Ramp">
+		<value>Ugyldig ASCII Ramp</value>
+	</data>
+	<data name="Invalid Directory">
+		<value>Ugyldig Katalog</value>
+	</data>
+	<data name="Invalid or unsupported file">
+		<value>Ugyldig eller ikkestøttet fil</value>
+	</data>
+	<data name="Invalid Output Directory">
+		<value>Ugyldig Utdata Katalog</value>
+	</data>
+	<data name="Invalid Output Size">
+		<value>Ugyldig Utdata Katalogstørrelse</value>
+	</data>
+	<data name="Invalid settings file. Please delete it or save a new one">
+		<value>Ugyldig innstillingsfil. Vennligst slett den eller lagre en ny</value>
+	</data>
+	<data name="Invert Selection">
+		<value>Speilvende Valget</value>
+	</data>
+	<data name="Invert the Output">
+		<value>Speilvende Utdataene</value>
+	</data>
+	<data name="italic">
+		<value>italic</value>
+	</data>
+	<data name="JPEG Images">
+		<value>JPEG Bilder</value>
+	</data>
+	<data name="Language">
+		<value>Språk</value>
+	</data>
+	<data name="Levels">
+		<value>Nivå</value>
+	</data>
+	<data name="Levels Adjustment">
+		<value>Nivå Reguleringer</value>
+	</data>
+	<data name="Lock Selected Area">
+		<value>Låse Valgte Område</value>
+	</data>
+	<data name="Log">
+		<value>Logg</value>
+	</data>
+	<data name="Magnification">
+		<value>Forstørrelse</value>
+	</data>
+	<data name="Max">
+		<value>Maks</value>
+	</data>
+	<data name="Maximum">
+		<value>Maksimum</value>
+	</data>
+	<data name="Med">
+		<value>Midten</value>
+	</data>
+	<data name="Median">
+		<value>Midtre</value>
+	</data>
+	<data name="Min">
+		<value>Min</value>
+	</data>
+	<data name="Minimum">
+		<value>Minimum</value>
+	</data>
+	<data name="New version check">
+		<value>Ny versjon sjekk</value>
+	</data>
+	<data name="None">
+		<value>Ingen</value>
+	</data>
+	<data name="Open the download page">
+		<value>Åpne Nedlastingssiden</value>
+	</data>
+	<data name="Out of Memory, Could not convert the image">
+		<value>Ikke Nok Minne, Bildet Kunne Ikke Konverteres</value>
+	</data>
+	<data name="Output">
+		<value>Utdata</value>
+	</data>
+	<data name="Output as">
+		<value>Utdata som</value>
+	</data>
+	<data name="Output Directory">
+		<value>Utdata Katalog</value>
+	</data>
+	<data name="Output Filenames">
+		<value>Utdata Filnavn</value>
+	</data>
+	<data name="Output Image Sample">
+		<value>Utdata Bildeeksempel</value>
+	</data>
+	<data name="Output Levels - Minimum: {0}, Median: {1}, Maximum: {2}">
+		<value>Utdata Nivåer - Minimum: {0}, Medium: {1}, Maksimum: {2}</value>
+	</data>
+	<data name="Output Size">
+		<value>Utdata Størrelse</value>
+	</data>
+	<data name="Output Size: {0}x{1} characters">
+		<value>Utdata Størrelse: {0}x{1} tegn</value>
+	</data>
+	<data name="Page Setup">
+		<value>Sideoppsett</value>
+	</data>
+	<data name="pixels">
+		<value>pixels</value>
+	</data>
+	<data name="Plain Text">
+		<value>Ren Tekst</value>
+	</data>
+	<data name="Please enter an output directory">
+		<value>Vennligst legg til en tdata katalog</value>
+	</data>
+	<data name="Portable Network Graphics Images">
+		<value>Trådløs Nettverks Grafikkbilder</value>
+	</data>
+	<data name="Prefix">
+		<value>Prefix</value>
+	</data>
+	<data name="Print">
+		<value>Skriv ut</value>
+	</data>
+	<data name="Print Colour">
+		<value>Skriv ut Farge</value>
+	</data>
+	<data name="Print Error">
+		<value>Utskriftsfeil</value>
+	</data>
+	<data name="Print Preview">
+		<value>Forhåndsvis Utskrift</value>
+	</data>
+	<data name="Ramp">
+		<value>Ramp</value>
+	</data>
+	<data name="Ramps">
+		<value>Ramps</value>
+	</data>
+	<data name="Random">
+		<value>Tilfeldig</value>
+	</data>
+	<data name="Remove All">
+		<value>Slett Alt</value>
+	</data>
+	<data name="Remove File After Conversion">
+		<value>Slett Fil Etter Konvertering</value>
+	</data>
+	<data name="Remove Selection">
+		<value>Slett Utvalg</value>
+	</data>
+	<data name="Report a Bug">
+		<value>Rapporter en Feil</value>
+	</data>
+	<data name="Request a Feature">
+		<value>Be om en Egenskap</value>
+	</data>
+	<data name="Reset">
+		<value>Nullstille</value>
+	</data>
+	<data name="Rich Text">
+		<value>Rik Tekst</value>
+	</data>
+	<data name="Rotate">
+		<value>Rotere</value>
+	</data>
+	<data name="Rotate Clockwise">
+		<value>Rotate Clockwise</value>
+	</data>
+	<data name="Rotate Anticlockwise">
+		<value>Rotere Mot Klokka</value>
+	</data>
+	<data name="Save">
+		<value>Lagre</value>
+	</data>
+	<data name="Save As">
+		<value>Lagre Som</value>
+	</data>
+	<data name="Save Log As">
+		<value>Lagre Logg Som</value>
+	</data>
+	<data name="Save the output before closing">
+		<value>Lagre Utdatene før lukking</value>
+	</data>
+	<data name="Save to a Text File">
+		<value>Lagre til en Tekstfil</value>
+	</data>
+	<data name="saved">
+		<value>lagret</value>
+	</data>
+	<data name="Saving">
+		<value>lagre</value>
+	</data>
+	<data name="Saving output as">
+		<value>Lagre utdata som</value>
+	</data>
+	<data name="Select a directory from which to import image files">
+		<value>Velg en katalog som du henter billedfilene fra</value>
+	</data>
+	<data name="Select All">
+		<value>Velg Alt</value>
+	</data>
+	<data name="Select None">
+		<value>Velg Ingen</value>
+	</data>
+	<data name="Select the directory in which to save the converted images">
+		<value>Velg katalogen som du vil lagre de konverterte bildene i</value>
+	</data>
+	<data name="Selection Area Border Colour">
+		<value>Utvalg Område Rammefarge</value>
+	</data>
+	<data name="Selection Area Fill Colour">
+		<value>Utvalg Område Fyllfarge</value>
+	</data>
+	<data name="Sharpen">
+		<value>Skjerpe</value>
+	</data>
+	<data name="Sharpened">
+		<value>Skjerpet</value>
+	</data>
+	<data name="Sharpening Mask">
+		<value>Skjerping Maske</value>
+	</data>
+	<data name="Sharpening Method">
+		<value>Skjerpings Metode</value>
+	</data>
+	<data name="Show Extension">
+		<value>Vis Utvidelse</value>
+	</data>
+	<data name="Show Full Path">
+		<value>Vis Hele Banen</value>
+	</data>
+	<data name="Show Log">
+		<value>Vis Logg</value>
+	</data>
+	<data name="shrunk to {0}%">
+		<value>krympet til {0}%</value>
+	</data>
+	<data name="Size">
+		<value>Størrelse</value>
+	</data>
+	<data name="Some characters may not make it in to the ramp">
+		<value>Noen tegn vil kanskje ikke kunne brukes i rampen</value>
+	</data>
+	<data name="Specify Character Size">
+		<value>Fastsett Tegnstørrelse</value>
+	</data>
+	<data name="Stretch">
+		<value>Strekk</value>
+	</data>
+	<data name="Stretched">
+		<value>Strukket</value>
+	</data>
+	<data name="strikeout">
+		<value>gjennomstreking</value>
+	</data>
+	<data name="Suffix">
+		<value>Endelse</value>
+	</data>
+	<data name="Target Character Size: {0}x{1} pixels{2}">
+		<value>Målets Tegnstørrelse: {0}x{1} pixels{2}</value>
+	</data>
+	<data name="Target Font: {0} {1}pt{2}{3}{4}{5}">
+		<value>Målets Font: {0} {1}pt{2}{3}{4}{5}</value>
+	</data>
+	<data name="Text">
+		<value>Tekst</value>
+	</data>
+	<data name="Text Brightness: {0}, Text Contrast: {1}">
+		<value>Text Lysstyrke: {0}, Tekst Kontrast: {1}</value>
+	</data>
+	<data name="Text Settings">
+		<value>Tekst Innstillinger</value>
+	</data>
+	<data name="This is the latest version">
+		<value>Dette er den siste versjonen</value>
+	</data>
+	<data name="TIF Images">
+		<value>TIF Bilder</value>
+	</data>
+	<data name="Tutorials">
+		<value>Veiledninger</value>
+	</data>
+	<data name="Unable to select this font">
+		<value>Ute av stand til å velge denne fonten</value>
+	</data>
+	<data name="underline">
+		<value>understrek</value>
+	</data>
+	<data name="Unknown or Unsupported File">
+		<value>Ukjent eller Ustøttet Fil</value>
+	</data>
+	<data name="Update while Selection Changes">
+		<value>Oppdater mens Valgene Forandres</value>
+	</data>
+	<data name="Unsharp Mask">
+		<value>Uskarp Maskering</value>
+	</data>
+	<data name="Valid Characters">
+		<value>Gyldige Tegn</value>
+	</data>
+	<data name="Version">
+		<value>Versjon</value>
+	</data>
+	<data name="Version {0} is available">
+		<value>Versjon {0} er tilgjengelig</value>
+	</data>
+	<data name="Warning">
+		<value>Advarsel</value>
+	</data>
+	<data name="White Text on Black Background">
+		<value>Hvit Tekst på Sort Bakgrund</value>
+	</data>
+	<data name="Windows Metafile Images">
+		<value>Windows Metafile Bilder</value>
+	</data>
+	<data name="Zoom In">
+		<value>Zoom Inn</value>
+	</data>
+	<data name="Zoom Out">
+		<value>Zoom Ut</value>
+	</data>
+</root>
